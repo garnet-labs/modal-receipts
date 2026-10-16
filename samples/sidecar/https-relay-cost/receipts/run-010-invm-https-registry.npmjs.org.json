@@ -1,0 +1,798 @@
+{
+ "schema": "garnet.sandbox-receipt/0.1",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "nofiles",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792178365.7770731,
+   "stop": 1792178406.1949084,
+   "seconds": 40.418
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit syscall (file rules off) in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic",
+   "file writes"
+  ],
+  "syscall_records": 2385
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": []
+ },
+ "processes": {
+  "executed": 45,
+  "total_seen": 88,
+  "roots": [
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1751,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1755,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1759,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1763,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1767,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1771,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1775,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1779,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1783,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1787,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1791,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1795,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1799,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1803,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1807,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1811,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1815,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1819,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1823,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1827,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1831,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1835,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1839,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1843,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1847,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1851,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1855,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1860,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1864,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1868,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1872,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1876,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1880,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1884,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1888,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1892,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1896,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1900,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1904,
+    "ppid": 1083,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1908,
+    "ppid": 1083,
+    "comm": "awk",
+    "argv": [
+     "awk",
+     "{printf \"%s,\", $3}",
+     "/work/times.txt"
+    ],
+    "chain": "bash > awk"
+   },
+   {
+    "pid": 1909,
+    "ppid": 1083,
+    "comm": "awk",
+    "argv": [
+     "awk",
+     "{printf \"%s,\", $1}",
+     "/work/times.txt"
+    ],
+    "chain": "bash > awk"
+   },
+   {
+    "pid": 1911,
+    "ppid": 1910,
+    "comm": "awk",
+    "argv": [
+     "awk",
+     "{print $4}",
+     "/work/times.txt"
+    ],
+    "chain": "bash > bash > awk"
+   },
+   {
+    "pid": 1912,
+    "ppid": 1910,
+    "comm": "sort",
+    "argv": [
+     "sort"
+    ],
+    "chain": "bash > bash > sort"
+   },
+   {
+    "pid": 1913,
+    "ppid": 1910,
+    "comm": "uniq",
+    "argv": [
+     "uniq",
+     "-c"
+    ],
+    "chain": "bash > bash > uniq"
+   },
+   {
+    "pid": 1914,
+    "ppid": 1910,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "-s",
+     " \\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "registry.npmjs.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "104.16.0.34",
+     "104.16.1.34",
+     "104.16.10.34",
+     "104.16.11.34",
+     "104.16.2.34",
+     "104.16.3.34",
+     "104.16.4.34",
+     "104.16.5.34",
+     "104.16.6.34",
+     "104.16.7.34",
+     "104.16.8.34",
+     "104.16.9.34",
+     "2606:4700::6810:122",
+     "2606:4700::6810:22",
+     "2606:4700::6810:222",
+     "2606:4700::6810:322",
+     "2606:4700::6810:422",
+     "2606:4700::6810:522",
+     "2606:4700::6810:622",
+     "2606:4700::6810:722",
+     "2606:4700::6810:822",
+     "2606:4700::6810:922",
+     "2606:4700::6810:a22",
+     "2606:4700::6810:b22"
+    ],
+    "attempts": 1000,
+    "initiated": 520,
+    "chains": [
+     {
+      "chain": "bash > curl",
+      "connections": 1000
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 1000,
+  "loopback_connections": 40,
+  "address_probes": 0,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 0,
+  "by_top_level": [],
+  "sample": []
+ }
+}

@@ -1,0 +1,327 @@
+{
+ "schema": "garnet.sandbox-receipt/0.2",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "nofiles",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792178287.975738,
+   "stop": 1792178289.974356,
+   "seconds": 1.999
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit syscall (file rules off) in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic",
+   "file writes"
+  ],
+  "syscall_records": 236
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": [
+   "rc=0"
+  ]
+ },
+ "processes": {
+  "executed": 13,
+  "total_seen": 45,
+  "roots": [
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1085,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "/opt/garnet/workload-install.sh",
+     "npm",
+     "serverless"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1086,
+    "ppid": 1085,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1087,
+    "ppid": 1085,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1088,
+    "ppid": 1085,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "/work"
+    ],
+    "chain": "bash > rm"
+   },
+   {
+    "pid": 1089,
+    "ppid": 1085,
+    "comm": "mkdir",
+    "argv": [
+     "mkdir",
+     "-p",
+     "/work"
+    ],
+    "chain": "bash > mkdir"
+   },
+   {
+    "pid": 1090,
+    "ppid": 1085,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/usr/bin/npm",
+     "init",
+     "-y"
+    ],
+    "chain": "bash > node"
+   },
+   {
+    "pid": 1105,
+    "ppid": 1085,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/usr/bin/npm",
+     "install",
+     "--no-audit",
+     "--no-fund",
+     "--loglevel=error",
+     "serverless"
+    ],
+    "chain": "bash > node"
+   },
+   {
+    "pid": 1124,
+    "ppid": 1105,
+    "comm": "sh",
+    "argv": [
+     "sh",
+     "-c",
+     "node ./postInstall.js"
+    ],
+    "chain": "bash > node > sh"
+   },
+   {
+    "pid": 1125,
+    "ppid": 1124,
+    "comm": "node",
+    "argv": [
+     "node",
+     "./postInstall.js"
+    ],
+    "chain": "bash > node > sh > node"
+   },
+   {
+    "pid": 1143,
+    "ppid": 1142,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-c",
+     "300",
+     "/work/install.log"
+    ],
+    "chain": "bash > bash > tail"
+   },
+   {
+    "pid": 1144,
+    "ppid": 1142,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "\\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   },
+   {
+    "pid": 1146,
+    "ppid": 1145,
+    "comm": "find",
+    "argv": [
+     "find",
+     "/work",
+     "-type",
+     "f"
+    ],
+    "chain": "bash > bash > find"
+   },
+   {
+    "pid": 1147,
+    "ppid": 1145,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-l"
+    ],
+    "chain": "bash > bash > wc"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "install.serverless.com",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "108.139.47.111"
+    ],
+    "attempts": 1,
+    "initiated": 1,
+    "chains": [
+     {
+      "chain": "bash > node > sh > node",
+      "connections": 1
+     }
+    ]
+   },
+   {
+    "destination": "registry.npmjs.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "104.16.3.34"
+    ],
+    "attempts": 2,
+    "initiated": 2,
+    "chains": [
+     {
+      "chain": "bash > node",
+      "connections": 2
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 3,
+  "loopback_connections": 2,
+  "address_probes": 36,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 0,
+  "by_top_level": [],
+  "sample": []
+ },
+ "sidecar": {
+  "recorder": "garnet-sidecar-sni-relay",
+  "name": "garnet",
+  "connections": 4,
+  "relayed": 3,
+  "hosts": [
+   {
+    "host": "registry.npmjs.org",
+    "connections": 2,
+    "relayed": 2,
+    "refused_or_failed": 0,
+    "bytes_up": 2972,
+    "bytes_down": 2124576,
+    "upstreams": [
+     "104.16.4.34",
+     "104.16.6.34"
+    ],
+    "outcomes": {
+     "relayed": 2
+    }
+   },
+   {
+    "host": "(no SNI)",
+    "connections": 1,
+    "relayed": 0,
+    "refused_or_failed": 1,
+    "bytes_up": 0,
+    "bytes_down": 0,
+    "upstreams": [],
+    "outcomes": {
+     "refused_no_sni": 1
+    }
+   },
+   {
+    "host": "install.serverless.com",
+    "connections": 1,
+    "relayed": 1,
+    "refused_or_failed": 0,
+    "bytes_up": 703,
+    "bytes_down": 7544103,
+    "upstreams": [
+     "108.139.47.111"
+    ],
+    "outcomes": {
+     "relayed": 1
+    }
+   }
+  ],
+  "connections_outside_in_vm_window": {
+   "before_window": 0,
+   "after_window": 0
+  },
+  "coverage": "TCP/443 leaving the main container, relayed by Modal to the Sidecar; host name read from the TLS ClientHello SNI, nothing decrypted. Not covered: DNS, any other port, UDP, TLS without SNI (refused, recorded as refused_no_sni), traffic from the Sidecar itself.",
+  "original_destination_visible": false
+ },
+ "agreement": {
+  "verdict": "agree",
+  "both": [
+   "install.serverless.com",
+   "registry.npmjs.org"
+  ],
+  "sidecar_only": [],
+  "in_vm_only": [],
+  "in_vm_declared_complete": true,
+  "in_vm_lost": "0",
+  "process_by_host": {
+   "install.serverless.com": [
+    "bash > node > sh > node"
+   ],
+   "registry.npmjs.org": [
+    "bash > node"
+   ]
+  },
+  "meaning": "agree: every host the Sidecar relayed inside the in-VM window also appears in the in-VM record. in_vm_record_incomplete_or_altered: the Sidecar relayed a host the in-VM record lacks; the record inside the sandbox (which root in the sandbox can edit) is incomplete or was changed."
+ }
+}

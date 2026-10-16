@@ -1,0 +1,77 @@
+{
+ "workload": "install",
+ "wall_s": 8.499381065368652,
+ "allowlist": null,
+ "runs": [
+  {
+   "index": 0,
+   "label": "npm:lodash",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532NE4PKJGX7ZNEG9DP8XAH",
+   "timings": {
+    "create_s": 0.08907235800000002,
+    "first_exec_s": 0.882668649,
+    "sidecar_up_s": 0.7398957910000001,
+    "arm_s": 0.318494845,
+    "workload_s": 0.9803409200000002,
+    "receipt_s": 0.1639377600000005,
+    "sidecar_collect_s": 0.06740528899999987,
+    "total_s": 3.308868112
+   },
+   "sidecar_id": "sb-01M532NE4PKJGX7ZNEG9DP8XAH-ctr-CUOWLNWMEG",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm lodash",
+     "::log  added 1 package in 250ms ",
+     "::files 1056",
+     "::done rc=0"
+    ],
+    "out": "::step install npm lodash\n::log  added 1 package in 250ms \n::files 1056\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 3,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 1,
+   "label": "constructed:curl-example.com",
+   "cell": "sidecar",
+   "constructed": true,
+   "sandbox_id": "sb-01M532NF4YG7WV0D54KN13339R",
+   "timings": {
+    "create_s": 0.2644739039999999,
+    "first_exec_s": 1.5799617230000003,
+    "sidecar_up_s": 0.9989430539999997,
+    "arm_s": 0.800561697,
+    "workload_s": 0.579248873,
+    "receipt_s": 0.5397578019999996,
+    "sidecar_collect_s": 0.24040701900000006,
+    "total_s": 5.309976348999999
+   },
+   "sidecar_id": "sb-01M532NF4YG7WV0D54KN13339R-ctr-SKEMFFSANG",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step constructed curl https://example.com",
+     "::done rc=0"
+    ],
+    "out": "::step constructed curl https://example.com\n200\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 3,
+   "sidecar_stderr": ""
+  }
+ ]
+}

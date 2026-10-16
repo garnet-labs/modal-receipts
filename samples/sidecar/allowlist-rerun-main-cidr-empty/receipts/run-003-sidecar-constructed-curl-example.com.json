@@ -1,0 +1,223 @@
+{
+ "schema": "garnet.sandbox-receipt/0.2",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "nofiles",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792178580.321935,
+   "stop": 1792178580.6727371,
+   "seconds": 0.351
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit syscall (file rules off) in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic",
+   "file writes"
+  ],
+  "syscall_records": 92
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": []
+ },
+ "processes": {
+  "executed": 5,
+  "total_seen": 6,
+  "roots": [
+   "modal-sandbox-f",
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1085,
+    "ppid": 1,
+    "comm": "modal-sandbox-f",
+    "argv": [
+     "/__modal/.bin/modal-sandbox-fs-tools",
+     "{\"WriteFile\":{\"path\":\"/etc/hosts\"}}"
+    ],
+    "chain": "modal-sandbox-f"
+   },
+   {
+    "pid": 1088,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "echo '::step constructed curl https://example.com'; curl -sS -m 15 -o /dev/null -w '%{http_code}\\n' https://example.com/; echo \"::done rc=$?\""
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1089,
+    "ppid": 1088,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1090,
+    "ppid": 1088,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1091,
+    "ppid": 1088,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-sS",
+     "-m",
+     "\u0015",
+     "-o",
+     "/dev/null",
+     "-w",
+     "%{http_code}\\n"
+    ],
+    "chain": "bash > curl"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "example.com",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "104.20.23.154",
+     "172.66.147.243",
+     "2606:4700:10::6814:179a",
+     "2606:4700:10::ac42:93f3"
+    ],
+    "attempts": 5,
+    "initiated": 3,
+    "chains": [
+     {
+      "chain": "bash > curl",
+      "connections": 5
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 5,
+  "loopback_connections": 1,
+  "address_probes": 0,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 0,
+  "by_top_level": [],
+  "sample": []
+ },
+ "sidecar": {
+  "recorder": "garnet-sidecar-sni-relay",
+  "name": "garnet",
+  "connections": 2,
+  "relayed": 0,
+  "hosts": [
+   {
+    "host": "(no SNI)",
+    "connections": 1,
+    "relayed": 0,
+    "refused_or_failed": 1,
+    "bytes_up": 0,
+    "bytes_down": 0,
+    "upstreams": [],
+    "outcomes": {
+     "refused_no_sni": 1
+    }
+   },
+   {
+    "host": "example.com",
+    "connections": 1,
+    "relayed": 0,
+    "refused_or_failed": 0,
+    "bytes_up": 517,
+    "bytes_down": 0,
+    "upstreams": [
+     "172.66.147.243"
+    ],
+    "outcomes": {
+     "refused_by_policy": 1
+    },
+    "refused_by_policy": 1,
+    "policy_source": "sidecar.outbound_domain_allowlist (evidence-derived: union of Sidecar-relayed hosts over 30 real runs (out-sidecar30/allowlist.json))"
+   }
+  ],
+  "connections_outside_in_vm_window": {
+   "before_window": 0,
+   "after_window": 0
+  },
+  "coverage": "TCP/443 leaving the main container, relayed by Modal to the Sidecar; host name read from the TLS ClientHello SNI, nothing decrypted. Not covered: DNS, any other port, UDP, TLS without SNI (refused, recorded as refused_no_sni), traffic from the Sidecar itself.",
+  "original_destination_visible": false,
+  "policy": {
+   "outbound_domain_allowlist": [
+    "cdn.cypress.io",
+    "download.cypress.io",
+    "files.pythonhosted.org",
+    "github.com",
+    "install.serverless.com",
+    "nodejs.org",
+    "pypi.org",
+    "registry.npmjs.org",
+    "release-assets.githubusercontent.com",
+    "storage.googleapis.com"
+   ],
+   "source": "evidence-derived: union of Sidecar-relayed hosts over 30 real runs (out-sidecar30/allowlist.json)",
+   "enforced_by": "Modal, on the Sidecar's outbound connections, matched on TLS ClientHello SNI"
+  },
+  "refused_by_policy": 1
+ },
+ "agreement": {
+  "verdict": "agree",
+  "both": [
+   "example.com"
+  ],
+  "sidecar_only": [],
+  "in_vm_only": [],
+  "in_vm_declared_complete": true,
+  "in_vm_lost": "0",
+  "process_by_host": {
+   "example.com": [
+    "bash > curl"
+   ]
+  },
+  "meaning": "agree: every host the Sidecar relayed inside the in-VM window also appears in the in-VM record. in_vm_record_incomplete_or_altered: the Sidecar relayed a host the in-VM record lacks; the record inside the sandbox (which root in the sandbox can edit) is incomplete or was changed."
+ }
+}

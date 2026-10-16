@@ -1,0 +1,875 @@
+{
+ "schema": "garnet.sandbox-receipt/0.2",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "nofiles",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792178365.1044388,
+   "stop": 1792178388.4725895,
+   "seconds": 23.368
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit syscall (file rules off) in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic",
+   "file writes"
+  ],
+  "syscall_records": 2392
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": []
+ },
+ "processes": {
+  "executed": 46,
+  "total_seen": 88,
+  "roots": [
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1746,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1750,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1754,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1758,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1762,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1766,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1770,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1774,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1778,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1782,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1786,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1790,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1794,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1798,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1802,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1806,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1810,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1814,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1818,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1822,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1826,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1830,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1834,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1838,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1842,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1846,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1850,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1854,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1858,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1862,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1866,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1870,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1874,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1878,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1882,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1886,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1890,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1894,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1898,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1902,
+    "ppid": 1085,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-s",
+     "-o",
+     "/dev/null",
+     "--no-keepalive",
+     "-m",
+     " ",
+     "-w"
+    ],
+    "chain": "bash > curl"
+   },
+   {
+    "pid": 1906,
+    "ppid": 1085,
+    "comm": "awk",
+    "argv": [
+     "awk",
+     "{printf \"%s,\", $3}",
+     "/work/times.txt"
+    ],
+    "chain": "bash > awk"
+   },
+   {
+    "pid": 1907,
+    "ppid": 1085,
+    "comm": "awk",
+    "argv": [
+     "awk",
+     "{printf \"%s,\", $1}",
+     "/work/times.txt"
+    ],
+    "chain": "bash > awk"
+   },
+   {
+    "pid": 1909,
+    "ppid": 1908,
+    "comm": "awk",
+    "argv": [
+     "awk",
+     "{print $4}",
+     "/work/times.txt"
+    ],
+    "chain": "bash > bash > awk"
+   },
+   {
+    "pid": 1910,
+    "ppid": 1908,
+    "comm": "sort",
+    "argv": [
+     "sort"
+    ],
+    "chain": "bash > bash > sort"
+   },
+   {
+    "pid": 1911,
+    "ppid": 1908,
+    "comm": "uniq",
+    "argv": [
+     "uniq",
+     "-c"
+    ],
+    "chain": "bash > bash > uniq"
+   },
+   {
+    "pid": 1912,
+    "ppid": 1908,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "-s",
+     " \\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "registry.npmjs.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "104.16.0.34",
+     "104.16.1.34",
+     "104.16.10.34",
+     "104.16.11.34",
+     "104.16.2.34",
+     "104.16.3.34",
+     "104.16.4.34",
+     "104.16.5.34",
+     "104.16.6.34",
+     "104.16.7.34",
+     "104.16.8.34",
+     "104.16.9.34",
+     "2606:4700::6810:122",
+     "2606:4700::6810:22",
+     "2606:4700::6810:222",
+     "2606:4700::6810:322",
+     "2606:4700::6810:422",
+     "2606:4700::6810:522",
+     "2606:4700::6810:622",
+     "2606:4700::6810:722",
+     "2606:4700::6810:822",
+     "2606:4700::6810:922",
+     "2606:4700::6810:a22",
+     "2606:4700::6810:b22"
+    ],
+    "attempts": 1000,
+    "initiated": 520,
+    "chains": [
+     {
+      "chain": "bash > curl",
+      "connections": 1000
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 1000,
+  "loopback_connections": 40,
+  "address_probes": 0,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 0,
+  "by_top_level": [],
+  "sample": []
+ },
+ "sidecar": {
+  "recorder": "garnet-sidecar-sni-relay",
+  "name": "garnet",
+  "connections": 201,
+  "relayed": 200,
+  "hosts": [
+   {
+    "host": "registry.npmjs.org",
+    "connections": 200,
+    "relayed": 200,
+    "refused_or_failed": 0,
+    "bytes_up": 158094,
+    "bytes_down": 655262,
+    "upstreams": [
+     "104.16.10.34",
+     "104.16.11.34",
+     "104.16.2.34",
+     "104.16.3.34",
+     "104.16.6.34",
+     "104.16.7.34"
+    ],
+    "outcomes": {
+     "relayed": 200
+    }
+   },
+   {
+    "host": "(no SNI)",
+    "connections": 1,
+    "relayed": 0,
+    "refused_or_failed": 1,
+    "bytes_up": 0,
+    "bytes_down": 0,
+    "upstreams": [],
+    "outcomes": {
+     "refused_no_sni": 1
+    }
+   }
+  ],
+  "connections_outside_in_vm_window": {
+   "before_window": 0,
+   "after_window": 0
+  },
+  "coverage": "TCP/443 leaving the main container, relayed by Modal to the Sidecar; host name read from the TLS ClientHello SNI, nothing decrypted. Not covered: DNS, any other port, UDP, TLS without SNI (refused, recorded as refused_no_sni), traffic from the Sidecar itself.",
+  "original_destination_visible": false
+ },
+ "agreement": {
+  "verdict": "agree",
+  "both": [
+   "registry.npmjs.org"
+  ],
+  "sidecar_only": [],
+  "in_vm_only": [],
+  "in_vm_declared_complete": true,
+  "in_vm_lost": "0",
+  "process_by_host": {
+   "registry.npmjs.org": [
+    "bash > curl"
+   ]
+  },
+  "meaning": "agree: every host the Sidecar relayed inside the in-VM window also appears in the in-VM record. in_vm_record_incomplete_or_altered: the Sidecar relayed a host the in-VM record lacks; the record inside the sandbox (which root in the sandbox can edit) is incomplete or was changed."
+ }
+}

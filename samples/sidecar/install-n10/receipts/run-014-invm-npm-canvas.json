@@ -1,0 +1,270 @@
+{
+ "schema": "garnet.sandbox-receipt/0.1",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "nofiles",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792178182.0921373,
+   "stop": 1792178184.5717313,
+   "seconds": 2.48
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit syscall (file rules off) in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic",
+   "file writes"
+  ],
+  "syscall_records": 247
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": [
+   "rc=0"
+  ]
+ },
+ "processes": {
+  "executed": 13,
+  "total_seen": 45,
+  "roots": [
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1083,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "/opt/garnet/workload-install.sh",
+     "npm",
+     "canvas"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1084,
+    "ppid": 1083,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1085,
+    "ppid": 1083,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1087,
+    "ppid": 1083,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "/work"
+    ],
+    "chain": "bash > rm"
+   },
+   {
+    "pid": 1088,
+    "ppid": 1083,
+    "comm": "mkdir",
+    "argv": [
+     "mkdir",
+     "-p",
+     "/work"
+    ],
+    "chain": "bash > mkdir"
+   },
+   {
+    "pid": 1089,
+    "ppid": 1083,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/usr/bin/npm",
+     "init",
+     "-y"
+    ],
+    "chain": "bash > node"
+   },
+   {
+    "pid": 1104,
+    "ppid": 1083,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/usr/bin/npm",
+     "install",
+     "--no-audit",
+     "--no-fund",
+     "--loglevel=error",
+     "canvas"
+    ],
+    "chain": "bash > node"
+   },
+   {
+    "pid": 1142,
+    "ppid": 1104,
+    "comm": "sh",
+    "argv": [
+     "sh",
+     "-c",
+     "prebuild-install -r napi || node-gyp rebuild"
+    ],
+    "chain": "bash > node > sh"
+   },
+   {
+    "pid": 1143,
+    "ppid": 1142,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/work/node_modules/.bin/prebuild-install",
+     "-r",
+     "napi"
+    ],
+    "chain": "bash > node > sh > node"
+   },
+   {
+    "pid": 1165,
+    "ppid": 1164,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-c",
+     "300",
+     "/work/install.log"
+    ],
+    "chain": "bash > bash > tail"
+   },
+   {
+    "pid": 1166,
+    "ppid": 1164,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "\\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   },
+   {
+    "pid": 1168,
+    "ppid": 1167,
+    "comm": "find",
+    "argv": [
+     "find",
+     "/work",
+     "-type",
+     "f"
+    ],
+    "chain": "bash > bash > find"
+   },
+   {
+    "pid": 1169,
+    "ppid": 1167,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-l"
+    ],
+    "chain": "bash > bash > wc"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "github.com",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "140.82.113.4"
+    ],
+    "attempts": 1,
+    "initiated": 1,
+    "chains": [
+     {
+      "chain": "bash > node > sh > node",
+      "connections": 1
+     }
+    ]
+   },
+   {
+    "destination": "registry.npmjs.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "104.16.6.34"
+    ],
+    "attempts": 15,
+    "initiated": 15,
+    "chains": [
+     {
+      "chain": "bash > node",
+      "connections": 15
+     }
+    ]
+   },
+   {
+    "destination": "release-assets.githubusercontent.com",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "185.199.109.133"
+    ],
+    "attempts": 1,
+    "initiated": 1,
+    "chains": [
+     {
+      "chain": "bash > node > sh > node",
+      "connections": 1
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 17,
+  "loopback_connections": 3,
+  "address_probes": 28,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 0,
+  "by_top_level": [],
+  "sample": []
+ }
+}

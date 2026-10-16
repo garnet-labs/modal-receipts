@@ -1,0 +1,158 @@
+{
+ "workload": "install",
+ "wall_s": 23.089446306228638,
+ "allowlist": [
+  "cdn.cypress.io",
+  "download.cypress.io",
+  "files.pythonhosted.org",
+  "github.com",
+  "install.serverless.com",
+  "nodejs.org",
+  "pypi.org",
+  "registry.npmjs.org",
+  "release-assets.githubusercontent.com",
+  "storage.googleapis.com"
+ ],
+ "runs": [
+  {
+   "index": 3,
+   "label": "constructed:curl-example.com",
+   "cell": "sidecar",
+   "constructed": true,
+   "sandbox_id": "sb-01M532NS9N64RMNCE8PCXYTBSE",
+   "timings": {
+    "create_s": 0.07569406600000006,
+    "first_exec_s": 0.9581179209999999,
+    "sidecar_up_s": 0.587336305,
+    "arm_s": 0.26470583900000033,
+    "workload_s": 0.08568618000000017,
+    "receipt_s": 0.0952730260000001,
+    "sidecar_collect_s": 0.034710180999999896,
+    "total_s": 2.1404958489999997
+   },
+   "sidecar_id": "sb-01M532NS9N64RMNCE8PCXYTBSE-ctr-CDJSSTHZUT",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step constructed curl https://example.com",
+     "::done rc=35"
+    ],
+    "out": "::step constructed curl https://example.com\n000\n::done rc=35\n",
+    "err": "curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to example.com:443"
+   },
+   "sidecar_log_lines": 3,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 0,
+   "label": "npm:lodash",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532NR1NP16BWJV5JMXACAS3",
+   "timings": {
+    "create_s": 0.08915111199999992,
+    "first_exec_s": 1.03482218,
+    "sidecar_up_s": 0.8159505410000003,
+    "arm_s": 0.30234097400000026,
+    "workload_s": 1.172538018,
+    "receipt_s": 0.18808092400000032,
+    "sidecar_collect_s": 0.0747946129999999,
+    "total_s": 3.7500542160000006
+   },
+   "sidecar_id": "sb-01M532NR1NP16BWJV5JMXACAS3-ctr-GUSBHPUGYH",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm lodash",
+     "::log  added 1 package in 281ms ",
+     "::files 1056",
+     "::done rc=0"
+    ],
+    "out": "::step install npm lodash\n::log  added 1 package in 281ms \n::files 1056\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 3,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 1,
+   "label": "npm:sharp",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532NRCM9PDHZ2TKG0TQNY1K",
+   "timings": {
+    "create_s": 0.05266028700000003,
+    "first_exec_s": 0.9029815339999999,
+    "sidecar_up_s": 0.8162264320000001,
+    "arm_s": 0.27098314599999984,
+    "workload_s": 1.7009438550000002,
+    "receipt_s": 0.11543781200000058,
+    "sidecar_collect_s": 0.03334964299999932,
+    "total_s": 3.9298368100000003
+   },
+   "sidecar_id": "sb-01M532NRCM9PDHZ2TKG0TQNY1K-ctr-AOOSLWOZNE",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm sharp",
+     "::log  added 6 packages in 845ms ",
+     "::files 131",
+     "::done rc=0"
+    ],
+    "out": "::step install npm sharp\n::log  added 6 packages in 845ms \n::files 131\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 17,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 2,
+   "label": "constructed:curl-http80-example.com",
+   "cell": "sidecar",
+   "constructed": true,
+   "sandbox_id": "sb-01M532NS30MV8GK08MJ1CDES7K",
+   "timings": {
+    "create_s": 0.2911604809999999,
+    "first_exec_s": 1.175697547,
+    "sidecar_up_s": 0.8736682770000002,
+    "arm_s": 0.4977927949999996,
+    "workload_s": 15.288658112,
+    "receipt_s": 0.7125013160000009,
+    "sidecar_collect_s": 0.4114885249999993,
+    "total_s": 19.588248656999998
+   },
+   "sidecar_id": "sb-01M532NS30MV8GK08MJ1CDES7K-ctr-WQRSIGRUIC",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step constructed curl http://example.com:80",
+     "::done rc=28"
+    ],
+    "out": "::step constructed curl http://example.com:80\n000\n::done rc=28\n",
+    "err": "curl: (28) Connection timed out after 15001 milliseconds"
+   },
+   "sidecar_log_lines": 2,
+   "sidecar_stderr": ""
+  }
+ ]
+}

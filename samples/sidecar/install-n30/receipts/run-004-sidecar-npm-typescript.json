@@ -1,0 +1,282 @@
+{
+ "schema": "garnet.sandbox-receipt/0.2",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "nofiles",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792178285.8945231,
+   "stop": 1792178288.3410497,
+   "seconds": 2.447
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit syscall (file rules off) in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic",
+   "file writes"
+  ],
+  "syscall_records": 197
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": [
+   "rc=0"
+  ]
+ },
+ "processes": {
+  "executed": 11,
+  "total_seen": 33,
+  "roots": [
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1094,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "/opt/garnet/workload-install.sh",
+     "npm",
+     "typescript"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1095,
+    "ppid": 1094,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1096,
+    "ppid": 1094,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1097,
+    "ppid": 1094,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "/work"
+    ],
+    "chain": "bash > rm"
+   },
+   {
+    "pid": 1098,
+    "ppid": 1094,
+    "comm": "mkdir",
+    "argv": [
+     "mkdir",
+     "-p",
+     "/work"
+    ],
+    "chain": "bash > mkdir"
+   },
+   {
+    "pid": 1099,
+    "ppid": 1094,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/usr/bin/npm",
+     "init",
+     "-y"
+    ],
+    "chain": "bash > node"
+   },
+   {
+    "pid": 1114,
+    "ppid": 1094,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/usr/bin/npm",
+     "install",
+     "--no-audit",
+     "--no-fund",
+     "--loglevel=error",
+     "typescript"
+    ],
+    "chain": "bash > node"
+   },
+   {
+    "pid": 1136,
+    "ppid": 1135,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-c",
+     "300",
+     "/work/install.log"
+    ],
+    "chain": "bash > bash > tail"
+   },
+   {
+    "pid": 1137,
+    "ppid": 1135,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "\\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   },
+   {
+    "pid": 1140,
+    "ppid": 1138,
+    "comm": "find",
+    "argv": [
+     "find",
+     "/work",
+     "-type",
+     "f"
+    ],
+    "chain": "bash > bash > find"
+   },
+   {
+    "pid": 1141,
+    "ppid": 1138,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-l"
+    ],
+    "chain": "bash > bash > wc"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "registry.npmjs.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "104.16.4.34"
+    ],
+    "attempts": 15,
+    "initiated": 15,
+    "chains": [
+     {
+      "chain": "bash > node",
+      "connections": 15
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 15,
+  "loopback_connections": 1,
+  "address_probes": 24,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 0,
+  "by_top_level": [],
+  "sample": []
+ },
+ "sidecar": {
+  "recorder": "garnet-sidecar-sni-relay",
+  "name": "garnet",
+  "connections": 16,
+  "relayed": 15,
+  "hosts": [
+   {
+    "host": "registry.npmjs.org",
+    "connections": 15,
+    "relayed": 15,
+    "refused_or_failed": 0,
+    "bytes_up": 19997,
+    "bytes_down": 11952595,
+    "upstreams": [
+     "104.16.0.34",
+     "104.16.1.34",
+     "104.16.10.34",
+     "104.16.11.34",
+     "104.16.2.34",
+     "104.16.3.34",
+     "104.16.4.34",
+     "104.16.5.34",
+     "104.16.6.34",
+     "104.16.7.34",
+     "104.16.8.34",
+     "104.16.9.34"
+    ],
+    "outcomes": {
+     "relayed": 15
+    }
+   },
+   {
+    "host": "(no SNI)",
+    "connections": 1,
+    "relayed": 0,
+    "refused_or_failed": 1,
+    "bytes_up": 0,
+    "bytes_down": 0,
+    "upstreams": [],
+    "outcomes": {
+     "refused_no_sni": 1
+    }
+   }
+  ],
+  "connections_outside_in_vm_window": {
+   "before_window": 0,
+   "after_window": 0
+  },
+  "coverage": "TCP/443 leaving the main container, relayed by Modal to the Sidecar; host name read from the TLS ClientHello SNI, nothing decrypted. Not covered: DNS, any other port, UDP, TLS without SNI (refused, recorded as refused_no_sni), traffic from the Sidecar itself.",
+  "original_destination_visible": false
+ },
+ "agreement": {
+  "verdict": "agree",
+  "both": [
+   "registry.npmjs.org"
+  ],
+  "sidecar_only": [],
+  "in_vm_only": [],
+  "in_vm_declared_complete": true,
+  "in_vm_lost": "0",
+  "process_by_host": {
+   "registry.npmjs.org": [
+    "bash > node"
+   ]
+  },
+  "meaning": "agree: every host the Sidecar relayed inside the in-VM window also appears in the in-VM record. in_vm_record_incomplete_or_altered: the Sidecar relayed a host the in-VM record lacks; the record inside the sandbox (which root in the sandbox can edit) is incomplete or was changed."
+ }
+}

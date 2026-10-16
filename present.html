@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>A receipt for every Modal sandbox run</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--ink:#111;--mute:#666;--line:#e5e5e5;--bg:#fff;--acc:#1f5f8b}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 -apple-system,Inter,Segoe UI,sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:980px;margin:0 auto;padding:40px 24px 64px}
+h1{font-size:30px;line-height:1.2;margin:0 0 6px}h2{font-size:18px;margin:36px 0 10px;padding-top:18px;border-top:1px solid var(--line)}
+.sub{color:var(--mute);margin:0 0 22px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.n{font-size:28px;font-weight:600;letter-spacing:-.01em}.l{color:var(--mute);font-size:13px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--mute);font-weight:500}
+code,pre{font:12.5px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:#f6f6f6;border:1px solid var(--line);border-radius:6px;padding:12px 14px;overflow:auto}
+.cov{border-left:3px solid var(--acc);padding:8px 12px;background:#f7fafd;font-size:13.5px}
+.tag{display:inline-block;font-size:11px;padding:1px 6px;border:1px solid #c9a227;color:#7a5d00;border-radius:4px;margin-left:6px;vertical-align:middle}
+ul{padding-left:20px}li{margin:3px 0}.small{font-size:13px;color:var(--mute)}
+</style></head><body><main>
+<h1>A receipt for every Modal sandbox run</h1>
+<p class="sub">Recorded from a Sandbox Sidecar the code in the sandbox cannot touch. Measured 2026-10-16 on Modal VM Sandboxes, workspace <code>jadoonf</code>, <code>modal==1.6.2</code>. Every number states its n.</p>
+
+<div class="grid">
+ <div class="card"><div class="n">0.74 s <span class="l">p50</span></div><div class="l">Sidecar up (create + listening on :443); p95 1.13 s, n=30. Fail-closed until then. <code>create</code> and first exec unchanged.</div></div>
+ <div class="card"><div class="n">+1 ms <span class="l">p50</span></div><div class="l">per HTTPS connection through the relay: 0.112 s vs 0.111 s unrecorded; p95 0.155 vs 0.158. n=1200 requests per cell, new TCP+TLS each.</div></div>
+ <div class="card"><div class="n">0.6 s <span class="l">per sandbox</span></div><div class="l">optional in-VM half (process attribution): arm 0.35 s + receipt 0.27 s p50 (n=115); workload delta vs unrecorded inside noise at n=30.</div></div>
+</div>
+
+<h2>What a customer adds</h2>
+<pre>sb = modal.Sandbox.create("sleep", "infinity", app=app, image=image, runtime="vm", memory=3072,
+    experimental_options={"proxy_traffic_via_sidecar": "garnet", "vm_sidecar_memory_reserve_mib": 1024})
+sb._experimental_sidecars.create("python", "-u", "/recorder.py", name="garnet", image=garnet_image,
+    experimental_memory_reserve_consume_mib=512, outbound_domain_allowlist=[...])  # optional</pre>
+<p>Modal relays every TCP/443 connection from the sandbox to the Sidecar as raw TCP. The Sidecar reads the host name from the TLS ClientHello (SNI), passes the bytes through unchanged, and writes one line per connection. Nothing decrypted, nothing installed in the sandbox image. <strong>Zero engineering to try, one runtime flag to ship.</strong></p>
+
+<h2>What one receipt says</h2>
+<table>
+<tr><th style="width:26%">field</th><th>content</th><th style="width:30%">source</th></tr>
+<tr><td>where it connected</td><td>every outbound HTTPS host, connections, bytes up/down</td><td>Sidecar record (the sandbox cannot edit it)</td></tr>
+<tr><td>which process</td><td>root-to-action chain per host, e.g. <code>bash &gt; node &gt; sh &gt; node</code></td><td>in-VM record (optional)</td></tr>
+<tr><td>agreement</td><td><code>agree</code>, or <code>in_vm_record_incomplete_or_altered</code> when the Sidecar relayed a host the in-VM record lacks</td><td>comparison inside the in-VM capture window</td></tr>
+<tr><td>coverage</td><td colspan="2"><div class="cov">TCP/443 leaving the main container, relayed by Modal to the Sidecar; host name read from the TLS ClientHello SNI, nothing decrypted. Not covered: DNS, any other port, UDP, TLS without SNI (refused, recorded as <code>refused_no_sni</code>), traffic from the Sidecar itself.</div></td></tr>
+<tr><td>across runs</td><td>"24 reached only their group's common hosts; 6 reached something new, here is the process" and the union of hosts as the allowlist</td><td>cohort summary</td></tr>
+</table>
+
+<h2>30 real installs, nothing constructed <span class="small">(top of npm + PyPI, one per sandbox, n=30 per cell)</span></h2>
+<pre>Agreement (sidecar cell, n=30): agree=30
+npm: common hosts (>=90% of 20 runs): registry.npmjs.org      pip: files.pythonhosted.org, pypi.org
+24 runs reached only their group's common hosts; 6 reached something new
+  sqlite3     github.com, release-assets.githubusercontent.com   via bash > node > sh > node
+  serverless  install.serverless.com                            via bash > node > sh > node
+  puppeteer   storage.googleapis.com                            via bash > node > sh > node
+  canvas      github.com, release-assets.githubusercontent.com   via bash > node > sh > node
+  cypress     cdn.cypress.io, download.cypress.io               via bash > node > sh > node
+  node-sass   github.com, nodejs.org                            via bash > node > sh > node > node
+Evidence-derived allowlist (union over 30 runs): 10 hosts</pre>
+<p>271 relayed connections (p50 14 per run); 90 of 90 installs exited 0; <code>lost 0</code> in every in-VM record.</p>
+
+<h2>Step 5: a revised policy constrains the next run</h2>
+<p class="small">The program's demonstration: an agent executes a task; the ordinary agent trace misses a consequential subprocess or outbound connection; Garnet captures it; the verification result changes a review decision; a revised policy constrains the next run. On Modal, the last step is Modal's own control.</p>
+<ul>
+<li>Union of the 30 runs' hosts (10 hosts) set as the Sidecar's <code>outbound_domain_allowlist</code>; 10 installs rerun: <strong>10 of 10 exit 0, 10 of 10 agree</strong>. Each receipt carries <code>sidecar.policy</code>: the list, its source ("evidence-derived: union over 30 real runs") and who enforces it (Modal, on SNI).</li>
+<li><code>curl https://example.com</code> from the sandbox, a host outside the union <span class="tag">constructed</span>: recorded as <code>refused_by_policy</code> with <code>policy_source: sidecar.outbound_domain_allowlist (evidence-derived …)</code>; upstream TCP opened, 517 B sent, 0 B returned, curl rc=35. Same step with no allowlist: relayed, 200. A refused host is visible in the receipt, not silent.</li>
+<li>Main container <code>outbound_cidr_allowlist=[]</code> next to the relay: installs still pass; <code>curl http://example.com:80</code> <span class="tag">constructed</span> times out, refused by Modal before it reaches anything. In that shape all permitted egress except DNS goes through the Sidecar (tested for port 80).</li>
+</ul>
+
+<h2>The record the sandbox cannot edit</h2>
+<p>Same sandbox, <code>npm install puppeteer</code>, twice. As recorded: verdict <code>agree</code>. After root inside the sandbox deleted the <code>connect</code> lines from <code>/var/log/audit/audit.log</code> (1047 → 774 lines): the in-VM record still says <code>declared_complete: true, lost: 0</code>; the verdict is <code>in_vm_record_incomplete_or_altered</code> because the Sidecar's record did not change.</p>
+
+<h2>Cost per sandbox <span class="small">(seconds, p50 / p95, n=30 per cell)</span></h2>
+<table>
+<tr><th>phase</th><th>sidecar</th><th>in-VM only</th><th>unrecorded</th></tr>
+<tr><td>Sandbox.create()</td><td>0.08 / 0.32</td><td>0.14 / 0.44</td><td>0.09 / 0.30</td></tr>
+<tr><td>Sidecar up (create + listening)</td><td>0.73 / 1.13</td><td>-</td><td>-</td></tr>
+<tr><td>first exec</td><td>0.98 / 1.75</td><td>1.08 / 1.76</td><td>1.03 / 1.45</td></tr>
+<tr><td>arm in-VM recorder</td><td>0.31 / 0.51</td><td>0.40 / 0.57</td><td>-</td></tr>
+<tr><td>workload (one real install)</td><td>3.05 / 36.1</td><td>3.02 / 32.4</td><td>3.50 / 40.2</td></tr>
+<tr><td>build in-VM receipt</td><td>0.25 / 1.51</td><td>0.44 / 0.96</td><td>-</td></tr>
+<tr><td>collect Sidecar log</td><td>0.08 / 0.36</td><td>-</td><td>-</td></tr>
+<tr><td>total</td><td>6.01 / 38.5</td><td>5.61 / 35.3</td><td>4.52 / 41.9</td></tr>
+</table>
+
+<h2>What this is not</h2>
+<ul>
+<li>Not more than Modal sees host-side. Modal relays the bytes; the Sidecar writes them down for the customer, in the customer's account, in the same receipt format as a GitHub Actions job.</li>
+<li>Not TLS inspection and not the original destination: hosts are the SNI the client sent (<code>SO_ORIGINAL_DST</code> empty in 64 of 64 runs, as documented).</li>
+<li>Not DNS, other ports, UDP, or the Sidecar's own traffic. Every receipt says so.</li>
+<li>The in-VM half is optional, Linux audit today; the production shape is a cgroup-BPF connect hook + proc connector, which the guest kernel already supports.</li>
+</ul>
+<p class="small">Files: <code>sidecar_receipts.py</code>, <code>sidecar/recorder.py</code>, <code>sidecar_probe.py</code>, <code>guest/</code>, <code>samples/sidecar/</code> (every output above), <code>README.md</code>, <code>ENGINEERING.md</code>, <code>IMPLICATIONS.md</code>.</p>
+</main></body></html>

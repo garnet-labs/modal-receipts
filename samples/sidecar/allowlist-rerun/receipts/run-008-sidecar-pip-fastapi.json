@@ -1,0 +1,358 @@
+{
+ "schema": "garnet.sandbox-receipt/0.2",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "nofiles",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792178410.0129387,
+   "stop": 1792178415.4878304,
+   "seconds": 5.475
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit syscall (file rules off) in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic",
+   "file writes"
+  ],
+  "syscall_records": 195
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": [
+   "rc=0"
+  ]
+ },
+ "processes": {
+  "executed": 15,
+  "total_seen": 19,
+  "roots": [
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1082,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "/opt/garnet/workload-install.sh",
+     "pip",
+     "fastapi"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1083,
+    "ppid": 1082,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1084,
+    "ppid": 1082,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1085,
+    "ppid": 1082,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "/work"
+    ],
+    "chain": "bash > rm"
+   },
+   {
+    "pid": 1086,
+    "ppid": 1082,
+    "comm": "mkdir",
+    "argv": [
+     "mkdir",
+     "-p",
+     "/work"
+    ],
+    "chain": "bash > mkdir"
+   },
+   {
+    "pid": 1087,
+    "ppid": 1082,
+    "comm": "python3",
+    "argv": [
+     "python3",
+     "-m",
+     "venv",
+     ".venv"
+    ],
+    "chain": "bash > python3"
+   },
+   {
+    "pid": 1088,
+    "ppid": 1087,
+    "comm": "python3",
+    "argv": [
+     "/work/.venv/bin/python3",
+     "-m",
+     "ensurepip",
+     "--upgrade",
+     "--default-pip"
+    ],
+    "chain": "bash > python3 > python3"
+   },
+   {
+    "pid": 1089,
+    "ppid": 1088,
+    "comm": "python3",
+    "argv": [
+     "/work/.venv/bin/python3",
+     "-W",
+     "ignore::DeprecationWarning",
+     "-c",
+     "\nimport runpy\nimport sys\nsys.path = ['/tmp/tmpkinik1dq/pip-23.2.1-py3-none-any.whl'] + sys.path\nsys.argv[1:] = ['install', '--no-cache-dir', '--no-index', '--find-links', '/tmp/tmpkinik1dq', '--upgrade', 'pip']\nrunpy.run_module(\"pip\", run_name=\"__main__\", alter_sys=True)\n"
+    ],
+    "chain": "bash > python3 > python3 > python3"
+   },
+   {
+    "pid": 1091,
+    "ppid": 1089,
+    "comm": "uname",
+    "argv": [
+     "uname",
+     "-rs"
+    ],
+    "chain": "bash > python3 > python3 > python3 > uname"
+   },
+   {
+    "pid": 1092,
+    "ppid": 1082,
+    "comm": "pip",
+    "argv": [
+     "/work/.venv/bin/python3",
+     ".venv/bin/pip",
+     "install",
+     "-q",
+     "fastapi"
+    ],
+    "chain": "bash > pip"
+   },
+   {
+    "pid": 1094,
+    "ppid": 1092,
+    "comm": "uname",
+    "argv": [
+     "uname",
+     "-rs"
+    ],
+    "chain": "bash > pip > uname"
+   },
+   {
+    "pid": 1103,
+    "ppid": 1102,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-c",
+     "300",
+     "/work/install.log"
+    ],
+    "chain": "bash > bash > tail"
+   },
+   {
+    "pid": 1104,
+    "ppid": 1102,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "\\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   },
+   {
+    "pid": 1106,
+    "ppid": 1105,
+    "comm": "find",
+    "argv": [
+     "find",
+     "/work",
+     "-type",
+     "f"
+    ],
+    "chain": "bash > bash > find"
+   },
+   {
+    "pid": 1107,
+    "ppid": 1105,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-l"
+    ],
+    "chain": "bash > bash > wc"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "files.pythonhosted.org | pypi.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "151.101.0.223",
+     "151.101.128.223",
+     "151.101.192.223",
+     "151.101.64.223",
+     "2a04:4e42:200::223",
+     "2a04:4e42:400::223",
+     "2a04:4e42:600::223",
+     "2a04:4e42::223"
+    ],
+    "attempts": 27,
+    "initiated": 15,
+    "chains": [
+     {
+      "chain": "bash > pip",
+      "connections": 27
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 27,
+  "loopback_connections": 3,
+  "address_probes": 0,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 0,
+  "by_top_level": [],
+  "sample": []
+ },
+ "sidecar": {
+  "recorder": "garnet-sidecar-sni-relay",
+  "name": "garnet",
+  "connections": 4,
+  "relayed": 3,
+  "hosts": [
+   {
+    "host": "pypi.org",
+    "connections": 2,
+    "relayed": 2,
+    "refused_or_failed": 0,
+    "bytes_up": 8646,
+    "bytes_down": 2063470,
+    "upstreams": [
+     "151.101.0.223",
+     "151.101.128.223"
+    ],
+    "outcomes": {
+     "relayed": 2
+    }
+   },
+   {
+    "host": "(no SNI)",
+    "connections": 1,
+    "relayed": 0,
+    "refused_or_failed": 1,
+    "bytes_up": 0,
+    "bytes_down": 0,
+    "upstreams": [],
+    "outcomes": {
+     "refused_no_sni": 1
+    }
+   },
+   {
+    "host": "files.pythonhosted.org",
+    "connections": 1,
+    "relayed": 1,
+    "refused_or_failed": 0,
+    "bytes_up": 14050,
+    "bytes_down": 3464223,
+    "upstreams": [
+     "151.101.128.223"
+    ],
+    "outcomes": {
+     "relayed": 1
+    }
+   }
+  ],
+  "connections_outside_in_vm_window": {
+   "before_window": 0,
+   "after_window": 0
+  },
+  "coverage": "TCP/443 leaving the main container, relayed by Modal to the Sidecar; host name read from the TLS ClientHello SNI, nothing decrypted. Not covered: DNS, any other port, UDP, TLS without SNI (refused, recorded as refused_no_sni), traffic from the Sidecar itself.",
+  "original_destination_visible": false,
+  "policy": {
+   "outbound_domain_allowlist": [
+    "cdn.cypress.io",
+    "download.cypress.io",
+    "files.pythonhosted.org",
+    "github.com",
+    "install.serverless.com",
+    "nodejs.org",
+    "pypi.org",
+    "registry.npmjs.org",
+    "release-assets.githubusercontent.com",
+    "storage.googleapis.com"
+   ],
+   "source": "evidence-derived: union of Sidecar-relayed hosts over 30 real runs (out-sidecar30/allowlist.json)",
+   "enforced_by": "Modal, on the Sidecar's outbound connections, matched on TLS ClientHello SNI"
+  },
+  "refused_by_policy": 0
+ },
+ "agreement": {
+  "verdict": "agree",
+  "both": [
+   "files.pythonhosted.org",
+   "pypi.org"
+  ],
+  "sidecar_only": [],
+  "in_vm_only": [],
+  "in_vm_declared_complete": true,
+  "in_vm_lost": "0",
+  "process_by_host": {
+   "files.pythonhosted.org": [
+    "bash > pip"
+   ],
+   "pypi.org": [
+    "bash > pip"
+   ]
+  },
+  "meaning": "agree: every host the Sidecar relayed inside the in-VM window also appears in the in-VM record. in_vm_record_incomplete_or_altered: the Sidecar relayed a host the in-VM record lacks; the record inside the sandbox (which root in the sandbox can edit) is incomplete or was changed."
+ }
+}

@@ -1,0 +1,412 @@
+{
+ "workload": "install",
+ "wall_s": 15.372254848480225,
+ "allowlist": [
+  "cdn.cypress.io",
+  "download.cypress.io",
+  "files.pythonhosted.org",
+  "github.com",
+  "install.serverless.com",
+  "nodejs.org",
+  "pypi.org",
+  "registry.npmjs.org",
+  "release-assets.githubusercontent.com",
+  "storage.googleapis.com"
+ ],
+ "runs": [
+  {
+   "index": 6,
+   "label": "npm:tailwindcss",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532GJ1AAHCMM4V5418T5GZA",
+   "timings": {
+    "create_s": 0.053339925999999815,
+    "first_exec_s": 0.8011934270000001,
+    "sidecar_up_s": 0.519972519,
+    "arm_s": 0.26820911300000017,
+    "workload_s": 0.9228867860000003,
+    "receipt_s": 0.09588493700000011,
+    "sidecar_collect_s": 0.03855513300000002,
+    "total_s": 2.740015815
+   },
+   "sidecar_id": "sb-01M532GJ1AAHCMM4V5418T5GZA-ctr-FEIKZLNFDK",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm tailwindcss",
+     "::log  added 1 package in 282ms ",
+     "::files 39",
+     "::done rc=0"
+    ],
+    "out": "::step install npm tailwindcss\n::log  added 1 package in 282ms \n::files 39\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 3,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 0,
+   "label": "npm:lodash",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532GGFJPADCP1B68VV70J4Y",
+   "timings": {
+    "create_s": 0.24461075500000007,
+    "first_exec_s": 0.870668652,
+    "sidecar_up_s": 0.7771274109999999,
+    "arm_s": 0.46067093000000003,
+    "workload_s": 1.0659908849999997,
+    "receipt_s": 0.5940008299999997,
+    "sidecar_collect_s": 0.29715613399999974,
+    "total_s": 4.604794204
+   },
+   "sidecar_id": "sb-01M532GGFJPADCP1B68VV70J4Y-ctr-GILACZETAC",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm lodash",
+     "::log  added 1 package in 232ms ",
+     "::files 1056",
+     "::done rc=0"
+    ],
+    "out": "::step install npm lodash\n::log  added 1 package in 232ms \n::files 1056\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 3,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 1,
+   "label": "npm:axios",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532GGF8154SMJV0ZNY50ARD",
+   "timings": {
+    "create_s": 0.08303180999999993,
+    "first_exec_s": 1.04330261,
+    "sidecar_up_s": 1.005772709,
+    "arm_s": 0.3296735799999997,
+    "workload_s": 1.8971350159999996,
+    "receipt_s": 0.22202598400000007,
+    "sidecar_collect_s": 0.10870815999999994,
+    "total_s": 4.794890348
+   },
+   "sidecar_id": "sb-01M532GGF8154SMJV0ZNY50ARD-ctr-CIWPSEFACE",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm axios",
+     "::log  added 27 packages in 934ms ",
+     "::files 411",
+     "::done rc=0"
+    ],
+    "out": "::step install npm axios\n::log  added 27 packages in 934ms \n::files 411\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 17,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 5,
+   "label": "npm:sharp",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532GJ79NZWS8FY60AXV392R",
+   "timings": {
+    "create_s": 0.24686042899999983,
+    "first_exec_s": 0.8179532779999998,
+    "sidecar_up_s": 0.5022236950000001,
+    "arm_s": 0.29294440899999996,
+    "workload_s": 1.4170487190000003,
+    "receipt_s": 0.15493845700000008,
+    "sidecar_collect_s": 0.07175889899999977,
+    "total_s": 3.5776789479999995
+   },
+   "sidecar_id": "sb-01M532GJ79NZWS8FY60AXV392R-ctr-SDXTXZOMBF",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm sharp",
+     "::log  added 6 packages in 777ms ",
+     "::files 131",
+     "::done rc=0"
+    ],
+    "out": "::step install npm sharp\n::log  added 6 packages in 777ms \n::files 131\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 17,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 2,
+   "label": "npm:eslint",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532GH1WQR87VMY1KK2JB81D",
+   "timings": {
+    "create_s": 0.13601786999999987,
+    "first_exec_s": 0.798208257,
+    "sidecar_up_s": 0.6008643170000001,
+    "arm_s": 0.3518982359999998,
+    "workload_s": 2.2837179059999997,
+    "receipt_s": 0.3467126260000004,
+    "sidecar_collect_s": 0.14969147900000035,
+    "total_s": 4.813959650999999
+   },
+   "sidecar_id": "sb-01M532GH1WQR87VMY1KK2JB81D-ctr-VOVJPPXRPL",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm eslint",
+     "::log  added 77 packages in 2s ",
+     "::files 1185",
+     "::done rc=0"
+    ],
+    "out": "::step install npm eslint\n::log  added 77 packages in 2s \n::files 1185\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 17,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 4,
+   "label": "npm:canvas",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532GHWD9B8B7PG3E1RHBCZ6",
+   "timings": {
+    "create_s": 0.04735576100000005,
+    "first_exec_s": 0.930887074,
+    "sidecar_up_s": 0.5736556150000001,
+    "arm_s": 0.24641151400000005,
+    "workload_s": 2.275726018,
+    "receipt_s": 0.08914271800000062,
+    "sidecar_collect_s": 0.016032245999999972,
+    "total_s": 4.198282247
+   },
+   "sidecar_id": "sb-01M532GHWD9B8B7PG3E1RHBCZ6-ctr-AOSFSCQQVH",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm canvas",
+     "::log  added 37 packages in 1s ",
+     "::files 417",
+     "::done rc=0"
+    ],
+    "out": "::step install npm canvas\n::log  added 37 packages in 1s \n::files 417\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 19,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 7,
+   "label": "pip:numpy",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532GJ9W22NTXFWRXSXSFWJB",
+   "timings": {
+    "create_s": 0.05709812000000003,
+    "first_exec_s": 0.9512074699999999,
+    "sidecar_up_s": 0.6013915010000002,
+    "arm_s": 0.2544100619999998,
+    "workload_s": 5.469786871,
+    "receipt_s": 0.15137268900000045,
+    "sidecar_collect_s": 0.020424968000000376,
+    "total_s": 7.532223062999999
+   },
+   "sidecar_id": "sb-01M532GJ9W22NTXFWRXSXSFWJB-ctr-JGCXQERRQB",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip numpy",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 2347",
+     "::done rc=0"
+    ],
+    "out": "::step install pip numpy\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 2347\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 5,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 9,
+   "label": "pip:boto3",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532GJZDSQH4X5VSQJSFX4CJ",
+   "timings": {
+    "create_s": 0.2923179960000001,
+    "first_exec_s": 1.0226040099999998,
+    "sidecar_up_s": 0.7927111070000001,
+    "arm_s": 0.4796508049999999,
+    "workload_s": 3.6004248609999996,
+    "receipt_s": 0.6481144629999998,
+    "sidecar_collect_s": 0.32373993500000076,
+    "total_s": 7.479881917000001
+   },
+   "sidecar_id": "sb-01M532GJZDSQH4X5VSQJSFX4CJ-ctr-DPUBIYTDXW",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip boto3",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 3409",
+     "::done rc=0"
+    ],
+    "out": "::step install pip boto3\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 3409\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 5,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 8,
+   "label": "pip:fastapi",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532GJB88H4DTE6JCWWBM6XK",
+   "timings": {
+    "create_s": 0.07719475500000006,
+    "first_exec_s": 1.2421215920000002,
+    "sidecar_up_s": 0.8684565469999996,
+    "arm_s": 0.3154970170000002,
+    "workload_s": 5.161032938,
+    "receipt_s": 0.23115461899999978,
+    "sidecar_collect_s": 0.09372180799999974,
+    "total_s": 8.081444041
+   },
+   "sidecar_id": "sb-01M532GJB88H4DTE6JCWWBM6XK-ctr-THOJNSZORH",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip fastapi",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1686",
+     "::done rc=0"
+    ],
+    "out": "::step install pip fastapi\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1686\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 5,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 10,
+   "label": "constructed:curl-example.com",
+   "cell": "sidecar",
+   "constructed": true,
+   "sandbox_id": "sb-01M532GKRAZETKSVRXHVGV65PS",
+   "timings": {
+    "create_s": 0.676963268,
+    "first_exec_s": 1.54876166,
+    "sidecar_up_s": 1.4863940499999995,
+    "arm_s": 0.859777673,
+    "workload_s": 0.8270104349999992,
+    "receipt_s": 1.6524659069999998,
+    "sidecar_collect_s": 0.8273733859999997,
+    "total_s": 8.706161863
+   },
+   "sidecar_id": "sb-01M532GKRAZETKSVRXHVGV65PS-ctr-GNXHWNSJYO",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step constructed curl https://example.com",
+     "::done rc=35"
+    ],
+    "out": "::step constructed curl https://example.com\n000\n::done rc=35\n",
+    "err": "curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to example.com:443"
+   },
+   "sidecar_log_lines": 3,
+   "sidecar_stderr": ""
+  },
+  {
+   "index": 3,
+   "label": "npm:puppeteer",
+   "cell": "sidecar",
+   "constructed": false,
+   "sandbox_id": "sb-01M532GHQ33TM1K4A6QYS77Z5T",
+   "timings": {
+    "create_s": 0.35013785799999986,
+    "first_exec_s": 0.9374742280000001,
+    "sidecar_up_s": 0.9053433550000003,
+    "arm_s": 0.5303501850000001,
+    "workload_s": 6.9327224140000006,
+    "receipt_s": 0.7794216369999987,
+    "sidecar_collect_s": 0.3922211010000005,
+    "total_s": 11.221069223
+   },
+   "sidecar_id": "sb-01M532GHQ33TM1K4A6QYS77Z5T-ctr-DIWDTTZXLB",
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm puppeteer",
+     "::log  added 27 packages in 6s ",
+     "::files 2493",
+     "::done rc=0"
+    ],
+    "out": "::step install npm puppeteer\n::log  added 27 packages in 6s \n::files 2493\n::done rc=0\n",
+    "err": ""
+   },
+   "sidecar_log_lines": 19,
+   "sidecar_stderr": ""
+  }
+ ]
+}

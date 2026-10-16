@@ -1,0 +1,434 @@
+{
+ "schema": "garnet.sandbox-receipt/0.1",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "nofiles",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792178290.3256884,
+   "stop": 1792178307.954524,
+   "seconds": 17.629
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit syscall (file rules off) in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic",
+   "file writes"
+  ],
+  "syscall_records": 325
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": [
+   "rc=0"
+  ]
+ },
+ "processes": {
+  "executed": 30,
+  "total_seen": 65,
+  "roots": [
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1083,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "/opt/garnet/workload-install.sh",
+     "npm",
+     "cypress"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1084,
+    "ppid": 1083,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1085,
+    "ppid": 1083,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1086,
+    "ppid": 1083,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "/work"
+    ],
+    "chain": "bash > rm"
+   },
+   {
+    "pid": 1087,
+    "ppid": 1083,
+    "comm": "mkdir",
+    "argv": [
+     "mkdir",
+     "-p",
+     "/work"
+    ],
+    "chain": "bash > mkdir"
+   },
+   {
+    "pid": 1089,
+    "ppid": 1083,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/usr/bin/npm",
+     "init",
+     "-y"
+    ],
+    "chain": "bash > node"
+   },
+   {
+    "pid": 1105,
+    "ppid": 1083,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/usr/bin/npm",
+     "install",
+     "--no-audit",
+     "--no-fund",
+     "--loglevel=error",
+     "cypress"
+    ],
+    "chain": "bash > node"
+   },
+   {
+    "pid": 1172,
+    "ppid": 1105,
+    "comm": "sh",
+    "argv": [
+     "sh",
+     "-c",
+     "node dist/index.js --exec install"
+    ],
+    "chain": "bash > node > sh"
+   },
+   {
+    "pid": 1173,
+    "ppid": 1172,
+    "comm": "node",
+    "argv": [
+     "node",
+     "dist/index.js",
+     "--exec",
+     "install"
+    ],
+    "chain": "bash > node > sh > node"
+   },
+   {
+    "pid": 1184,
+    "ppid": 1173,
+    "comm": "uname",
+    "argv": [
+     "uname",
+     "-m"
+    ],
+    "chain": "bash > node > sh > node > uname"
+   },
+   {
+    "pid": 1186,
+    "ppid": 1173,
+    "comm": "sh",
+    "argv": [
+     "/bin/sh",
+     "-c",
+     "hostname -f 2>/dev/null"
+    ],
+    "chain": "bash > node > sh > node > sh"
+   },
+   {
+    "pid": 1187,
+    "ppid": 1186,
+    "comm": "hostname",
+    "argv": [
+     "hostname",
+     "-f"
+    ],
+    "chain": "bash > node > sh > node > sh > hostname"
+   },
+   {
+    "pid": 1190,
+    "ppid": 1173,
+    "comm": "sh",
+    "argv": [
+     "/bin/sh",
+     "-c",
+     "cat /etc/*-release; cat /usr/lib/os-release; cat /etc/openwrt_release"
+    ],
+    "chain": "bash > node > sh > node > sh"
+   },
+   {
+    "pid": 1191,
+    "ppid": 1190,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/etc/lsb-release",
+     "/etc/os-release"
+    ],
+    "chain": "bash > node > sh > node > sh > cat"
+   },
+   {
+    "pid": 1192,
+    "ppid": 1190,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/usr/lib/os-release"
+    ],
+    "chain": "bash > node > sh > node > sh > cat"
+   },
+   {
+    "pid": 1193,
+    "ppid": 1190,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/etc/openwrt_release"
+    ],
+    "chain": "bash > node > sh > node > sh > cat"
+   },
+   {
+    "pid": 1195,
+    "ppid": 1173,
+    "comm": "sh",
+    "argv": [
+     "/bin/sh",
+     "-c",
+     "echo $LANG"
+    ],
+    "chain": "bash > node > sh > node > sh"
+   },
+   {
+    "pid": 1196,
+    "ppid": 1173,
+    "comm": "sh",
+    "argv": [
+     "/bin/sh",
+     "-c",
+     "dmesg | grep -E \"EFI v\""
+    ],
+    "chain": "bash > node > sh > node > sh"
+   },
+   {
+    "pid": 1197,
+    "ppid": 1196,
+    "comm": "dmesg",
+    "argv": [
+     "dmesg"
+    ],
+    "chain": "bash > node > sh > node > sh > dmesg"
+   },
+   {
+    "pid": 1198,
+    "ppid": 1196,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-E",
+     "EFI v"
+    ],
+    "chain": "bash > node > sh > node > sh > grep"
+   },
+   {
+    "pid": 1200,
+    "ppid": 1173,
+    "comm": "sh",
+    "argv": [
+     "/bin/sh",
+     "-c",
+     "which ip"
+    ],
+    "chain": "bash > node > sh > node > sh"
+   },
+   {
+    "pid": 1201,
+    "ppid": 1200,
+    "comm": "which",
+    "argv": [
+     "/bin/sh",
+     "/usr/bin/which",
+     "ip"
+    ],
+    "chain": "bash > node > sh > node > sh > which"
+   },
+   {
+    "pid": 1203,
+    "ppid": 1173,
+    "comm": "sh",
+    "argv": [
+     "/bin/sh",
+     "-c",
+     "export LC_ALL=C; /sbin/ifconfig; unset LC_ALL"
+    ],
+    "chain": "bash > node > sh > node > sh"
+   },
+   {
+    "pid": 1206,
+    "ppid": 1173,
+    "comm": "sh",
+    "argv": [
+     "/bin/sh",
+     "-c",
+     "echo -n \"os: \"; cat /var/lib/dbus/machine-id 2> /dev/null ||\ncat /etc/machine-id 2> /dev/null; echo;\necho -n \"hardware: \"; cat /sys/class/dmi/id/product_uuid 2> /dev/null; echo;"
+    ],
+    "chain": "bash > node > sh > node > sh"
+   },
+   {
+    "pid": 1207,
+    "ppid": 1206,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/var/lib/dbus/machine-id"
+    ],
+    "chain": "bash > node > sh > node > sh > cat"
+   },
+   {
+    "pid": 1208,
+    "ppid": 1206,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/sys/class/dmi/id/product_uuid"
+    ],
+    "chain": "bash > node > sh > node > sh > cat"
+   },
+   {
+    "pid": 1242,
+    "ppid": 1241,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-c",
+     "300",
+     "/work/install.log"
+    ],
+    "chain": "bash > bash > tail"
+   },
+   {
+    "pid": 1243,
+    "ppid": 1241,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "\\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   },
+   {
+    "pid": 1245,
+    "ppid": 1244,
+    "comm": "find",
+    "argv": [
+     "find",
+     "/work",
+     "-type",
+     "f"
+    ],
+    "chain": "bash > bash > find"
+   },
+   {
+    "pid": 1246,
+    "ppid": 1244,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-l"
+    ],
+    "chain": "bash > bash > wc"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "cdn.cypress.io | download.cypress.io",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "104.20.35.55",
+     "172.66.146.119"
+    ],
+    "attempts": 2,
+    "initiated": 2,
+    "chains": [
+     {
+      "chain": "bash > node > sh > node",
+      "connections": 2
+     }
+    ]
+   },
+   {
+    "destination": "registry.npmjs.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "104.16.9.34"
+    ],
+    "attempts": 15,
+    "initiated": 15,
+    "chains": [
+     {
+      "chain": "bash > node",
+      "connections": 15
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 17,
+  "loopback_connections": 4,
+  "address_probes": 32,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 0,
+  "by_top_level": [],
+  "sample": []
+ }
+}
