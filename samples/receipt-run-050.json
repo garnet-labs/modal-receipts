@@ -1,0 +1,1141 @@
+{
+ "schema": "garnet.sandbox-receipt/0.1",
+ "capture": {
+  "recorder": "linux-audit",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792120184.712428,
+   "stop": 1792120192.7262294,
+   "seconds": 8.014
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet",
+   "-a always,exit -F arch=b64 -S open,creat,openat,openat2 -F a2&0x3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S rename,unlink,unlinkat,renameat,renameat2 -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit/open-for-write/unlink/rename syscall in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic"
+  ],
+  "syscall_records": 3971
+ },
+ "workload": {
+  "origin": "https://github.com/pallets/click",
+  "head": "2247b35ea1c47c727d7a06e51fa280e12a863ff6",
+  "head_after_edit": "9d503a370355bc1158591fc97dd3781d9627906a",
+  "results": [
+   "test1=0",
+   "test2=0"
+  ]
+ },
+ "processes": {
+  "executed": 31,
+  "total_seen": 47,
+  "roots": [
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1117,
+    "ppid": 1116,
+    "comm": "python3",
+    "argv": [
+     "/work/repo/.venv/bin/python3",
+     "-W",
+     "ignore::DeprecationWarning",
+     "-c",
+     "\nimport runpy\nimport sys\nsys.path = ['/tmp/tmpixgtkmuv/pip-23.2.1-py3-none-any.whl'] + sys.path\nsys.argv[1:] = ['install', '--no-cache-dir', '--no-index', '--find-links', '/tmp/tmpixgtkmuv', '--upgrade', 'pip']\nrunpy.run_module(\"pip\", run_name=\"__main__\", alter_sys=True)\n"
+    ],
+    "chain": "bash > python3 > python3 > python3"
+   },
+   {
+    "pid": 1087,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "/opt/garnet/workload.sh",
+     "https://github.com/pallets/click"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1088,
+    "ppid": 1087,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1089,
+    "ppid": 1087,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1090,
+    "ppid": 1087,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "/work"
+    ],
+    "chain": "bash > rm"
+   },
+   {
+    "pid": 1091,
+    "ppid": 1087,
+    "comm": "mkdir",
+    "argv": [
+     "mkdir",
+     "-p",
+     "/work"
+    ],
+    "chain": "bash > mkdir"
+   },
+   {
+    "pid": 1092,
+    "ppid": 1087,
+    "comm": "git",
+    "argv": [
+     "git",
+     "clone",
+     "-q",
+     "--depth",
+     "1",
+     "https://github.com/pallets/click",
+     "repo"
+    ],
+    "chain": "bash > git"
+   },
+   {
+    "pid": 1093,
+    "ppid": 1092,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "remote-https",
+     "origin",
+     "https://github.com/pallets/click"
+    ],
+    "chain": "bash > git > git"
+   },
+   {
+    "pid": 1094,
+    "ppid": 1093,
+    "comm": "git-remote-http",
+    "argv": [
+     "/usr/lib/git-core/git-remote-https",
+     "origin",
+     "https://github.com/pallets/click"
+    ],
+    "chain": "bash > git > git > git-remote-http"
+   },
+   {
+    "pid": 1099,
+    "ppid": 1092,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "--shallow-file",
+     "/work/repo/.git/shallow.lock",
+     "index-pack",
+     "--stdin",
+     "--fix-thin",
+     "--keep=fetch-pack 1092 on modal"
+    ],
+    "chain": "bash > git > git"
+   },
+   {
+    "pid": 1109,
+    "ppid": 1092,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "rev-list",
+     "--objects",
+     "--stdin",
+     "--not",
+     "--all",
+     "--quiet",
+     "--alternate-refs"
+    ],
+    "chain": "bash > git > git"
+   },
+   {
+    "pid": 1113,
+    "ppid": 1087,
+    "comm": "git",
+    "argv": [
+     "git",
+     "rev-parse",
+     "HEAD"
+    ],
+    "chain": "bash > git"
+   },
+   {
+    "pid": 1114,
+    "ppid": 1087,
+    "comm": "git",
+    "argv": [
+     "git",
+     "remote",
+     "get-url",
+     "origin"
+    ],
+    "chain": "bash > git"
+   },
+   {
+    "pid": 1115,
+    "ppid": 1087,
+    "comm": "python3",
+    "argv": [
+     "python3",
+     "-m",
+     "venv",
+     ".venv"
+    ],
+    "chain": "bash > python3"
+   },
+   {
+    "pid": 1116,
+    "ppid": 1115,
+    "comm": "python3",
+    "argv": [
+     "/work/repo/.venv/bin/python3",
+     "-m",
+     "ensurepip",
+     "--upgrade",
+     "--default-pip"
+    ],
+    "chain": "bash > python3 > python3"
+   },
+   {
+    "pid": 1119,
+    "ppid": 1117,
+    "comm": "uname",
+    "argv": [
+     "uname",
+     "-rs"
+    ],
+    "chain": "bash > python3 > python3 > python3 > uname"
+   },
+   {
+    "pid": 1120,
+    "ppid": 1087,
+    "comm": "pip",
+    "argv": [
+     "/work/repo/.venv/bin/python3",
+     ".venv/bin/pip",
+     "install",
+     "-q",
+     "-e",
+     ".",
+     "pytest"
+    ],
+    "chain": "bash > pip"
+   },
+   {
+    "pid": 1122,
+    "ppid": 1120,
+    "comm": "uname",
+    "argv": [
+     "uname",
+     "-rs"
+    ],
+    "chain": "bash > pip > uname"
+   },
+   {
+    "pid": 1123,
+    "ppid": 1120,
+    "comm": "python3",
+    "argv": [
+     "/work/repo/.venv/bin/python3",
+     "/work/repo/.venv/lib/python3.12/site-packages/pip/__pip-runner__.py",
+     "install",
+     "--ignore-installed",
+     "--no-user",
+     "--prefix",
+     "/tmp/pip-build-env-l079wma4/overlay",
+     "--no-warn-script-location"
+    ],
+    "chain": "bash > pip > python3"
+   },
+   {
+    "pid": 1125,
+    "ppid": 1123,
+    "comm": "uname",
+    "argv": [
+     "uname",
+     "-rs"
+    ],
+    "chain": "bash > pip > python3 > uname"
+   },
+   {
+    "pid": 1133,
+    "ppid": 1120,
+    "comm": "python3",
+    "argv": [
+     "/work/repo/.venv/bin/python3",
+     "/work/repo/.venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py",
+     "_supported_features",
+     "/tmp/tmphkzqotmr"
+    ],
+    "chain": "bash > pip > python3"
+   },
+   {
+    "pid": 1134,
+    "ppid": 1120,
+    "comm": "python3",
+    "argv": [
+     "/work/repo/.venv/bin/python3",
+     "/work/repo/.venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py",
+     "get_requires_for_build_editable",
+     "/tmp/tmpnvs9p_nl"
+    ],
+    "chain": "bash > pip > python3"
+   },
+   {
+    "pid": 1135,
+    "ppid": 1120,
+    "comm": "python3",
+    "argv": [
+     "/work/repo/.venv/bin/python3",
+     "/work/repo/.venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py",
+     "prepare_metadata_for_build_editable",
+     "/tmp/tmpisays7zt"
+    ],
+    "chain": "bash > pip > python3"
+   },
+   {
+    "pid": 1141,
+    "ppid": 1120,
+    "comm": "python3",
+    "argv": [
+     "/work/repo/.venv/bin/python3",
+     "/work/repo/.venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py",
+     "build_editable",
+     "/tmp/tmp62iq1xps"
+    ],
+    "chain": "bash > pip > python3"
+   },
+   {
+    "pid": 1144,
+    "ppid": 1087,
+    "comm": "pytest",
+    "argv": [
+     "/work/repo/.venv/bin/python3",
+     ".venv/bin/pytest",
+     "-q",
+     "-x",
+     "tests/test_basic.py"
+    ],
+    "chain": "bash > pytest"
+   },
+   {
+    "pid": 1146,
+    "ppid": 1145,
+    "comm": "git",
+    "argv": [
+     "git",
+     "ls-files",
+     "src/*.py"
+    ],
+    "chain": "bash > bash > git"
+   },
+   {
+    "pid": 1147,
+    "ppid": 1145,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-1"
+    ],
+    "chain": "bash > bash > head"
+   },
+   {
+    "pid": 1148,
+    "ppid": 1087,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "user.email=agent@sandbox",
+     "-c",
+     "user.name=agent",
+     "commit",
+     "-qam",
+     "task: annotate src/click/__init__.py"
+    ],
+    "chain": "bash > git"
+   },
+   {
+    "pid": 1149,
+    "ppid": 1148,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "maintenance",
+     "run",
+     "--auto",
+     "--quiet"
+    ],
+    "chain": "bash > git > git"
+   },
+   {
+    "pid": 1150,
+    "ppid": 1087,
+    "comm": "git",
+    "argv": [
+     "git",
+     "rev-parse",
+     "HEAD"
+    ],
+    "chain": "bash > git"
+   },
+   {
+    "pid": 1151,
+    "ppid": 1087,
+    "comm": "pytest",
+    "argv": [
+     "/work/repo/.venv/bin/python3",
+     ".venv/bin/pytest",
+     "-q",
+     "-x",
+     "tests/test_basic.py"
+    ],
+    "chain": "bash > pytest"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "files.pythonhosted.org | pypi.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "151.101.0.223",
+     "151.101.128.223",
+     "151.101.192.223",
+     "151.101.64.223",
+     "2a04:4e42:200::223",
+     "2a04:4e42:400::223",
+     "2a04:4e42:600::223",
+     "2a04:4e42::223"
+    ],
+    "attempts": 54,
+    "initiated": 30,
+    "chains": [
+     {
+      "chain": "bash > pip > python3",
+      "connections": 27
+     },
+     {
+      "chain": "bash > pip",
+      "connections": 27
+     }
+    ]
+   },
+   {
+    "destination": "github.com",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "140.82.114.4"
+    ],
+    "attempts": 1,
+    "initiated": 1,
+    "chains": [
+     {
+      "chain": "bash > git > git > git-remote-http",
+      "connections": 1
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 55,
+  "loopback_connections": 8,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 3722,
+  "by_top_level": [
+   {
+    "prefix": "/work/repo",
+    "paths": 3503
+   },
+   {
+    "prefix": "/tmp/pip-build-env-l079wma4",
+    "paths": 67
+   },
+   {
+    "prefix": "/usr/local",
+    "paths": 54
+   },
+   {
+    "prefix": "/tmp/pytest-of-root",
+    "paths": 18
+   },
+   {
+    "prefix": "/tmp/pip-build-tracker-6f0nkbrm",
+    "paths": 8
+   },
+   {
+    "prefix": "/tmp/pip-unpack-ez8vd_3v",
+    "paths": 6
+   },
+   {
+    "prefix": "/tmp/pip-ephem-wheel-cache-or6uzhv7",
+    "paths": 3
+   },
+   {
+    "prefix": "/tmp/pip-modern-metadata-yoj_vxi3",
+    "paths": 3
+   },
+   {
+    "prefix": "/tmp/pip-wheel-usv6j_xh",
+    "paths": 3
+   },
+   {
+    "prefix": "/tmp/tmp62iq1xps",
+    "paths": 3
+   },
+   {
+    "prefix": "/tmp/tmphkzqotmr",
+    "paths": 3
+   },
+   {
+    "prefix": "/tmp/tmpisays7zt",
+    "paths": 3
+   },
+   {
+    "prefix": "/tmp/tmpnvs9p_nl",
+    "paths": 3
+   },
+   {
+    "prefix": "/tmp/pip-build-tracker-pj5al0i8",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-36ruqdyw",
+    "paths": 2
+   }
+  ],
+  "sample": [
+   {
+    "path": "/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp",
+    "created": 0,
+    "written": 4,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pytest"
+    ]
+   },
+   {
+    "path": "/tmp/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/5p4ketqw",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/h8c6_g4t",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/kek3t2p9",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core-3.12.0.dist-info/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 4,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core-3.12.0.dist-info/INSTALLER",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core-3.12.0.dist-info/INSTALLERy_3guj4r.tmp",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core-3.12.0.dist-info/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core-3.12.0.dist-info/RECORD",
+    "created": 2,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core-3.12.0.dist-info/RECORDcox99sex.tmp",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core-3.12.0.dist-info/REQUESTED",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core-3.12.0.dist-info/WHEEL",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core-3.12.0.dist-info/licenses/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core-3.12.0.dist-info/licenses/LICENSE",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core-3.12.0.dist-info/licenses/flit_core/vendor/tomli-1.2.3.dist-info/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core-3.12.0.dist-info/licenses/flit_core/vendor/tomli-1.2.3.dist-info/LICENSE",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__init__.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 16,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/__init__.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/__init__.cpython-312.pyc.139632634372112",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/_spdx_data.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/_spdx_data.cpython-312.pyc.139632634372432",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/buildapi.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/buildapi.cpython-312.pyc.139632634372592",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/common.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/common.cpython-312.pyc.139632634372752",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/config.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/config.cpython-312.pyc.139632634373072",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/sdist.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/sdist.cpython-312.pyc.139632634373392",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/versionno.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/versionno.cpython-312.pyc.139632634375472",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/wheel.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/__pycache__/wheel.cpython-312.pyc.139632634375792",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/_spdx_data.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/buildapi.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/common.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/config.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/sdist.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/README",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/__init__.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 2,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/__pycache__/__init__.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/__pycache__/__init__.cpython-312.pyc.139632634374352",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/tomli-1.2.3.dist-info/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/tomli-1.2.3.dist-info/LICENSE",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/tomli-1.2.3.dist-info/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/tomli/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/tomli/__init__.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/tomli/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 8,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/tomli/__pycache__/__init__.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/tomli/__pycache__/__init__.cpython-312.pyc.139632635941040",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/tomli/__pycache__/_parser.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/tomli/__pycache__/_parser.cpython-312.pyc.139632635940336",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/tomli/__pycache__/_re.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-env-l079wma4/overlay/lib/python3.12/site-packages/flit_core/vendor/tomli/__pycache__/_re.cpython-312.pyc.139632634375312",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   }
+  ]
+ }
+}
