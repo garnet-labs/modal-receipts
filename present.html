@@ -85,5 +85,5 @@ Evidence-derived allowlist (union over 30 runs): 10 hosts</pre>
 <li>Not DNS, other ports, UDP, or the Sidecar's own traffic. Every receipt says so.</li>
 <li>The in-VM half is optional, Linux audit today; the production shape is a cgroup-BPF connect hook + proc connector, which the guest kernel already supports.</li>
 </ul>
-<p class="small">Files: <code>sidecar_receipts.py</code>, <code>sidecar/recorder.py</code>, <code>sidecar_probe.py</code>, <code>guest/</code>, <code>samples/sidecar/</code> (every output above), <code>README.md</code>, <code>ENGINEERING.md</code>, <code>IMPLICATIONS.md</code>.</p>
+<p class="small">Code and every output: <a href="https://github.com/garnet-labs/modal-receipts">github.com/garnet-labs/modal-receipts</a>. Files: <code>sidecar_receipts.py</code>, <code>sidecar/recorder.py</code>, <code>sidecar_probe.py</code>, <code>guest/</code>, <code>samples/sidecar/</code> (every output above), <code>README.md</code>, <code>ENGINEERING.md</code>, <code>IMPLICATIONS.md</code>.</p>
 </main></body></html>

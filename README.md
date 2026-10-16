@@ -28,6 +28,7 @@ to ship (the same Sidecar as a platform option).
 
 ```sh
 pip install modal==1.6.2 && modal setup                                   # once
+git clone https://github.com/garnet-labs/modal-receipts && cd modal-receipts
 modal run sidecar_receipts.py --n 10                                       # 30 VM sandboxes: sidecar / in-VM-only / unrecorded
 modal run sidecar_receipts.py --n 30 --out out-sidecar30                   # the n=30 cost table and allowlist
 modal run sidecar_receipts.py --workload https --n 6                       # per-connection relay cost, 200 GETs per sandbox

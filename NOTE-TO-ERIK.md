@@ -26,7 +26,7 @@ unchanged. The in-VM half is optional and costs ~0.6 s per sandbox.
 You see all of this host-side already; this is what the customer gets to keep, in the same format
 as their GitHub Actions runs. Zero engineering to try, one runtime flag to ship.
 
-Script and every output: <bundle link>. `modal run sidecar_receipts.py --n 10` in your account.
+Script and every output: https://github.com/garnet-labs/modal-receipts. `modal run sidecar_receipts.py --n 10` in your account.
 
 Who on your team owns Sandbox Sidecars?
 
