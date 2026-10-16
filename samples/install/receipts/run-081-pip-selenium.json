@@ -1,0 +1,976 @@
+{
+ "schema": "garnet.sandbox-receipt/0.1",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "full",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792121617.3492422,
+   "stop": 1792121625.1012459,
+   "seconds": 7.752
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet",
+   "-a always,exit -F arch=b64 -S open,creat,openat,openat2 -F a2&0x3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S rename,unlink,unlinkat,renameat,renameat2 -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit/open-for-write/unlink/rename syscall in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic"
+  ],
+  "syscall_records": 3934
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": [
+   "rc=0"
+  ]
+ },
+ "processes": {
+  "executed": 24,
+  "total_seen": 28,
+  "roots": [
+   "bash",
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1086,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "/opt/garnet/workload-install.sh",
+     "pip",
+     "selenium"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1087,
+    "ppid": 1086,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1088,
+    "ppid": 1086,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1089,
+    "ppid": 1086,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "/work"
+    ],
+    "chain": "bash > rm"
+   },
+   {
+    "pid": 1090,
+    "ppid": 1086,
+    "comm": "mkdir",
+    "argv": [
+     "mkdir",
+     "-p",
+     "/work"
+    ],
+    "chain": "bash > mkdir"
+   },
+   {
+    "pid": 1092,
+    "ppid": 1086,
+    "comm": "python3",
+    "argv": [
+     "python3",
+     "-m",
+     "venv",
+     ".venv"
+    ],
+    "chain": "bash > python3"
+   },
+   {
+    "pid": 1093,
+    "ppid": 1092,
+    "comm": "python3",
+    "argv": [
+     "/work/.venv/bin/python3",
+     "-m",
+     "ensurepip",
+     "--upgrade",
+     "--default-pip"
+    ],
+    "chain": "bash > python3 > python3"
+   },
+   {
+    "pid": 1094,
+    "ppid": 1093,
+    "comm": "python3",
+    "argv": [
+     "/work/.venv/bin/python3",
+     "-W",
+     "ignore::DeprecationWarning",
+     "-c",
+     "\nimport runpy\nimport sys\nsys.path = ['/tmp/tmpm9uyolst/pip-23.2.1-py3-none-any.whl'] + sys.path\nsys.argv[1:] = ['install', '--no-cache-dir', '--no-index', '--find-links', '/tmp/tmpm9uyolst', '--upgrade', 'pip']\nrunpy.run_module(\"pip\", run_name=\"__main__\", alter_sys=True)\n"
+    ],
+    "chain": "bash > python3 > python3 > python3"
+   },
+   {
+    "pid": 1096,
+    "ppid": 1094,
+    "comm": "uname",
+    "argv": [
+     "uname",
+     "-rs"
+    ],
+    "chain": "bash > python3 > python3 > python3 > uname"
+   },
+   {
+    "pid": 1100,
+    "ppid": 1086,
+    "comm": "pip",
+    "argv": [
+     "/work/.venv/bin/python3",
+     ".venv/bin/pip",
+     "install",
+     "-q",
+     "selenium"
+    ],
+    "chain": "bash > pip"
+   },
+   {
+    "pid": 1102,
+    "ppid": 1100,
+    "comm": "uname",
+    "argv": [
+     "uname",
+     "-rs"
+    ],
+    "chain": "bash > pip > uname"
+   },
+   {
+    "pid": 1111,
+    "ppid": 1110,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-c",
+     "300",
+     "/work/install.log"
+    ],
+    "chain": "bash > bash > tail"
+   },
+   {
+    "pid": 1112,
+    "ppid": 1110,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "\\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   },
+   {
+    "pid": 1114,
+    "ppid": 1113,
+    "comm": "find",
+    "argv": [
+     "find",
+     "/work",
+     "-type",
+     "f"
+    ],
+    "chain": "bash > bash > find"
+   },
+   {
+    "pid": 1115,
+    "ppid": 1113,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-l"
+    ],
+    "chain": "bash > bash > wc"
+   },
+   {
+    "pid": 1116,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /proc/meminfo | head -3; ps -o rss=,comm= -C auditd,python3 2>/dev/null | sort -rn | head -4; wc -c < /var/log/audit/audit.log"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1117,
+    "ppid": 1116,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1118,
+    "ppid": 1116,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1119,
+    "ppid": 1116,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/proc/meminfo"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1120,
+    "ppid": 1116,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-3"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1121,
+    "ppid": 1116,
+    "comm": "ps",
+    "argv": [
+     "ps",
+     "-o",
+     "rss=,comm=",
+     "-C",
+     "auditd,python3"
+    ],
+    "chain": "bash > ps"
+   },
+   {
+    "pid": 1122,
+    "ppid": 1116,
+    "comm": "sort",
+    "argv": [
+     "sort",
+     "-rn"
+    ],
+    "chain": "bash > sort"
+   },
+   {
+    "pid": 1123,
+    "ppid": 1116,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-4"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1124,
+    "ppid": 1116,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-c"
+    ],
+    "chain": "bash > wc"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "files.pythonhosted.org | pypi.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "151.101.0.223",
+     "151.101.128.223",
+     "151.101.192.223",
+     "151.101.64.223",
+     "2a04:4e42:200::223",
+     "2a04:4e42:400::223",
+     "2a04:4e42:600::223",
+     "2a04:4e42::223"
+    ],
+    "attempts": 27,
+    "initiated": 15,
+    "chains": [
+     {
+      "chain": "bash > pip",
+      "connections": 27
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 27,
+  "loopback_connections": 3,
+  "address_probes": 0,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 3914,
+  "by_top_level": [
+   {
+    "prefix": "/work/.venv",
+    "paths": 3767
+   },
+   {
+    "prefix": "/tmp/pip-build-tracker-pv4pqk1d",
+    "paths": 16
+   },
+   {
+    "prefix": "/tmp/pip-unpack-sok2o8d2",
+    "paths": 16
+   },
+   {
+    "prefix": "/usr/local",
+    "paths": 10
+   },
+   {
+    "prefix": "/tmp/pip-build-tracker-a9euo7gh",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-5rkky3qd",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-6stwo2ue",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-_y78b0_k",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-als_1eic",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-bdxqtg8c",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-fsxylbdo",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-gt6m7sji",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-hvk500jp",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-oqqyqmqr",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-rsp7ks2k",
+    "paths": 2
+   }
+  ],
+  "sample": [
+   {
+    "path": "/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/10ld24q2",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-a9euo7gh/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-build-tracker-a9euo7gh/abbe8e3f5fb77fdbac94d80da85a6b5b1fe8a20dc0be8b25f61039a1",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/2e0b104156b59fc95cf18a269ffed21374c7d170902fa4d96c00004d",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/30ef132248ab98ab0a92d2d15ee6957bdad5542ffbb630d3a32f7721",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/4196fb32cd5477509fa68e914f1472976a27100798a6d4a646f26472",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/4ceaad8aebd03c0f071e5c147060d46451f118d3dcfcca64d07da1f5",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/5578f04015bc72d34ccff0865612606d646694de3865112ddef4292f",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/5de74aa606aaf8588141cbe765382839ecb0982f091a947770ca6fa8",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/61d7d1801c40d876777019a4d6c487dbcf3033b0bf0bf443241b8fff",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/6680465c66f90d5dba7423aa175d72f390d4883736cee302491f10f1",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/6e85cbce0a9db6a61fe181f0390b5c8747aa370d5fd48ef8c98696fe",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/6f76dde21f1ea28339db53e4ac1df44ea0e8ade0a14770a4c696b4bb",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/ab412b8b578806605eacea0fa8a110d92c670d2447634dc52e0a0f58",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/b14ec1286f8ec83b268f9c52cdccd1001d22496d6e01ba5b4fd8aeb4",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/b56fe8d9fa8d08665e2b3261859fec7d10f205a763bc512bc920987c",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/b72e8aa04145b13fbf950f3cae130aca058336fb8a3adcf0c4dc60d3",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-pv4pqk1d/b75dcdebb8c74e7e3e8ed793d07d088f062902f58a8813400bfb7427",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-5rkky3qd/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-5rkky3qd/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-6stwo2ue/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-6stwo2ue/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-_y78b0_k/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-_y78b0_k/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-als_1eic/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-als_1eic/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-bdxqtg8c/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-bdxqtg8c/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-fsxylbdo/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-fsxylbdo/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-gt6m7sji/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-gt6m7sji/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-hvk500jp/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-hvk500jp/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-oqqyqmqr/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-oqqyqmqr/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-rsp7ks2k/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-rsp7ks2k/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-s3pqxh5m/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-s3pqxh5m/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-u28igp7t/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-u28igp7t/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-w4z3ixr3/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-w4z3ixr3/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-z983cxcy/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-z983cxcy/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-zkip2x87/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-zkip2x87/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-6apcxb7y/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-unpack-6apcxb7y/urllib3-2.8.0-py3-none-any.whl.metadata",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-7u_5e7ph/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-unpack-7u_5e7ph/attrs-26.1.0-py3-none-any.whl.metadata",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-anjkd77x/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-unpack-anjkd77x/websocket_client-1.9.2-py3-none-any.whl.metadata",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-bttgkgr2/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-unpack-bttgkgr2/typing_extensions-4.16.0-py3-none-any.whl.metadata",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-dl2dyeh_/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   }
+  ]
+ }
+}

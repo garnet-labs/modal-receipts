@@ -1,0 +1,887 @@
+{
+ "schema": "garnet.sandbox-receipt/0.1",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "full",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792121620.0956426,
+   "stop": 1792121635.414769,
+   "seconds": 15.319
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet",
+   "-a always,exit -F arch=b64 -S open,creat,openat,openat2 -F a2&0x3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S rename,unlink,unlinkat,renameat,renameat2 -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit/open-for-write/unlink/rename syscall in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic"
+  ],
+  "syscall_records": 511
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": [
+   "rc=0"
+  ]
+ },
+ "processes": {
+  "executed": 13,
+  "total_seen": 17,
+  "roots": [
+   "bash",
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1118,
+    "ppid": 1117,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-c",
+     "300",
+     "/work/install.log"
+    ],
+    "chain": "bash > bash > tail"
+   },
+   {
+    "pid": 1119,
+    "ppid": 1117,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "\\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   },
+   {
+    "pid": 1121,
+    "ppid": 1120,
+    "comm": "find",
+    "argv": [
+     "find",
+     "/work",
+     "-type",
+     "f"
+    ],
+    "chain": "bash > bash > find"
+   },
+   {
+    "pid": 1122,
+    "ppid": 1120,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-l"
+    ],
+    "chain": "bash > bash > wc"
+   },
+   {
+    "pid": 1124,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /proc/meminfo | head -3; ps -o rss=,comm= -C auditd,python3 2>/dev/null | sort -rn | head -4; wc -c < /var/log/audit/audit.log"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1125,
+    "ppid": 1124,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1126,
+    "ppid": 1124,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1127,
+    "ppid": 1124,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/proc/meminfo"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1128,
+    "ppid": 1124,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-3"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1129,
+    "ppid": 1124,
+    "comm": "ps",
+    "argv": [
+     "ps",
+     "-o",
+     "rss=,comm=",
+     "-C",
+     "auditd,python3"
+    ],
+    "chain": "bash > ps"
+   },
+   {
+    "pid": 1130,
+    "ppid": 1124,
+    "comm": "sort",
+    "argv": [
+     "sort",
+     "-rn"
+    ],
+    "chain": "bash > sort"
+   },
+   {
+    "pid": 1131,
+    "ppid": 1124,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-4"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1132,
+    "ppid": 1124,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-c"
+    ],
+    "chain": "bash > wc"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "files.pythonhosted.org | pypi.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "151.101.0.223",
+     "151.101.128.223",
+     "151.101.192.223",
+     "151.101.64.223",
+     "2a04:4e42:200::223",
+     "2a04:4e42:400::223",
+     "2a04:4e42:600::223",
+     "2a04:4e42::223"
+    ],
+    "attempts": 9,
+    "initiated": 5,
+    "chains": [
+     {
+      "chain": "bash > pip",
+      "connections": 9
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 9,
+  "loopback_connections": 1,
+  "address_probes": 0,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 383,
+  "by_top_level": [
+   {
+    "prefix": "/work/.venv",
+    "paths": 301
+   },
+   {
+    "prefix": "/work",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/METADATA",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/annotated_types-0.8.0-py3-none-any.whl",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/annotated_types-0.8.0-py3-none-any.whl.metadata",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/anyio-4.15.1-py3-none-any.whl",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/anyio-4.15.1-py3-none-any.whl.metadata",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/certifi-2026.7.22-py3-none-any.whl",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/certifi-2026.7.22-py3-none-any.whl.metadata",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/charset_normalizer-3.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/distro-1.9.0-py3-none-any.whl",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/distro-1.9.0-py3-none-any.whl.metadata",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/h11-0.16.0-py3-none-any.whl",
+    "paths": 1
+   }
+  ],
+  "sample": [
+   {
+    "path": "/work",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/work/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain-1.4.6.dist-info/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 4,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain-1.4.6.dist-info/INSTALLER",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain-1.4.6.dist-info/INSTALLER5id3kbb5.tmp",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain-1.4.6.dist-info/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain-1.4.6.dist-info/RECORD",
+    "created": 2,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain-1.4.6.dist-info/RECORD47o0r40c.tmp",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain-1.4.6.dist-info/REQUESTED",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain-1.4.6.dist-info/WHEEL",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain-1.4.6.dist-info/licenses/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain-1.4.6.dist-info/licenses/LICENSE",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/__init__.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 2,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/__pycache__/__init__.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/__pycache__/__init__.cpython-312.pyc.140395893475632",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/__init__.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 8,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/__pycache__/__init__.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/__pycache__/__init__.cpython-312.pyc.140395891424928",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/__pycache__/_subagent_transformer.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/__pycache__/_subagent_transformer.cpython-312.pyc.140395891578544",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/__pycache__/factory.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/__pycache__/factory.cpython-312.pyc.140395891423632",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/__pycache__/structured_output.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/__pycache__/structured_output.cpython-312.pyc.140395891423488",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/_subagent_transformer.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/factory.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__init__.py",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 46,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/__init__.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/__init__.cpython-312.pyc.140395891576304",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/_execution.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/_execution.cpython-312.pyc.140395891578224",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/_redaction.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/_redaction.cpython-312.pyc.140395891577424",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/_retry.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/_retry.cpython-312.pyc.140395891425072",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/_trace_policy.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/_trace_policy.cpython-312.pyc.140395891573264",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/context_editing.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/context_editing.cpython-312.pyc.140395891575664",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/file_search.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/file_search.cpython-312.pyc.140395891574224",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/human_in_the_loop.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/human_in_the_loop.cpython-312.pyc.140395891575344",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/internal_call_transformer.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/internal_call_transformer.cpython-312.pyc.140395870738496",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/model_call_limit.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/model_call_limit.cpython-312.pyc.140395891573104",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/model_fallback.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/model_fallback.cpython-312.pyc.140395891575184",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/model_retry.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/model_retry.cpython-312.pyc.140395891574704",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/pii.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/pii.cpython-312.pyc.140395891419600",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/langchain/agents/middleware/__pycache__/provider_tool_search.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   }
+  ]
+ }
+}

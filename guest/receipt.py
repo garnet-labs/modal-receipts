@@ -231,6 +231,10 @@ def main():
         if c["ip"].startswith("127.") or c["ip"] == "::1":
             c["kind"] = "loopback"
             continue
+        if c["port"] == 0:
+            # glibc getaddrinfo() address-selection probe: UDP connect() to port 0, no traffic
+            c["kind"] = "address_probe"
+            continue
         c["kind"] = "outbound"
         dom = name_for(c["ip"])
         key = f"{dom or c['ip']}:{c['port']}"
@@ -252,7 +256,8 @@ def main():
     rules_err = [r for r in read(f"{STATE}/rules_load.log").splitlines() if r.strip() != ""]
     lost = int(st_stop.get("lost", "-1") or -1)
     enabled = st_stop.get("enabled") == "1"
-    expected_rules = 6
+    ruleset = read(f"{STATE}/ruleset").strip() or "full"
+    expected_rules = 6 if ruleset == "full" else 4
     complete = enabled and lost == 0 and len(rules) == expected_rules and len(rules_err) == 0
     reasons = []
     if not enabled:
@@ -282,6 +287,7 @@ def main():
         "schema": "garnet.sandbox-receipt/0.1",
         "capture": {
             "recorder": "linux-audit",
+            "ruleset": ruleset,
             "kernel": read(f"{STATE}/kernel").strip(),
             "window": {"start": t_start, "stop": t_stop, "seconds": round(t_stop - t_start, 3) if t_stop else None},
             "rules": rules,
@@ -289,8 +295,8 @@ def main():
             "kernel_counters_at_start": {k: st_start.get(k) for k in ("lost", "backlog_limit") if k in st_start},
             "declared_complete": complete,
             "incomplete_reasons": reasons,
-            "scope": "every connect/execve/clone/exit/open-for-write/unlink/rename syscall in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
-            "out_of_scope": ["reads", "sockets inherited from before arming", "raw/packet sockets", "kernel-internal traffic"],
+            "scope": ("every connect/execve/clone/exit/open-for-write/unlink/rename syscall" if ruleset == "full" else "every connect/execve/clone/exit syscall (file rules off)") + " in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+            "out_of_scope": ["reads", "sockets inherited from before arming", "raw/packet sockets", "kernel-internal traffic"] + ([] if ruleset == "full" else ["file writes"]),
             "syscall_records": n_syscall,
         },
         "workload": {
@@ -311,6 +317,7 @@ def main():
             "outbound_destinations": sorted(destinations.values(), key=lambda d: (d["destination"], d["port"])),
             "outbound_connections": sum(1 for c in conns if c.get("kind") == "outbound"),
             "loopback_connections": sum(1 for c in conns if c.get("kind") == "loopback"),
+            "address_probes": sum(1 for c in conns if c.get("kind") == "address_probe"),
             "unnamed_destinations": sorted({d["destination"] for d in destinations.values() if not d["named_by_dns"]}),
             "dns_upstream": proxy_upstream,
         },

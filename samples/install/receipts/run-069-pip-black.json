@@ -1,0 +1,984 @@
+{
+ "schema": "garnet.sandbox-receipt/0.1",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "full",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792121617.3013043,
+   "stop": 1792121621.373184,
+   "seconds": 4.072
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet",
+   "-a always,exit -F arch=b64 -S open,creat,openat,openat2 -F a2&0x3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S rename,unlink,unlinkat,renameat,renameat2 -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit/open-for-write/unlink/rename syscall in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic"
+  ],
+  "syscall_records": 2337
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": [
+   "rc=0"
+  ]
+ },
+ "processes": {
+  "executed": 24,
+  "total_seen": 28,
+  "roots": [
+   "bash",
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1085,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "/opt/garnet/workload-install.sh",
+     "pip",
+     "black"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1086,
+    "ppid": 1085,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1087,
+    "ppid": 1085,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1088,
+    "ppid": 1085,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "/work"
+    ],
+    "chain": "bash > rm"
+   },
+   {
+    "pid": 1089,
+    "ppid": 1085,
+    "comm": "mkdir",
+    "argv": [
+     "mkdir",
+     "-p",
+     "/work"
+    ],
+    "chain": "bash > mkdir"
+   },
+   {
+    "pid": 1091,
+    "ppid": 1085,
+    "comm": "python3",
+    "argv": [
+     "python3",
+     "-m",
+     "venv",
+     ".venv"
+    ],
+    "chain": "bash > python3"
+   },
+   {
+    "pid": 1092,
+    "ppid": 1091,
+    "comm": "python3",
+    "argv": [
+     "/work/.venv/bin/python3",
+     "-m",
+     "ensurepip",
+     "--upgrade",
+     "--default-pip"
+    ],
+    "chain": "bash > python3 > python3"
+   },
+   {
+    "pid": 1093,
+    "ppid": 1092,
+    "comm": "python3",
+    "argv": [
+     "/work/.venv/bin/python3",
+     "-W",
+     "ignore::DeprecationWarning",
+     "-c",
+     "\nimport runpy\nimport sys\nsys.path = ['/tmp/tmpanvfqsbq/pip-23.2.1-py3-none-any.whl'] + sys.path\nsys.argv[1:] = ['install', '--no-cache-dir', '--no-index', '--find-links', '/tmp/tmpanvfqsbq', '--upgrade', 'pip']\nrunpy.run_module(\"pip\", run_name=\"__main__\", alter_sys=True)\n"
+    ],
+    "chain": "bash > python3 > python3 > python3"
+   },
+   {
+    "pid": 1095,
+    "ppid": 1093,
+    "comm": "uname",
+    "argv": [
+     "uname",
+     "-rs"
+    ],
+    "chain": "bash > python3 > python3 > python3 > uname"
+   },
+   {
+    "pid": 1096,
+    "ppid": 1085,
+    "comm": "pip",
+    "argv": [
+     "/work/.venv/bin/python3",
+     ".venv/bin/pip",
+     "install",
+     "-q",
+     "black"
+    ],
+    "chain": "bash > pip"
+   },
+   {
+    "pid": 1098,
+    "ppid": 1096,
+    "comm": "uname",
+    "argv": [
+     "uname",
+     "-rs"
+    ],
+    "chain": "bash > pip > uname"
+   },
+   {
+    "pid": 1106,
+    "ppid": 1105,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-c",
+     "300",
+     "/work/install.log"
+    ],
+    "chain": "bash > bash > tail"
+   },
+   {
+    "pid": 1107,
+    "ppid": 1105,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "\\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   },
+   {
+    "pid": 1109,
+    "ppid": 1108,
+    "comm": "find",
+    "argv": [
+     "find",
+     "/work",
+     "-type",
+     "f"
+    ],
+    "chain": "bash > bash > find"
+   },
+   {
+    "pid": 1110,
+    "ppid": 1108,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-l"
+    ],
+    "chain": "bash > bash > wc"
+   },
+   {
+    "pid": 1111,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /proc/meminfo | head -3; ps -o rss=,comm= -C auditd,python3 2>/dev/null | sort -rn | head -4; wc -c < /var/log/audit/audit.log"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1112,
+    "ppid": 1111,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1113,
+    "ppid": 1111,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1114,
+    "ppid": 1111,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/proc/meminfo"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1115,
+    "ppid": 1111,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-3"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1116,
+    "ppid": 1111,
+    "comm": "ps",
+    "argv": [
+     "ps",
+     "-o",
+     "rss=,comm=",
+     "-C",
+     "auditd,python3"
+    ],
+    "chain": "bash > ps"
+   },
+   {
+    "pid": 1117,
+    "ppid": 1111,
+    "comm": "sort",
+    "argv": [
+     "sort",
+     "-rn"
+    ],
+    "chain": "bash > sort"
+   },
+   {
+    "pid": 1118,
+    "ppid": 1111,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-4"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1119,
+    "ppid": 1111,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-c"
+    ],
+    "chain": "bash > wc"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "files.pythonhosted.org | pypi.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "151.101.0.223",
+     "151.101.128.223",
+     "151.101.192.223",
+     "151.101.64.223",
+     "2a04:4e42:200::223",
+     "2a04:4e42:400::223",
+     "2a04:4e42:600::223",
+     "2a04:4e42::223"
+    ],
+    "attempts": 27,
+    "initiated": 15,
+    "chains": [
+     {
+      "chain": "bash > pip",
+      "connections": 27
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 27,
+  "loopback_connections": 3,
+  "address_probes": 0,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 2244,
+  "by_top_level": [
+   {
+    "prefix": "/work/.venv",
+    "paths": 2161
+   },
+   {
+    "prefix": "/usr/local",
+    "paths": 10
+   },
+   {
+    "prefix": "/tmp/pip-build-tracker-d5fo0b39",
+    "paths": 8
+   },
+   {
+    "prefix": "/tmp/pip-unpack-0r64z1cf",
+    "paths": 8
+   },
+   {
+    "prefix": "/tmp/pip-build-tracker-zcqaq2c8",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-1vkuqj7b",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-6z1g0mu6",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-93n_lhbc",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-9l6xzwpf",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-fsgf8pa1",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-ssfxna4u",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-metadata-z54s3fml",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-unpack-4e6swlt2",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-unpack-ankekhf_",
+    "paths": 2
+   },
+   {
+    "prefix": "/tmp/pip-unpack-bsca_iju",
+    "paths": 2
+   }
+  ],
+  "sample": [
+   {
+    "path": "/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/6dl_l_28",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/_w0pq_pq",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-d5fo0b39/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-build-tracker-d5fo0b39/159c56e4ec3c8e71dacef647c600365ad192876d095dd29b5b5c8ace",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-d5fo0b39/17560965c8b605b76224ccc636388cb30e79b12b123c47a6f76c5e3c",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-d5fo0b39/5cae41046a9bd5792efb3fe09cee8d2aa14fbe43a64daac2eaa17ed7",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-d5fo0b39/abe389ea1f10827847e2b3610f77e05b74ebe3884dbe40bc24f1284c",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-d5fo0b39/b11909f451f61fb29636217082b1c638b177c59eac335e0200a136e6",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-d5fo0b39/d12564d02d1376184fb3c6d7011e9cac0bdc6b78ff6b6eabf90b5965",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-d5fo0b39/f5c65766735c11a17f8c4c8014b84f6a23df084c7db53166d3275566",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-build-tracker-zcqaq2c8/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-build-tracker-zcqaq2c8/872cdc0e84e71697d776fb1f059285fffeaecd2573a6ff348af8b273",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-1vkuqj7b/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-1vkuqj7b/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-6z1g0mu6/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-6z1g0mu6/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-93n_lhbc/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-93n_lhbc/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-9l6xzwpf/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-9l6xzwpf/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-fsgf8pa1/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-fsgf8pa1/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-ssfxna4u/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-ssfxna4u/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-metadata-z54s3fml/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-metadata-z54s3fml/METADATA",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-0r64z1cf/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-unpack-0r64z1cf/black-26.10.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-0r64z1cf/click-8.5.0-py3-none-any.whl",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-0r64z1cf/mypy_extensions-1.1.0-py3-none-any.whl",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-0r64z1cf/packaging-26.3-py3-none-any.whl",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-0r64z1cf/pathspec-1.1.1-py3-none-any.whl",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-0r64z1cf/platformdirs-4.13.3-py3-none-any.whl",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-0r64z1cf/pytokens-0.4.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-4e6swlt2/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-unpack-4e6swlt2/black-26.10.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-ankekhf_/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-unpack-ankekhf_/pytokens-0.4.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-bsca_iju/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-unpack-bsca_iju/click-8.5.0-py3-none-any.whl.metadata",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-kd1x_a1o/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-unpack-kd1x_a1o/platformdirs-4.13.3-py3-none-any.whl.metadata",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-lfplhbpj/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-unpack-lfplhbpj/mypy_extensions-1.1.0-py3-none-any.whl.metadata",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-mhn2tkhr/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-unpack-mhn2tkhr/pathspec-1.1.1-py3-none-any.whl.metadata",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/pip-unpack-yiyyswjo/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/pip-unpack-yiyyswjo/packaging-26.3-py3-none-any.whl.metadata",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/tmp/tmpanvfqsbq/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/tmp/tmpanvfqsbq/pip-23.2.1-py3-none-any.whl",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/tmpkgl79s93cacert.pem",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/tmp/vfmoraq3",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/usr/local/lib/python3.12/ensurepip/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 4,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/usr/local/lib/python3.12/ensurepip/__pycache__/__init__.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/usr/local/lib/python3.12/ensurepip/__pycache__/__init__.cpython-312.pyc.140521835235760",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/usr/local/lib/python3.12/ensurepip/__pycache__/__main__.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/usr/local/lib/python3.12/ensurepip/__pycache__/__main__.cpython-312.pyc.140521832140336",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/usr/local/lib/python3.12/venv/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 4,
+    "by": [
+     "python3"
+    ]
+   }
+  ]
+ }
+}

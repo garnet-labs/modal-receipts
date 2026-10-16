@@ -1,0 +1,1039 @@
+{
+ "schema": "garnet.sandbox-receipt/0.1",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "full",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792121500.9736142,
+   "stop": 1792121502.6069212,
+   "seconds": 1.633
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet",
+   "-a always,exit -F arch=b64 -S open,creat,openat,openat2 -F a2&0x3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S rename,unlink,unlinkat,renameat,renameat2 -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit/open-for-write/unlink/rename syscall in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic"
+  ],
+  "syscall_records": 842
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": [
+   "rc=0"
+  ]
+ },
+ "processes": {
+  "executed": 29,
+  "total_seen": 34,
+  "roots": [
+   "bash",
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1135,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "/opt/garnet/workload-swebench.sh"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1136,
+    "ppid": 1135,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1137,
+    "ppid": 1135,
+    "comm": "dirname",
+    "argv": [
+     "dirname",
+     "/opt/miniconda3/bin"
+    ],
+    "chain": "bash > dirname"
+   },
+   {
+    "pid": 1138,
+    "ppid": 1137,
+    "comm": "dirname",
+    "argv": [
+     "dirname",
+     "/opt/miniconda3/bin/conda"
+    ],
+    "chain": "bash > dirname > dirname"
+   },
+   {
+    "pid": 1140,
+    "ppid": 1139,
+    "comm": "conda",
+    "argv": [
+     "/opt/miniconda3/bin/python",
+     "/opt/miniconda3/bin/conda",
+     "shell.posix",
+     "activate",
+     "testbed"
+    ],
+    "chain": "bash > bash > conda"
+   },
+   {
+    "pid": 1141,
+    "ppid": 1135,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1142,
+    "ppid": 1135,
+    "comm": "git",
+    "argv": [
+     "git",
+     "apply",
+     "--whitespace=nowarn",
+     "/work/patch.diff"
+    ],
+    "chain": "bash > git"
+   },
+   {
+    "pid": 1143,
+    "ppid": 1135,
+    "comm": "git",
+    "argv": [
+     "git",
+     "apply",
+     "--whitespace=nowarn",
+     "/work/test.diff"
+    ],
+    "chain": "bash > git"
+   },
+   {
+    "pid": 1145,
+    "ppid": 1144,
+    "comm": "conda",
+    "argv": [
+     "/opt/miniconda3/bin/python",
+     "/opt/miniconda3/bin/conda",
+     "shell.posix",
+     "activate",
+     "testbed"
+    ],
+    "chain": "bash > bash > conda"
+   },
+   {
+    "pid": 1147,
+    "ppid": 1146,
+    "comm": "conda",
+    "argv": [
+     "/opt/miniconda3/bin/python",
+     "/opt/miniconda3/bin/conda",
+     "shell.posix",
+     "activate",
+     "testbed"
+    ],
+    "chain": "bash > bash > conda"
+   },
+   {
+    "pid": 1148,
+    "ppid": 1135,
+    "comm": "timeout",
+    "argv": [
+     "timeout",
+     "900",
+     "python",
+     "runtests.py",
+     "--verbosity",
+     "1",
+     "--parallel",
+     "1"
+    ],
+    "chain": "bash > timeout"
+   },
+   {
+    "pid": 1149,
+    "ppid": 1148,
+    "comm": "python",
+    "argv": [
+     "python",
+     "runtests.py",
+     "--verbosity",
+     "1",
+     "--parallel",
+     "1",
+     "test_utils.tests.OverrideSettingsTests.test_override_file_upload_permissions"
+    ],
+    "chain": "bash > timeout > python"
+   },
+   {
+    "pid": 1150,
+    "ppid": 1149,
+    "comm": "sh",
+    "argv": [
+     "/bin/sh",
+     "-c",
+     "git log --pretty=format:%ct --quiet -1 HEAD"
+    ],
+    "chain": "bash > timeout > python > sh"
+   },
+   {
+    "pid": 1151,
+    "ppid": 1150,
+    "comm": "git",
+    "argv": [
+     "git",
+     "log",
+     "--pretty=format:%ct",
+     "--quiet",
+     "-1",
+     "HEAD"
+    ],
+    "chain": "bash > timeout > python > sh > git"
+   },
+   {
+    "pid": 1153,
+    "ppid": 1149,
+    "comm": "ldconfig.real",
+    "argv": [
+     "/sbin/ldconfig.real",
+     "-p"
+    ],
+    "chain": "bash > timeout > python > ldconfig.real"
+   },
+   {
+    "pid": 1156,
+    "ppid": 1155,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-c",
+     "300",
+     "/work/test.log"
+    ],
+    "chain": "bash > bash > tail"
+   },
+   {
+    "pid": 1157,
+    "ppid": 1155,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "\\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   },
+   {
+    "pid": 1158,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /proc/meminfo | head -3; ps -o rss=,comm= -C auditd,python3 2>/dev/null | sort -rn | head -4; wc -c < /var/log/audit/audit.log"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1159,
+    "ppid": 1158,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1160,
+    "ppid": 1158,
+    "comm": "dirname",
+    "argv": [
+     "dirname",
+     "/opt/miniconda3/bin"
+    ],
+    "chain": "bash > dirname"
+   },
+   {
+    "pid": 1161,
+    "ppid": 1160,
+    "comm": "dirname",
+    "argv": [
+     "dirname",
+     "/opt/miniconda3/bin/conda"
+    ],
+    "chain": "bash > dirname > dirname"
+   },
+   {
+    "pid": 1163,
+    "ppid": 1162,
+    "comm": "conda",
+    "argv": [
+     "/opt/miniconda3/bin/python",
+     "/opt/miniconda3/bin/conda",
+     "shell.posix",
+     "activate",
+     "testbed"
+    ],
+    "chain": "bash > bash > conda"
+   },
+   {
+    "pid": 1164,
+    "ppid": 1158,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1165,
+    "ppid": 1158,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/proc/meminfo"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1166,
+    "ppid": 1158,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-3"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1167,
+    "ppid": 1158,
+    "comm": "ps",
+    "argv": [
+     "ps",
+     "-o",
+     "rss=,comm=",
+     "-C",
+     "auditd,python3"
+    ],
+    "chain": "bash > ps"
+   },
+   {
+    "pid": 1168,
+    "ppid": 1158,
+    "comm": "sort",
+    "argv": [
+     "sort",
+     "-rn"
+    ],
+    "chain": "bash > sort"
+   },
+   {
+    "pid": 1169,
+    "ppid": 1158,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-4"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1170,
+    "ppid": 1158,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-c"
+    ],
+    "chain": "bash > wc"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [],
+  "outbound_connections": 0,
+  "loopback_connections": 0,
+  "address_probes": 0,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 671,
+  "by_top_level": [
+   {
+    "prefix": "/testbed/django",
+    "paths": 648
+   },
+   {
+    "prefix": "/testbed/tests",
+    "paths": 16
+   },
+   {
+    "prefix": "/opt/miniconda3",
+    "paths": 1
+   },
+   {
+    "prefix": "/tmp/",
+    "paths": 1
+   },
+   {
+    "prefix": "/tmp/v3h45mnj",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/apply.log",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/results",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/test.log",
+    "paths": 1
+   }
+  ],
+  "sample": [
+   {
+    "path": "/opt/miniconda3/conda-meta/history",
+    "created": 0,
+    "written": 4,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "conda"
+    ]
+   },
+   {
+    "path": "/testbed/django/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 2,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/__pycache__/shortcuts.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/__pycache__/shortcuts.cpython-36.pyc.140219368749032",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/apps/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 6,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/apps/__pycache__/__init__.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/apps/__pycache__/__init__.cpython-36.pyc.140219394425776",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/apps/__pycache__/config.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/apps/__pycache__/config.cpython-36.pyc.140219394401656",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/apps/__pycache__/registry.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/apps/__pycache__/registry.cpython-36.pyc.140219390603536",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/conf",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/testbed/django/conf/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 4,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/conf/__pycache__/__init__.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/conf/__pycache__/__init__.cpython-36.pyc.140219390604096",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/conf/__pycache__/global_settings.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/conf/__pycache__/global_settings.cpython-36.pyc.140219390375952",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/conf/global_settings.py",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "git"
+    ]
+   },
+   {
+    "path": "/testbed/django/conf/locale/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 2,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/conf/locale/__pycache__/__init__.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/conf/locale/__pycache__/__init__.cpython-36.pyc.140219378998496",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/conf/urls/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 2,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/conf/urls/__pycache__/__init__.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/conf/urls/__pycache__/__init__.cpython-36.pyc.140219365526528",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 2,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/__pycache__/__init__.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/__pycache__/__init__.cpython-36.pyc.140219372423184",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 26,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/__init__.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/__init__.cpython-36.pyc.140219387134000",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/actions.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/actions.cpython-36.pyc.140219369372768",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/apps.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/apps.cpython-36.pyc.140219369187568",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/checks.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/checks.cpython-36.pyc.140219387295984",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/decorators.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/decorators.cpython-36.pyc.140219387134240",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/exceptions.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/exceptions.cpython-36.pyc.140219369370968",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/filters.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/filters.cpython-36.pyc.140219387134360",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/helpers.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/helpers.cpython-36.pyc.140219367174552",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/models.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/models.cpython-36.pyc.140219365395792",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/options.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/options.cpython-36.pyc.140219387134840",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/sites.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/sites.cpython-36.pyc.140219371732304",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/utils.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/utils.cpython-36.pyc.140219387294528",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/widgets.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/__pycache__/widgets.cpython-36.pyc.140219367175632",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/templatetags/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 12,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/templatetags/__pycache__/__init__.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/templatetags/__pycache__/__init__.cpython-36.pyc.140219369161520",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/templatetags/__pycache__/admin_list.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/templatetags/__pycache__/admin_list.cpython-36.pyc.140219367598120",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   },
+   {
+    "path": "/testbed/django/contrib/admin/templatetags/__pycache__/admin_modify.cpython-36.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python"
+    ]
+   }
+  ]
+ }
+}

@@ -14,13 +14,19 @@ case "${1:-}" in
     for _ in 1 2 3 4 5 6 7 8 9 10; do pgrep -x auditd >/dev/null && break; sleep 0.1; done
     auditctl -D >/dev/null 2>&1
     auditctl -b 65536 -f 1 --backlog_wait_time 60000 >/dev/null 2>&1
+    # GARNET_RULES=full (default) | nofiles : nofiles drops the open-for-write and
+    # unlink/rename rules, which dominate the cost on install-heavy workloads.
+    RULES="${GARNET_RULES:-full}"
+    echo "$RULES" > "$STATE/ruleset"
     {
       auditctl -a always,exit -F arch=b64 -S connect -k garnet
       auditctl -a always,exit -F arch=b64 -S execve,execveat -k garnet
       auditctl -a always,exit -F arch=b64 -S clone,clone3,fork,vfork -k garnet
       auditctl -a always,exit -F arch=b64 -S exit_group -k garnet
-      auditctl -a always,exit -F arch=b64 -S openat,open,creat,openat2 -F a2\&3 -k garnet
-      auditctl -a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat,renameat2 -k garnet
+      if [ "$RULES" = "full" ]; then
+        auditctl -a always,exit -F arch=b64 -S openat,open,creat,openat2 -F a2\&3 -k garnet
+        auditctl -a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat,renameat2 -k garnet
+      fi
     } > "$STATE/rules_load.log" 2>&1
     auditctl -l > "$STATE/rules" 2>&1
     auditctl -s > "$STATE/status_start" 2>&1

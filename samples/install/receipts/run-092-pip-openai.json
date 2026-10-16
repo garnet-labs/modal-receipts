@@ -1,0 +1,895 @@
+{
+ "schema": "garnet.sandbox-receipt/0.1",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "full",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792121618.5388694,
+   "stop": 1792121628.3416755,
+   "seconds": 9.803
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet",
+   "-a always,exit -F arch=b64 -S open,creat,openat,openat2 -F a2&0x3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S rename,unlink,unlinkat,renameat,renameat2 -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit/open-for-write/unlink/rename syscall in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic"
+  ],
+  "syscall_records": 2772
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": [
+   "rc=0"
+  ]
+ },
+ "processes": {
+  "executed": 13,
+  "total_seen": 17,
+  "roots": [
+   "bash",
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1119,
+    "ppid": 1118,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-c",
+     "300",
+     "/work/install.log"
+    ],
+    "chain": "bash > bash > tail"
+   },
+   {
+    "pid": 1120,
+    "ppid": 1118,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "\\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   },
+   {
+    "pid": 1122,
+    "ppid": 1121,
+    "comm": "find",
+    "argv": [
+     "find",
+     "/work",
+     "-type",
+     "f"
+    ],
+    "chain": "bash > bash > find"
+   },
+   {
+    "pid": 1123,
+    "ppid": 1121,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-l"
+    ],
+    "chain": "bash > bash > wc"
+   },
+   {
+    "pid": 1124,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /proc/meminfo | head -3; ps -o rss=,comm= -C auditd,python3 2>/dev/null | sort -rn | head -4; wc -c < /var/log/audit/audit.log"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1125,
+    "ppid": 1124,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1126,
+    "ppid": 1124,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1127,
+    "ppid": 1124,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/proc/meminfo"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1128,
+    "ppid": 1124,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-3"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1129,
+    "ppid": 1124,
+    "comm": "ps",
+    "argv": [
+     "ps",
+     "-o",
+     "rss=,comm=",
+     "-C",
+     "auditd,python3"
+    ],
+    "chain": "bash > ps"
+   },
+   {
+    "pid": 1130,
+    "ppid": 1124,
+    "comm": "sort",
+    "argv": [
+     "sort",
+     "-rn"
+    ],
+    "chain": "bash > sort"
+   },
+   {
+    "pid": 1131,
+    "ppid": 1124,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-4"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1132,
+    "ppid": 1124,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-c"
+    ],
+    "chain": "bash > wc"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "files.pythonhosted.org | pypi.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "151.101.0.223",
+     "151.101.128.223",
+     "151.101.192.223",
+     "151.101.64.223",
+     "2a04:4e42:200::223",
+     "2a04:4e42:400::223",
+     "2a04:4e42:600::223",
+     "2a04:4e42::223"
+    ],
+    "attempts": 9,
+    "initiated": 5,
+    "chains": [
+     {
+      "chain": "bash > pip",
+      "connections": 9
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 9,
+  "loopback_connections": 1,
+  "address_probes": 0,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 2673,
+  "by_top_level": [
+   {
+    "prefix": "/work/.venv",
+    "paths": 2641
+   },
+   {
+    "prefix": "/work",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/METADATA",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/annotated_types-0.8.0-py3-none-any.whl",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/annotated_types-0.8.0-py3-none-any.whl.metadata",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/anyio-4.15.1-py3-none-any.whl",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/anyio-4.15.1-py3-none-any.whl.metadata",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/h11-0.16.0-py3-none-any.whl",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/h11-0.16.0-py3-none-any.whl.metadata",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/httpcore2-2.13.1-py3-none-any.whl",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/httpcore2-2.13.1-py3-none-any.whl.metadata",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/httpx2-2.13.1-py3-none-any.whl",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/httpx2-2.13.1-py3-none-any.whl.metadata",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/idna-3.20-py3-none-any.whl",
+    "paths": 1
+   }
+  ],
+  "sample": [
+   {
+    "path": "/work",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/work/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai-3.31.0.dist-info/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 4,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai-3.31.0.dist-info/INSTALLER",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai-3.31.0.dist-info/INSTALLERverd5ji5.tmp",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai-3.31.0.dist-info/RECORD",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai-3.31.0.dist-info/RECORD_njy3s74.tmp",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai-3.31.0.dist-info/REQUESTED",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 2,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/__pycache__/version.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/__pycache__/version.cpython-312.pyc.139834136702896",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 202,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/chat_model.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/chat_model.cpython-312.pyc.139834136216032",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/completion.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/completion.cpython-312.pyc.139834136215744",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/completion_choice.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/completion_choice.cpython-312.pyc.139834136215888",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/completion_create_params.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/completion_create_params.cpython-312.pyc.139834136182128",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/completion_usage.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/completion_usage.cpython-312.pyc.139834136216320",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/container_create_params.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/container_create_params.cpython-312.pyc.139834136182288",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/container_create_response.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/container_create_response.cpython-312.pyc.139834136182608",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/container_list_params.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/container_list_params.cpython-312.pyc.139834136216176",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/container_list_response.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/container_list_response.cpython-312.pyc.139834136181968",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/container_retrieve_response.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/container_retrieve_response.cpython-312.pyc.139834136182448",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/content_provenance_check.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/content_provenance_check.cpython-312.pyc.139834136266032",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/content_provenance_check_create_params.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/content_provenance_check_create_params.cpython-312.pyc.139834136855808",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/create_embedding_response.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/create_embedding_response.cpython-312.pyc.139834136268432",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/decision.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/decision.cpython-312.pyc.139834136216608",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/decision_create_params.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/decision_create_params.cpython-312.pyc.139834136268592",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/decision_input_image_param.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/decision_input_image_param.cpython-312.pyc.139834136269072",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/decision_input_message_param.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/decision_input_message_param.cpython-312.pyc.139834136268912",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/decision_input_part_union_param.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/decision_input_part_union_param.cpython-312.pyc.139834136269392",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/decision_input_text_param.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/decision_input_text_param.cpython-312.pyc.139834136269232",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/deleted_skill.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/deleted_skill.cpython-312.pyc.139834136216896",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/embedding.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/embedding.cpython-312.pyc.139834136217040",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/embedding_create_params.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/embedding_create_params.cpython-312.pyc.139834136269552",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/embedding_model.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/embedding_model.cpython-312.pyc.139834136217184",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/eval_create_params.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   },
+   {
+    "path": "/work/.venv/lib/python3.12/site-packages/openai/types/__pycache__/eval_create_params.cpython-312.pyc.139834136217328",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "pip"
+    ]
+   }
+  ]
+ }
+}

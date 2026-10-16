@@ -1,0 +1,3207 @@
+{
+ "workload": "install",
+ "repo": "https://github.com/pallets/click",
+ "wall_s": 104.2824981212616,
+ "runs": [
+  {
+   "index": 2,
+   "label": "npm:express",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB4SVAAY8Q95AJZ95JST5",
+   "timings": {
+    "create_s": 0.07879245699999993,
+    "first_exec_s": 0.9572353979999999,
+    "arm_s": 0.28945904200000006,
+    "workload_s": 1.740934841,
+    "receipt_s": 0.14974532899999993,
+    "total_s": 3.3228156890000005
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm express",
+     "::log  added 65 packages in 874ms ",
+     "::files 590",
+     "::done rc=0"
+    ],
+    "out": "::step install npm express\n::log  added 65 packages in 874ms \n::files 590\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2681060 kB\nMemAvailable:    2736180 kB\n15544 python3\n 2240 auditd\n174325"
+  },
+  {
+   "index": 0,
+   "label": "npm:lodash",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB4T54CWGTCTWK9ZW480J",
+   "timings": {
+    "create_s": 0.34992269799999987,
+    "first_exec_s": 0.9486392400000001,
+    "arm_s": 0.34007859399999996,
+    "workload_s": 1.3807349260000006,
+    "receipt_s": 0.2737670559999996,
+    "total_s": 3.5561872239999994
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm lodash",
+     "::log  added 1 package in 348ms ",
+     "::files 1056",
+     "::done rc=0"
+    ],
+    "out": "::step install npm lodash\n::log  added 1 package in 348ms \n::files 1056\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2679472 kB\nMemAvailable:    2730652 kB\n15576 python3\n 2204 auditd\n163543"
+  },
+  {
+   "index": 12,
+   "label": "npm:zod",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB67TF62HNJMD5B5ECJ1Q",
+   "timings": {
+    "create_s": 0.06732942399999997,
+    "first_exec_s": 0.7697125299999998,
+    "arm_s": 0.26304640499999987,
+    "workload_s": 0.836715667,
+    "receipt_s": 0.09573974899999982,
+    "total_s": 2.0968132629999996
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm zod",
+     "::log  added 1 package in 240ms ",
+     "::files 845",
+     "::done rc=0"
+    ],
+    "out": "::step install npm zod\n::log  added 1 package in 240ms \n::files 845\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2734908 kB\nMemAvailable:    2740832 kB\n15576 python3\n 2192 auditd\n162950"
+  },
+  {
+   "index": 9,
+   "label": "npm:prettier",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB5NSHBYZRC4CGKK9TNE4",
+   "timings": {
+    "create_s": 0.0628921389999999,
+    "first_exec_s": 0.925347494,
+    "arm_s": 0.3774424399999998,
+    "workload_s": 1.3146770230000002,
+    "receipt_s": 0.10279634300000007,
+    "total_s": 2.856394195
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm prettier",
+     "::log  added 1 package in 368ms ",
+     "::files 61",
+     "::done rc=0"
+    ],
+    "out": "::step install npm prettier\n::log  added 1 package in 368ms \n::files 61\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2666664 kB\nMemAvailable:    2724372 kB\n15572 python3\n 2192 auditd\n163945"
+  },
+  {
+   "index": 16,
+   "label": "npm:uuid",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB6B70K3QTDC9SMV47RTN",
+   "timings": {
+    "create_s": 0.05798942200000001,
+    "first_exec_s": 0.8436739919999999,
+    "arm_s": 0.27144650700000006,
+    "workload_s": 1.1896161440000004,
+    "receipt_s": 0.09984457000000013,
+    "total_s": 2.5330254510000003
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm uuid",
+     "::log  added 1 package in 233ms ",
+     "::files 75",
+     "::done rc=0"
+    ],
+    "out": "::step install npm uuid\n::log  added 1 package in 233ms \n::files 75\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2692576 kB\nMemAvailable:    2737556 kB\n15584 python3\n 2264 auditd\n163141"
+  },
+  {
+   "index": 14,
+   "label": "npm:commander",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB68C3X4GYN3R63FHA2XF",
+   "timings": {
+    "create_s": 0.05778641699999998,
+    "first_exec_s": 0.987075081,
+    "arm_s": 0.2734895719999999,
+    "workload_s": 1.1781932629999998,
+    "receipt_s": 0.09693289000000016,
+    "total_s": 2.667985343
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm commander",
+     "::log  added 1 package in 222ms ",
+     "::files 17",
+     "::done rc=0"
+    ],
+    "out": "::step install npm commander\n::log  added 1 package in 222ms \n::files 17\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2752472 kB\nMemAvailable:    2746880 kB\n15572 python3\n 2208 auditd\n164145"
+  },
+  {
+   "index": 1,
+   "label": "npm:react",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB4TPZCGFJDZDKFPBTDBX",
+   "timings": {
+    "create_s": 0.23549289500000004,
+    "first_exec_s": 1.114756087,
+    "arm_s": 0.44464304200000004,
+    "workload_s": 1.4378366999999996,
+    "receipt_s": 0.5444695399999997,
+    "total_s": 4.326199394
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm react",
+     "::log  added 1 package in 338ms ",
+     "::files 32",
+     "::done rc=0"
+    ],
+    "out": "::step install npm react\n::log  added 1 package in 338ms \n::files 32\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2749676 kB\nMemAvailable:    2747364 kB\n15576 python3\n 2244 auditd\n163343"
+  },
+  {
+   "index": 15,
+   "label": "npm:dotenv",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB69Y6XWQBHX7J4DZZ0KH",
+   "timings": {
+    "create_s": 0.07027932000000003,
+    "first_exec_s": 0.9892356430000001,
+    "arm_s": 0.286246872,
+    "workload_s": 1.27672338,
+    "receipt_s": 0.13514258899999998,
+    "total_s": 2.86063227
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm dotenv",
+     "::log  added 1 package in 225ms ",
+     "::files 12",
+     "::done rc=0"
+    ],
+    "out": "::step install npm dotenv\n::log  added 1 package in 225ms \n::files 12\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2747152 kB\nMemAvailable:    2741948 kB\n15544 python3\n 2208 auditd\n163543"
+  },
+  {
+   "index": 7,
+   "label": "npm:webpack",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB5DRMX2RP1S49TFFWJ6S",
+   "timings": {
+    "create_s": 0.12233877799999993,
+    "first_exec_s": 0.9242842849999999,
+    "arm_s": 0.3373058569999998,
+    "workload_s": 2.812485702,
+    "receipt_s": 0.295231008,
+    "total_s": 4.723316995
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm webpack",
+     "::log  added 63 packages in 2s ",
+     "::files 3387",
+     "::done rc=0"
+    ],
+    "out": "::step install npm webpack\n::log  added 63 packages in 2s \n::files 3387\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2610796 kB\nMemAvailable:    2719592 kB\n15584 python3\n 2260 auditd\n174314"
+  },
+  {
+   "index": 24,
+   "label": "npm:playwright",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB83G4GMF3PAJZCHHBTX7",
+   "timings": {
+    "create_s": 0.05879749000000001,
+    "first_exec_s": 0.7269982360000001,
+    "arm_s": 0.26637988300000015,
+    "workload_s": 1.582381972,
+    "receipt_s": 0.10639543100000015,
+    "total_s": 2.808564134
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm playwright",
+     "::log  added 2 packages in 871ms ",
+     "::files 180",
+     "::done rc=0"
+    ],
+    "out": "::step install npm playwright\n::log  added 2 packages in 871ms \n::files 180\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2714700 kB\nMemAvailable:    2748932 kB\n15544 python3\n 2216 auditd\n165119"
+  },
+  {
+   "index": 32,
+   "label": "npm:node-gyp",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB8V3A70QZ15C2CPS4RM3",
+   "timings": {
+    "create_s": 0.05179670500000011,
+    "first_exec_s": 0.7098816539999997,
+    "arm_s": 0.26368286999999935,
+    "workload_s": 1.0378157230000005,
+    "receipt_s": 0.101640744,
+    "total_s": 2.229745558
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm node-gyp",
+     "::log  added 20 packages in 408ms ",
+     "::files 854",
+     "::done rc=0"
+    ],
+    "out": "::step install npm node-gyp\n::log  added 20 packages in 408ms \n::files 854\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2723904 kB\nMemAvailable:    2733296 kB\n15580 python3\n 2204 auditd\n174554"
+  },
+  {
+   "index": 11,
+   "label": "npm:vitest",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB62JJ3AM05DRH0ZNZ839",
+   "timings": {
+    "create_s": 0.07199320000000009,
+    "first_exec_s": 0.833814327,
+    "arm_s": 0.2826648920000001,
+    "workload_s": 3.634364555,
+    "receipt_s": 0.15917612700000028,
+    "total_s": 5.0889698800000005
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm vitest",
+     "::log  added 35 packages in 3s ",
+     "::files 600",
+     "::done rc=0"
+    ],
+    "out": "::step install npm vitest\n::log  added 35 packages in 3s \n::files 600\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2580128 kB\nMemAvailable:    2711712 kB\n15576 python3\n 2244 auditd\n174095"
+  },
+  {
+   "index": 35,
+   "label": "npm:husky",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB941SRFGXPQFEMET1952",
+   "timings": {
+    "create_s": 0.05405122200000001,
+    "first_exec_s": 0.7099688219999996,
+    "arm_s": 0.2767213420000001,
+    "workload_s": 0.7784779140000007,
+    "receipt_s": 0.11006298499999989,
+    "total_s": 2.027346732
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm husky",
+     "::log  added 1 package in 162ms ",
+     "::files 12",
+     "::done rc=0"
+    ],
+    "out": "::step install npm husky\n::log  added 1 package in 162ms \n::files 12\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2757968 kB\nMemAvailable:    2752724 kB\n15520 python3\n 2192 auditd\n163354"
+  },
+  {
+   "index": 13,
+   "label": "npm:chalk",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB6FBN8ZN3W19YMN827RG",
+   "timings": {
+    "create_s": 0.30583984900000005,
+    "first_exec_s": 1.2729822910000002,
+    "arm_s": 0.49059018599999993,
+    "workload_s": 1.5139128429999995,
+    "receipt_s": 0.6289030479999997,
+    "total_s": 4.841724299999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm chalk",
+     "::log  added 1 package in 230ms ",
+     "::files 17",
+     "::done rc=0"
+    ],
+    "out": "::step install npm chalk\n::log  added 1 package in 230ms \n::files 17\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2690028 kB\nMemAvailable:    2735024 kB\n15532 python3\n 2240 auditd\n163993"
+  },
+  {
+   "index": 8,
+   "label": "npm:eslint",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB5T3KQD3PDE0HXXEVJ8W",
+   "timings": {
+    "create_s": 0.3259960580000001,
+    "first_exec_s": 1.1834151240000002,
+    "arm_s": 0.5196383750000004,
+    "workload_s": 2.3074868310000003,
+    "receipt_s": 0.7254858480000008,
+    "total_s": 5.787047377
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm eslint",
+     "::log  added 77 packages in 1s ",
+     "::files 1185",
+     "::done rc=0"
+    ],
+    "out": "::step install npm eslint\n::log  added 77 packages in 1s \n::files 1185\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2710744 kB\nMemAvailable:    2732264 kB\n15564 python3\n 2204 auditd\n174095"
+  },
+  {
+   "index": 28,
+   "label": "npm:bcrypt",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB8FG5WA2Z0EM3WAPRYYB",
+   "timings": {
+    "create_s": 0.047278937999999826,
+    "first_exec_s": 1.0124356509999997,
+    "arm_s": 0.2699306330000004,
+    "workload_s": 1.4961137610000002,
+    "receipt_s": 0.09957447599999991,
+    "total_s": 2.9985675469999995
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm bcrypt",
+     "::log  added 3 packages in 508ms ",
+     "::files 70",
+     "::done rc=0"
+    ],
+    "out": "::step install npm bcrypt\n::log  added 3 packages in 508ms \n::files 70\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2746272 kB\nMemAvailable:    2743196 kB\n15528 python3\n 2204 auditd\n205141"
+  },
+  {
+   "index": 27,
+   "label": "npm:better-sqlite3",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB8CYBBY7MYA1T3139AYS",
+   "timings": {
+    "create_s": 0.056775467000000024,
+    "first_exec_s": 0.959270564,
+    "arm_s": 0.3739215469999999,
+    "workload_s": 1.881031079,
+    "receipt_s": 0.10139460399999933,
+    "total_s": 3.4438728710000004
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 1,
+    "steps": [
+     "::step install npm better-sqlite3",
+     "::log in/node-gyp.js\" \"rebuild\" npm ERR! gyp ERR! cwd /work/node_modules/better-sqlite3 npm ERR! gyp ERR! node -v v18.19.1 npm ERR! gyp ERR! node-gyp -v v9.3.0 npm ERR! gyp ERR! not ok  npm ERR! A complete log of this run can be found in: npm ERR!     /root/.npm/_logs/2026-10-16T03_33_32_973Z-debug-0.log ",
+     "::files 3",
+     "::done rc=1"
+    ],
+    "out": "::step install npm better-sqlite3\n::log in/node-gyp.js\" \"rebuild\" npm ERR! gyp ERR! cwd /work/node_modules/better-sqlite3 npm ERR! gyp ERR! node -v v18.19.1 npm ERR! gyp ERR! node-gyp -v v9.3.0 npm ERR! gyp ERR! not ok  npm ERR! A complete log of this run can be found in: npm ERR!     /root/.npm/_logs/2026-10-16T03_33_32_973Z-debug-0.log \n::files 3\n::done rc=1\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2632312 kB\nMemAvailable:    2692116 kB\n15580 python3\n 2248 auditd\n208503"
+  },
+  {
+   "index": 3,
+   "label": "npm:axios",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB51CQBS891H0KGB0MAWG",
+   "timings": {
+    "create_s": 0.15171483600000002,
+    "first_exec_s": 3.122596639,
+    "arm_s": 0.48045630699999986,
+    "workload_s": 1.8679364959999996,
+    "receipt_s": 0.6351420970000001,
+    "total_s": 6.895400265
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm axios",
+     "::log  added 27 packages in 695ms ",
+     "::files 411",
+     "::done rc=0"
+    ],
+    "out": "::step install npm axios\n::log  added 27 packages in 695ms \n::files 411\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2742260 kB\nMemAvailable:    2744692 kB\n15536 python3\n 2240 auditd\n173856"
+  },
+  {
+   "index": 17,
+   "label": "npm:moment",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB6TV6BVFFKW07S267RQ9",
+   "timings": {
+    "create_s": 0.27345180999999985,
+    "first_exec_s": 1.3464443330000002,
+    "arm_s": 0.5209686299999996,
+    "workload_s": 1.6947613700000002,
+    "receipt_s": 0.7149795120000002,
+    "total_s": 5.264633656999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm moment",
+     "::log  added 1 package in 346ms ",
+     "::files 550",
+     "::done rc=0"
+    ],
+    "out": "::step install npm moment\n::log  added 1 package in 346ms \n::files 550\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2742668 kB\nMemAvailable:    2744224 kB\n15544 python3\n 2240 auditd\n163543"
+  },
+  {
+   "index": 26,
+   "label": "npm:sqlite3",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB89TNY9NA639MHB2ED41",
+   "timings": {
+    "create_s": 0.04857753700000034,
+    "first_exec_s": 0.9610471519999999,
+    "arm_s": 0.27746379500000007,
+    "workload_s": 2.471684979,
+    "receipt_s": 0.12821012300000056,
+    "total_s": 3.960710102
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm sqlite3",
+     "::log  added 45 packages in 1s ",
+     "::files 696",
+     "::done rc=0"
+    ],
+    "out": "::step install npm sqlite3\n::log  added 45 packages in 1s \n::files 696\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2648804 kB\nMemAvailable:    2719868 kB\n15528 python3\n 2220 auditd\n216648"
+  },
+  {
+   "index": 20,
+   "label": "npm:esbuild",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB7Z2DSVZBTAP19E2BTSH",
+   "timings": {
+    "create_s": 0.2867449179999999,
+    "first_exec_s": 0.9960206540000001,
+    "arm_s": 0.4954291519999998,
+    "workload_s": 1.3956537750000004,
+    "receipt_s": 0.6772122640000005,
+    "total_s": 4.532619352999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm esbuild",
+     "::log  added 2 packages in 539ms ",
+     "::files 15",
+     "::done rc=0"
+    ],
+    "out": "::step install npm esbuild\n::log  added 2 packages in 539ms \n::files 15\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2666724 kB\nMemAvailable:    2732200 kB\n15584 python3\n 2208 auditd\n195380"
+  },
+  {
+   "index": 37,
+   "label": "npm:electron",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB9SH0DT11P5B88RTCSJC",
+   "timings": {
+    "create_s": 0.08804887100000003,
+    "first_exec_s": 0.7501172359999999,
+    "arm_s": 0.29165652100000017,
+    "workload_s": 1.193744288,
+    "receipt_s": 0.1537492949999999,
+    "total_s": 2.6166990300000004
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm electron",
+     "::log  added 12 packages in 546ms ",
+     "::files 274",
+     "::done rc=0"
+    ],
+    "out": "::step install npm electron\n::log  added 12 packages in 546ms \n::files 274\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2719804 kB\nMemAvailable:    2737728 kB\n15536 python3\n 2200 auditd\n172295"
+  },
+  {
+   "index": 19,
+   "label": "npm:rxjs",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB7F07RWMMKWAJRGCK364",
+   "timings": {
+    "create_s": 0.29268219399999995,
+    "first_exec_s": 1.200888832,
+    "arm_s": 0.4924919509999999,
+    "workload_s": 1.7699858539999997,
+    "receipt_s": 0.6719370549999999,
+    "total_s": 5.098851492
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm rxjs",
+     "::log  added 2 packages in 570ms ",
+     "::files 2296",
+     "::done rc=0"
+    ],
+    "out": "::step install npm rxjs\n::log  added 2 packages in 570ms \n::files 2296\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2729772 kB\nMemAvailable:    2739820 kB\n15532 python3\n 2244 auditd\n163890"
+  },
+  {
+   "index": 21,
+   "label": "npm:@swc/core",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB7Z3CY7DGPYMN180D7WM",
+   "timings": {
+    "create_s": 0.23314462400000013,
+    "first_exec_s": 1.1339619589999999,
+    "arm_s": 0.4457355060000001,
+    "workload_s": 2.2681235660000003,
+    "receipt_s": 0.5340422460000003,
+    "total_s": 5.151228713
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm @swc/core",
+     "::log  added 5 packages in 1s ",
+     "::files 38",
+     "::done rc=0"
+    ],
+    "out": "::step install npm @swc/core\n::log  added 5 packages in 1s \n::files 38\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2640280 kB\nMemAvailable:    2720720 kB\n15580 python3\n 2232 auditd\n195835"
+  },
+  {
+   "index": 22,
+   "label": "npm:sharp",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB804JJYM2MBFK9J16504",
+   "timings": {
+    "create_s": 0.11525461000000004,
+    "first_exec_s": 1.3331039020000002,
+    "arm_s": 0.4955125269999998,
+    "workload_s": 2.3147840719999997,
+    "receipt_s": 0.6370642269999998,
+    "total_s": 5.533357698
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm sharp",
+     "::log  added 6 packages in 1s ",
+     "::files 131",
+     "::done rc=0"
+    ],
+    "out": "::step install npm sharp\n::log  added 6 packages in 1s \n::files 131\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2610280 kB\nMemAvailable:    2713680 kB\n15536 python3\n 2240 auditd\n173856"
+  },
+  {
+   "index": 33,
+   "label": "npm:fsevents",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB8WD3ABJXMGKB9TW0SEY",
+   "timings": {
+    "create_s": 0.10171349899999971,
+    "first_exec_s": 1.2478551519999996,
+    "arm_s": 0.47841449099999966,
+    "workload_s": 1.3718266020000005,
+    "receipt_s": 0.6352495189999994,
+    "total_s": 4.467757085000001
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 1,
+    "steps": [
+     "::step install npm fsevents",
+     "::log rrent: {\"os\":\"linux\",\"arch\":\"x64\"}) npm ERR! notsup Valid OS:    darwin npm ERR! notsup Valid Arch:  undefined npm ERR! notsup Actual OS:   linux npm ERR! notsup Actual Arch: x64  npm ERR! A complete log of this run can be found in: npm ERR!     /root/.npm/_logs/2026-10-16T03_33_34_224Z-debug-0.log ",
+     "::files 3",
+     "::done rc=1"
+    ],
+    "out": "::step install npm fsevents\n::log rrent: {\"os\":\"linux\",\"arch\":\"x64\"}) npm ERR! notsup Valid OS:    darwin npm ERR! notsup Valid Arch:  undefined npm ERR! notsup Actual OS:   linux npm ERR! notsup Actual Arch: x64  npm ERR! A complete log of this run can be found in: npm ERR!     /root/.npm/_logs/2026-10-16T03_33_34_224Z-debug-0.log \n::files 3\n::done rc=1\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2754508 kB\nMemAvailable:    2749124 kB\n15576 python3\n 2196 auditd\n163945"
+  },
+  {
+   "index": 40,
+   "label": "npm:tailwindcss",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBA2MT8X7XRQYBJD04J85",
+   "timings": {
+    "create_s": 0.09157270899999936,
+    "first_exec_s": 1.0249340930000006,
+    "arm_s": 0.3499612920000006,
+    "workload_s": 1.475568236,
+    "receipt_s": 0.27544029300000084,
+    "total_s": 3.482913084999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm tailwindcss",
+     "::log  added 1 package in 346ms ",
+     "::files 39",
+     "::done rc=0"
+    ],
+    "out": "::step install npm tailwindcss\n::log  added 1 package in 346ms \n::files 39\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2738144 kB\nMemAvailable:    2738544 kB\n15540 python3\n 2204 auditd\n164547"
+  },
+  {
+   "index": 18,
+   "label": "npm:dayjs",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB7K18XTJ8G7XFFMWJJ30",
+   "timings": {
+    "create_s": 0.5256756720000002,
+    "first_exec_s": 1.180395893,
+    "arm_s": 0.7159040910000001,
+    "workload_s": 1.2819213950000004,
+    "receipt_s": 1.2640539869999996,
+    "total_s": 6.235132901
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm dayjs",
+     "::log  added 1 package in 185ms ",
+     "::files 456",
+     "::done rc=0"
+    ],
+    "out": "::step install npm dayjs\n::log  added 1 package in 185ms \n::files 456\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2686568 kB\nMemAvailable:    2734276 kB\n15568 python3\n 2188 auditd\n163353"
+  },
+  {
+   "index": 45,
+   "label": "npm:yarn",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBAW09S89G9FJEFF38YS2",
+   "timings": {
+    "create_s": 0.056230773000000234,
+    "first_exec_s": 0.8555034389999996,
+    "arm_s": 0.2661844059999998,
+    "workload_s": 1.3699341690000004,
+    "receipt_s": 0.09956578599999943,
+    "total_s": 2.715346984
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm yarn",
+     "::log  added 1 package in 377ms ",
+     "::files 16",
+     "::done rc=0"
+    ],
+    "out": "::step install npm yarn\n::log  added 1 package in 377ms \n::files 16\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2727712 kB\nMemAvailable:    2728884 kB\n15536 python3\n 2240 auditd\n179263"
+  },
+  {
+   "index": 34,
+   "label": "npm:core-js",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB9766Z84ZY121QBRBQ92",
+   "timings": {
+    "create_s": 0.17508941499999953,
+    "first_exec_s": 1.0681987399999997,
+    "arm_s": 0.4435705360000002,
+    "workload_s": 1.8222936179999998,
+    "receipt_s": 0.5531887879999999,
+    "total_s": 4.6017801270000005
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm core-js",
+     "::log  added 1 package in 724ms ",
+     "::files 3733",
+     "::done rc=0"
+    ],
+    "out": "::step install npm core-js\n::log  added 1 package in 724ms \n::files 3733\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2725460 kB\nMemAvailable:    2740736 kB\n15580 python3\n 2220 auditd\n178364"
+  },
+  {
+   "index": 56,
+   "label": "npm:ws",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBBSYYME7YH7R8Y7RK8Q0",
+   "timings": {
+    "create_s": 0.04667935199999995,
+    "first_exec_s": 0.7309301039999996,
+    "arm_s": 0.265115144000001,
+    "workload_s": 0.8370278290000002,
+    "receipt_s": 0.08096195600000122,
+    "total_s": 2.0274420169999994
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm ws",
+     "::log  added 1 package in 217ms ",
+     "::files 24",
+     "::done rc=0"
+    ],
+    "out": "::step install npm ws\n::log  added 1 package in 217ms \n::files 24\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2763980 kB\nMemAvailable:    2758824 kB\n15572 python3\n 2192 auditd\n162638"
+  },
+  {
+   "index": 57,
+   "label": "npm:graphql",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBBTQN0NXS4E7AA3B09XS",
+   "timings": {
+    "create_s": 0.05948400500000006,
+    "first_exec_s": 0.735395299,
+    "arm_s": 0.26016873799999995,
+    "workload_s": 0.8749402799999999,
+    "receipt_s": 0.11649005200000007,
+    "total_s": 2.108373212
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm graphql",
+     "::log  added 1 package in 267ms ",
+     "::files 1749",
+     "::done rc=0"
+    ],
+    "out": "::step install npm graphql\n::log  added 1 package in 267ms \n::files 1749\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2737996 kB\nMemAvailable:    2747052 kB\n15544 python3\n 2244 auditd\n163755"
+  },
+  {
+   "index": 6,
+   "label": "npm:vite",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB5BD07SX8SYS3KFJBTEC",
+   "timings": {
+    "create_s": 0.12402218599999992,
+    "first_exec_s": 3.181192503,
+    "arm_s": 0.45196731700000026,
+    "workload_s": 4.154278008,
+    "receipt_s": 0.5143166820000005,
+    "total_s": 8.940435438000002
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm vite",
+     "::log  added 15 packages in 3s ",
+     "::files 266",
+     "::done rc=0"
+    ],
+    "out": "::step install npm vite\n::log  added 15 packages in 3s \n::files 266\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2613856 kB\nMemAvailable:    2726576 kB\n15580 python3\n 2240 auditd\n173627"
+  },
+  {
+   "index": 5,
+   "label": "npm:next",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB5A9W48MDGNBKPBH9M5N",
+   "timings": {
+    "create_s": 0.0939850619999999,
+    "first_exec_s": 1.012296635,
+    "arm_s": 0.3094854169999999,
+    "workload_s": 7.129125117,
+    "receipt_s": 0.3833047040000004,
+    "total_s": 9.088831808
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm next",
+     "::log  added 19 packages in 6s ",
+     "::files 10233",
+     "::done rc=0"
+    ],
+    "out": "::step install npm next\n::log  added 19 packages in 6s \n::files 10233\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         1924712 kB\nMemAvailable:    2651476 kB\n15576 python3\n 2240 auditd\n173638"
+  },
+  {
+   "index": 55,
+   "label": "npm:socket.io",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBBS1N6K4H9H5CQK0Z2X9",
+   "timings": {
+    "create_s": 0.046932215,
+    "first_exec_s": 0.737472898,
+    "arm_s": 0.2628067869999997,
+    "workload_s": 1.2520517909999995,
+    "receipt_s": 0.09226742100000074,
+    "total_s": 2.455910714
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm socket.io",
+     "::log  added 21 packages in 654ms ",
+     "::files 376",
+     "::done rc=0"
+    ],
+    "out": "::step install npm socket.io\n::log  added 21 packages in 654ms \n::files 376\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2734040 kB\nMemAvailable:    2740888 kB\n15532 python3\n 2240 auditd\n174783"
+  },
+  {
+   "index": 4,
+   "label": "npm:typescript",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB5AWAV0DVX475BZVHCWJ",
+   "timings": {
+    "create_s": 0.36094348100000007,
+    "first_exec_s": 3.2320635410000005,
+    "arm_s": 0.6937589810000002,
+    "workload_s": 2.372908816,
+    "receipt_s": 1.2115402940000006,
+    "total_s": 9.084560452
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm typescript",
+     "::log  added 2 packages in 892ms ",
+     "::files 535",
+     "::done rc=0"
+    ],
+    "out": "::step install npm typescript\n::log  added 2 packages in 892ms \n::files 535\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2627884 kB\nMemAvailable:    2724712 kB\n15572 python3\n 2240 auditd\n175001"
+  },
+  {
+   "index": 47,
+   "label": "npm:aws-sdk",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBB2HHND7JPF64AJRRRP5",
+   "timings": {
+    "create_s": 0.0689994089999999,
+    "first_exec_s": 0.7732054450000003,
+    "arm_s": 0.29111576200000044,
+    "workload_s": 1.9526406430000005,
+    "receipt_s": 0.23927402500000028,
+    "total_s": 3.4626958320000005
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm aws-sdk",
+     "::log  added 45 packages in 1s ",
+     "::files 2926",
+     "::done rc=0"
+    ],
+    "out": "::step install npm aws-sdk\n::log  added 45 packages in 1s \n::files 2926\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2531456 kB\nMemAvailable:    2710508 kB\n15580 python3\n 2208 auditd\n188761"
+  },
+  {
+   "index": 41,
+   "label": "npm:@biomejs/biome",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBA8DEGV1S7M0V3PENY7T",
+   "timings": {
+    "create_s": 0.12425948400000009,
+    "first_exec_s": 1.007869131,
+    "arm_s": 0.328936358,
+    "workload_s": 2.562530746,
+    "receipt_s": 0.2904429040000007,
+    "total_s": 4.550016029
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm @biomejs/biome",
+     "::log  added 3 packages in 1s ",
+     "::files 29",
+     "::done rc=0"
+    ],
+    "out": "::step install npm @biomejs/biome\n::log  added 3 packages in 1s \n::files 29\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2482284 kB\nMemAvailable:    2709512 kB\n15532 python3\n 2208 auditd\n170533"
+  },
+  {
+   "index": 36,
+   "label": "npm:@sentry/cli",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB9BPEWR1ZZ3DKFJSYJKA",
+   "timings": {
+    "create_s": 0.288909058,
+    "first_exec_s": 1.175860446,
+    "arm_s": 0.5017247339999997,
+    "workload_s": 2.2612123669999997,
+    "receipt_s": 0.6700660460000005,
+    "total_s": 5.573907411
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm @sentry/cli",
+     "::log  added 7 packages in 998ms ",
+     "::files 241",
+     "::done rc=0"
+    ],
+    "out": "::step install npm @sentry/cli\n::log  added 7 packages in 998ms \n::files 241\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2707772 kB\nMemAvailable:    2739552 kB\n15576 python3\n 2196 auditd\n188096"
+  },
+  {
+   "index": 39,
+   "label": "npm:sass",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBA61NCBEHV2APHBF5N91",
+   "timings": {
+    "create_s": 0.25819176900000007,
+    "first_exec_s": 1.167008089,
+    "arm_s": 0.4418319140000002,
+    "workload_s": 1.8843606949999998,
+    "receipt_s": 0.5312900100000002,
+    "total_s": 4.816129848
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm sass",
+     "::log  added 13 packages in 711ms ",
+     "::files 178",
+     "::done rc=0"
+    ],
+    "out": "::step install npm sass\n::log  added 13 packages in 711ms \n::files 178\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2738356 kB\nMemAvailable:    2746188 kB\n15544 python3\n 2244 auditd\n188800"
+  },
+  {
+   "index": 52,
+   "label": "npm:mysql2",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBBEC6WX0Z6G5YC47TFKY",
+   "timings": {
+    "create_s": 0.06764434900000005,
+    "first_exec_s": 1.1666544190000003,
+    "arm_s": 0.31672283300000004,
+    "workload_s": 1.6058689289999997,
+    "receipt_s": 0.19909748500000113,
+    "total_s": 3.5434946699999994
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm mysql2",
+     "::log  added 12 packages in 739ms ",
+     "::files 366",
+     "::done rc=0"
+    ],
+    "out": "::step install npm mysql2\n::log  added 12 packages in 739ms \n::files 366\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2742348 kB\nMemAvailable:    2747200 kB\n15576 python3\n 2220 auditd\n171848"
+  },
+  {
+   "index": 48,
+   "label": "npm:@aws-sdk/client-s3",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBB4T2R7YE1XAGC6AMJ35",
+   "timings": {
+    "create_s": 0.06062461099999972,
+    "first_exec_s": 0.9619831579999998,
+    "arm_s": 0.38944985799999987,
+    "workload_s": 2.3245555829999995,
+    "receipt_s": 0.20304316200000017,
+    "total_s": 4.036472059
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm @aws-sdk/client-s3",
+     "::log  added 26 packages in 1s ",
+     "::files 3399",
+     "::done rc=0"
+    ],
+    "out": "::step install npm @aws-sdk/client-s3\n::log  added 26 packages in 1s \n::files 3399\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2630416 kB\nMemAvailable:    2713588 kB\n15572 python3\n 2208 auditd\n176833"
+  },
+  {
+   "index": 46,
+   "label": "npm:serverless",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBB1GKZ931JEDT1PNCEA3",
+   "timings": {
+    "create_s": 0.06530519300000037,
+    "first_exec_s": 1.1759776770000006,
+    "arm_s": 0.3158674700000006,
+    "workload_s": 2.202117671,
+    "receipt_s": 0.19912565199999932,
+    "total_s": 4.14504767
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm serverless",
+     "::log  added 2 packages in 1s ",
+     "::files 189",
+     "::done rc=0"
+    ],
+    "out": "::step install npm serverless\n::log  added 2 packages in 1s \n::files 189\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2733332 kB\nMemAvailable:    2746000 kB\n15580 python3\n 2244 auditd\n203837"
+  },
+  {
+   "index": 42,
+   "label": "npm:turbo",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBAD2X9WA1NR9CQ4C5HC3",
+   "timings": {
+    "create_s": 0.14349092399999996,
+    "first_exec_s": 1.2072765460000001,
+    "arm_s": 0.4351143369999999,
+    "workload_s": 1.9775160910000005,
+    "receipt_s": 0.5133894720000001,
+    "total_s": 4.789648811
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm turbo",
+     "::log  added 2 packages in 863ms ",
+     "::files 128",
+     "::done rc=0"
+    ],
+    "out": "::step install npm turbo\n::log  added 2 packages in 863ms \n::files 128\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2607900 kB\nMemAvailable:    2716112 kB\n15580 python3\n 2188 auditd\n167097"
+  },
+  {
+   "index": 50,
+   "label": "npm:mongodb",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBBBGR2RK40TWEBDJFQDE",
+   "timings": {
+    "create_s": 0.287773678,
+    "first_exec_s": 1.14556293,
+    "arm_s": 0.3138656919999998,
+    "workload_s": 1.8934897839999998,
+    "receipt_s": 0.21772735699999934,
+    "total_s": 4.060193303999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm mongodb",
+     "::log  added 12 packages in 896ms ",
+     "::files 563",
+     "::done rc=0"
+    ],
+    "out": "::step install npm mongodb\n::log  added 12 packages in 896ms \n::files 563\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2678792 kB\nMemAvailable:    2738712 kB\n15536 python3\n 2208 auditd\n172048"
+  },
+  {
+   "index": 44,
+   "label": "npm:pnpm",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBAR7SRV958EPZCYRFYW9",
+   "timings": {
+    "create_s": 0.296369992,
+    "first_exec_s": 1.070014266,
+    "arm_s": 0.3208279850000002,
+    "workload_s": 2.84495178,
+    "receipt_s": 0.25800873699999993,
+    "total_s": 5.007215973
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm pnpm",
+     "::log  added 3 packages in 2s ",
+     "::files 462",
+     "::done rc=0"
+    ],
+    "out": "::step install npm pnpm\n::log  added 3 packages in 2s \n::files 462\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2487144 kB\nMemAvailable:    2699496 kB\n15580 python3\n 2240 auditd\n207879"
+  },
+  {
+   "index": 54,
+   "label": "npm:ioredis",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBBZ39NQ2024Z914C5X71",
+   "timings": {
+    "create_s": 0.3033338019999998,
+    "first_exec_s": 0.9670122969999999,
+    "arm_s": 0.4964892240000003,
+    "workload_s": 1.1453637100000003,
+    "receipt_s": 0.6732667980000002,
+    "total_s": 4.259779769
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm ioredis",
+     "::log  added 8 packages in 275ms ",
+     "::files 154",
+     "::done rc=0"
+    ],
+    "out": "::step install npm ioredis\n::log  added 8 packages in 275ms \n::files 154\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2674032 kB\nMemAvailable:    2722236 kB\n15540 python3\n 2196 auditd\n169039"
+  },
+  {
+   "index": 23,
+   "label": "npm:puppeteer",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB81VD3T7T62ZSVYCHH2F",
+   "timings": {
+    "create_s": 0.10110968700000011,
+    "first_exec_s": 1.2922904809999993,
+    "arm_s": 0.47905744600000055,
+    "workload_s": 4.847373587,
+    "receipt_s": 0.6305453529999987,
+    "total_s": 7.982715273999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm puppeteer",
+     "::log  added 27 packages in 4s ",
+     "::files 2493",
+     "::done rc=0"
+    ],
+    "out": "::step install npm puppeteer\n::log  added 27 packages in 4s \n::files 2493\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2603352 kB\nMemAvailable:    2697704 kB\n15612 python3\n 2240 auditd\n250239"
+  },
+  {
+   "index": 59,
+   "label": "npm:@nestjs/core",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBC20NKS04RNQK2H3CTS0",
+   "timings": {
+    "create_s": 0.056773577000000075,
+    "first_exec_s": 0.9577035520000001,
+    "arm_s": 0.3714564439999999,
+    "workload_s": 2.751630636,
+    "receipt_s": 0.1751991669999997,
+    "total_s": 4.382089722000001
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm @nestjs/core",
+     "::log  added 22 packages in 2s ",
+     "::files 3339",
+     "::done rc=0"
+    ],
+    "out": "::step install npm @nestjs/core\n::log  added 22 packages in 2s \n::files 3339\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2712956 kB\nMemAvailable:    2737976 kB\n15572 python3\n 2240 auditd\n175473"
+  },
+  {
+   "index": 43,
+   "label": "npm:nx",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBAQ3CAEECCZP2ZXAS4YS",
+   "timings": {
+    "create_s": 0.28093389600000007,
+    "first_exec_s": 0.9508502509999999,
+    "arm_s": 0.4880370159999998,
+    "workload_s": 3.0598702450000004,
+    "receipt_s": 0.7039744730000006,
+    "total_s": 6.146453793999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm nx",
+     "::log  added 100 packages in 2s ",
+     "::files 2854",
+     "::done rc=0"
+    ],
+    "out": "::step install npm nx\n::log  added 100 packages in 2s \n::files 2854\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2480712 kB\nMemAvailable:    2705468 kB\n15512 python3\n 2240 auditd\n212671"
+  },
+  {
+   "index": 51,
+   "label": "npm:pg",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBBJJAXH3T4GSVN8TMTJ1",
+   "timings": {
+    "create_s": 0.2247944119999996,
+    "first_exec_s": 1.2503666949999994,
+    "arm_s": 0.5260796280000015,
+    "workload_s": 1.7405931890000002,
+    "receipt_s": 0.7584875470000014,
+    "total_s": 5.257828506999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm pg",
+     "::log  added 14 packages in 472ms ",
+     "::files 143",
+     "::done rc=0"
+    ],
+    "out": "::step install npm pg\n::log  added 14 packages in 472ms \n::files 143\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2749924 kB\nMemAvailable:    2747040 kB\n15580 python3\n 2200 auditd\n172285"
+  },
+  {
+   "index": 60,
+   "label": "pip:requests",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBC6N5FA0K514MZTN9KX9",
+   "timings": {
+    "create_s": 0.05690519699999985,
+    "first_exec_s": 0.9634832940000004,
+    "arm_s": 0.2893311799999996,
+    "workload_s": 3.364782857,
+    "receipt_s": 0.27334254199999997,
+    "total_s": 5.05871073
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip requests",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1217",
+     "::done rc=0"
+    ],
+    "out": "::step install pip requests\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1217\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2757368 kB\nMemAvailable:    2739720 kB\n15572 python3\n 2196 auditd\n3111161"
+  },
+  {
+   "index": 31,
+   "label": "npm:@prisma/client",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB8T24D0NYG0CVF82Z8CB",
+   "timings": {
+    "create_s": 0.12686653199999998,
+    "first_exec_s": 2.614365345,
+    "arm_s": 0.4754712750000003,
+    "workload_s": 3.920884710000001,
+    "receipt_s": 0.6282412810000011,
+    "total_s": 8.39894716
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm @prisma/client",
+     "::log  added 2 packages in 3s ",
+     "::files 98",
+     "::done rc=0"
+    ],
+    "out": "::step install npm @prisma/client\n::log  added 2 packages in 3s \n::files 98\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2499940 kB\nMemAvailable:    2715492 kB\n15572 python3\n 2264 auditd\n165920"
+  },
+  {
+   "index": 53,
+   "label": "npm:redis",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBBY7QFXD727PF67X0HQ0",
+   "timings": {
+    "create_s": 0.3328105940000001,
+    "first_exec_s": 1.2385735519999999,
+    "arm_s": 0.5550567819999999,
+    "workload_s": 2.0995605019999997,
+    "receipt_s": 0.808700591,
+    "total_s": 5.847307265
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm redis",
+     "::log  added 6 packages in 813ms ",
+     "::files 2654",
+     "::done rc=0"
+    ],
+    "out": "::step install npm redis\n::log  added 6 packages in 813ms \n::files 2654\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2723640 kB\nMemAvailable:    2738408 kB\n15576 python3\n 2240 auditd\n167097"
+  },
+  {
+   "index": 10,
+   "label": "npm:jest",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB5X4M31KQRT90V4J3X22",
+   "timings": {
+    "create_s": 0.35120998800000014,
+    "first_exec_s": 1.682845279,
+    "arm_s": 0.7244207509999998,
+    "workload_s": 7.651152559000001,
+    "receipt_s": 1.2643300029999995,
+    "total_s": 12.936296222
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm jest",
+     "::log  added 280 packages in 6s ",
+     "::files 5635",
+     "::done rc=0"
+    ],
+    "out": "::step install npm jest\n::log  added 280 packages in 6s \n::files 5635\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2529452 kB\nMemAvailable:    2709752 kB\n15524 python3\n 2204 auditd\n202863"
+  },
+  {
+   "index": 29,
+   "label": "npm:canvas",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB96RFX11F68F15C59S9X",
+   "timings": {
+    "create_s": 0.757631175,
+    "first_exec_s": 1.678981946,
+    "arm_s": 0.9393219559999997,
+    "workload_s": 2.9246793110000002,
+    "receipt_s": 1.8684085390000007,
+    "total_s": 10.037125684000001
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm canvas",
+     "::log  added 37 packages in 1s ",
+     "::files 417",
+     "::done rc=0"
+    ],
+    "out": "::step install npm canvas\n::log  added 37 packages in 1s \n::files 417\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2647248 kB\nMemAvailable:    2731804 kB\n15576 python3\n 2240 auditd\n217025"
+  },
+  {
+   "index": 61,
+   "label": "pip:numpy",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBCFRM38ZJD1G0XD2SGS3",
+   "timings": {
+    "create_s": 0.20432347000000028,
+    "first_exec_s": 1.0299653899999992,
+    "arm_s": 0.4970854450000006,
+    "workload_s": 3.719165534,
+    "receipt_s": 0.8311821560000006,
+    "total_s": 6.965975562000001
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip numpy",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 2347",
+     "::done rc=0"
+    ],
+    "out": "::step install pip numpy\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 2347\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2683448 kB\nMemAvailable:    2737344 kB\n15572 python3\n 2216 auditd\n5043084"
+  },
+  {
+   "index": 72,
+   "label": "pip:httpx",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBDHP8XGPF4D8RHNTWYWM",
+   "timings": {
+    "create_s": 0.09646399999999922,
+    "first_exec_s": 0.9172502599999994,
+    "arm_s": 0.3314748130000016,
+    "workload_s": 4.1764458090000005,
+    "receipt_s": 0.418327927,
+    "total_s": 6.174091725
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip httpx",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1315",
+     "::done rc=0"
+    ],
+    "out": "::step install pip httpx\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1315\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2751636 kB\nMemAvailable:    2735924 kB\n15572 python3\n 2200 auditd\n3336348"
+  },
+  {
+   "index": 75,
+   "label": "pip:botocore",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBDKNBBGAA8X820Q99QVA",
+   "timings": {
+    "create_s": 0.08432884799999996,
+    "first_exec_s": 1.142199889,
+    "arm_s": 0.31719821400000026,
+    "workload_s": 3.902281435,
+    "receipt_s": 0.4957829079999998,
+    "total_s": 6.126233763
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip botocore",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 3268",
+     "::done rc=0"
+    ],
+    "out": "::step install pip botocore\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 3268\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2703688 kB\nMemAvailable:    2722460 kB\n15524 python3\n 2272 auditd\n5793267"
+  },
+  {
+   "index": 58,
+   "label": "npm:apollo-server",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBC24V46VBTENAHJBT0ED",
+   "timings": {
+    "create_s": 0.19162586599999987,
+    "first_exec_s": 1.086341773,
+    "arm_s": 0.5026149220000011,
+    "workload_s": 4.60300683,
+    "receipt_s": 0.6956825799999997,
+    "total_s": 7.7772208030000005
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm apollo-server",
+     "::log  added 168 packages in 3s ",
+     "::files 3286",
+     "::done rc=0"
+    ],
+    "out": "::step install npm apollo-server\n::log  added 168 packages in 3s \n::files 3286\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2592840 kB\nMemAvailable:    2706916 kB\n15576 python3\n 2244 auditd\n208535"
+  },
+  {
+   "index": 86,
+   "label": "pip:psycopg2-binary",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBEGFBDWPQX40J4H37RCJ",
+   "timings": {
+    "create_s": 0.07187470899999937,
+    "first_exec_s": 0.9711006380000011,
+    "arm_s": 0.31925308799999996,
+    "workload_s": 3.55437605,
+    "receipt_s": 0.27153313400000023,
+    "total_s": 5.290370577000001
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip psycopg2-binary",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1056",
+     "::done rc=0"
+    ],
+    "out": "::step install pip psycopg2-binary\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1056\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2754280 kB\nMemAvailable:    2743792 kB\n15532 python3\n 2236 auditd\n2693241"
+  },
+  {
+   "index": 69,
+   "label": "pip:black",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBDHJF6AE3F45E25FX784",
+   "timings": {
+    "create_s": 0.29120338599999984,
+    "first_exec_s": 0.9628571300000002,
+    "arm_s": 0.48840922499999984,
+    "workload_s": 3.2496345529999995,
+    "receipt_s": 0.7610189179999995,
+    "total_s": 6.422673187
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip black",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1356",
+     "::done rc=0"
+    ],
+    "out": "::step install pip black\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1356\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2753496 kB\nMemAvailable:    2744008 kB\n15572 python3\n 2276 auditd\n3391304"
+  },
+  {
+   "index": 83,
+   "label": "pip:pyarrow",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBE6R534TX3DK8CH0XDZD",
+   "timings": {
+    "create_s": 0.05362116199999978,
+    "first_exec_s": 0.8883245290000001,
+    "arm_s": 0.28977379399999936,
+    "workload_s": 4.641911583000001,
+    "receipt_s": 0.3435984560000005,
+    "total_s": 6.326096682000001
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip pyarrow",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1869",
+     "::done rc=0"
+    ],
+    "out": "::step install pip pyarrow\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1869\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2575988 kB\nMemAvailable:    2728916 kB\n15572 python3\n 2220 auditd\n3897395"
+  },
+  {
+   "index": 63,
+   "label": "pip:flask",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBCCE2M8JJJFQ7BQQAKKV",
+   "timings": {
+    "create_s": 0.12451758700000015,
+    "first_exec_s": 2.930129759,
+    "arm_s": 0.4344361619999999,
+    "workload_s": 3.933699224999999,
+    "receipt_s": 0.6844132389999995,
+    "total_s": 8.623689986
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip flask",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1329",
+     "::done rc=0"
+    ],
+    "out": "::step install pip flask\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1329\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2750328 kB\nMemAvailable:    2734960 kB\n15568 python3\n 2212 auditd\n3361147"
+  },
+  {
+   "index": 85,
+   "label": "pip:duckdb",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBENEPMJ98GBSBRXRWVDY",
+   "timings": {
+    "create_s": 0.3251078239999998,
+    "first_exec_s": 1.0177640749999988,
+    "arm_s": 0.5031475529999998,
+    "workload_s": 3.225755158000002,
+    "receipt_s": 0.7719530359999993,
+    "total_s": 6.533323295999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip duckdb",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1107",
+     "::done rc=0"
+    ],
+    "out": "::step install pip duckdb\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1107\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2703784 kB\nMemAvailable:    2742948 kB\n15532 python3\n 2224 auditd\n2846772"
+  },
+  {
+   "index": 82,
+   "label": "pip:opencv-python",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBE740YFBSHZFBX6JV34W",
+   "timings": {
+    "create_s": 0.06559691500000042,
+    "first_exec_s": 0.7779443009999998,
+    "arm_s": 0.32101508700000103,
+    "workload_s": 5.201192498000001,
+    "receipt_s": 0.3507681009999999,
+    "total_s": 6.920167316999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip opencv-python",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 2447",
+     "::done rc=0"
+    ],
+    "out": "::step install pip opencv-python\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 2447\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2477884 kB\nMemAvailable:    2726824 kB\n15516 python3\n 2244 auditd\n5232027"
+  },
+  {
+   "index": 74,
+   "label": "pip:boto3",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBDHT552ZB2XJRMPVGE34",
+   "timings": {
+    "create_s": 0.04839640599999928,
+    "first_exec_s": 0.952276329,
+    "arm_s": 0.30015036100000003,
+    "workload_s": 5.896628914999999,
+    "receipt_s": 0.40859472200000013,
+    "total_s": 7.674839672
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip boto3",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 3409",
+     "::done rc=0"
+    ],
+    "out": "::step install pip boto3\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 3409\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2707556 kB\nMemAvailable:    2729544 kB\n15572 python3\n 2192 auditd\n6052357"
+  },
+  {
+   "index": 65,
+   "label": "pip:django",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBCJT860NFQWQ2JMHK1PD",
+   "timings": {
+    "create_s": 0.11198292300000001,
+    "first_exec_s": 1.2121092949999999,
+    "arm_s": 0.48292406099999985,
+    "workload_s": 5.224982469,
+    "receipt_s": 0.784623989,
+    "total_s": 8.457802103
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip django",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 5693",
+     "::done rc=0"
+    ],
+    "out": "::step install pip django\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 5693\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2679388 kB\nMemAvailable:    2726804 kB\n15544 python3\n 2248 auditd\n1908262"
+  },
+  {
+   "index": 70,
+   "label": "pip:ruff",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBDFEA7YHZJYXJWDKF8V6",
+   "timings": {
+    "create_s": 0.09948288899999991,
+    "first_exec_s": 1.2399595569999997,
+    "arm_s": 0.47954828900000024,
+    "workload_s": 4.356362961,
+    "receipt_s": 0.7677093020000001,
+    "total_s": 7.578985364999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip ruff",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1024",
+     "::done rc=0"
+    ],
+    "out": "::step install pip ruff\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1024\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2726272 kB\nMemAvailable:    2728112 kB\n15572 python3\n 2208 auditd\n2671556"
+  },
+  {
+   "index": 76,
+   "label": "pip:pillow",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBDVDGJ5XP5XWF8P6AAHH",
+   "timings": {
+    "create_s": 0.16167228499999986,
+    "first_exec_s": 1.1022590809999997,
+    "arm_s": 0.45090137399999897,
+    "workload_s": 4.516568737,
+    "receipt_s": 0.6951014269999973,
+    "total_s": 7.467048123
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip pillow",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1249",
+     "::done rc=0"
+    ],
+    "out": "::step install pip pillow\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1249\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2742992 kB\nMemAvailable:    2742888 kB\n15572 python3\n 2220 auditd\n3114328"
+  },
+  {
+   "index": 71,
+   "label": "pip:mypy",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBDG61N8YP85EHA27EJ7Z",
+   "timings": {
+    "create_s": 0.04616188800000032,
+    "first_exec_s": 0.8478224260000005,
+    "arm_s": 0.26738700699999995,
+    "workload_s": 6.386550966,
+    "receipt_s": 0.42517135199999956,
+    "total_s": 8.045555809
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip mypy",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 2941",
+     "::done rc=0"
+    ],
+    "out": "::step install pip mypy\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 2941\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2667432 kB\nMemAvailable:    2720876 kB\n15536 python3\n 2212 auditd\n5745925"
+  },
+  {
+   "index": 67,
+   "label": "pip:sqlalchemy",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBD2MF8QXAZWW0QQA5A9P",
+   "timings": {
+    "create_s": 0.16624436599999992,
+    "first_exec_s": 1.286240866,
+    "arm_s": 0.4480383700000008,
+    "workload_s": 5.597655999999999,
+    "receipt_s": 0.7332854830000013,
+    "total_s": 8.776139314
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip sqlalchemy",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1553",
+     "::done rc=0"
+    ],
+    "out": "::step install pip sqlalchemy\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1553\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2725320 kB\nMemAvailable:    2734336 kB\n15576 python3\n 2272 auditd\n3825785"
+  },
+  {
+   "index": 64,
+   "label": "pip:fastapi",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBCH159K6RGFN2H8PS4JK",
+   "timings": {
+    "create_s": 0.24197721999999988,
+    "first_exec_s": 1.3683219430000007,
+    "arm_s": 0.4951134649999993,
+    "workload_s": 5.762603293,
+    "receipt_s": 0.8068740009999988,
+    "total_s": 9.321187529
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip fastapi",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1686",
+     "::done rc=0"
+    ],
+    "out": "::step install pip fastapi\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1686\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2738344 kB\nMemAvailable:    2734880 kB\n15568 python3\n 2212 auditd\n4155569"
+  },
+  {
+   "index": 88,
+   "label": "pip:grpcio",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBEX0QBEXA6Y5SHJG4KX3",
+   "timings": {
+    "create_s": 0.29255819800000005,
+    "first_exec_s": 0.922567763,
+    "arm_s": 0.4223444530000009,
+    "workload_s": 4.7501930749999985,
+    "receipt_s": 0.2729038189999997,
+    "total_s": 6.762043949000001
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip grpcio",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1141",
+     "::done rc=0"
+    ],
+    "out": "::step install pip grpcio\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1141\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2743192 kB\nMemAvailable:    2740544 kB\n15572 python3\n 2212 auditd\n2930711"
+  },
+  {
+   "index": 89,
+   "label": "pip:protobuf",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBEZ505GEE9ZRAA7A62B1",
+   "timings": {
+    "create_s": 0.1936468360000001,
+    "first_exec_s": 1.1360268900000001,
+    "arm_s": 0.43781403300000044,
+    "workload_s": 4.245620044,
+    "receipt_s": 0.6573241779999996,
+    "total_s": 7.1875861169999995
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip protobuf",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1133",
+     "::done rc=0"
+    ],
+    "out": "::step install pip protobuf\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1133\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2758520 kB\nMemAvailable:    2740028 kB\n15576 python3\n 2196 auditd\n2912218"
+  },
+  {
+   "index": 97,
+   "label": "pip:ipython",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBG3DB57J6AWFCZME5PP5",
+   "timings": {
+    "create_s": 0.04382692999999982,
+    "first_exec_s": 0.6978997589999985,
+    "arm_s": 0.26318614799999906,
+    "workload_s": 4.768678864000002,
+    "receipt_s": 0.3982518309999996,
+    "total_s": 6.242165139000001
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip ipython",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 8478",
+     "::done rc=0"
+    ],
+    "out": "::step install pip ipython\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 8478\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2660472 kB\nMemAvailable:    2725240 kB\n15544 python3\n 2236 auditd\n5623981"
+  },
+  {
+   "index": 87,
+   "label": "pip:cryptography",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBERJ35RGHP30MTTP1FZW",
+   "timings": {
+    "create_s": 0.14914324099999998,
+    "first_exec_s": 2.216581721,
+    "arm_s": 0.3809152659999988,
+    "workload_s": 4.2864801759999995,
+    "receipt_s": 0.5137401139999991,
+    "total_s": 7.902497438999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip cryptography",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1284",
+     "::done rc=0"
+    ],
+    "out": "::step install pip cryptography\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1284\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2739580 kB\nMemAvailable:    2736168 kB\n15580 python3\n 2248 auditd\n3223712"
+  },
+  {
+   "index": 81,
+   "label": "pip:selenium",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBE5B3QTQJM23TZQFJGPM",
+   "timings": {
+    "create_s": 0.05194210500000018,
+    "first_exec_s": 0.7318704139999994,
+    "arm_s": 0.2820047129999992,
+    "workload_s": 7.421108670999999,
+    "receipt_s": 0.3017962720000007,
+    "total_s": 8.894626775999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip selenium",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 2381",
+     "::done rc=0"
+    ],
+    "out": "::step install pip selenium\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 2381\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2706876 kB\nMemAvailable:    2735660 kB\n15572 python3\n 2240 auditd\n5712950"
+  },
+  {
+   "index": 68,
+   "label": "pip:pytest",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBDCYWC628N3A7193ZR00",
+   "timings": {
+    "create_s": 0.32270952100000017,
+    "first_exec_s": 1.4248796439999998,
+    "arm_s": 0.6926000059999997,
+    "workload_s": 4.660202666999999,
+    "receipt_s": 1.4378443169999997,
+    "total_s": 9.747299686
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip pytest",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1978",
+     "::done rc=0"
+    ],
+    "out": "::step install pip pytest\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1978\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2758480 kB\nMemAvailable:    2754968 kB\n15568 python3\n 2196 auditd\n4742267"
+  },
+  {
+   "index": 49,
+   "label": "npm:firebase",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBB99SD8JS5DVJKFYJFNC",
+   "timings": {
+    "create_s": 0.20784231400000053,
+    "first_exec_s": 1.192665356,
+    "arm_s": 0.49380555500000156,
+    "workload_s": 9.099346116,
+    "receipt_s": 0.7798137990000029,
+    "total_s": 12.426761444
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm firebase",
+     "::log  added 86 packages in 8s ",
+     "::files 9451",
+     "::done rc=0"
+    ],
+    "out": "::step install npm firebase\n::log  added 86 packages in 8s \n::files 9451\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2143572 kB\nMemAvailable:    2621672 kB\n15576 python3\n 2192 auditd\n204470"
+  },
+  {
+   "index": 98,
+   "label": "pip:rich",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBGBH60SPKPKJSD9S0ZZ1",
+   "timings": {
+    "create_s": 0.10241958000000029,
+    "first_exec_s": 1.2824359260000007,
+    "arm_s": 0.47632678700000053,
+    "workload_s": 4.367790890999999,
+    "receipt_s": 0.8633348959999996,
+    "total_s": 7.720743419000001
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip rich",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 2071",
+     "::done rc=0"
+    ],
+    "out": "::step install pip rich\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 2071\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2726288 kB\nMemAvailable:    2722112 kB\n15540 python3\n 2252 auditd\n4932348"
+  },
+  {
+   "index": 99,
+   "label": "pip:typer",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBGT16GXZMAZS62AJNGXV",
+   "timings": {
+    "create_s": 0.20875236899999994,
+    "first_exec_s": 1.1915053459999996,
+    "arm_s": 0.5342371410000002,
+    "workload_s": 3.828082350999999,
+    "receipt_s": 0.9616229050000005,
+    "total_s": 7.487490242
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip typer",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 2178",
+     "::done rc=0"
+    ],
+    "out": "::step install pip typer\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 2178\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2744676 kB\nMemAvailable:    2742416 kB\n15580 python3\n 2252 auditd\n5183066"
+  },
+  {
+   "index": 66,
+   "label": "pip:pydantic",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBD00WAXDK1MHJMC9MMPS",
+   "timings": {
+    "create_s": 0.3506569250000001,
+    "first_exec_s": 1.484766559,
+    "arm_s": 0.7270523760000001,
+    "workload_s": 6.220696779999999,
+    "receipt_s": 1.4466799300000002,
+    "total_s": 11.524268358
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip pydantic",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1272",
+     "::done rc=0"
+    ],
+    "out": "::step install pip pydantic\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1272\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2750352 kB\nMemAvailable:    2739376 kB\n15580 python3\n 2188 auditd\n3240381"
+  },
+  {
+   "index": 84,
+   "label": "pip:polars",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBES7P4RE30RRFNEYQZX1",
+   "timings": {
+    "create_s": 0.58344277,
+    "first_exec_s": 1.302357553,
+    "arm_s": 0.5389921389999999,
+    "workload_s": 6.147690722,
+    "receipt_s": 0.9758153640000007,
+    "total_s": 10.335181297
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip polars",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1462",
+     "::done rc=0"
+    ],
+    "out": "::step install pip polars\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1462\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2552548 kB\nMemAvailable:    2727512 kB\n15576 python3\n 2272 auditd\n3623902"
+  },
+  {
+   "index": 73,
+   "label": "pip:aiohttp",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBDV13C2W5KSZ5X33DZS9",
+   "timings": {
+    "create_s": 0.3561025319999995,
+    "first_exec_s": 1.3719596060000008,
+    "arm_s": 0.7478214199999993,
+    "workload_s": 5.923749854,
+    "receipt_s": 1.4882844049999981,
+    "total_s": 11.216159180999998
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip aiohttp",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1330",
+     "::done rc=0"
+    ],
+    "out": "::step install pip aiohttp\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1330\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068956 kB\nMemFree:         2754664 kB\nMemAvailable:    2748212 kB\n15576 python3\n 2244 auditd\n3363567"
+  },
+  {
+   "index": 92,
+   "label": "pip:openai",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBF4CB5HYADYAV65DRG2W",
+   "timings": {
+    "create_s": 0.04294676099999961,
+    "first_exec_s": 0.964959511,
+    "arm_s": 0.27814436500000106,
+    "workload_s": 9.491651375000002,
+    "receipt_s": 0.3999600650000019,
+    "total_s": 11.252870753
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip openai",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 5514",
+     "::done rc=0"
+    ],
+    "out": "::step install pip openai\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 5514\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2694452 kB\nMemAvailable:    2732424 kB\n15512 python3\n 2280 auditd\n4259289"
+  },
+  {
+   "index": 25,
+   "label": "npm:cypress",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB8AGFC87AT214S5EHHXP",
+   "timings": {
+    "create_s": 0.2380514869999999,
+    "first_exec_s": 0.9318156850000001,
+    "arm_s": 0.33009612399999977,
+    "workload_s": 16.998922518,
+    "receipt_s": 0.29663577299999844,
+    "total_s": 19.036349733
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm cypress",
+     "::log  added 171 packages in 16s ",
+     "::files 3974",
+     "::done rc=0"
+    ],
+    "out": "::step install npm cypress\n::log  added 171 packages in 16s \n::files 3974\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         1707064 kB\nMemAvailable:    2688776 kB\n15580 python3\n 2188 auditd\n282154"
+  },
+  {
+   "index": 62,
+   "label": "pip:pandas",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBCBPWGSD0YJMT8AS5JTQ",
+   "timings": {
+    "create_s": 0.11067489500000005,
+    "first_exec_s": 2.776688776,
+    "arm_s": 0.47928382499999955,
+    "workload_s": 10.623795349,
+    "receipt_s": 0.8695113199999991,
+    "total_s": 15.497990069
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip pandas",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 5342",
+     "::done rc=0"
+    ],
+    "out": "::step install pip pandas\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 5342\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2582340 kB\nMemAvailable:    2723192 kB\n15568 python3\n 2280 auditd\n3152153"
+  },
+  {
+   "index": 77,
+   "label": "pip:matplotlib",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBDT62SCX0KNS3BXE9XZJ",
+   "timings": {
+    "create_s": 0.043847731999999695,
+    "first_exec_s": 0.9379023679999996,
+    "arm_s": 0.3755311540000008,
+    "workload_s": 12.322530274999998,
+    "receipt_s": 0.31518209300000066,
+    "total_s": 14.062637029
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip matplotlib",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 4396",
+     "::done rc=0"
+    ],
+    "out": "::step install pip matplotlib\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 4396\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2578144 kB\nMemAvailable:    2738664 kB\n15508 python3\n 2220 auditd\n846062"
+  },
+  {
+   "index": 93,
+   "label": "pip:anthropic",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBFAKD0MS5X9E2GJ87FX3",
+   "timings": {
+    "create_s": 0.05734090900000055,
+    "first_exec_s": 1.0081926450000003,
+    "arm_s": 0.2875215899999999,
+    "workload_s": 10.636823485,
+    "receipt_s": 0.5499911249999982,
+    "total_s": 12.64721265
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip anthropic",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 6416",
+     "::done rc=0"
+    ],
+    "out": "::step install pip anthropic\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 6416\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2680472 kB\nMemAvailable:    2723068 kB\n15536 python3\n 2216 auditd\n6398220"
+  },
+  {
+   "index": 80,
+   "label": "pip:playwright",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBEPWFMZ7MWG50Q851EJ0",
+   "timings": {
+    "create_s": 0.7475595579999998,
+    "first_exec_s": 1.692232877,
+    "arm_s": 0.9577447929999998,
+    "workload_s": 6.3216555649999995,
+    "receipt_s": 2.1403855189999987,
+    "total_s": 13.765963784999999
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip playwright",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 1435",
+     "::done rc=0"
+    ],
+    "out": "::step install pip playwright\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 1435\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2603124 kB\nMemAvailable:    2730492 kB\n15568 python3\n 2232 auditd\n3421730"
+  },
+  {
+   "index": 78,
+   "label": "pip:scipy",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBE4944G02S2KHTVASST9",
+   "timings": {
+    "create_s": 0.31739997200000003,
+    "first_exec_s": 1.242395725,
+    "arm_s": 0.529845516,
+    "workload_s": 10.957969238,
+    "receipt_s": 0.8602563939999985,
+    "total_s": 14.674521556
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip scipy",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 4768",
+     "::done rc=0"
+    ],
+    "out": "::step install pip scipy\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 4768\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2520784 kB\nMemAvailable:    2727660 kB\n15532 python3\n 2252 auditd\n1502073"
+  },
+  {
+   "index": 79,
+   "label": "pip:scikit-learn",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBDXWV2CK4XYH8YAW1QMM",
+   "timings": {
+    "create_s": 0.056644756000000296,
+    "first_exec_s": 0.9099074099999998,
+    "arm_s": 0.26722743799999993,
+    "workload_s": 13.225166308999999,
+    "receipt_s": 0.48735378399999973,
+    "total_s": 15.015628667
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip scikit-learn",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 7011",
+     "::done rc=0"
+    ],
+    "out": "::step install pip scikit-learn\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 7011\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2458356 kB\nMemAvailable:    2731928 kB\n15540 python3\n 2216 auditd\n6180403"
+  },
+  {
+   "index": 91,
+   "label": "pip:transformers",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBF45CQ5A0RVM3FF3K2ZH",
+   "timings": {
+    "create_s": 0.0563557320000001,
+    "first_exec_s": 0.6972127629999996,
+    "arm_s": 0.2779755270000006,
+    "workload_s": 13.489930225,
+    "receipt_s": 0.4305185709999968,
+    "total_s": 15.047697425
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip transformers",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 10210",
+     "::done rc=0"
+    ],
+    "out": "::step install pip transformers\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 10210\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        2282524 kB\nMemFree:         1746148 kB\nMemAvailable:    1970880 kB\n15512 python3\n 2216 auditd\n5961923"
+  },
+  {
+   "index": 94,
+   "label": "pip:langchain",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBFETM3JC34RVXMJ7YKJ2",
+   "timings": {
+    "create_s": 0.22702434599999943,
+    "first_exec_s": 2.031085428,
+    "arm_s": 0.31647335099999996,
+    "workload_s": 14.902117104999999,
+    "receipt_s": 0.33660932999999815,
+    "total_s": 18.016704749
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip langchain",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 3796",
+     "::done rc=0"
+    ],
+    "out": "::step install pip langchain\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 3796\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         2675240 kB\nMemAvailable:    2740780 kB\n15568 python3\n 2276 auditd\n596838"
+  },
+  {
+   "index": 96,
+   "label": "pip:jupyter",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBG7JMDWFPDFB896HRH2H",
+   "timings": {
+    "create_s": 0.20923127300000033,
+    "first_exec_s": 1.368827693,
+    "arm_s": 0.5038112940000001,
+    "workload_s": 22.575034977,
+    "receipt_s": 0.9445184290000022,
+    "total_s": 26.307502223
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip jupyter",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 15761",
+     "::done rc=0"
+    ],
+    "out": "::step install pip jupyter\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 15761\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        2282520 kB\nMemFree:         1696320 kB\nMemAvailable:    1985940 kB\n15532 python3\n 2204 auditd\n2129833"
+  },
+  {
+   "index": 95,
+   "label": "pip:llama-index",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBFRRT7B2VN2JQ00GP8CY",
+   "timings": {
+    "create_s": 0.16149391599999952,
+    "first_exec_s": 1.1192380220000002,
+    "arm_s": 0.44289143400000075,
+    "workload_s": 30.323248692,
+    "receipt_s": 0.7781575710000013,
+    "total_s": 33.359353269
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip llama-index",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 12496",
+     "::done rc=0"
+    ],
+    "out": "::step install pip llama-index\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 12496\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        2544664 kB\nMemFree:         1903828 kB\nMemAvailable:    2211828 kB\n15568 python3\n 2256 auditd\n2298650"
+  },
+  {
+   "index": 30,
+   "label": "npm:prisma",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB8PYWPJFTRGEES0QTD3A",
+   "timings": {
+    "create_s": 0.15503471700000004,
+    "first_exec_s": 0.9468022979999999,
+    "arm_s": 0.34223928300000006,
+    "workload_s": 50.388138084,
+    "receipt_s": 0.3544512229999981,
+    "total_s": 52.455240718
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm prisma",
+     "::log  added 319 packages in 49s ",
+     "::files 73895",
+     "::done rc=0"
+    ],
+    "out": "::step install npm prisma\n::log  added 319 packages in 49s \n::files 73895\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        3068952 kB\nMemFree:         1039912 kB\nMemAvailable:    2667688 kB\n15580 python3\n 2204 auditd\n214612"
+  },
+  {
+   "index": 90,
+   "label": "pip:torch",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CBEYJNNJS9YN3Q1S1A7ZR",
+   "timings": {
+    "create_s": 0.05761793900000001,
+    "first_exec_s": 0.8972518589999989,
+    "arm_s": 0.2907755069999993,
+    "workload_s": 76.048943754,
+    "receipt_s": 0.3609022830000015,
+    "total_s": 77.752727632
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install pip torch",
+     "::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip ",
+     "::files 22210",
+     "::done rc=0"
+    ],
+    "out": "::step install pip torch\n::log  [notice] A new release of pip is available: 23.2.1 -> 26.2.1 [notice] To update, run: python3 -m pip install --upgrade pip \n::files 22210\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        2282520 kB\nMemFree:          871200 kB\nMemAvailable:    1979512 kB\n15536 python3\n 2252 auditd\n5562242"
+  },
+  {
+   "index": 38,
+   "label": "npm:node-sass",
+   "record": true,
+   "constructed": false,
+   "sandbox_id": "sb-01M51CB9Y4QCT22VTEJMSCE9J3",
+   "timings": {
+    "create_s": 0.06670370600000008,
+    "first_exec_s": 0.8741859919999999,
+    "arm_s": 0.283132001,
+    "workload_s": 94.11334196899999,
+    "receipt_s": 0.3822416299999958,
+    "total_s": 95.828446419
+   },
+   "arm": {
+    "rc": 0,
+    "out": "armed",
+    "err": ""
+   },
+   "workload": {
+    "rc": 0,
+    "steps": [
+     "::step install npm node-sass",
+     "::log  added 202 packages in 2m ",
+     "::files 3413",
+     "::done rc=0"
+    ],
+    "out": "::step install npm node-sass\n::log  added 202 packages in 2m \n::files 3413\n::done rc=0\n",
+    "err": ""
+   },
+   "resources": "MemTotal:        2544664 kB\nMemFree:         1937156 kB\nMemAvailable:    2171480 kB\n15544 python3\n 2272 auditd\n5780745"
+  }
+ ]
+}

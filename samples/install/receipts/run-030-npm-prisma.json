@@ -1,0 +1,557 @@
+{
+ "schema": "garnet.sandbox-receipt/0.1",
+ "capture": {
+  "recorder": "linux-audit",
+  "ruleset": "full",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792121612.077287,
+   "stop": 1792121662.9462438,
+   "seconds": 50.869
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet",
+   "-a always,exit -F arch=b64 -S open,creat,openat,openat2 -F a2&0x3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S rename,unlink,unlinkat,renameat,renameat2 -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit/open-for-write/unlink/rename syscall in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic"
+  ],
+  "syscall_records": 316
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": [
+   "rc=0"
+  ]
+ },
+ "processes": {
+  "executed": 26,
+  "total_seen": 64,
+  "roots": [
+   "bash",
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1092,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "/opt/garnet/workload-install.sh",
+     "npm",
+     "prisma"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1093,
+    "ppid": 1092,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1094,
+    "ppid": 1092,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1095,
+    "ppid": 1092,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "/work"
+    ],
+    "chain": "bash > rm"
+   },
+   {
+    "pid": 1096,
+    "ppid": 1092,
+    "comm": "mkdir",
+    "argv": [
+     "mkdir",
+     "-p",
+     "/work"
+    ],
+    "chain": "bash > mkdir"
+   },
+   {
+    "pid": 1098,
+    "ppid": 1092,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/usr/bin/npm",
+     "init",
+     "-y"
+    ],
+    "chain": "bash > node"
+   },
+   {
+    "pid": 1114,
+    "ppid": 1092,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/usr/bin/npm",
+     "install",
+     "--no-audit",
+     "--no-fund",
+     "--loglevel=error",
+     "prisma"
+    ],
+    "chain": "bash > node"
+   },
+   {
+    "pid": 1229,
+    "ppid": 1114,
+    "comm": "sh",
+    "argv": [
+     "sh",
+     "-c",
+     "node install.js"
+    ],
+    "chain": "bash > node > sh"
+   },
+   {
+    "pid": 1230,
+    "ppid": 1229,
+    "comm": "node",
+    "argv": [
+     "node",
+     "install.js"
+    ],
+    "chain": "bash > node > sh > node"
+   },
+   {
+    "pid": 1231,
+    "ppid": 1114,
+    "comm": "sh",
+    "argv": [
+     "sh",
+     "-c",
+     "node install.js"
+    ],
+    "chain": "bash > node > sh"
+   },
+   {
+    "pid": 1232,
+    "ppid": 1231,
+    "comm": "node",
+    "argv": [
+     "node",
+     "install.js"
+    ],
+    "chain": "bash > node > sh > node"
+   },
+   {
+    "pid": 1252,
+    "ppid": 1230,
+    "comm": "esbuild",
+    "argv": [
+     "/work/node_modules/esbuild/bin/esbuild",
+     "--version"
+    ],
+    "chain": "bash > node > sh > node > esbuild"
+   },
+   {
+    "pid": 1255,
+    "ppid": 1232,
+    "comm": "workerd",
+    "argv": [
+     "/work/node_modules/workerd/bin/workerd",
+     "--version"
+    ],
+    "chain": "bash > node > sh > node > workerd"
+   },
+   {
+    "pid": 1283,
+    "ppid": 1282,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-c",
+     "300",
+     "/work/install.log"
+    ],
+    "chain": "bash > bash > tail"
+   },
+   {
+    "pid": 1284,
+    "ppid": 1282,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "\\n",
+     " "
+    ],
+    "chain": "bash > bash > tr"
+   },
+   {
+    "pid": 1286,
+    "ppid": 1285,
+    "comm": "find",
+    "argv": [
+     "find",
+     "/work",
+     "-type",
+     "f"
+    ],
+    "chain": "bash > bash > find"
+   },
+   {
+    "pid": 1287,
+    "ppid": 1285,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-l"
+    ],
+    "chain": "bash > bash > wc"
+   },
+   {
+    "pid": 1289,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /proc/meminfo | head -3; ps -o rss=,comm= -C auditd,python3 2>/dev/null | sort -rn | head -4; wc -c < /var/log/audit/audit.log"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1290,
+    "ppid": 1289,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1291,
+    "ppid": 1289,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1292,
+    "ppid": 1289,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/proc/meminfo"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1293,
+    "ppid": 1289,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-3"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1294,
+    "ppid": 1289,
+    "comm": "ps",
+    "argv": [
+     "ps",
+     "-o",
+     "rss=,comm=",
+     "-C",
+     "auditd,python3"
+    ],
+    "chain": "bash > ps"
+   },
+   {
+    "pid": 1295,
+    "ppid": 1289,
+    "comm": "sort",
+    "argv": [
+     "sort",
+     "-rn"
+    ],
+    "chain": "bash > sort"
+   },
+   {
+    "pid": 1296,
+    "ppid": 1289,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-4"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1297,
+    "ppid": 1289,
+    "comm": "wc",
+    "argv": [
+     "wc",
+     "-c"
+    ],
+    "chain": "bash > wc"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "registry.npmjs.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "104.16.3.34"
+    ],
+    "attempts": 15,
+    "initiated": 15,
+    "chains": [
+     {
+      "chain": "bash > node",
+      "connections": 15
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 15,
+  "loopback_connections": 1,
+  "address_probes": 24,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 16,
+  "by_top_level": [
+   {
+    "prefix": "/work/node_modules",
+    "paths": 8
+   },
+   {
+    "prefix": "/root/.npm",
+    "paths": 3
+   },
+   {
+    "prefix": "/",
+    "paths": 1
+   },
+   {
+    "prefix": "/work",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/install.log",
+    "paths": 1
+   },
+   {
+    "prefix": "/work/results",
+    "paths": 1
+   }
+  ],
+  "sample": [
+   {
+    "path": "/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/root/.npm/_logs/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/root/.npm/_logs/2026-10-16T03_33_32_934Z-debug-0.log",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "6E706D20696E6974"
+    ]
+   },
+   {
+    "path": "/root/.npm/_logs/2026-10-16T03_33_33_372Z-debug-0.log",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "6E706D20696E7374616C6C20707269"
+    ]
+   },
+   {
+    "path": "/work",
+    "created": 0,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "rm"
+    ]
+   },
+   {
+    "path": "/work/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/work/install.log",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "bash"
+    ]
+   },
+   {
+    "path": "/work/node_modules/esbuild/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 1,
+    "by": [
+     "node"
+    ]
+   },
+   {
+    "path": "/work/node_modules/esbuild/bin-esbuild",
+    "created": 0,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "node"
+    ]
+   },
+   {
+    "path": "/work/node_modules/esbuild/bin/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 1,
+    "by": [
+     "node"
+    ]
+   },
+   {
+    "path": "/work/node_modules/esbuild/bin/esbuild",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "node"
+    ]
+   },
+   {
+    "path": "/work/node_modules/workerd/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 1,
+    "by": [
+     "node"
+    ]
+   },
+   {
+    "path": "/work/node_modules/workerd/bin-workerd",
+    "created": 0,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "node"
+    ]
+   },
+   {
+    "path": "/work/node_modules/workerd/bin/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 1,
+    "by": [
+     "node"
+    ]
+   },
+   {
+    "path": "/work/node_modules/workerd/bin/workerd",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "node"
+    ]
+   },
+   {
+    "path": "/work/results",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "bash"
+    ]
+   }
+  ]
+ }
+}
