@@ -1,0 +1,69 @@
+{
+ "by_src_ev": {
+  "fanotify/open": 242,
+  "fanotify/exec open": 26
+ },
+ "cn_proc_exec_samples": [],
+ "fanotify_exec_samples": [
+  {
+   "src": "fanotify",
+   "mask": "exec open ",
+   "pid": 5619,
+   "comm": "bash",
+   "path": "/usr/bin/gnutrue"
+  },
+  {
+   "src": "fanotify",
+   "mask": "exec open ",
+   "pid": 5619,
+   "comm": "bash",
+   "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2"
+  },
+  {
+   "src": "fanotify",
+   "mask": "exec open ",
+   "pid": 5620,
+   "comm": "bash",
+   "path": "/usr/lib/cargo/bin/coreutils/id"
+  },
+  {
+   "src": "fanotify",
+   "mask": "exec open ",
+   "pid": 5620,
+   "comm": "bash",
+   "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2"
+  },
+  {
+   "src": "fanotify",
+   "mask": "exec open ",
+   "pid": 5621,
+   "comm": "bash",
+   "path": "/usr/bin/curl"
+  },
+  {
+   "src": "fanotify",
+   "mask": "exec open ",
+   "pid": 5621,
+   "comm": "bash",
+   "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2"
+  },
+  {
+   "src": "fanotify",
+   "mask": "exec open ",
+   "pid": 5623,
+   "comm": "bash",
+   "path": "/usr/bin/python3.14"
+  },
+  {
+   "src": "fanotify",
+   "mask": "exec open ",
+   "pid": 5623,
+   "comm": "bash",
+   "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2"
+  }
+ ],
+ "curl_exec_seen_by": {
+  "cn_proc": 0,
+  "fanotify": 3
+ }
+}

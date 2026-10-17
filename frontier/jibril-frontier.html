@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Jibril frontier: capture inside hosted sandbox guests</title>
+<style>
+body{font:13px/1.45 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#111;max-width:1040px;margin:28px auto;padding:0 20px}
+h1{font-size:20px;margin:0 0 4px}h2{font-size:14px;margin:22px 0 6px;text-transform:uppercase;letter-spacing:.04em;color:#444}
+.sub{color:#555;margin-bottom:14px}table{border-collapse:collapse;width:100%;font-size:12px}th,td{border:1px solid #ddd;padding:5px 7px;vertical-align:top;text-align:left}
+th{background:#f4f4f4}td.ok{background:#e9f7ec}td.no{background:#fbeaea}td.part{background:#fff6dc}
+code{font:11.5px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;background:#f3f3f3;padding:1px 3px;border-radius:3px}
+.digest{border-left:4px solid #333;padding:8px 12px;background:#fafafa;margin-top:18px}.digest p{margin:4px 0}
+.small{color:#666;font-size:11.5px}
+</style></head><body>
+<h1>Jibril frontier: capture inside hosted sandbox guests without a vendor kernel change</h1>
+<div class="sub">Measured 2026-10-17 00:44&ndash;00:59 UTC. Jibril v2.17.0 (jibril-releases). Metric: <b>attached N/76</b> (76 = programs Jibril instantiates; the release ELF holds 122 incl. 47 tail programs). Probe code and raw logs: <code>garnet-labs/modal-receipts</code> branch <code>devin/jibril-frontier</code>, <code>frontier/</code>.</div>
+
+<h2>Substrate &times; angle &times; result</h2>
+<table>
+<tr><th style="width:24%">Angle</th><th>Modal VM Sandbox<br><span class="small">7.2.9, cloud-hypervisor, root</span></th><th>Vercel Sandbox<br><span class="small">6.18.49, Firecracker, sudo</span></th><th>E2B hosted<br><span class="small">LTS 6.1 (6.1.158 config)</span></th></tr>
+<tr><td>Kernel surfaces</td><td class="no">no BTF, no tracefs, no /boot, no modules; audit, cgroup-BPF, proc events, fanotify present</td><td class="no">no BTF, no tracefs, no /boot, no modules, no audit netlink; cgroup-BPF, fanotify present</td><td class="part">BTF + tracefs present; <code>MODULES</code>, <code>FTRACE</code> not set (fc-kernels 6.1.158.config)</td></tr>
+<tr><td>A1. BPF program types accepted (14 probed)</td><td class="part">5: cgroup_skb, cgroup/connect4, sock_create, sendmsg4, sockops. tracepoint/kprobe/uprobe/perf = EINVAL; fentry/tp_btf/iter/lsm = no kernel BTF</td><td class="part">identical 5/14</td><td>n/a this lane</td></tr>
+<tr><td>A1. Jibril programs, isolated load+attach</td><td class="part">12/122, all cgroup_skb (22 more cgroup_skb blocked only by CO-RE/BTF)</td><td class="part">12/122, identical</td><td class="part">prior lane: 4/76 stock; 52/76 (6.1) or 72/76 (6.18) with operator kernel</td></tr>
+<tr><td>Jibril real run</td><td class="no">76 programs, 37 attach failures, 5 object failures, exit 1</td><td class="no">identical</td><td class="no">4/76 then fatal (prior lane)</td></tr>
+<tr><td>A1b. External BTF via <code>btf_custom_path</code> (constructed: 6.8 BTF)</td><td class="part">26/122; gain = 14 cgroup_skb only; no tracing program unlocked; Jibril has no such option today</td><td>not run (same expected)</td><td>n/a</td></tr>
+<tr><td>A2. cgroup-BPF recorder (connect/sendmsg/sock_create, no BTF)</td><td class="ok">5/5 attached; 19/19 destinations = audit; tgid+comm match 19/19; overhead ~0% (1312 vs 1319 ms)</td><td class="ok">5/5 attached; 1236 events; overhead +2..8% (ptrace was +31&ndash;37%)</td><td>n/a</td></tr>
+<tr><td>C. proc connector / fanotify</td><td>not needed (audit works)</td><td class="part">cn_proc silent: sandbox-init runs in a child pid namespace; fanotify filesystem mark works with exec paths + pid</td><td>n/a</td></tr>
+<tr><td>D. Customer-side kernel path</td><td class="no">none (kexec dead end, prior lane)</td><td class="no">none</td><td class="no">none: kernel fixed per template at build time, docs</td></tr>
+</table>
+
+<h2>A3/B. Degraded-mode shape (document, no Jibril PR)</h2>
+<table>
+<tr><th>Jibril family</th><th>On BTF-less, tracefs-less kernels</th><th>Jibril change</th></tr>
+<tr><td>cgroup_skb + tails (38)</td><td class="part">12 load; 26 with external BTF</td><td>load <code>btf_custom_path</code>; keep going when a sibling object fails; declare <code>flows</code> coverage</td></tr>
+<tr><td>fentry/fexit (29)</td><td class="no">never (no btf_vmlinux, no trampolines)</td><td>optional per hook; sockets fallback = new cgroup connect/sendmsg/sock_create object (pid, dst)</td></tr>
+<tr><td>tp_btf, raw_tracepoint, tracepoint (37)</td><td class="no">never (no tracepoints / BPF_EVENTS)</td><td>process lifecycle from proc connector (init pid ns only) + procfs; argv declared userspace-sourced</td></tr>
+<tr><td>iter/task, iter/task_file (12)</td><td class="no">never (BTF)</td><td>startup enumeration via /proc walk; <b>6.1 fix</b>: split <code>jb_iter_init_02</code> so the 108-wide unix-socket unroll and the 10-deep dentry walks are not in one program; make the files object non-fatal</td></tr>
+<tr><td>kprobe/kretprobe, uprobe (8)</td><td class="no">never</td><td>optional, declared uncovered</td></tr>
+</table>
+<p class="small">Loader policy today: <code>ErrFatal</code> on any object load or attach failure; symbol gating falls through to "try anyway" when tracefs is absent; open options carry only <code>pin_root_path</code>.</p>
+
+<h2>E. Vendor asks (same family everywhere)</h2>
+<table>
+<tr><th>Platform</th><th>Kconfig lines</th><th>Smallest test</th></tr>
+<tr><td>Modal 7.2.9</td><td><code>DEBUG_INFO_BTF FTRACE FUNCTION_TRACER DYNAMIC_FTRACE FTRACE_SYSCALLS KPROBES UPROBES BPF_EVENTS TRACEPOINTS</code> = y, mount tracefs in guest init</td><td><code>attach_probe types.bpf.o</code> = 14/14; <code>jibril</code> standalone exit 0, attached 72+/76</td></tr>
+<tr><td>Vercel 6.18.49</td><td>same nine + <code>AUDIT AUDITSYSCALL</code>; run sandbox-init in init pid ns if cn_proc is wanted</td><td>same, plus <code>auditctl -s</code></td></tr>
+<tr><td>E2B hosted 6.1.158</td><td><code>MODULES FTRACE FUNCTION_TRACER DYNAMIC_FTRACE FTRACE_SYSCALLS KPROBES</code> = y; prefer a 6.6+/6.12 LTS line</td><td><code>jibril</code> standalone: 72/76 (6.18 measured) / 52/76 (6.1 measured, before the files-object fix)</td></tr>
+</table>
+
+<div class="digest">
+<p><b>Works today:</b> destinations + pid/tgid/comm from cgroup hooks on Modal and Vercel (19/19 vs audit, 0&ndash;8% overhead); 12 of Jibril's cgroup_skb programs; audit on Modal; fanotify exec/open paths on Vercel.</p>
+<p><b>Needs a Jibril change:</b> non-fatal per-program loading with declared coverage, <code>btf_custom_path</code>, a cgroup connect/sendmsg/sock_create fallback object, proc-connector/procfs process source, and the <code>jb_iter_init_02</code> split for 6.1 (52/76 &rarr; expected 72/76, unverified).</p>
+<p><b>Needs the vendor:</b> BTF + tracefs + tracepoints/kprobes on Modal and Vercel (plus audit netlink and init pid ns on Vercel); <code>MODULES</code> + ftrace in E2B's fc-kernels. Without them, exec/argv/file capture cannot come from the kernel in any of the three guests.</p>
+</div>
+<p class="small">Constructed cases are labelled; single-sample timings. Sources per number: <code>frontier/FACTS.md</code> raw log index.</p>
+</body></html>

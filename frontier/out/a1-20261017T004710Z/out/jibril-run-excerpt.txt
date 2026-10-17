@@ -1,0 +1,80 @@
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component java_debug_lib_load, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component java_instrument_lib_load, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component java_debug_lib_load, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component java_instrument_lib_load, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component binary_executed_by_loader, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component binary_executed_by_loader, phase none set to completed[0m
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_execve_exit[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: jb_execve_exit, sec: tracepoint/syscalls/sys_exit_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_execveat_exit[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: jb_execveat_exit, sec: tracepoint/syscalls/sys_exit_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_schedexec[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceRawTP, name: jb_schedexec, sec: tp_btf/sched_process_exec, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_execve_enter[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: jb_execve_enter, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_argv_enter_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_argv_enter_0, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_argv_enter_2[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_argv_enter_2, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_envp_enter_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_envp_enter_1, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_execveatenv_enter[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: jb_execveatenv_enter, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_envpat_enter_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_envpat_enter_1, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceIter, name: jb_iter_init_01, sec: iter/task, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_execveenv_enter[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: jb_execveenv_enter, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_argvat_enter_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_argvat_enter_0, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_argvat_enter_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_argvat_enter_1, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_envpat_enter_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_envpat_enter_0, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_envpat_enter_2[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_envpat_enter_2, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_schedfork[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceRawTP, name: jb_schedfork, sec: tp_btf/sched_process_fork, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_argv_enter_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_argv_enter_1, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_envp_enter_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_envp_enter_0, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_envp_enter_2[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_envp_enter_2, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_argvat_enter_2[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_argvat_enter_2, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_schedexit[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceRawTP, name: jb_schedexit, sec: tp_btf/sched_process_exit, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_execveat_enter[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: jb_execveat_enter, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_secsktpostcreate, sec: fentry/security_socket_post_create, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_sktconnect, sec: fentry/__sys_connect_file, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_secsktbind[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_secsktbind, sec: fentry/security_socket_bind, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_secsktlisten[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_secsktlisten, sec: fentry/security_socket_listen, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_sktrecvmsg, sec: fentry/sock_recvmsg, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l3jmpsin_entry_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l3jmpsin_entry_0, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpsin_udp_17[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l4jmpsin_udp_17, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpseg_udp_17[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: tail_l4jmpseg_udp_17, sec: cgroup_skb/egress, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_secsktrecvmsg, sec: fentry/security_socket_recvmsg, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpsin_tcp_6[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l4jmpsin_tcp_6, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpsin_icmpv4_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l4jmpsin_icmpv4_1, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpsin_icmpv6_58[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l4jmpsin_icmpv6_58, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpseg_icmpv6_58[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: tail_l4jmpseg_icmpv6_58, sec: cgroup_skb/egress, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_sktpostcreate, sec: fentry/sock_alloc_file, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_sktconnect_sec, sec: fentry/security_socket_connect, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_secsktpair[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_secsktpair, sec: fentry/security_socket_socketpair, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_secsktsendmsg, sec: fentry/security_socket_sendmsg, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_sktsendmsg, sec: fentry/sock_sendmsg, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_cgroup_skb_ingress[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: jb_cgroup_skb_ingress, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l3jmpsin_end_46[0m

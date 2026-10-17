@@ -1,0 +1,13 @@
+ls: cannot access '/sys/kernel/btf': No such file or directory
+ls: cannot access '/lib/modules': No such file or directory
+ls: cannot access '/sys/kernel/tracing': No such file or directory
+mount: /sys/kernel/tracing: mount point does not exist.
+       dmesg(1) may have more information after failed mount system call.
+acpi
+bdi
+block
+117614
+1
+2
+cat: /sys/kernel/security/lsm: No such file or directory
+console=hvc0 rootfstype=ext4 root=/dev/vda rw init=/__modal/runch-agent ip=172.20.32.37::172.20.0.1:255.255.0.0:modal:eth0:off clocksource=kvm-clock bonding.max_bonds=0 dummy.numdummies=0 ifb.numifbs=0 rootflags=prjquota memhp_default_state=online memory_hotplug.online_policy=auto-movable memory_hotplug.auto_movable_ratio=300 sysctl.vm.overcommit_memory=1 -- runch.memory_bursting

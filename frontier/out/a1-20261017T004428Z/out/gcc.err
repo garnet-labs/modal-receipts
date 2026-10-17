@@ -1,0 +1,4 @@
+attach_probe.c: In function 'main':
+attach_probe.c:42:87: warning: ignoring return value of 'system' declared with attribute 'warn_unused_result' [-Wunused-result]
+   42 |         char cmd[512]; snprintf(cmd, sizeof cmd, "rm -rf %s/* 2>/dev/null", pinroot); system(cmd);
+      |                                                                                       ^~~~~~~~~~~

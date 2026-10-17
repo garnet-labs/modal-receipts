@@ -1,0 +1,33 @@
+pid=5599
+Uid:	0	0	0	0
+NStgid:	5602
+NSpid:	5602
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+  
+cgroup -> cgroup:[4026532094]
+ipc -> ipc:[4026532092]
+mnt -> mnt:[4026532090]
+net -> net:[4026531833]
+pid -> pid:[4026532093]
+pid_for_children -> pid:[4026532093]
+time -> time:[4026531834]
+time_for_children -> time:[4026531834]
+user -> user:[4026531837]
+uts -> uts:[4026532091]
+  
+cgroup -> cgroup:[4026532094]
+ipc -> ipc:[4026532092]
+mnt -> mnt:[4026532090]
+net -> net:[4026531833]
+pid -> pid:[4026532093]
+pid_for_children -> pid:[4026532093]
+time -> time:[4026531834]
+time_for_children -> time:[4026531834]
+user -> user:[4026531837]
+uts -> uts:[4026532091]
+sandbox-init
+CapEff:	000001ffffffffff
+cat: /proc/sys/kernel/unprivileged_userns_clone: No such file or directory
+         0          0 4294967295
+212992

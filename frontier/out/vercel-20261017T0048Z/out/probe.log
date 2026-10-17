@@ -1,0 +1,15 @@
+[2026-10-17T00:48:39Z] start 6.18.49 uid=0
+[2026-10-17T00:48:40Z] bpftool: /usr/sbin/bpftool 61 available
+[2026-10-17T00:48:40Z] type probe: 5 attach ok of 14
+[2026-10-17T00:48:41Z] jibril binary: rel/jibril
+[2026-10-17T00:48:42Z] carved 22 bpf objects
+[2026-10-17T00:48:43Z] jibril programs: 122 tried, load ok 12, attach ok 12
+[2026-10-17T00:48:43Z] jibril run: exit=1
+[2026-10-17T00:48:59Z] workload start
+[2026-10-17T00:48:59Z] workload end
+cgrec events: 1236 connects: 622 ; pcrec exec: 0 fanotify: 1501978
+baseline_ms=2158
+cgrec_ms=2334
+cgrec_plus_pcrec_ms=2207
+pcrec_only_ms=2213
+[2026-10-17T00:52:14Z] done

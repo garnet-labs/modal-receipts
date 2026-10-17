@@ -1,0 +1,1284 @@
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/settings/engine.go:25[0m[36m >[0m [1msettings initialized[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/settings/settings.go:211[0m[36m >[0m [1mjibril: v2.17.0[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/settings/settings.go:212[0m[36m >[0m [1mhostname: modal[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/settings/settings.go:213[0m[36m >[0m [1mkernel version: 7.2.9[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/settings/settings.go:214[0m[36m >[0m [1mgo version: go1.26.3[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/settings/settings.go:215[0m[36m >[0m [1mgo os/arch: linux/amd64[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/settings/settings.go:216[0m[36m >[0m [1mgo compiler: gc[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/settings/settings.go:217[0m[36m >[0m [1mgo num cpu: 18[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mcmd/jibril/main.go:205[0m[36m >[0m [1mhierarchy phase 'none' scheduled 'pkg'[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component pkg, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component singleton, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component cgroups, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component cgroups, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ksymbols, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ksymbols, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ebpfobjs, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ebpfobjs, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ebpf, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ebpf, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component server, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component server, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component dispatcher, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component dispatcher, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component environment, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component environment, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component singleton, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component bridge, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component config, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component config, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child jbconfig, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component jbconfig, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component vmap, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component vmap, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component tasks, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component tasks, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component files, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component files, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component filerefs, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component filerefs, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component flows, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component flows, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component flowrefs, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component flowrefs, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component dns, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component dns, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child netpol, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component netpol, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child ghcontext, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ghcontext, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child steps, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component steps, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component bridge, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component services, phase none set to running[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child persisters, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component persisters, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child attenuator, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component attenuator, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component baseline, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component procfs, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component procfs, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child transformers, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component baseline, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child alchemies, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component transformers, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component alchemies, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child netdrops, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component netdrops, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child enricher, phase none is disabled
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child workflow, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component agent, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component enricher, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component workflow, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component hold, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component internline, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component agent, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component hold, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component internline, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component services, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child tests, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component tests, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child example, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component example, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component printers, phase none set to running[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child garnet, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component garnet, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child voidprinter, phase none is disabled
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child profiler, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component stdout, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component profiler, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child profiler4fun, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component voidprinter, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component varlog, phase none set to running[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child jsonprofiler, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component profiler4fun, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component varlog, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component jsonprofiler, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component stdout, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component printers, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component events, phase none set to running[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child netpolicy, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component execution, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component fileaccess, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component netpolicy, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component netpeers, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component envvars, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component informative, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component sysrq_access, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component java_debug_lib_load, phase none set to running[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child peer_example, phase none is disabled
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child profile, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component peer_example, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component credentials_files_access, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component shell_config_modification, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component credentials_files_access, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component dynamic_linker_attacks, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component package_repo_config_modification, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component profile, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_mitm_tool_exec, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component java_instrument_lib_load, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component crypto_miner_files, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component java_debug_lib_load, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component dynamic_linker_attacks, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_sniff_tool_exec, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component java_instrument_lib_load, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component envvars, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component sched_debug_access, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component pam_config_modification, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component webserver_shell_exec, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component sysrq_access, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component crypto_miner_files, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_filecopy_tool_exec, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component package_repo_config_modification, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component code_modification_through_procfs, phase none set to running[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child flow, phase none is disabled
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child os_status_fingerprint, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component code_on_the_fly, phase none set to running[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child os_fingerprint, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component netpeers, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component hidden_elf_exec, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component os_status_fingerprint, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component auth_logs_tamper, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component file_attribute_change, phase none set to running[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child os_network_fingerprint, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component pam_config_modification, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child exec_example, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component hidden_elf_exec, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_mitm_tool_exec, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component binary_self_deletion, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component os_network_fingerprint, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component code_modification_through_procfs, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_suspicious_tool_exec, phase none set to running[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child filesystem_fingerprint, phase none is disabled
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child net_suspicious_tool_shell, phase none is disabled
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child ssl_certificate_access, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component crypto_miner_execution, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component flow, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component sched_debug_access, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component environ_read_from_procfs, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component os_fingerprint, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_filecopy_tool_exec, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component filesystem_fingerprint, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_scan_tool_exec, phase none set to running[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child machine_fingerprint, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component sudoers_modification, phase none set to running[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child cpu_fingerprint, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_sniff_tool_exec, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component core_pattern_access, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component crypto_miner_execution, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component kernel_security_protections_change, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component file_attribute_change, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component auth_logs_tamper, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component denial_of_service_tools, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component informative, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_suspicious_tool_shell, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component code_on_the_fly, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component unprivileged_bpf_config_access, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component exec_from_unusual_dir, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component capabilities_modification, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component global_shlib_modification, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component data_encoder_exec, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ssl_certificate_access, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_suspicious_tool_exec, phase none set to completed[0m
+[90mOct 17 00:47:14[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child file_example, phase none is disabled
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component core_pattern_access, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component kernel_security_protections_change, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component unprivileged_bpf_config_access, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component sudoers_modification, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component machine_fingerprint, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component exec_example, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component environ_read_from_procfs, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component webserver_exec, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component global_shlib_modification, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component binary_self_deletion, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component data_encoder_exec, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component cpu_fingerprint, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component runc_suspicious_exec, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component capabilities_modification, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component webserver_shell_exec, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component binary_executed_by_loader, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component interpreter_shell_spawn, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component webserver_exec, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component exec_from_unusual_dir, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component file_example, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component credentials_text_lookup, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_scan_tool_exec, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component runc_suspicious_exec, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component interpreter_shell_spawn, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component denial_of_service_tools, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component passwd_usage, phase none set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component binary_executed_by_loader, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component credentials_text_lookup, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component shell_config_modification, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component passwd_usage, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component execution, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component fileaccess, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component events, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component pkg, phase none set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mcmd/jibril/main.go:222[0m[36m >[0m [1mhierarchy phase 'init' scheduled 'pkg'[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component pkg, phase init set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component singleton, phase init set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component cgroups, phase init set to running[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component cgroups, phase init set to completed[0m
+[90mOct 17 00:47:14[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ksymbols, phase init set to running[0m
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ksymbols/engine.go:58[0m[36m >[0m [1mfailed to initialize tracing events: open /sys/kernel/debug/tracing/available_events: no such file or directory[0m
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ksymbols/engine.go:65[0m[36m >[0m [1mfailed to initialize filter functions: open /sys/kernel/debug/tracing/available_filter_functions: no such file or directory[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ksymbols, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ebpfobjs, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpfobjs/engine.go:54[0m[36m >[0m [1minitializing eBPF objects[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpfobjs/engine.go:70[0m[36m >[0m [1meBPF objects temp dir: /tmp/jibril3563168302[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ebpfobjs, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ebpf, phase init set to running[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: trie_map.test)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:155[0m[36m >[0m [1mskipping trie_map.test (test)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: jbconfig)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:165[0m[36m >[0m [1mskipping jbconfig (normal)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: tailcalls.test)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:155[0m[36m >[0m [1mskipping tailcalls.test (test)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: token.test)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:155[0m[36m >[0m [1mskipping token.test (test)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: config)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: hash.test)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:155[0m[36m >[0m [1mskipping hash.test (test)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: same_names.test)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:155[0m[36m >[0m [1mskipping same_names.test (test)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: uprobe.test)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:155[0m[36m >[0m [1mskipping uprobe.test (test)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: vmap_nested.test)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:155[0m[36m >[0m [1mskipping vmap_nested.test (test)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: trie)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:165[0m[36m >[0m [1mskipping trie (normal)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: github)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:165[0m[36m >[0m [1mskipping github (normal)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: vmap.test)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:155[0m[36m >[0m [1mskipping vmap.test (test)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: netpolicy)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:165[0m[36m >[0m [1mskipping netpolicy (normal)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: basic_types.test)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:155[0m[36m >[0m [1mskipping basic_types.test (test)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: hr_timer_cron.test)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:155[0m[36m >[0m [1mskipping hr_timer_cron.test (test)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: iterators.test)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:155[0m[36m >[0m [1mskipping iterators.test (test)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: ringbuffer.test)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:155[0m[36m >[0m [1mskipping ringbuffer.test (test)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/obj.go:43[0m[36m >[0m new obj (obj: vmap)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:179[0m[36m >[0m [1mcreating emaps for obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbataskt, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_argctx, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_envp, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcenv_ctx_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slctokens_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_ctsmknodentryt, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s512, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbdnspipe_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbname_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_filetask, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_filetask in obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_ctcmmentryt, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l4jmpsin, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbflow_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_inotask, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcbasevalt, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbcomptst, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c64, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: dns.bss, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l7dnsjmpseg, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_taskflow, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_taskflow in obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_argv, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l3jmpsin, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_netpipe, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_flows, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_flows in obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_envs, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l3jmpseg, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_files, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_files in obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l7dnsjmpsin, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcname_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbargv_ctx_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_envpat, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbtokens_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slccomptst, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c512, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s2048, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_peers, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcnpipe_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_bases, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_bases in obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_taskfile, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_taskfile in obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_inodefile, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s32, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c2048, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcdnspipe_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l4jmpseg, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_cooktask, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcargv_ctx_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbdirvalt, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s64, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c128, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s128, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_dnspipe, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c32, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s1024, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_domains, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_canons, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_flowtask, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_flowtask in obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbbasevalt, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c256, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c1024, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_flowrefs, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_thashcache, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_argvat, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l7jmpsin, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbnpipe_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_tasks, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 65536 entries for jb_tasks in obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_envctx, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcdirvalt, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l7jmpseg, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_inocook, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcataskt, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_rectasks, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_rectasks in obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbenv_ctx_t, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: token_map, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_dirs, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 16384 entries for jb_dirs in obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_filerefs, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_cookino, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_cmds, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_cmds in obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_args, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_args in obj dns[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_ctsmmentryt, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_ctcmknodentryt, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s256, obj: dns)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcflow_t, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:179[0m[36m >[0m [1mcreating emaps for obj vmap[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_vmap_data, obj: vmap)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_vmap_meta, obj: vmap)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_vmap_free, obj: vmap)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: per_cpu_array, map: jb_vmap_hr, obj: vmap)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcvmap_val_t, obj: vmap)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbvmap_val_t, obj: vmap)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_vmap_values, obj: vmap)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_vmap_info, obj: vmap)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_vmap_idx, obj: vmap)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: queue, map: jb_vmap_wq, obj: vmap)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:179[0m[36m >[0m [1mcreating emaps for obj tasks[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_argv, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_envctx, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_taskfile, obj: tasks)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_taskfile in obj tasks[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_filerefs, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c2048, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slccomptst, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbcomptst, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbdirvalt, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_ctcmknodentryt, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_argvat, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slctokens_t, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_inodefile, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s128, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c512, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcbasevalt, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_ctcmmentryt, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c1024, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcargv_ctx_t, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbargv_ctx_t, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: token_map, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcdirvalt, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbbasevalt, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s1024, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_envpat, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_files, obj: tasks)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_files in obj tasks[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_dirs, obj: tasks)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 16384 entries for jb_dirs in obj tasks[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s512, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_ctsmknodentryt, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c256, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcenv_ctx_t, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_bases, obj: tasks)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_bases in obj tasks[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbataskt, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_already_paused, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c64, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s64, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_jbcfg, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c32, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_tasks, obj: tasks)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 65536 entries for jb_tasks in obj tasks[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_thashcache, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_args, obj: tasks)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_args in obj tasks[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcataskt, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_rectasks, obj: tasks)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_rectasks in obj tasks[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbenv_ctx_t, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbtokens_t, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s32, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c128, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_argctx, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_filetask, obj: tasks)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_filetask in obj tasks[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_cfg, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s256, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s2048, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_envp, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_cmds, obj: tasks)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_cmds in obj tasks[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_envs, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_ctsmmentryt, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: ringbuf, map: jb_ring_pause, obj: tasks)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:179[0m[36m >[0m [1mcreating emaps for obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_netpipe, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_tasks, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 65536 entries for jb_tasks in obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s512, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c2048, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l4jmpsin, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_flows, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_flows in obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slctokens_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcdnspipe_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_flowtask, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_flowtask in obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_args, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_args in obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_ctsmmentryt, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l3jmpsin, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l4jmpseg, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcnpipe_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_argctx, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcname_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_canons, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbnpipe_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_inocook, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_taskflow, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_taskflow in obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_cmds, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_cmds in obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: token_map, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_files, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_files in obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbdnspipe_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_cookino, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_envpat, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcbasevalt, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_bases, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_bases in obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c32, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s64, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s1024, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l3jmpseg, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_dnspipe, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_domains, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbenv_ctx_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcdirvalt, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s32, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c64, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c128, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbname_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcflow_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_envp, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbtokens_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbbasevalt, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_ctsmknodentryt, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_inodefile, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s128, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_rectasks, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_rectasks in obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_argvat, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_dirs, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 16384 entries for jb_dirs in obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbataskt, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbcomptst, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_ctcmknodentryt, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: network.bss, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_envctx, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c1024, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbflow_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_cooktask, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbargv_ctx_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_envs, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slccomptst, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_taskfile, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_taskfile in obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_ctcmmentryt, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c256, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l7jmpsin, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_flowrefs, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcataskt, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_thashcache, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_argv, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcenv_ctx_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbdirvalt, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_filetask, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_filetask in obj network[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l7jmpseg, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_inotask, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcargv_ctx_t, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_filerefs, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s256, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c512, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s2048, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_peers, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:179[0m[36m >[0m [1mcreating emaps for obj config[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_cfg, obj: config)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:179[0m[36m >[0m [1mcreating emaps for obj files[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s32, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbdnspipe_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_argctx, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_envctx, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_ctsmmentryt, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_ctsmknodentryt, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c1024, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_taskflow, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_taskflow in obj files[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbataskt, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_taskfile, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_taskfile in obj files[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_ctcmknodentryt, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s1024, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcdnspipe_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcbasevalt, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_inodefile, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcnpipe_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: files.bss, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_envs, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slccomptst, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c64, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s512, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_envp, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c2048, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcname_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l3jmpsin, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l3jmpseg, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbflow_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_rectasks, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_rectasks in obj files[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcargv_ctx_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_peers, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbbasevalt, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c128, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s256, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l7jmpsin, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbargv_ctx_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcenv_ctx_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_domains, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l7jmpseg, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_netpipe, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c512, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbnpipe_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_cookino, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_thashcache, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbdirvalt, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_dirs, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 16384 entries for jb_dirs in obj files[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s64, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s2048, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbname_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_inotask, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_flows, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_flows in obj files[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcdirvalt, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_bases, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_bases in obj files[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_filerefs, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l4jmpsin, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_l4jmpseg, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_cmds, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_cmds in obj files[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c32, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_s128, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_c256, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbenv_ctx_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slctokens_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbtokens_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_files, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_files in obj files[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_dnspipe, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_canons, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcflow_t, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_cooktask, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_slcataskt, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: array, map: jb_ctcmmentryt, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_inocook, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_tasks, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 65536 entries for jb_tasks in obj files[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: token_map, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: hash, map: jb_slbcomptst, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_flowtask, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_flowtask in obj files[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_flowrefs, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_argv, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_argvat, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_args, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_args in obj files[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: prog_array, map: jb_envpat, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: lru_hash, map: jb_filetask, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/emap.go:148[0m[36m >[0m [1msetting 32768 entries for jb_filetask in obj files[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:203[0m[36m >[0m [1mcreating progs for obj tasks[0m
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_execve_exit[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: jb_execve_exit, sec: tracepoint/syscalls/sys_exit_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_execveat_exit[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: jb_execveat_exit, sec: tracepoint/syscalls/sys_exit_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_schedexec[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceRawTP, name: jb_schedexec, sec: tp_btf/sched_process_exec, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_execve_enter[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: jb_execve_enter, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_argv_enter_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_argv_enter_0, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_argv_enter_2[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_argv_enter_2, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_envp_enter_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_envp_enter_1, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_execveatenv_enter[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: jb_execveatenv_enter, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_envpat_enter_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_envpat_enter_1, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceIter, name: jb_iter_init_01, sec: iter/task, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_execveenv_enter[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: jb_execveenv_enter, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_argvat_enter_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_argvat_enter_0, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_argvat_enter_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_argvat_enter_1, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_envpat_enter_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_envpat_enter_0, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_envpat_enter_2[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_envpat_enter_2, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_schedfork[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceRawTP, name: jb_schedfork, sec: tp_btf/sched_process_fork, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_argv_enter_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_argv_enter_1, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_envp_enter_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_envp_enter_0, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_envp_enter_2[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_envp_enter_2, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_argvat_enter_2[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: tail_argvat_enter_2, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_schedexit[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceRawTP, name: jb_schedexit, sec: tp_btf/sched_process_exit, obj: tasks)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_execveat_enter[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracepoint, attach: BPFCgroupInetIngress, name: jb_execveat_enter, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:203[0m[36m >[0m [1mcreating progs for obj network[0m
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:199[0m[36m >[0m [1mebpf: socket create hook: cannot check symbols, trying primary "security_socket_post_create" anyway[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_secsktpostcreate, sec: fentry/security_socket_post_create, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_sktconnect, sec: fentry/__sys_connect_file, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_secsktbind[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_secsktbind, sec: fentry/security_socket_bind, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_secsktlisten[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_secsktlisten, sec: fentry/security_socket_listen, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_sktrecvmsg, sec: fentry/sock_recvmsg, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l3jmpsin_entry_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l3jmpsin_entry_0, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpsin_udp_17[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l4jmpsin_udp_17, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpseg_udp_17[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: tail_l4jmpseg_udp_17, sec: cgroup_skb/egress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:199[0m[36m >[0m [1mebpf: socket recvmsg hook: cannot check symbols, trying primary "security_socket_recvmsg" anyway[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_secsktrecvmsg, sec: fentry/security_socket_recvmsg, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpsin_tcp_6[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l4jmpsin_tcp_6, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpsin_icmpv4_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l4jmpsin_icmpv4_1, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpsin_icmpv6_58[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l4jmpsin_icmpv6_58, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpseg_icmpv6_58[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: tail_l4jmpseg_icmpv6_58, sec: cgroup_skb/egress, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_sktpostcreate, sec: fentry/sock_alloc_file, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:199[0m[36m >[0m [1mebpf: socket connect hook: cannot check symbols, trying primary "security_socket_connect" anyway[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_sktconnect_sec, sec: fentry/security_socket_connect, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_secsktpair[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_secsktpair, sec: fentry/security_socket_socketpair, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:199[0m[36m >[0m [1mebpf: socket sendmsg hook: cannot check symbols, trying primary "security_socket_sendmsg" anyway[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_secsktsendmsg, sec: fentry/security_socket_sendmsg, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFentry, name: jb_sktsendmsg, sec: fentry/sock_sendmsg, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_cgroup_skb_ingress[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: jb_cgroup_skb_ingress, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l3jmpsin_end_46[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l3jmpsin_end_46, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_cgroup_skb_egress[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: jb_cgroup_skb_egress, sec: cgroup_skb/egress, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceIter, name: jb_iter_init_03, sec: iter/task_file, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l3jmpseg_entry_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: tail_l3jmpseg_entry_0, sec: cgroup_skb/egress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpseg_tcp_6[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: tail_l4jmpseg_tcp_6, sec: cgroup_skb/egress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l4jmpseg_icmpv4_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: tail_l4jmpseg_icmpv4_1, sec: cgroup_skb/egress, obj: network)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l3jmpseg_end_46[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: tail_l3jmpseg_end_46, sec: cgroup_skb/egress, obj: network)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:203[0m[36m >[0m [1mcreating progs for obj config[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:203[0m[36m >[0m [1mcreating progs for obj files[0m
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_vfslockfile[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_vfslockfile, sec: fexit/vfs_lock_file, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_vfsfsync[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_vfsfsync, sec: fexit/vfs_fsync_range, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_vfsreadv[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_vfsreadv, sec: fexit/vfs_readv, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_vfswrite[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_vfswrite, sec: fexit/vfs_write, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_sectrunc[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_sectrunc, sec: fexit/security_path_truncate, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceIter, name: jb_iter_init_02, sec: iter/task_file, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_vfsread[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_vfsread, sec: fexit/vfs_read, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_vfswritev[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_vfswritev, sec: fexit/vfs_writev, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: _security_file_free[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: _security_file_free, sec: fexit/security_file_free, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_secmknod[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_secmknod, sec: fexit/security_path_mknod, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_secrename[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_secrename, sec: fexit/security_path_rename, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_secunlink[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_secunlink, sec: fexit/security_path_unlink, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_io_issue_sqe[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_io_issue_sqe, sec: fexit/io_issue_sqe, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_sec_bprm_creds_for_exec[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_sec_bprm_creds_for_exec, sec: fexit/security_bprm_creds_for_exec, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_dommap[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: kprobej, attach: BPFCgroupInetIngress, name: jb_dommap, sec: kprobe/do_mmap, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_dommapexit[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: kprobej, attach: BPFCgroupInetIngress, name: jb_dommapexit, sec: kretprobe/do_mmap, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_dofcntl[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_dofcntl, sec: fexit/do_fcntl, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_vfsopen[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_vfsopen, sec: fexit/vfs_open, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: _security_file_truncate[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: _security_file_truncate, sec: fexit/security_file_truncate, obj: files)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: jb_bprm_execve[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: tracing, attach: BPFTraceFexit, name: jb_bprm_execve, sec: fexit/bprm_execve, obj: files)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:203[0m[36m >[0m [1mcreating progs for obj dns[0m
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l7dnsjmpseg_update_2[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: tail_l7dnsjmpseg_update_2, sec: cgroup_skb/egress, obj: dns)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l7jmpsin_dns53_13[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l7jmpsin_dns53_13, sec: cgroup_skb/ingress, obj: dns)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l7dnsjmpsin_question_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l7dnsjmpsin_question_0, sec: cgroup_skb/ingress, obj: dns)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l7dnsjmpsin_answers_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l7dnsjmpsin_answers_1, sec: cgroup_skb/ingress, obj: dns)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l7dnsjmpsin_update_2[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetIngress, name: tail_l7dnsjmpsin_update_2, sec: cgroup_skb/ingress, obj: dns)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l7jmpseg_dns53_13[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: tail_l7jmpseg_dns53_13, sec: cgroup_skb/egress, obj: dns)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l7dnsjmpseg_question_0[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: tail_l7dnsjmpseg_question_0, sec: cgroup_skb/egress, obj: dns)
+[90mOct 17 00:47:15[0m [33mWRN[0m [1msingleton/ebpf/prog.go:169[0m[36m >[0m [1mebpf: symbol can't be checked, trying program anyway: tail_l7dnsjmpseg_answers_1[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/prog.go:183[0m[36m >[0m ebpf: new prog (type: cgroup_skb, attach: BPFCgroupInetEgress, name: tail_l7dnsjmpseg_answers_1, sec: cgroup_skb/egress, obj: dns)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:203[0m[36m >[0m [1mcreating progs for obj vmap[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:220[0m[36m >[0m [1mloading object vmap[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:220[0m[36m >[0m [1mloading object tasks[0m
+libbpf: kernel BTF is missing at '/sys/kernel/btf/vmlinux', was CONFIG_DEBUG_INFO_BTF enabled?
+libbpf: failed to find valid kernel BTF
+libbpf: Error loading vmlinux BTF: -ESRCH
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:220[0m[36m >[0m [1mloading object network[0m
+libbpf: kernel BTF is missing at '/sys/kernel/btf/vmlinux', was CONFIG_DEBUG_INFO_BTF enabled?
+libbpf: failed to find valid kernel BTF
+libbpf: Error loading vmlinux BTF: -ESRCH
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:220[0m[36m >[0m [1mloading object config[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:220[0m[36m >[0m [1mloading object files[0m
+libbpf: kernel BTF is missing at '/sys/kernel/btf/vmlinux', was CONFIG_DEBUG_INFO_BTF enabled?
+libbpf: failed to find valid kernel BTF
+libbpf: Error loading vmlinux BTF: -ESRCH
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:220[0m[36m >[0m [1mloading object dns[0m
+libbpf: kernel BTF is missing at '/sys/kernel/btf/vmlinux', was CONFIG_DEBUG_INFO_BTF enabled?
+libbpf: failed to find valid kernel BTF
+libbpf: Error loading vmlinux BTF: -ESRCH
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:231[0m[36m >[0m [1mskipping config (no ringbufs)[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:231[0m[36m >[0m [1mskipping files (no ringbufs)[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:231[0m[36m >[0m [1mskipping dns (no ringbufs)[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:231[0m[36m >[0m [1mskipping vmap (no ringbufs)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/ringbuf.go:84[0m[36m >[0m creating ringbuf jb_ring_pause with emap tasks
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:49[0m[36m >[0m new emap (type: ringbuf, map: jb_ring_pause, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/emap.go:54[0m[36m >[0m destroy emap (type: ringbuf, map: jb_ring_pause, obj: tasks)
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:231[0m[36m >[0m [1mskipping network (no ringbufs)[0m
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeIter (task, name: jb_iter_init_01), sec: iter/task, obj: tasks)
+libbpf: prog 'jb_iter_init_01': can't attach before loaded
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeIter (task, name: jb_iter_init_02), sec: iter/task_file, obj: files)
+libbpf: prog 'jb_iter_init_02': can't attach before loaded
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeIter (task, name: jb_iter_init_03), sec: iter/task_file, obj: network)
+libbpf: prog 'jb_iter_init_03': can't attach before loaded
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+libbpf: map 'jb_argv': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+libbpf: map 'jb_argv': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+libbpf: map 'jb_argv': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+libbpf: map 'jb_argvat': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+libbpf: map 'jb_argvat': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+libbpf: map 'jb_argvat': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+libbpf: map 'jb_envp': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+libbpf: map 'jb_envp': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+libbpf: map 'jb_envp': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+libbpf: map 'jb_envpat': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+libbpf: map 'jb_envpat': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+libbpf: map 'jb_envpat': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/egress, obj: network)
+libbpf: map 'jb_l3jmpseg': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/egress, obj: network)
+libbpf: map 'jb_l3jmpseg': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/ingress, obj: network)
+libbpf: map 'jb_l3jmpsin': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/ingress, obj: network)
+libbpf: map 'jb_l3jmpsin': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/egress, obj: network)
+libbpf: map 'jb_l4jmpseg': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/egress, obj: network)
+libbpf: map 'jb_l4jmpseg': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/egress, obj: network)
+libbpf: map 'jb_l4jmpseg': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/egress, obj: network)
+libbpf: map 'jb_l4jmpseg': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/ingress, obj: network)
+libbpf: map 'jb_l4jmpsin': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/ingress, obj: network)
+libbpf: map 'jb_l4jmpsin': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/ingress, obj: network)
+libbpf: map 'jb_l4jmpsin': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/ingress, obj: network)
+libbpf: map 'jb_l4jmpsin': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/egress, obj: dns)
+libbpf: map 'jb_l7dnsjmpseg': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/egress, obj: dns)
+libbpf: map 'jb_l7dnsjmpseg': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/egress, obj: dns)
+libbpf: map 'jb_l7dnsjmpseg': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/ingress, obj: dns)
+libbpf: map 'jb_l7dnsjmpsin': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/ingress, obj: dns)
+libbpf: map 'jb_l7dnsjmpsin': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/ingress, obj: dns)
+libbpf: map 'jb_l7dnsjmpsin': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/egress, obj: dns)
+libbpf: map 'jb_l7jmpseg': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTail, sec: cgroup_skb/ingress, obj: dns)
+libbpf: map 'jb_l7jmpsin': can't use BPF map without FD (was it created?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/vfs_writev, obj: files)
+libbpf: prog 'jb_vfswritev': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fentry/security_socket_socketpair, obj: network)
+libbpf: prog 'jb_secsktpair': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fentry/security_socket_post_create, obj: network)
+libbpf: prog 'jb_secsktpostcreate': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTracepoint, sec: tracepoint/syscalls/sys_exit_execve, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fentry/security_socket_listen, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/vfs_lock_file, obj: files)
+libbpf: prog 'jb_secsktlisten': can't attach BPF program without FD (was it loaded?)
+libbpf: prog 'jb_vfslockfile': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/do_fcntl, obj: files)
+libbpf: failed to determine tracepoint 'syscalls/sys_exit_execve' perf event ID: -ENOENT
+libbpf: prog 'jb_execve_exit': failed to create tracepoint 'syscalls/sys_exit_execve' perf event: -ENOENT
+libbpf: prog 'jb_dofcntl': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fentry/security_socket_recvmsg, obj: network)
+libbpf: prog 'jb_secsktrecvmsg': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/vfs_open, obj: files)
+libbpf: prog 'jb_vfsopen': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: tp_btf/sched_process_exec, obj: tasks)
+libbpf: prog 'jb_schedexec': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/security_file_free, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondKprobe, sec: kprobe/do_mmap, obj: files)
+libbpf: prog '_security_file_free': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: tp_btf/sched_process_fork, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/vfs_read, obj: files)
+libbpf: prog 'jb_schedfork': can't attach BPF program without FD (was it loaded?)
+libbpf: prog 'jb_vfsread': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/vfs_readv, obj: files)
+libbpf: prog 'jb_vfsreadv': can't attach BPF program without FD (was it loaded?)
+libbpf: failed to add legacy kprobe event for 'do_mmap+0x0': -ENOENT
+libbpf: prog 'jb_dommap': failed to create kprobe 'do_mmap+0x0' perf event: -ENOENT
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTracepoint, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: tp_btf/sched_process_exit, obj: tasks)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/security_path_unlink, obj: files)
+libbpf: prog 'jb_schedexit': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/bprm_execve, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/security_bprm_creds_for_exec, obj: files)
+libbpf: prog 'jb_bprm_execve': can't attach BPF program without FD (was it loaded?)
+libbpf: failed to determine tracepoint 'syscalls/sys_enter_execveat' perf event ID: -ENOENT
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/security_path_truncate, obj: files)
+libbpf: prog 'jb_execveat_enter': failed to create tracepoint 'syscalls/sys_enter_execveat' perf event: -ENOENT
+libbpf: prog 'jb_sectrunc': can't attach BPF program without FD (was it loaded?)
+libbpf: prog 'jb_sec_bprm_creds_for_exec': can't attach BPF program without FD (was it loaded?)
+libbpf: prog 'jb_secunlink': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTracepoint, sec: tracepoint/syscalls/sys_enter_execveat, obj: tasks)
+libbpf: failed to determine tracepoint 'syscalls/sys_enter_execveat' perf event ID: -ENOENT
+libbpf: prog 'jb_execveatenv_enter': failed to create tracepoint 'syscalls/sys_enter_execveat' perf event: -ENOENT
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fentry/security_socket_sendmsg, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/security_file_truncate, obj: files)
+libbpf: prog 'jb_secsktsendmsg': can't attach BPF program without FD (was it loaded?)
+libbpf: prog '_security_file_truncate': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fentry/security_socket_connect, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTracepoint, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+libbpf: prog 'jb_sktconnect_sec': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/vfs_fsync_range, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/security_path_rename, obj: files)
+libbpf: failed to determine tracepoint 'syscalls/sys_enter_execve' perf event ID: -ENOENT
+libbpf: prog 'jb_secrename': can't attach BPF program without FD (was it loaded?)
+libbpf: prog 'jb_execveenv_enter': failed to create tracepoint 'syscalls/sys_enter_execve' perf event: -ENOENT
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/security_path_mknod, obj: files)
+libbpf: prog 'jb_vfsfsync': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTracepoint, sec: tracepoint/syscalls/sys_exit_execveat, obj: tasks)
+libbpf: prog 'jb_secmknod': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/io_issue_sqe, obj: files)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fexit/vfs_write, obj: files)
+libbpf: prog 'jb_io_issue_sqe': can't attach BPF program without FD (was it loaded?)
+libbpf: prog 'jb_vfswrite': can't attach BPF program without FD (was it loaded?)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeTracing, sec: fentry/security_socket_bind, obj: network)
+libbpf: prog 'jb_secsktbind': can't attach BPF program without FD (was it loaded?)
+libbpf: failed to determine tracepoint 'syscalls/sys_exit_execveat' perf event ID: -ENOENT
+libbpf: prog 'jb_execveat_exit': failed to create tracepoint 'syscalls/sys_exit_execveat' perf event: -ENOENT
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondKprobe, sec: kretprobe/do_mmap, obj: files)
+libbpf: failed to add legacy kprobe event for 'do_mmap+0x0': -ENOENT
+libbpf: prog 'jb_dommapexit': failed to create kretprobe 'do_mmap+0x0' perf event: -ENOENT
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondTracepoint, sec: tracepoint/syscalls/sys_enter_execve, obj: tasks)
+libbpf: failed to determine tracepoint 'syscalls/sys_enter_execve' perf event ID: -ENOENT
+libbpf: prog 'jb_execve_enter': failed to create tracepoint 'syscalls/sys_enter_execve' perf event: -ENOENT
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeCgroup, sec: cgroup_skb/egress, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond-new.go:104[0m[36m >[0m cgroup path for cgroup_skb/egress is /sys/fs/cgroup
+libbpf: prog 'jb_cgroup_skb_egress': can't attach before loaded
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond.go:251[0m[36m >[0m new bond (type: *ebpf.bondBPFlinkTypeCgroup, sec: cgroup_skb/ingress, obj: network)
+[90mOct 17 00:47:15[0m DBG [1msingleton/ebpf/bond-new.go:104[0m[36m >[0m cgroup path for cgroup_skb/ingress is /sys/fs/cgroup
+libbpf: prog 'jb_cgroup_skb_ingress': can't attach before loaded
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:390[0m[36m >[0m [1mebpf: finished loading programs and maps of the current hierarchy[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:391[0m[36m >[0m [1mebpf: loaded 2 objects, 309 maps, 0 ringbufs, 76 programs[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:393[0m[36m >[0m [1mebpf: attached 0 programs, 0 live links[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1msingleton/ebpf/engine.go:394[0m[36m >[0m [1mebpf: errors: 5 load, 72 attach, 0 link[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ebpf, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component server, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component server, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component dispatcher, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component dispatcher, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component environment, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component environment, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component singleton, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component bridge, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component config, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component config, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child jbconfig, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component jbconfig, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component vmap, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component vmap, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component tasks, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component tasks, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component files, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component files, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component filerefs, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component filerefs, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component flows, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component flows, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component flowrefs, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component flowrefs, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component dns, phase init set to running[0m
+[90mOct 17 00:47:15[0m [33mWRN[0m [1mbridge/dns/functions.go:117[0m[36m >[0m [1mcould not check systemd-resolved status[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component dns, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child netpol, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component netpol, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child ghcontext, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ghcontext, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child steps, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component steps, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component bridge, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component services, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component hold, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component agent, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component procfs, phase init set to running[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child enricher, phase init is disabled
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child alchemies, phase init is disabled
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child netdrops, phase init is disabled
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child workflow, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component enricher, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child persisters, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component alchemies, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component netdrops, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child transformers, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component workflow, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component procfs, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component persisters, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component hold, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child attenuator, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component transformers, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [33mWRN[0m [1mservices/agent/engine.go:40[0m[36m >[0m [1mskipping agent registration[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component internline, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component attenuator, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component baseline, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component internline, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component agent, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component baseline, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component services, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child tests, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component tests, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child example, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component example, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component printers, phase init set to running[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child jsonprofiler, phase init is disabled
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child profiler, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component jsonprofiler, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component profiler, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child voidprinter, phase init is disabled
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child garnet, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component varlog, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component stdout, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component garnet, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component voidprinter, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child profiler4fun, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component profiler4fun, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/fileprinter/fileprinter.go:44[0m[36m >[0m fileprinter stdout
+[90mOct 17 00:47:15[0m DBG [1mpkgs/fileprinter/fileprinter.go:44[0m[36m >[0m fileprinter varlog
+[90mOct 17 00:47:15[0m DBG [1mpkgs/fileprinter/fileprinter.go:49[0m[36m >[0m fileprinter stdout prints to /dev/stdout
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component stdout, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/fileprinter/fileprinter.go:55[0m[36m >[0m fileprinter varlog prints to /var/log/jibril.out
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component varlog, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component printers, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component events, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component informative, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component execution, phase init set to running[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child netpolicy, phase init is disabled
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child profile, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component netpolicy, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component envvars, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component profile, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component fileaccess, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component netpeers, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component denial_of_service_tools, phase init set to running[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child flow, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component dynamic_linker_attacks, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component flow, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child peer_example, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component interpreter_shell_spawn, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component peer_example, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_mitm_tool_exec, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for dynamic_linker_attacks[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component crypto_miner_execution, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_scan_tool_exec, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component credentials_text_lookup, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component exec_from_unusual_dir, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component binary_executed_by_loader, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component netpeers, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component code_on_the_fly, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component webserver_exec, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_suspicious_tool_exec, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component java_instrument_lib_load, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component informative, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component dynamic_linker_attacks, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for net_mitm_tool_exec[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for denial_of_service_tools[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for crypto_miner_execution[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component webserver_shell_exec, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_filecopy_tool_exec, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component envvars, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_mitm_tool_exec, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component denial_of_service_tools, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component file_attribute_change, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component crypto_miner_execution, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_sniff_tool_exec, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component sysrq_access, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component passwd_usage, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for webserver_shell_exec[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component code_modification_through_procfs, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component data_encoder_exec, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for code_on_the_fly[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component sudoers_modification, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for file_attribute_change[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component webserver_shell_exec, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for sysrq_access[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for webserver_exec[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for exec_from_unusual_dir[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component file_attribute_change, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for credentials_text_lookup[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child os_network_fingerprint, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component sysrq_access, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for data_encoder_exec[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component package_repo_config_modification, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for net_sniff_tool_exec[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child net_suspicious_tool_shell, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component os_network_fingerprint, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component credentials_text_lookup, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component runc_suspicious_exec, phase init set to running[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child machine_fingerprint, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component data_encoder_exec, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component code_on_the_fly, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component crypto_miner_files, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for net_suspicious_tool_exec[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_suspicious_tool_shell, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component capabilities_modification, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component hidden_elf_exec, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component machine_fingerprint, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_sniff_tool_exec, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for java_instrument_lib_load[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child os_fingerprint, phase init is disabled
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child os_status_fingerprint, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component os_fingerprint, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for net_scan_tool_exec[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component sched_debug_access, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component webserver_exec, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child exec_example, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component shell_config_modification, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component java_debug_lib_load, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component pam_config_modification, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for runc_suspicious_exec[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_suspicious_tool_exec, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component auth_logs_tamper, phase init set to running[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child filesystem_fingerprint, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component java_instrument_lib_load, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component exec_example, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for sudoers_modification[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for interpreter_shell_spawn[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component credentials_files_access, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component unprivileged_bpf_config_access, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for capabilities_modification[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for shell_config_modification[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component filesystem_fingerprint, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component global_shlib_modification, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component exec_from_unusual_dir, phase init set to completed[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child file_example, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component binary_self_deletion, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_scan_tool_exec, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component kernel_security_protections_change, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for code_modification_through_procfs[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for unprivileged_bpf_config_access[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component runc_suspicious_exec, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component os_status_fingerprint, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for package_repo_config_modification[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component core_pattern_access, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for pam_config_modification[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child cpu_fingerprint, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for global_shlib_modification[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component unprivileged_bpf_config_access, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component shell_config_modification, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for sched_debug_access[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for passwd_usage[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for binary_self_deletion[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for auth_logs_tamper[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component pam_config_modification, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component cpu_fingerprint, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for java_debug_lib_load[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component package_repo_config_modification, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component interpreter_shell_spawn, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component global_shlib_modification, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for hidden_elf_exec[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for net_filecopy_tool_exec[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component code_modification_through_procfs, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component sched_debug_access, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for core_pattern_access[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component java_debug_lib_load, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component hidden_elf_exec, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component capabilities_modification, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component auth_logs_tamper, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component passwd_usage, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component binary_self_deletion, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for kernel_security_protections_change[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component net_filecopy_tool_exec, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component core_pattern_access, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for binary_executed_by_loader[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component environ_read_from_procfs, phase init set to running[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component kernel_security_protections_change, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component binary_executed_by_loader, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component sudoers_modification, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for environ_read_from_procfs[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for credentials_files_access[0m
+[90mOct 17 00:47:15[0m DBG [1mpkgs/hierarchy/hierarchy.go:584[0m[36m >[0m hierarchy child ssl_certificate_access, phase init is disabled
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component environ_read_from_procfs, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component credentials_files_access, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component execution, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component file_example, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component ssl_certificate_access, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mservices/alchemies/recipes.go:35[0m[36m >[0m [1mrunning init for crypto_miner_files[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component crypto_miner_files, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component fileaccess, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component events, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/hierarchy/hierarchy.go:233[0m[36m >[0m [1mhierarchy component pkg, phase init set to completed[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:251[0m[36m >[0m [1mhierarchy waiting for all phases and their components[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:655[0m[36m >[0m [1mproblems loop started[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/syncrun/syncrun.go:144[0m[36m >[0m [1msyncrun: waiting until ready[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:669[0m[36m >[0m [1mfailed to load object objs/tasks.bpf.o[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mpkgs/syncrun/engine.go:40[0m[36m >[0m [1msyncrun: context done, stopping runtime synchronization[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:380[0m[36m >[0m [1mshutdown: initiated, context cancelled[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:671[0m[36m >[0m [1mproblems loop received fatal errors[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:652[0m[36m >[0m [1mproblems loop wait group done[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:512[0m[36m >[0m [1mhierarchy component ebpf is ready[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:516[0m[36m >[0m [1mhierarchy phase 'start' skipped: context cancelled[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:391[0m[36m >[0m [1mhierarchy: stopping components initiated[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:409[0m[36m >[0m [1mhierarchy phase 'stop' scheduled 'pkg'[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:412[0m[36m >[0m [1mhierarchy phase 'stop' failed: operation stop not executable[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:418[0m[36m >[0m [1mhierarchy phase 'destroy' scheduled 'pkg'[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:421[0m[36m >[0m [1mhierarchy phase 'destroy' failed: operation destroy not executable[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:426[0m[36m >[0m [1mhierarchy all phases and components done[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:430[0m[36m >[0m [1mshutdown: total from shutdown to components done took 10.193851ms[0m
+[90mOct 17 00:47:15[0m [32mINF[0m [1mcmd/jibril/main.go:263[0m[36m >[0m [1mRun summary: summarizing problems and exiting[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:279[0m[36m >[0m [1mhierarchy component pkg, phase destroy failed with: operation destroy not executable[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:279[0m[36m >[0m [1mhierarchy component pkg, phase stop failed with: operation stop not executable[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to insert into map jb_l3jmpsin[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fentry/security_socket_listen failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram kretprobe/do_mmap failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to load object objs/dns.bpf.o[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram kprobe/do_mmap failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to insert into map jb_l7dnsjmpseg[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to insert into map jb_l3jmpseg[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fentry/security_socket_bind failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to insert into map jb_envpat[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/vfs_open failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/io_issue_sqe failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to load object objs/network.bpf.o[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/security_path_unlink failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram cgroup_skb/ingress failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/do_fcntl failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to insert into map jb_l4jmpseg[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/vfs_read failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to insert into map jb_envp[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fentry/security_socket_sendmsg failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fentry/security_socket_recvmsg failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram tracepoint/syscalls/sys_enter_execveat failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to insert into map jb_argv[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/bprm_execve failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fentry/security_socket_connect failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/vfs_writev failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram tp_btf/sched_process_exec failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to insert into map jb_argvat[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/vfs_readv failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to get map fd[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fentry/security_socket_socketpair failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/security_bprm_creds_for_exec failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/security_path_mknod failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram tracepoint/syscalls/sys_exit_execve failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram iter/task failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram iter/task_file failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/vfs_lock_file failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to insert into map jb_l4jmpsin[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/security_path_rename failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram tracepoint/syscalls/sys_exit_execveat failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to insert into map jb_l7jmpsin[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram tp_btf/sched_process_exit failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to load object objs/tasks.bpf.o[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/vfs_fsync_range failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/security_path_truncate failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fentry/security_socket_post_create failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram tp_btf/sched_process_fork failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/security_file_truncate failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/vfs_write failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram tracepoint/syscalls/sys_enter_execve failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to insert into map jb_l7dnsjmpsin[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to load object objs/files.bpf.o[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram cgroup_skb/egress failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mprogram fexit/security_file_free failed to attach[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:284[0m[36m >[0m [1mfailed to insert into map jb_l7jmpseg[0m
+[90mOct 17 00:47:15[0m [31mERR[0m [1mcmd/jibril/main.go:291[0m[36m >[0m [1mRun summary: fatal errors were found, execution failed[0m
+exit=1
