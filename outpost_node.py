@@ -11,7 +11,7 @@ When the worker exits (session over) the receipt is built and written to --out, 
 entry Devin published for the session (spec.network_policy) and the worker log (token-free).
 The outpost token reaches the sandbox only as a Modal Secret built from this process's environment.
 """
-import json, os, re, time, urllib.request
+import json, os, re, shlex, time, urllib.request
 from pathlib import Path
 
 import modal
@@ -104,7 +104,7 @@ def main(outpost: str = "garnet-receipts", out: str = "out-outpost", max_wait: i
         ev("recorder_armed", rc=rc, out=out_.strip(), err=err.strip()[-300:], s=round(time.monotonic() - t2, 2))
         t3 = time.monotonic()
         # the worker inherits DEVIN_OUTPOSTS_TOKEN from the sandbox's Modal Secret; nothing on argv
-        rc, out_, err = _exec(sb, f"cd /workspace && setsid bash -c 'exec devin worker start --outpost={outpost} --once --poll-interval-secs 5' "
+        rc, out_, err = _exec(sb, f"cd /workspace && setsid bash -c 'exec devin worker start --outpost={shlex.quote(outpost)} --once --poll-interval-secs 5' "
                                   f"</dev/null >/garnet/worker.log 2>&1 & echo $!", 30)
         ev("worker_started", pid=out_.strip(), rc=rc)
         session_id, claimed_at, entry, registered = None, None, None, False
@@ -131,8 +131,9 @@ def main(outpost: str = "garnet-receipts", out: str = "out-outpost", max_wait: i
                 if it["status"]["phase"] == "claimed" and claimed_at is None:
                     claimed_at = time.time()
                     ev("session_claimed", session_id=sid, acceptor_id=it["status"].get("acceptor_id"), session_status=it["status"].get("session_status"))
-                entry = {k: v for k, v in it.items()}
-                entry["status"] = {k: v for k, v in it["status"].items() if k not in ("connect_token",)}
+                if sid == session_id:  # the receipt is paired with the first session only; never another entry's policy
+                    entry = {k: v for k, v in it.items()}
+                    entry["status"] = {k: v for k, v in it["status"].items() if k not in ("connect_token",)}
             if running.strip() == "no":
                 ev("worker_exited", s_since_start=round(time.monotonic() - t3, 2))
                 break
@@ -141,7 +142,7 @@ def main(outpost: str = "garnet-receipts", out: str = "out-outpost", max_wait: i
             time.sleep(poll)
         else:
             ev("max_wait_reached", session_id=session_id)
-            _exec(sb, "pkill -f 'devin worker start'; pkill -f devin-remote; sleep 1", 30)
+            _exec(sb, "pkill -f 'devin [w]orker start'; pkill -f 'devin[-]remote'; sleep 1", 30)
         if session_id:
             try:
                 entry = fleet(f"/opbeta/outposts/devins/{session_id}", token)

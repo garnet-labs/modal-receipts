@@ -8,7 +8,7 @@ guest-setup.sh installs the official Devin CLI and Jibril v2.17.0; Jibril runs w
 record stays in the guest) and writes /var/log/jibril/jibril.profile.json; `devin worker start --once` claims one session.
 The outpost token reaches the guest only as the env of the worker command (envd exec env), never on argv.
 """
-import argparse, json, os, re, time
+import argparse, json, os, re, shlex, time
 from pathlib import Path
 from e2b import Sandbox
 from e2b.sandbox.commands.command_handle import CommandExitException
@@ -55,7 +55,9 @@ def main():
     ev("outpost_found", outpost_id=outpost_id, queue_depth=op["status"]["queue_depth"], active_claims=op["status"]["active_claims"])
 
     t0 = time.monotonic()
-    sb = Sandbox.create(a.template, timeout=min(a.max_wait + 600, 3600))  # Embed caps sandbox timeout at 1 h
+    sb_timeout = min(a.max_wait + 600, 3600)  # Embed caps sandbox timeout at 1 h
+    sb = Sandbox.create(a.template, timeout=sb_timeout)
+    sb_expires = t0 + sb_timeout
     ev("sandbox_created", sandbox_id=sb.sandbox_id, s=round(time.monotonic() - t0, 3))
     try:
         rc, o, e = run("uname -r; nproc; free -m | awk '/Mem/{print $2}'; ls /sys/kernel/btf/vmlinux; ls /sys/kernel/debug/tracing/events/syscalls >/dev/null 2>&1 && echo syscalls-tracefs || echo no-syscalls-tracefs; zcat /proc/config.gz | grep -E '^CONFIG_(BPF_JIT|KPROBES|FTRACE_SYSCALLS|MODULES)=' | tr '\\n' ' '")
@@ -91,11 +93,14 @@ def main():
             raise SystemExit("jibril did not attach")
         t3 = time.monotonic()
         run("mkdir -p /workspace", timeout=30)
-        sb.commands.run(f"cd /workspace && exec devin worker start --outpost={a.outpost} --once --poll-interval-secs 5 >/var/log/worker.log 2>&1", background=True,
+        sb.commands.run(f"cd /workspace && exec devin worker start --outpost={shlex.quote(a.outpost)} --once --poll-interval-secs 5 >/var/log/worker.log 2>&1", background=True,
                         user="root", cwd="/workspace", envs={"DEVIN_OUTPOSTS_TOKEN": token, "HOME": "/root"}, timeout=0)
         ev("worker_started")
         session_id, entry, registered, last = None, None, False, ""
-        deadline = time.monotonic() + a.max_wait
+        # stop polling well before the sandbox itself expires, or the profile can never be collected
+        deadline = min(time.monotonic() + a.max_wait, sb_expires - 180)
+        if deadline < time.monotonic() + a.max_wait:
+            ev("max_wait_clamped", to_s=round(deadline - time.monotonic(), 1), reason="sandbox timeout")
         while time.monotonic() < deadline:
             rc, log, _ = run("cat /var/log/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin [w]orker start' >/dev/null && echo yes || echo no", timeout=30)
             log, _, running = log.rpartition("---RUNNING")
@@ -112,9 +117,10 @@ def main():
                 if session_id is None:
                     session_id = sid
                     ev("session_queued", session_id=sid, phase=it["status"]["phase"], kind=it["spec"]["kind"], network_policy=it["spec"].get("network_policy"))
-                entry = dict(it); entry["status"] = {k: v for k, v in it["status"].items() if k != "connect_token"}
-            if running.strip() == "no" and registered:
-                ev("worker_exited", s_since_start=round(time.monotonic() - t3, 2)); break
+                if sid == session_id:  # pair the record with the first session only
+                    entry = dict(it); entry["status"] = {k: v for k, v in it["status"].items() if k != "connect_token"}
+            if running.strip() == "no" and (registered or time.monotonic() - t3 > 60):
+                ev("worker_exited", s_since_start=round(time.monotonic() - t3, 2), registered=registered); break
             time.sleep(a.poll)
         else:
             ev("max_wait_reached", session_id=session_id)

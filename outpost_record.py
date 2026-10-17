@@ -13,6 +13,10 @@ ev = {e["event"]: e for e in E if e["event"] != "worker_log"}
 h = html.escape
 
 
+class Raw(str):
+    """Pre-rendered HTML cell; everything else is escaped."""
+
+
 def fmt_ts(t):
     return time.strftime("%H:%M:%S", time.gmtime(t)) + f".{int((t % 1) * 10):d}"
 
@@ -24,7 +28,7 @@ def clk(u):
 def tbl(rows, head):
     s = "<table><thead><tr>" + "".join(f"<th>{h(c)}</th>" for c in head) + "</tr></thead><tbody>"
     for r in rows:
-        s += "<tr>" + "".join(f"<td>{c if isinstance(c, str) and c.startswith('<') else h(str(c))}</td>" for c in r) + "</tr>"
+        s += "<tr>" + "".join(f"<td>{c if isinstance(c, Raw) else h(str(c))}</td>" for c in r) + "</tr>"
     return s + "</tbody></table>"
 
 
@@ -37,25 +41,30 @@ for host in sorted(set(agr["both"]) | set(agr["sidecar_only"]) | set(agr["in_vm_
     chains = agr["process_by_host"].get(host, [])
     where = "both" if host in agr["both"] else ("Sidecar only" if host in agr["sidecar_only"] else "in-VM only")
     host_rows.append([host, where, sh.get("connections", "–"), f'{sh.get("bytes_down", 0):,}' if sh else "–",
-                      "<br>".join(f"<code>{h(c)}</code>" for c in chains) or "<em>no in-VM chain</em>"])
+                      Raw("<br>".join(f"<code>{h(c)}</code>" for c in chains) or "<em>no in-VM chain</em>")])
 
 workload_pids = {}
 for l in procs["lineage"]:
     a = " ".join(l["argv"])
     if any(k in a for k in ("git clone https://github.com/garnet-labs/modal-receipts", "git clone https", "py_compile sidecar", "npm init", "npm install left-pad", "git-remote-https origin https://git-manager")):
         workload_pids[l["pid"]] = l
-wl_rows = [[l["pid"], l["ppid"], f'<code>{h(l["chain"])}</code>', f'<code>{h(" ".join(l["argv"])[:140])}</code>'] for l in sorted(workload_pids.values(), key=lambda x: x["pid"])]
+wl_rows = [[l["pid"], l["ppid"], Raw(f'<code>{h(l["chain"])}</code>'), Raw(f'<code>{h(" ".join(l["argv"])[:140])}</code>')] for l in sorted(workload_pids.values(), key=lambda x: x["pid"])]
 
-timing = [
-    ("sandbox create", f'{ev["sandbox_created"]["s"]} s', "Modal Sandbox.create returned"),
-    ("Sidecar listening (fail-closed gate)", f'{ev["sidecar_listening"]["s"]} s', "relay accepting on :443 before any workload"),
-    ("recorder arm", f'{ev["recorder_armed"]["s"]} s', "audit rules loaded + DNS forwarder up"),
-    ("Sandbox.create returned → worker registered", f'{next(e for e in E if e["event"] == "worker_log" and "Worker started!" in e["line"])["t"] - ev["sandbox_created"]["t"]:.1f} s', '"Worker started! Now you can launch sessions" at 00:40:00.9'),
+# hand-read from Devin's event timestamps for the one recorded session; any other session gets "not computed"
+SAMPLE_TIMINGS = {"devin-85ca56e38aee4ec894263fd673552650": [
     ("session create → claimed", "≈2.2 s", "API create 00:42:28.8 → queue phase claimed 00:42:30.9 (Devin events)"),
     ("claimed → connected", "2.5 s", "00:42:30.9 → 00:42:33.5 (Devin events; devin-remote binary downloaded in between)"),
     ("connected → first command", "1.9 s", "00:42:33.5 → shell_process_started 00:42:35.4"),
     ("first command → Devin says done", "4.6 s", "00:42:35.4 → 00:42:40.0"),
     ("session sleep → worker exit", "≈1 s", "sleep 00:44:10 → remote exited cleanly 00:44:11 (worker ran with --once)"),
+]}
+timing = [
+    ("sandbox create", f'{ev["sandbox_created"]["s"]} s', "Modal Sandbox.create returned"),
+    ("Sidecar listening (fail-closed gate)", f'{ev["sidecar_listening"]["s"]} s', "relay accepting on :443 before any workload"),
+    ("recorder arm", f'{ev["recorder_armed"]["s"]} s', "audit rules loaded + DNS forwarder up"),
+    ("Sandbox.create returned → worker registered", f'{next(e for e in E if e["event"] == "worker_log" and "Worker started!" in e["line"])["t"] - ev["sandbox_created"]["t"]:.1f} s', '"Worker started! Now you can launch sessions" at 00:40:00.9'),
+    *SAMPLE_TIMINGS.get(sess["session_id"], [(k, "not computed for this session", "read from Devin's event timestamps by hand for the sample run only")
+                                            for k in ("session create → claimed", "claimed → connected", "connected → first command", "first command → Devin says done", "session sleep → worker exit")]),
     ("receipt build", f'{R["outpost"].get("receipt_build_s", "–")} s', "audit parse + Sidecar merge, in the VM"),
     ("Sidecar relay overhead", "not re-measured (n=1)", "earlier series: +1 ms per connection, p50"),
 ]
@@ -89,7 +98,7 @@ footer{{padding:16px 28px;color:#666;font-size:12px}}
 <h3>Devin's thoughts (thought_summary events)</h3>
 {tbl([[clk(t['utc']), t['text']] for t in D['thoughts']], ["time", "text"])}
 <h3>Shell activity Devin reports</h3>
-{tbl([[clk(s['utc_started']), clk(s['utc_completed']), f"exit {s['exit_code']}", f"<code>{h(s['command'])}</code>"] for s in D['shell']], ["started", "completed", "result", "command"])}
+{tbl([[clk(s['utc_started']), clk(s['utc_completed']), f"exit {s['exit_code']}", Raw(f"<code>{h(s['command'])}</code>")] for s in D['shell']], ["started", "completed", "result", "command"])}
 <div class="muted">Devin's chain analysis marks each of the {len(D['shell'][0]['chain_certainly_ran'])} sub-commands <code>certainly_ran: true</code>. Output excerpt: <code>{h(D['shell'][0]['output_excerpt'])}</code></div>
 <h3>Scope of this account</h3>
 <div class="muted">One tool call, its exit code and output, and Devin's messages. Hosts, processes, files and record completeness appear only on the right.</div>
