@@ -16,6 +16,7 @@
 #include <linux/cn_proc.h>
 static volatile int stop;
 static void onsig(int s) { stop = 1; }
+static const char *jesc(const char *in, char *out, size_t n) { size_t j = 0; for (; *in && j + 6 < n; in++) { unsigned char c = *in; if (c == '"' || c == '\\') { out[j++] = '\\'; out[j++] = c; } else if (c < 0x20) { j += snprintf(out + j, n - j, "\\u%04x", c); } else out[j++] = c; } out[j] = 0; return out; }
 static void comm_of(int pid, char *out, size_t n) { char p[64]; snprintf(p, sizeof p, "/proc/%d/comm", pid); FILE *f = fopen(p, "r"); out[0] = 0; if (f) { if (fgets(out, n, f)) out[strcspn(out, "\n")] = 0; fclose(f); } }
 int main(int argc, char **argv) {
     const char *watch = argc > 1 ? argv[1] : "/";
@@ -46,7 +47,7 @@ int main(int argc, char **argv) {
             ssize_t n; while ((n = recv(nl, buf, sizeof buf, 0)) > 0 || (n < 0 && errno != EAGAIN && fprintf(stderr, "netlink recv: %s\n", strerror(errno)) < 0)) {
                 for (struct nlmsghdr *h = (void *)buf; NLMSG_OK(h, n); h = NLMSG_NEXT(h, n)) {
                     struct cn_msg *c = NLMSG_DATA(h); struct proc_event *e = (void *)c->data;
-                    if (e->what == PROC_EVENT_EXEC) { comm_of(e->event_data.exec.process_pid, comm, sizeof comm); printf("{\"src\":\"cn_proc\",\"ev\":\"exec\",\"pid\":%d,\"comm\":\"%s\"}\n", e->event_data.exec.process_pid, comm); }
+                    if (e->what == PROC_EVENT_EXEC) { comm_of(e->event_data.exec.process_pid, comm, sizeof comm); char ec[80]; printf("{\"src\":\"cn_proc\",\"ev\":\"exec\",\"pid\":%d,\"comm\":\"%s\"}\n", e->event_data.exec.process_pid, jesc(comm, ec, sizeof ec)); }
                     else if (e->what == PROC_EVENT_FORK) printf("{\"src\":\"cn_proc\",\"ev\":\"fork\",\"pid\":%d,\"ppid\":%d}\n", e->event_data.fork.child_pid, e->event_data.fork.parent_pid);
                     else if (e->what == PROC_EVENT_EXIT) printf("{\"src\":\"cn_proc\",\"ev\":\"exit\",\"pid\":%d,\"code\":%u}\n", e->event_data.exit.process_pid, e->event_data.exit.exit_code);
                 }
@@ -57,8 +58,8 @@ int main(int argc, char **argv) {
                 for (struct fanotify_event_metadata *m = (void *)buf; FAN_EVENT_OK(m, n); m = FAN_EVENT_NEXT(m, n)) {
                     if (m->pid == self) { if (m->fd >= 0) close(m->fd); continue; }
                     char path[512] = ""; if (m->fd >= 0) { char l[64]; snprintf(l, sizeof l, "/proc/self/fd/%d", m->fd); ssize_t k = readlink(l, path, sizeof path - 1); if (k > 0) path[k] = 0; close(m->fd); }
-                    comm_of(m->pid, comm, sizeof comm);
-                    printf("{\"src\":\"fanotify\",\"mask\":\"%s%s%s\",\"pid\":%d,\"comm\":\"%s\",\"path\":\"%s\"}\n", (m->mask & FAN_OPEN_EXEC) ? "exec " : "", (m->mask & FAN_OPEN) ? "open " : "", (m->mask & FAN_MODIFY) ? "modify" : "", m->pid, comm, path);
+                    comm_of(m->pid, comm, sizeof comm); char ec[80], ep[3100];
+                    printf("{\"src\":\"fanotify\",\"mask\":\"%s%s%s\",\"pid\":%d,\"comm\":\"%s\",\"path\":\"%s\"}\n", (m->mask & FAN_OPEN_EXEC) ? "exec " : "", (m->mask & FAN_OPEN) ? "open " : "", (m->mask & FAN_MODIFY) ? "modify" : "", m->pid, jesc(comm, ec, sizeof ec), jesc(path, ep, sizeof ep));
                 }
             }
         }

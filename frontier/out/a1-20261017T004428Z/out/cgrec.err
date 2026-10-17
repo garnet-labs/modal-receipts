@@ -1,0 +1,48 @@
+libbpf: prog 'rec_connect4': BPF program load failed: Permission denied
+libbpf: prog 'rec_connect4': -- BEGIN PROG LOAD LOG --
+btf_vmlinux is malformed
+0: R1=ctx() R10=fp0
+; SEC("cgroup/connect4") int rec_connect4(struct bpf_sock_addr *ctx) { emit_addr(ctx, 1); return 1; } @ cgrec.bpf.c:21
+0: (bf) r7 = r1                       ; R1=ctx() R7=ctx()
+1: (b7) r9 = 0                        ; R9=0
+; struct ev *e = bpf_ringbuf_reserve(&events, sizeof *e, 0); if (!e) return; @ cgrec.bpf.c:11
+2: (18) r1 = 0xffff888105a06000       ; R1=map_ptr(map=events,ks=0,vs=0)
+4: (b7) r2 = 72                       ; R2=72
+5: (b7) r3 = 0                        ; R3=0
+6: (85) call bpf_ringbuf_reserve#131          ; R0=ringbuf_mem_or_null(id=2,sz=72) refs=2
+7: (bf) r6 = r0                       ; R6=ringbuf_mem_or_null(id=2,sz=72) refs=2
+8: (15) if r6 == 0x0 goto pc+40       ; R6=ringbuf_mem(id=2,sz=72) refs=2
+; __u64 id = bpf_get_current_pid_tgid(); @ cgrec.bpf.c:12
+9: (85) call bpf_get_current_pid_tgid#14      ; R0=scalar() refs=2
+10: (bf) r8 = r0                      ; R0=scalar(id=3) R8=scalar(id=3) refs=2
+; e->ts = bpf_ktime_get_ns(); e->pid = (__u32)id; e->tgid = id >> 32; e->kind = kind; @ cgrec.bpf.c:13
+11: (85) call bpf_ktime_get_ns#5      ; R0=scalar() refs=2
+12: (b7) r1 = 1                       ; R1=1 refs=2
+13: (63) *(u32 *)(r6 +16) = r1        ; R1=1 R6=ringbuf_mem(id=2,sz=72) refs=2
+14: (bf) r1 = r8                      ; R1=scalar(id=3) R8=scalar(id=3) refs=2
+15: (77) r1 >>= 32                    ; R1=scalar(smin=0,smax=umax=0xffffffff,var_off=(0x0; 0xffffffff)) refs=2
+16: (63) *(u32 *)(r6 +12) = r1        ; R1=scalar(smin=0,smax=umax=0xffffffff,var_off=(0x0; 0xffffffff)) R6=ringbuf_mem(id=2,sz=72) refs=2
+17: (63) *(u32 *)(r6 +8) = r8         ; R6=ringbuf_mem(id=2,sz=72) R8=scalar(id=3) refs=2
+18: (7b) *(u64 *)(r6 +0) = r0         ; R0=scalar() R6=ringbuf_mem(id=2,sz=72) refs=2
+; e->family = ctx->user_family; e->type = ctx->type; e->proto = ctx->protocol; @ cgrec.bpf.c:14
+19: (61) r1 = *(u32 *)(r7 +0)         ; R1=scalar(smin=0,smax=umax=0xffffffff,var_off=(0x0; 0xffffffff)) R7=ctx() refs=2
+20: (63) *(u32 *)(r6 +20) = r1        ; R1=scalar(smin=0,smax=umax=0xffffffff,var_off=(0x0; 0xffffffff)) R6=ringbuf_mem(id=2,sz=72) refs=2
+21: (61) r1 = *(u32 *)(r7 +32)        ; R1=scalar(smin=0,smax=umax=0xffffffff,var_off=(0x0; 0xffffffff)) R7=ctx() refs=2
+22: (63) *(u32 *)(r6 +24) = r1        ; R1=scalar(smin=0,smax=umax=0xffffffff,var_off=(0x0; 0xffffffff)) R6=ringbuf_mem(id=2,sz=72) refs=2
+23: (61) r1 = *(u32 *)(r7 +36)        ; R1=scalar(smin=0,smax=umax=0xffffffff,var_off=(0x0; 0xffffffff)) R7=ctx() refs=2
+24: (63) *(u32 *)(r6 +28) = r1        ; R1=scalar(smin=0,smax=umax=0xffffffff,var_off=(0x0; 0xffffffff)) R6=ringbuf_mem(id=2,sz=72) refs=2
+; e->addr[0] = ctx->user_ip4; e->addr[1] = 0; e->addr[2] = 0; e->addr[3] = 0; @ cgrec.bpf.c:15
+25: (61) r1 = *(u32 *)(r7 +4)         ; R1=scalar(smin=0,smax=umax=0xffffffff,var_off=(0x0; 0xffffffff)) R7=ctx() refs=2
+26: (63) *(u32 *)(r6 +32) = r1        ; R1=scalar(smin=0,smax=umax=0xffffffff,var_off=(0x0; 0xffffffff)) R6=ringbuf_mem(id=2,sz=72) refs=2
+27: (63) *(u32 *)(r6 +36) = r9        ; R6=ringbuf_mem(id=2,sz=72) R9=0 refs=2
+28: (7b) *(u64 *)(r6 +40) = r9        ; R6=ringbuf_mem(id=2,sz=72) R9=0 refs=2
+; if (ctx->user_family == 10) { e->addr[0] = ctx->user_ip6[0]; e->addr[1] = ctx->user_ip6[1]; e->addr[2] = ctx->user_ip6[2]; e->addr[3] = ctx->user_ip6[3]; } @ cgrec.bpf.c:16
+29: (61) r1 = *(u32 *)(r7 +0)         ; R1=scalar(smin=0,smax=umax=0xffffffff,var_off=(0x0; 0xffffffff)) R7=ctx() refs=2
+30: (55) if r1 != 0xa goto pc+8       ; R1=10 refs=2
+31: (61) r1 = *(u32 *)(r7 +8)
+invalid bpf_context access off=8 size=4
+processed 31 insns (limit 1000000) max_states_per_insn 0 total_states 1 peak_states 1 mark_read 0
+-- END PROG LOAD LOG --
+libbpf: prog 'rec_connect4': failed to load: -13
+libbpf: failed to load object 'cgrec.bpf.o'
+load: -13

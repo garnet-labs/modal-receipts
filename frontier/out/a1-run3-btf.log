@@ -1,0 +1,52 @@
+✓ Initialized. View run at 
+https://modal.com/apps/jadoonf/main/ap-AD6FMc40SgNY7aGR90oMvW
+✓ Created objects.
+Building image im-2ku89IDX7xGur70IjTVZqd
+Building image im-2ku89IDX7xGur70IjTVZqd
+
+Using legacy Image Builder version. We suggest upgrading at https://modal.com/settings/image-config.
+
+=> Step 0: FROM base
+
+Using legacy Image Builder version. We suggest upgrading at https://modal.com/settings/image-config.
+
+=> Step 0: FROM base
+
+=> Step 1: COPY . /
+
+=> Step 1: COPY . /
+Saving image...
+Saving image...
+Image saved, took 692.70ms
+Image saved, took 692.70ms
+
+Built image im-2ku89IDX7xGur70IjTVZqd in 2.15s
+
+
+
+Built image im-2ku89IDX7xGur70IjTVZqd in 2.15s
+
+
+sandbox sb-01M53NW3A6XZACP04JA46N897R created in 6s
+attach_probe.c
+btf_probe.sh
+carve.py
+cgrec.bpf.c
+cgrec.c
+compare.py
+jibril-config.yaml
+pcrec.c
+probe.sh
+types.bpf.c
+vercel_probe.sh
+vercel_probe2.sh
+
+[2026-10-17T00:58:29Z] start 7.2.9 custom btf 6152164 bytes
+[2026-10-17T00:58:31Z] type probe w/ custom btf: 5 attach ok of 14
+[2026-10-17T00:58:32Z] jibril programs w/ custom btf: 122 tried, load ok 26, attach ok 26
+[2026-10-17T00:58:32Z] done
+rc 0 stderr tail: 
+artifacts in /home/ubuntu/repos/modal-receipts/frontier/out/a1-20261017T005823Z total 10s
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/jadoonf/main/ap-AD6FMc40SgNY7aGR90oMvW

@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <sys/syscall.h>
+#include <dirent.h>
 #include <linux/perf_event.h>
 #include <bpf/libbpf.h>
 #include <bpf/bpf.h>
@@ -40,7 +41,9 @@ int main(int argc, char **argv) {
     bpf_object__close(o);
 
     for (i = 0; i < n; i++) {
-        char cmd[512]; snprintf(cmd, sizeof cmd, "rm -rf %s/* 2>/dev/null", pinroot); system(cmd);
+        DIR *d = opendir(pinroot); struct dirent *de;
+        while (d && (de = readdir(d))) { if (de->d_name[0] != '.') unlinkat(dirfd(d), de->d_name, 0); }
+        if (d) closedir(d);
         logbuf[0] = 0;
         o = bpf_object__open_file(path, &oo);
         if (!o) { printf("{\"program\":\"%s\",\"open_error\":%d}\n", names[i], errno); continue; }

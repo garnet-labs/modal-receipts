@@ -1,0 +1,110 @@
+== objs/obj00.o
+2]
+== objs/obj01.o
+2]
+== objs/obj02.o
+2]
+3]
+== objs/obj03.o
+2]
+3]
+== objs/obj04.o
+2]
+3]
+4]
+5]
+== objs/obj05.o
+2]
+3]
+== objs/obj06.o
+2]
+== objs/obj07.o
+2]
+3]
+== objs/obj08.o
+2]
+3]
+4]
+5]
+6]
+7]
+== objs/obj09.o
+2]
+== objs/obj10.o
+2]
+3]
+== objs/obj11.o
+2]
+3]
+== objs/obj12.o
+2]
+3]
+== objs/obj13.o
+2]
+4]
+== objs/obj14.o
+2]
+3]
+== objs/obj15.o
+2]
+4]
+== objs/obj16.o
+2]
+4]
+6]
+== objs/obj17.o
+2]
+4]
+6]
+== objs/obj18.o
+2]
+3]
+5]
+== objs/obj19.o
+2]
+3]
+5]
+7]
+9]
+tracepoint/syscalls/sys_enter_execveat
+tracepoint/syscalls/sys_exit_execve
+tracepoint/syscalls/sys_exit_execveat
+tp_btf/sched_process_exit
+== objs/obj20.o
+2]
+4]
+6]
+8]
+fentry/security_socket_connect
+fentry/__sys_connect_file
+fentry/security_socket_socketpair
+fentry/security_socket_bind
+fentry/security_socket_listen
+fentry/security_socket_recvmsg
+fentry/sock_recvmsg
+fentry/security_socket_sendmsg
+fentry/sock_sendmsg
+cgroup_skb/ingress
+cgroup_skb/egress
+== objs/obj21.o
+2]
+4]
+6]
+8]
+kprobe/do_mmap
+kretprobe/do_mmap
+fexit/do_fcntl
+fexit/vfs_lock_file
+fexit/vfs_fsync_range
+fexit/vfs_open
+fexit/vfs_read
+fexit/vfs_readv
+fexit/vfs_write
+fexit/vfs_writev
+fexit/security_file_truncate
+fexit/security_file_free
+fexit/security_path_mknod
+fexit/security_path_rename
+fexit/security_path_truncate
+fexit/security_path_unlink
+fexit/io_issue_sqe

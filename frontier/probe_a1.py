@@ -2,7 +2,7 @@
 accepts, which of Jibril v2.17.0's embedded programs load/attach, and what a
 cgroup-BPF-only recorder captures versus audit. Usage: modal run frontier/probe_a1.py
 """
-import base64, io, os, sys, tarfile, time
+import base64, io, os, shlex, sys, tarfile, time
 import modal
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -28,7 +28,7 @@ def main(outdir: str = "", version: str = "v2.17.0", script: str = "probe.sh"):
     print("sandbox", sb.object_id, "created in %.0fs" % (time.time() - t0))
     try:
         p = sb.exec("bash", "-c", "echo '%s' | base64 -d | tar xz -C / && ls /w" % bundle()); p.wait(); print(p.stdout.read())
-        p = sb.exec("bash", "-c", "JIBRIL_VERSION=%s bash /w/%s" % (version, script), timeout=1200)
+        p = sb.exec("bash", "-c", "JIBRIL_VERSION=%s bash /w/%s" % (shlex.quote(version), shlex.quote(os.path.basename(script))), timeout=1200)
         for line in p.stdout: print(line, end="", flush=True)
         err = p.stderr.read(); print("rc", p.wait(), "stderr tail:", err[-2000:])
         p = sb.exec("bash", "-c", "tar czf - -C / out | base64 -w0"); data = p.stdout.read(); p.wait()
