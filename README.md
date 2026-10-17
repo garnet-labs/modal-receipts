@@ -175,6 +175,8 @@ One long-lived VM Sandbox (ubuntu 24.04 + git/ffmpeg/auditd + Devin CLI) with th
 
 `samples/outpost/` holds the first real run (2026-10-17, n = 1): one Lite session on pool `garnet-receipts` did `git clone` + `py_compile` + `npm install left-pad` and said "done"; the receipt agrees with the Sidecar on 12 hosts (Devin's own binaries, gateway and telemetry included, each attributed to its chain), `lost = 0`. `samples/outpost/FACTS.md` has the numbers and the two bugs the run found (audit log rotation at 8 MB, fixed in `guest/`; the driver's own `pgrep`).
 
+`e2b_outpost_node.py` is the same worker on **E2B Embed** with an operator-built kernel (6.18 + `MODULES BPF_JIT FTRACE_SYSCALLS KPROBES`), recorded by **Jibril** inside the guest (`e2b/guest-setup.sh`, `e2b/jibril.yaml`, `GARNET_SAR=true`); `outpost_record_e2b.py` pairs Devin's account with the Jibril profile. `samples/outpost-e2b/` is its first run (Jibril 72/76 attached, 12 egress domains with process ancestry; `FACTS.md` there has the kernel recipe, numbers and the guest-disk blocker).
+
 ## What this is not
 
 - It is not more than Modal sees host-side. Modal relays the bytes; the Sidecar writes them down

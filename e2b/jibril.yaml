@@ -1,0 +1,36 @@
+run_time:
+  log-level: info
+  profiler: false
+  health: true
+  metrics: false
+  cardinal: true
+  stdout: stdout
+  stderr: stderr
+cadences:
+  env-vars: 6
+  file-access: 6
+  network-peers: 6
+  network-flows: 6
+functionalities:
+  - jibril
+features:
+  - hold
+  - procfs
+  - detect
+  - persisters
+feature_options:
+  detect:
+  persisters:
+    inmemory: true
+  alchemies:
+    builtin:
+      enabled: true
+printers:
+  - jsonprofiler
+printer_options:
+  jsonprofiler:
+    file: /var/log/jibril/jibril.profile.json
+events:
+  - flow
+  - profile
+  - dropip
