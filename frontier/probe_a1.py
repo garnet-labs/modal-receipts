@@ -10,6 +10,8 @@ app = modal.App("jibril-frontier-a1")
 image = (modal.Image.from_registry("ubuntu:24.04", add_python="3.12")
          .apt_install("clang", "llvm", "libbpf-dev", "libelf-dev", "zlib1g-dev", "gcc", "make", "linux-tools-generic",
                       "auditd", "curl", "ca-certificates", "iproute2", "procps", "jq", "xz-utils", "bpfcc-tools"))
+if os.environ.get("FRONTIER_BTF"):
+    image = image.add_local_file(os.environ["FRONTIER_BTF"], "/w-btf/vmlinux.btf", copy=True)
 
 def bundle():
     buf = io.BytesIO()
@@ -18,7 +20,7 @@ def bundle():
     return base64.b64encode(buf.getvalue()).decode()
 
 @app.local_entrypoint()
-def main(outdir: str = "", version: str = "v2.17.0"):
+def main(outdir: str = "", version: str = "v2.17.0", script: str = "probe.sh"):
     outdir = outdir or os.path.join(HERE, "out", "a1-" + time.strftime("%Y%m%dT%H%M%SZ", time.gmtime()))
     os.makedirs(outdir, exist_ok=True)
     t0 = time.time()
@@ -26,7 +28,7 @@ def main(outdir: str = "", version: str = "v2.17.0"):
     print("sandbox", sb.object_id, "created in %.0fs" % (time.time() - t0))
     try:
         p = sb.exec("bash", "-c", "echo '%s' | base64 -d | tar xz -C / && ls /w" % bundle()); p.wait(); print(p.stdout.read())
-        p = sb.exec("bash", "-c", "JIBRIL_VERSION=%s bash /w/probe.sh" % version, timeout=1200)
+        p = sb.exec("bash", "-c", "JIBRIL_VERSION=%s bash /w/%s" % (version, script), timeout=1200)
         for line in p.stdout: print(line, end="", flush=True)
         err = p.stderr.read(); print("rc", p.wait(), "stderr tail:", err[-2000:])
         p = sb.exec("bash", "-c", "tar czf - -C / out | base64 -w0"); data = p.stdout.read(); p.wait()

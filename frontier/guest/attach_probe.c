@@ -23,13 +23,14 @@ static int logprint(enum libbpf_print_level lvl, const char *fmt, va_list ap) {
 static void jstr(const char *s) { putchar('"'); for (; *s; s++) { if (*s == '"' || *s == '\\') putchar('\\'); if (*s == '\n') { fputs("\\n", stdout); continue; } if ((unsigned char)*s < 0x20) continue; putchar(*s); } putchar('"'); }
 
 int main(int argc, char **argv) {
-    if (argc < 3) { fprintf(stderr, "usage: %s obj.o pin_root [cgroup_path]\n", argv[0]); return 2; }
+    if (argc < 3) { fprintf(stderr, "usage: %s obj.o pin_root [cgroup_path] [btf_custom_path]\n", argv[0]); return 2; }
     const char *path = argv[1], *pinroot = argv[2], *cgpath = argc > 3 ? argv[3] : "/sys/fs/cgroup";
     libbpf_set_print(logprint);
     libbpf_set_strict_mode(LIBBPF_STRICT_ALL);
     int cgfd = open(cgpath, O_RDONLY | O_DIRECTORY);
 
     LIBBPF_OPTS(bpf_object_open_opts, oo, .pin_root_path = pinroot);
+    if (argc > 4) oo.btf_custom_path = argv[4];
     struct bpf_object *o = bpf_object__open_file(path, &oo);
     if (!o) { printf("{\"object\":\"%s\",\"open_error\":%d}\n", path, errno); return 1; }
     int n = 0; struct bpf_program *p;
