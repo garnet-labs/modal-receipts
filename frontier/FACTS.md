@@ -1,5 +1,7 @@
 # Jibril frontier: capture inside hosted sandbox guests without a vendor kernel change
 
+Product reading of this evidence (integration path × capability, what we can and cannot say): [PRODUCT-MATRIX.md](PRODUCT-MATRIX.md).
+
 Lane: make Jibril-grade capture work inside Modal VM Sandbox, Vercel Sandbox and E2B hosted guests.
 All runs 2026-10-17 00:44-00:59 UTC. Jibril under test: `jibril-releases` v2.17.0 (`rel/jibril`, 91,389,176 bytes, sha256 in `out/a1-20261017T004710Z/out/jibril.sha256`).
 Probe code: `frontier/guest/*`, driver `frontier/probe_a1.py`. Raw logs: `frontier/out/<run>/out/*` (see index at the end). Nothing was run on the Devin VM except the Modal/Vercel drivers.
