@@ -10,6 +10,8 @@ case "${1:-}" in
     date +%s.%N > "$STATE/t_start"
     echo $$ > "$STATE/recorder.pid"
     uname -r > "$STATE/kernel"
+    # one log file for the whole run: the default rotates at 8 MB and the receipt must not lose the oldest part
+    sed -i 's/^max_log_file_action.*/max_log_file_action = IGNORE/; s/^max_log_file .*/max_log_file = 2048/' /etc/audit/auditd.conf 2>/dev/null || true
     setsid auditd </dev/null >/dev/null 2>&1 &
     for _ in 1 2 3 4 5 6 7 8 9 10; do pgrep -x auditd >/dev/null && break; sleep 0.1; done
     auditctl -D >/dev/null 2>&1

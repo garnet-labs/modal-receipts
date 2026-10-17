@@ -162,6 +162,19 @@ inside the Sidecar), not sandbox traffic; the driver now excludes it as `readine
   the file rule costs ~25 us per audited write and is opt-in.
 - Sandbox create and first exec are unchanged by the Sidecar (0.08 / 0.98 s vs 0.09 / 1.03 s at n=30).
 
+## Devin Outpost worker in the same VM (`outpost_node.py`, `samples/outpost/`)
+
+The same Sidecar + in-VM recorder around the official Devin CLI worker, so a Devin Cloud session that runs on your own machine leaves a receipt:
+
+```
+DEVIN_OUTPOSTS_TOKEN=... modal run outpost_node.py --outpost garnet-receipts --max-wait 5400
+# then create a session on the pool, e.g. POST /v3/organizations/{org}/sessions {"prompt": ..., "platform": "garnet-receipts"}
+```
+
+One long-lived VM Sandbox (ubuntu 24.04 + git/ffmpeg/auditd + Devin CLI) with the `garnet` Sidecar attached; the recorder is armed, then `devin worker start --outpost=<pool> --once` claims one session and exits when it ends. The outpost token enters the sandbox as a `modal.Secret` built from the driver's environment. The driver writes `receipt.json` (in-VM audit + Sidecar, agreement verdict, the queue entry's `network_policy`), `events.jsonl` (timings) and the worker log (token-free). `outpost_record.py` renders `paired-outpost-record.html`: Devin's own account of the session (API events) on the left, the receipt on the right. `outpost_finish.py` finishes a run from a reconnected sandbox handle.
+
+`samples/outpost/` holds the first real run (2026-10-17, n = 1): one Lite session on pool `garnet-receipts` did `git clone` + `py_compile` + `npm install left-pad` and said "done"; the receipt agrees with the Sidecar on 12 hosts (Devin's own binaries, gateway and telemetry included, each attributed to its chain), `lost = 0`. `samples/outpost/FACTS.md` has the numbers and the two bugs the run found (audit log rotation at 8 MB, fixed in `guest/`; the driver's own `pgrep`).
+
 ## What this is not
 
 - It is not more than Modal sees host-side. Modal relays the bytes; the Sidecar writes them down
