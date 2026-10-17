@@ -1,0 +1,756 @@
+{
+  "uuid": "e669db55-7c6e-5250-ad6b-a02653232691",
+  "timestamp": "2026-10-17T01:17:47.111122039Z",
+  "metadata": {
+    "kind": "profile",
+    "name": "profile",
+    "format": "profile",
+    "version": "0.2.0",
+    "description": "Informational profile event",
+    "documentation": "https://jibril.garnet.ai/"
+  },
+  "scenarios": {
+    "hostos": {
+      "scenario_type": "hostos",
+      "machine_id": "76f9a67fdaa7796b683ad1bca1d0ae1acbd51f8fd7cce0568673296593ea14d0",
+      "hostname": "e2b.local",
+      "ip": "140.232.64.5",
+      "os": "linux",
+      "arch": "amd64"
+    }
+  },
+  "network": {
+    "egress": {
+      "peers": [
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "104.16.0.34",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "registry.npmjs.org"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4991,
+              "process": "node",
+              "executable": "/usr/local/bin/node",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "bash",
+                "node"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "104.16.2.34",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "registry.npmjs.org"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4991,
+              "process": "node",
+              "executable": "/usr/local/bin/node",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "bash",
+                "node"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "104.16.7.34",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "registry.npmjs.org"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4862,
+              "process": "node",
+              "executable": "/usr/local/bin/node",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "bash",
+                "node"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "104.18.18.221",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "windsurf-stable.codeiumdata.com"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4788,
+              "process": "curl",
+              "executable": "/usr/bin/curl",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "bash",
+                "curl"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "104.18.19.221",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "windsurf-stable.codeiumdata.com"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4833,
+              "process": "curl",
+              "executable": "/usr/bin/curl",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "bash",
+                "curl"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "140.82.112.3",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "github.com"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4761,
+              "process": "git-remote-http",
+              "executable": "/usr/lib/git-core/git-remote-http",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "git",
+                "git",
+                "git-remote-http"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "16.15.42.20",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "cognition-managed-plugin-bundles-prod.s3",
+            "s3-r-w.dualstack.us-west-2.amazonaws.com"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4704,
+              "process": "devin-remote_ca72d26a42_linux_x",
+              "executable": "/root/.devin/worker/cache/devin-remote_ca72d26a42_linux_x",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "UDP",
+          "local_address": "169.254.0.21",
+          "remote_address": "172.233.155.39",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "172.233.155.39"
+          ],
+          "remote_ports": [
+            "123 (ntp)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 567,
+              "process": "chronyd",
+              "executable": "/usr/sbin/chronyd",
+              "ancestry": [
+                "systemd",
+                "chronyd"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "192.0.2.1",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "events.e2b.local"
+          ],
+          "remote_ports": [
+            "80 (http)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 537,
+              "process": "envd",
+              "executable": "/usr/bin/envd",
+              "ancestry": [
+                "systemd",
+                "envd"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "UDP",
+          "local_address": "169.254.0.21",
+          "remote_address": "23.159.16.194",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "23.159.16.194"
+          ],
+          "remote_ports": [
+            "123 (ntp)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 567,
+              "process": "chronyd",
+              "executable": "/usr/sbin/chronyd",
+              "ancestry": [
+                "systemd",
+                "chronyd"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "UDP",
+          "local_address": "169.254.0.21",
+          "remote_address": "23.186.168.132",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "23.186.168.132"
+          ],
+          "remote_ports": [
+            "123 (ntp)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 567,
+              "process": "chronyd",
+              "executable": "/usr/sbin/chronyd",
+              "ancestry": [
+                "systemd",
+                "chronyd"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "3.169.173.58",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "static.devin.ai"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4655,
+              "process": "devin",
+              "executable": "/root/.local/share/devin/cli/_versions/3000.11.92/bin/devin",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "32.187.182.22",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "api.devin.ai"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4655,
+              "process": "devin",
+              "executable": "/root/.local/share/devin/cli/_versions/3000.11.92/bin/devin",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "32.190.73.169",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "git-manager.devin.ai"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4783,
+              "process": "git-remote-http",
+              "executable": "/usr/lib/git-core/git-remote-http",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "bash",
+                "bash",
+                "git",
+                "git",
+                "git-remote-http"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "34.160.81.0",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "o4507463137361920.ingest.us.sentry.io"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4655,
+              "process": "devin",
+              "executable": "/root/.local/share/devin/cli/_versions/3000.11.92/bin/devin",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "35.223.238.178",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "server.codeium.com"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4723,
+              "process": "curl",
+              "executable": "/usr/bin/curl",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "bash",
+                "bash",
+                "curl"
+              ]
+            },
+            {
+              "pid": 4655,
+              "process": "devin",
+              "executable": "/root/.local/share/devin/cli/_versions/3000.11.92/bin/devin",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "44.247.195.26",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "outpost-gateway.devin.ai"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4704,
+              "process": "devin-remote_ca72d26a42_linux_x",
+              "executable": "/root/.devin/worker/cache/devin-remote_ca72d26a42_linux_x",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "TCP",
+          "local_address": "169.254.0.21",
+          "remote_address": "44.253.110.36",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "outpost-gateway.devin.ai"
+          ],
+          "remote_ports": [
+            "443 (https)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4704,
+              "process": "devin-remote_ca72d26a42_linux_x",
+              "executable": "/root/.devin/worker/cache/devin-remote_ca72d26a42_linux_x",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x"
+              ]
+            }
+          ]
+        },
+        {
+          "result": "pass",
+          "detections": [
+            "flow"
+          ],
+          "protocol": "UDP",
+          "local_address": "169.254.0.21",
+          "remote_address": "8.8.8.8",
+          "local_names": [
+            "169.254.0.21"
+          ],
+          "remote_names": [
+            "8.8.8.8"
+          ],
+          "remote_ports": [
+            "53 (dns)"
+          ],
+          "proc_trees": [
+            {
+              "pid": 4783,
+              "process": "git-remote-http",
+              "executable": "/usr/lib/git-core/git-remote-http",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "bash",
+                "bash",
+                "git",
+                "git",
+                "git-remote-http"
+              ]
+            },
+            {
+              "pid": 4723,
+              "process": "curl",
+              "executable": "/usr/bin/curl",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "bash",
+                "bash",
+                "curl"
+              ]
+            },
+            {
+              "pid": 4833,
+              "process": "curl",
+              "executable": "/usr/bin/curl",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "bash",
+                "curl"
+              ]
+            },
+            {
+              "pid": 4761,
+              "process": "git-remote-http",
+              "executable": "/usr/lib/git-core/git-remote-http",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "git",
+                "git",
+                "git-remote-http"
+              ]
+            },
+            {
+              "pid": 4862,
+              "process": "node",
+              "executable": "/usr/local/bin/node",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x",
+                "bash",
+                "node"
+              ]
+            },
+            {
+              "pid": 4704,
+              "process": "devin-remote_ca72d26a42_linux_x",
+              "executable": "/root/.devin/worker/cache/devin-remote_ca72d26a42_linux_x",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin",
+                "devin-remote_ca72d26a42_linux_x"
+              ]
+            },
+            {
+              "pid": 4655,
+              "process": "devin",
+              "executable": "/root/.local/share/devin/cli/_versions/3000.11.92/bin/devin",
+              "ancestry": [
+                "systemd",
+                "envd",
+                "devin"
+              ]
+            }
+          ]
+        }
+      ],
+      "domains": [
+        "api.devin.ai",
+        "cognition-managed-plugin-bundles-prod.s3",
+        "events.e2b.local",
+        "git-manager.devin.ai",
+        "github.com",
+        "o4507463137361920.ingest.us.sentry.io",
+        "outpost-gateway.devin.ai",
+        "registry.npmjs.org",
+        "s3-r-w.dualstack.us-west-2.amazonaws.com",
+        "server.codeium.com",
+        "static.devin.ai",
+        "windsurf-stable.codeiumdata.com"
+      ]
+    }
+  },
+  "telemetry": {
+    "network": {
+      "egress": {
+        "total_domains": 12,
+        "total_connections": 19
+      }
+    }
+  },
+  "assertions": [
+    {
+      "class_id": "Network Egress",
+      "assertion_id": "no_bad_egress_domain",
+      "result": "pass",
+      "description": "A process contacted a bad network domain.",
+      "id": "no_bad_egress_domain"
+    },
+    {
+      "class_id": "Stealth",
+      "assertion_id": "no_binary_execution_and_deletion",
+      "result": "pass",
+      "description": "A program was executed, and then its file was deleted.",
+      "id": ""
+    }
+  ]
+}

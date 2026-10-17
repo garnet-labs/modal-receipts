@@ -1,0 +1,67 @@
+{
+ "outpost_id": "outpost_env-72393f54087644a59b31bae50b9686cb",
+ "name": "garnet-receipts",
+ "session_id": "devin-d7fac4db7cf449668cf49afe52d79539",
+ "queue_entry": {
+  "metadata": {
+   "session_id": "devin-d7fac4db7cf449668cf49afe52d79539",
+   "outpost_id": "outpost_env-72393f54087644a59b31bae50b9686cb",
+   "created_at": 1792199807,
+   "updated_at": 1792199860
+  },
+  "spec": {
+   "kind": "resume",
+   "platform": "linux",
+   "remote_binary_sha": "ca72d26a42",
+   "network_policy": {
+    "enabled": false,
+    "allow": []
+   }
+  },
+  "status": {
+   "phase": "pending",
+   "acceptor_id": null,
+   "claim_deadline": null,
+   "session_status": "suspended",
+   "gateway_url": null
+  }
+ },
+ "sandbox_id": "i0buwut492pssnp8n8j5z",
+ "template": "garnet-outpost",
+ "worker": "devin worker start --once (Devin CLI, official)",
+ "jibril_status_at_ready": {
+  "status": "ok",
+  "pid": 4567,
+  "version": "v2.17.0",
+  "ready_at": "2026-10-17T01:16:24Z",
+  "features": {
+   "ebpf": {
+    "status": "ok",
+    "objects": 6,
+    "maps": 309,
+    "ringbufs": 1,
+    "programs": 76,
+    "attached": 72,
+    "live_links": 37,
+    "errors": {
+     "load": 0,
+     "attach": 0,
+     "link": 0
+    }
+   }
+  },
+  "ebpf": {
+   "objects": 6,
+   "maps": 309,
+   "ringbufs": 1,
+   "programs": 76,
+   "attached": 72,
+   "live_links": 37,
+   "errors": {
+    "load": 0,
+    "attach": 0,
+    "link": 0
+   }
+  }
+ }
+}

@@ -1,0 +1,8104 @@
+{
+ "schema": "garnet.sandbox-receipt/0.2",
+ "capture": {
+  "recorder": "linux-audit",
+  "log_files": [
+   "/var/log/audit/audit.log.1",
+   "/var/log/audit/audit.log"
+  ],
+  "ruleset": "full",
+  "kernel": "7.2.9",
+  "window": {
+   "start": 1792197598.802485,
+   "stop": 1792198184.7810867,
+   "seconds": 585.979
+  },
+  "rules": [
+   "-a always,exit -F arch=b64 -S connect -F key=garnet",
+   "-a always,exit -F arch=b64 -S execve,execveat -F key=garnet",
+   "-a always,exit -F arch=b64 -S clone,fork,vfork,clone3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S exit_group -F key=garnet",
+   "-a always,exit -F arch=b64 -S open,creat,openat,openat2 -F a2&0x3 -F key=garnet",
+   "-a always,exit -F arch=b64 -S rename,unlink,unlinkat,renameat,renameat2 -F key=garnet"
+  ],
+  "kernel_counters_at_stop": {
+   "enabled": "1",
+   "failure": "1",
+   "lost": "0",
+   "backlog": "0",
+   "backlog_limit": "65536",
+   "backlog_wait_time_actual": "0"
+  },
+  "kernel_counters_at_start": {
+   "lost": "0",
+   "backlog_limit": "65536"
+  },
+  "declared_complete": true,
+  "incomplete_reasons": [],
+  "scope": "every connect/execve/clone/exit/open-for-write/unlink/rename syscall in this VM since arming; names from the sandbox's own DNS answers; recorder processes excluded",
+  "out_of_scope": [
+   "reads",
+   "sockets inherited from before arming",
+   "raw/packet sockets",
+   "kernel-internal traffic"
+  ],
+  "syscall_records": 11539
+ },
+ "workload": {
+  "origin": null,
+  "head": null,
+  "head_after_edit": null,
+  "results": []
+ },
+ "processes": {
+  "executed": 622,
+  "total_seen": 780,
+  "roots": [
+   "bash",
+   "bash",
+   "bash",
+   "bash",
+   "bash",
+   "bash",
+   "bash",
+   "bash",
+   "bash",
+   "bash"
+  ],
+  "lineage": [
+   {
+    "pid": 1245,
+    "ppid": 1241,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1124,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cd /workspace && setsid bash -c 'exec devin worker start --outpost=garnet-receipts --once --poll-interval-secs 5' </dev/null >/garnet/worker.log 2>&1 & echo $!"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1125,
+    "ppid": 1124,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1126,
+    "ppid": 1124,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1128,
+    "ppid": 1127,
+    "comm": "devin",
+    "argv": [
+     "devin",
+     "worker",
+     "start",
+     "--outpost=garnet-receipts",
+     "--once",
+     "--poll-interval-secs",
+     "5"
+    ],
+    "chain": "bash > bash > devin"
+   },
+   {
+    "pid": 1130,
+    "ppid": 1128,
+    "comm": "sh",
+    "argv": [
+     "sh",
+     "-c",
+     "ip -o addr show 2>/dev/null | awk '{print $2}' | sort -u | while read iface; do cat \"/sys/class/net/$iface/address\" 2>/dev/null; done | tr '[:upper:]' '[:lower:]' | grep -v '^00:00:00:00:00:00$' | sort -u"
+    ],
+    "chain": "bash > bash > devin > sh"
+   },
+   {
+    "pid": 1132,
+    "ppid": 1130,
+    "comm": "awk",
+    "argv": [
+     "awk",
+     "{print $2}"
+    ],
+    "chain": "bash > bash > devin > sh > awk"
+   },
+   {
+    "pid": 1133,
+    "ppid": 1130,
+    "comm": "sort",
+    "argv": [
+     "sort",
+     "-u"
+    ],
+    "chain": "bash > bash > devin > sh > sort"
+   },
+   {
+    "pid": 1135,
+    "ppid": 1130,
+    "comm": "tr",
+    "argv": [
+     "tr",
+     "[:upper:]",
+     "[:lower:]"
+    ],
+    "chain": "bash > bash > devin > sh > tr"
+   },
+   {
+    "pid": 1136,
+    "ppid": 1130,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-v",
+     "^00:00:00:00:00:00$"
+    ],
+    "chain": "bash > bash > devin > sh > grep"
+   },
+   {
+    "pid": 1137,
+    "ppid": 1130,
+    "comm": "sort",
+    "argv": [
+     "sort",
+     "-u"
+    ],
+    "chain": "bash > bash > devin > sh > sort"
+   },
+   {
+    "pid": 1178,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1179,
+    "ppid": 1178,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1180,
+    "ppid": 1178,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1181,
+    "ppid": 1178,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1182,
+    "ppid": 1178,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1202,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1203,
+    "ppid": 1202,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1204,
+    "ppid": 1202,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1205,
+    "ppid": 1202,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1206,
+    "ppid": 1202,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1209,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1210,
+    "ppid": 1209,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1211,
+    "ppid": 1209,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1212,
+    "ppid": 1209,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1213,
+    "ppid": 1209,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1215,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1216,
+    "ppid": 1215,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1217,
+    "ppid": 1215,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1218,
+    "ppid": 1215,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1219,
+    "ppid": 1215,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1222,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1223,
+    "ppid": 1222,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1224,
+    "ppid": 1222,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1225,
+    "ppid": 1222,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1226,
+    "ppid": 1222,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1228,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1229,
+    "ppid": 1228,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1230,
+    "ppid": 1228,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1231,
+    "ppid": 1228,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1232,
+    "ppid": 1228,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1235,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1236,
+    "ppid": 1235,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1237,
+    "ppid": 1235,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1238,
+    "ppid": 1235,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1239,
+    "ppid": 1235,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1241,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1242,
+    "ppid": 1241,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1243,
+    "ppid": 1241,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1244,
+    "ppid": 1241,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1247,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1248,
+    "ppid": 1247,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1249,
+    "ppid": 1247,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1250,
+    "ppid": 1247,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1251,
+    "ppid": 1247,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1253,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1254,
+    "ppid": 1253,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1255,
+    "ppid": 1253,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1256,
+    "ppid": 1253,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1257,
+    "ppid": 1253,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1259,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1260,
+    "ppid": 1259,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1261,
+    "ppid": 1259,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1262,
+    "ppid": 1259,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1263,
+    "ppid": 1259,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1265,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1266,
+    "ppid": 1265,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1267,
+    "ppid": 1265,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1268,
+    "ppid": 1265,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1269,
+    "ppid": 1265,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1272,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1273,
+    "ppid": 1272,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1274,
+    "ppid": 1272,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1275,
+    "ppid": 1272,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1276,
+    "ppid": 1272,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1279,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1280,
+    "ppid": 1279,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1281,
+    "ppid": 1279,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1282,
+    "ppid": 1279,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1283,
+    "ppid": 1279,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1286,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1287,
+    "ppid": 1286,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1288,
+    "ppid": 1286,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1289,
+    "ppid": 1286,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1290,
+    "ppid": 1286,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1296,
+    "ppid": 1128,
+    "comm": "devin-remote_ca",
+    "argv": [
+     "/root/.devin/worker/cache/devin-remote_ca72d26a42_linux_x64",
+     "serve"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca"
+   },
+   {
+    "pid": 1323,
+    "ppid": 1296,
+    "comm": "which",
+    "argv": [
+     "/bin/sh",
+     "/usr/bin/which",
+     "google-chrome"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > which"
+   },
+   {
+    "pid": 1335,
+    "ppid": 1296,
+    "comm": "systemctl",
+    "argv": [
+     "systemctl",
+     "show",
+     "--property=FirmwareTimestampMonotonic,LoaderTimestampMonotonic,InitRDTimestampMonotonic,UserspaceTimestampMonotonic,FinishTimestampMonotonic"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > systemctl"
+   },
+   {
+    "pid": 1336,
+    "ppid": 1296,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/install_devin_desktop_cli.sh"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash"
+   },
+   {
+    "pid": 1337,
+    "ppid": 1296,
+    "comm": "bash",
+    "argv": [],
+    "chain": "bash > bash > devin > devin-remote_ca > bash"
+   },
+   {
+    "pid": 1338,
+    "ppid": 1336,
+    "comm": "uname",
+    "argv": [
+     "uname",
+     "-m"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > uname"
+   },
+   {
+    "pid": 1339,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "http.https://git-manager.devin.ai/proxy/.proactiveauth",
+     "auto"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1341,
+    "ppid": 1340,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-fsSL",
+     "--retry",
+     "5",
+     "--retry-all-errors",
+     "--retry-delay",
+     "2",
+     "--connect-timeout"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > bash > curl"
+   },
+   {
+    "pid": 1342,
+    "ppid": 1340,
+    "comm": "jq",
+    "argv": [
+     "jq",
+     "-r",
+     ".version"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > bash > jq"
+   },
+   {
+    "pid": 1345,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "http.http://git-manager.local:7000/proxy/.proactiveauth",
+     "auto"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1346,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "credential.https://git-manager.devin.ai.useHttpPath",
+     "false"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1347,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "credential.http://git-manager.local:7000.useHttpPath",
+     "false"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1348,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "--get-regexp",
+     "--name-only",
+     "-z",
+     "^url\\..*\\.insteadof$"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1349,
+    "ppid": 1337,
+    "comm": "xargs",
+    "argv": [
+     "xargs",
+     "-n",
+     "1",
+     "-0",
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > xargs"
+   },
+   {
+    "pid": 1350,
+    "ppid": 1349,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "--unset-all"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > xargs > git"
+   },
+   {
+    "pid": 1351,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "url.https://git-manager.devin.ai/proxy/github.com/.insteadof",
+     "git@github.com:"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1352,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "--add",
+     "url.https://git-manager.devin.ai/proxy/github.com/.insteadof",
+     "https://github.com/"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1353,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "--add",
+     "url.https://git-manager.devin.ai/proxy/github.com/.insteadof",
+     "ssh://git@github.com/"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1354,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "--unset-all",
+     "credential.helper"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1355,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "credential.helper",
+     ""
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1356,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "--add",
+     "credential.helper",
+     "/usr/bin/git credential-store --file /root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1358,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "--includes",
+     "user.name"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1361,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "user.name",
+     "Devin AI"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1362,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "--includes",
+     "user.email"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1363,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "user.email",
+     "158243242+devin-ai-integration[bot]@users.noreply.github.com"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1364,
+    "ppid": 1337,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "--get-regexp",
+     "--name-only",
+     "-z",
+     "^includeif\\.hasconfig:remote\\..*\\.path$"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > git"
+   },
+   {
+    "pid": 1365,
+    "ppid": 1337,
+    "comm": "xargs",
+    "argv": [
+     "xargs",
+     "-n",
+     "1",
+     "-0",
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > xargs"
+   },
+   {
+    "pid": 1366,
+    "ppid": 1365,
+    "comm": "git",
+    "argv": [
+     "git",
+     "config",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+     "--unset-all"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > xargs > git"
+   },
+   {
+    "pid": 1367,
+    "ppid": 1337,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/git_host_emails"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > rm"
+   },
+   {
+    "pid": 1368,
+    "ppid": 1337,
+    "comm": "cat",
+    "argv": [
+     "cat"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > cat"
+   },
+   {
+    "pid": 1369,
+    "ppid": 1336,
+    "comm": "mkdir",
+    "argv": [
+     "mkdir",
+     "-p",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > mkdir"
+   },
+   {
+    "pid": 1370,
+    "ppid": 1336,
+    "comm": "mktemp",
+    "argv": [
+     "mktemp",
+     "-d",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin.tmp.XXXXXX"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > mktemp"
+   },
+   {
+    "pid": 1371,
+    "ppid": 1336,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-fsSL",
+     "--retry",
+     "5",
+     "--retry-all-errors",
+     "--retry-delay",
+     "2",
+     "--connect-timeout"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > curl"
+   },
+   {
+    "pid": 1383,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "core.hooksPath=",
+     "-c",
+     "core.fsmonitor=false",
+     "-c",
+     "protocol.ext.allow=never",
+     "-c"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1384,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "core.hooksPath=",
+     "-c",
+     "core.fsmonitor=false",
+     "-c",
+     "protocol.ext.allow=never",
+     "-c"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1385,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "core.hooksPath=",
+     "-c",
+     "core.fsmonitor=false",
+     "-c",
+     "protocol.ext.allow=never",
+     "-c"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1388,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "core.hooksPath=",
+     "-c",
+     "core.fsmonitor=false",
+     "-c",
+     "protocol.ext.allow=never",
+     "-c"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1389,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "core.hooksPath=",
+     "-c",
+     "core.fsmonitor=false",
+     "-c",
+     "protocol.ext.allow=never",
+     "-c"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1390,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "core.hooksPath=",
+     "-c",
+     "core.fsmonitor=false",
+     "-c",
+     "protocol.ext.allow=never",
+     "-c"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1391,
+    "ppid": 1388,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "index-pack",
+     "--fix-thin",
+     "--stdin"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git"
+   },
+   {
+    "pid": 1392,
+    "ppid": 1390,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "index-pack",
+     "--fix-thin",
+     "--stdin"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git"
+   },
+   {
+    "pid": 1393,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "core.hooksPath=",
+     "-c",
+     "core.fsmonitor=false",
+     "-c",
+     "protocol.ext.allow=never",
+     "-c"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1394,
+    "ppid": 1393,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "remote-https",
+     "origin",
+     "https://github.com/CognitionAI/devin-marketplace.git"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git"
+   },
+   {
+    "pid": 1395,
+    "ppid": 1394,
+    "comm": "git-remote-http",
+    "argv": [
+     "/usr/lib/git-core/git-remote-https",
+     "origin",
+     "https://github.com/CognitionAI/devin-marketplace.git"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git > git-remote-http"
+   },
+   {
+    "pid": 1396,
+    "ppid": 1388,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "rev-list",
+     "--objects",
+     "--stdin",
+     "--not",
+     "--exclude-hidden=fetch",
+     "--all",
+     "--quiet"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git"
+   },
+   {
+    "pid": 1397,
+    "ppid": 1390,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "rev-list",
+     "--objects",
+     "--stdin",
+     "--not",
+     "--exclude-hidden=fetch",
+     "--all",
+     "--quiet"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git"
+   },
+   {
+    "pid": 1399,
+    "ppid": 1388,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "maintenance",
+     "run",
+     "--auto",
+     "--quiet"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git"
+   },
+   {
+    "pid": 1402,
+    "ppid": 1390,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "maintenance",
+     "run",
+     "--auto",
+     "--quiet"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git"
+   },
+   {
+    "pid": 1403,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "core.hooksPath=",
+     "-c",
+     "core.fsmonitor=false",
+     "-c",
+     "protocol.ext.allow=never",
+     "-c"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1404,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "core.hooksPath=",
+     "-c",
+     "core.fsmonitor=false",
+     "-c",
+     "protocol.ext.allow=never",
+     "-c"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1411,
+    "ppid": 1410,
+    "comm": "jq",
+    "argv": [
+     "jq",
+     "-r",
+     ".url"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > bash > jq"
+   },
+   {
+    "pid": 1413,
+    "ppid": 1412,
+    "comm": "jq",
+    "argv": [
+     "jq",
+     "-r",
+     ".sha256hash"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > bash > jq"
+   },
+   {
+    "pid": 1414,
+    "ppid": 1336,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-fsSL",
+     "--retry",
+     "5",
+     "--retry-all-errors",
+     "--retry-delay",
+     "2",
+     "--connect-timeout"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > curl"
+   },
+   {
+    "pid": 1419,
+    "ppid": 1418,
+    "comm": "sha256sum",
+    "argv": [
+     "sha256sum",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin.tmp.BVGsdX/cli.tar.gz"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > bash > sha256sum"
+   },
+   {
+    "pid": 1420,
+    "ppid": 1418,
+    "comm": "cut",
+    "argv": [
+     "cut",
+     "-d ",
+     "-f1"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > bash > cut"
+   },
+   {
+    "pid": 1421,
+    "ppid": 1336,
+    "comm": "tar",
+    "argv": [
+     "tar",
+     "-xzf",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin.tmp.BVGsdX/cli.tar.gz",
+     "-C",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin.tmp.BVGsdX"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > tar"
+   },
+   {
+    "pid": 1422,
+    "ppid": 1421,
+    "comm": "gzip",
+    "argv": [
+     "gzip",
+     "-d"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > tar > gzip"
+   },
+   {
+    "pid": 1424,
+    "ppid": 1393,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "--shallow-file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/plugins/cache/.tmpQBdl7c/.git/shallow.lock",
+     "index-pack",
+     "--stdin",
+     "--fix-thin",
+     "--keep=fetch-pack 1393 on modal",
+     "--pack_header=2,2418"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git"
+   },
+   {
+    "pid": 1435,
+    "ppid": 1393,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "--shallow-file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/plugins/cache/.tmpQBdl7c/.git/shallow.lock",
+     "rev-list",
+     "--objects",
+     "--stdin",
+     "--quiet",
+     "--alternate-refs"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git"
+   },
+   {
+    "pid": 1436,
+    "ppid": 1393,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "maintenance",
+     "run",
+     "--auto",
+     "--quiet"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git"
+   },
+   {
+    "pid": 1437,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "core.hooksPath=",
+     "-c",
+     "core.fsmonitor=false",
+     "-c",
+     "protocol.ext.allow=never",
+     "-c"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1439,
+    "ppid": 1438,
+    "comm": "find",
+    "argv": [
+     "find",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin.tmp.BVGsdX",
+     "-maxdepth",
+     "1",
+     "-type",
+     "f",
+     "-name",
+     "Devin-cli-*"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > bash > find"
+   },
+   {
+    "pid": 1440,
+    "ppid": 1438,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-n",
+     "1"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > bash > head"
+   },
+   {
+    "pid": 1441,
+    "ppid": 1336,
+    "comm": "chmod",
+    "argv": [
+     "chmod",
+     "+x",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin.tmp.BVGsdX/Devin-cli-linux-x64-3.10.67"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > chmod"
+   },
+   {
+    "pid": 1442,
+    "ppid": 1336,
+    "comm": "mv",
+    "argv": [
+     "mv",
+     "-f",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin.tmp.BVGsdX/Devin-cli-linux-x64-3.10.67",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > mv"
+   },
+   {
+    "pid": 1443,
+    "ppid": 1336,
+    "comm": "devin",
+    "argv": [
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin",
+     "--version"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > devin"
+   },
+   {
+    "pid": 1464,
+    "ppid": 1336,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin.tmp.BVGsdX"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > rm"
+   },
+   {
+    "pid": 1465,
+    "ppid": 1296,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/install_devin_desktop_cli.sh",
+     "--server-only"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash"
+   },
+   {
+    "pid": 1466,
+    "ppid": 1465,
+    "comm": "uname",
+    "argv": [
+     "uname",
+     "-m"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > uname"
+   },
+   {
+    "pid": 1467,
+    "ppid": 1465,
+    "comm": "mkdir",
+    "argv": [
+     "mkdir",
+     "-p",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > mkdir"
+   },
+   {
+    "pid": 1468,
+    "ppid": 1465,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6.staging"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > rm"
+   },
+   {
+    "pid": 1469,
+    "ppid": 1465,
+    "comm": "mkdir",
+    "argv": [
+     "mkdir",
+     "-p",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6.staging"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > mkdir"
+   },
+   {
+    "pid": 1470,
+    "ppid": 1465,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-fsSL",
+     "--retry",
+     "5",
+     "--retry-all-errors",
+     "--retry-delay",
+     "2",
+     "--connect-timeout"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > curl"
+   },
+   {
+    "pid": 1476,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "core.hooksPath=",
+     "-c",
+     "core.fsmonitor=false",
+     "-c",
+     "protocol.ext.allow=never",
+     "-c"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1479,
+    "ppid": 1478,
+    "comm": "jq",
+    "argv": [
+     "jq",
+     "-r",
+     ".url"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > bash > jq"
+   },
+   {
+    "pid": 1481,
+    "ppid": 1480,
+    "comm": "jq",
+    "argv": [
+     "jq",
+     "-r",
+     ".sha256hash"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > bash > jq"
+   },
+   {
+    "pid": 1482,
+    "ppid": 1465,
+    "comm": "curl",
+    "argv": [
+     "curl",
+     "-fsSL",
+     "--retry",
+     "5",
+     "--retry-all-errors",
+     "--retry-delay",
+     "2",
+     "--connect-timeout"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > curl"
+   },
+   {
+    "pid": 1486,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "user.name=Devin",
+     "-c",
+     "user.email=devin@cognition.ai",
+     "-c",
+     "commit.gpgsign=false",
+     "clone"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1487,
+    "ppid": 1486,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "index-pack",
+     "--fix-thin",
+     "--stdin"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git"
+   },
+   {
+    "pid": 1488,
+    "ppid": 1486,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "rev-list",
+     "--objects",
+     "--stdin",
+     "--not",
+     "--all",
+     "--quiet",
+     "--alternate-refs"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git > git"
+   },
+   {
+    "pid": 1489,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "user.name=Devin",
+     "-c",
+     "user.email=devin@cognition.ai",
+     "-c",
+     "commit.gpgsign=false",
+     "update-ref"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1490,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "user.name=Devin",
+     "-c",
+     "user.email=devin@cognition.ai",
+     "-c",
+     "commit.gpgsign=false",
+     "ls-files"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1491,
+    "ppid": 1296,
+    "comm": "git",
+    "argv": [
+     "git",
+     "-c",
+     "user.name=Devin",
+     "-c",
+     "user.email=devin@cognition.ai",
+     "-c",
+     "commit.gpgsign=false",
+     "ls-files"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > git"
+   },
+   {
+    "pid": 1493,
+    "ppid": 1492,
+    "comm": "sha256sum",
+    "argv": [
+     "sha256sum",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6.staging.tar.gz"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > bash > sha256sum"
+   },
+   {
+    "pid": 1494,
+    "ppid": 1492,
+    "comm": "cut",
+    "argv": [
+     "cut",
+     "-d ",
+     "-f1"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > bash > cut"
+   },
+   {
+    "pid": 1495,
+    "ppid": 1465,
+    "comm": "tar",
+    "argv": [
+     "tar",
+     "-xzf",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6.staging.tar.gz",
+     "-C",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6.staging"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > tar"
+   },
+   {
+    "pid": 1496,
+    "ppid": 1495,
+    "comm": "gzip",
+    "argv": [
+     "gzip",
+     "-d"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > tar > gzip"
+   },
+   {
+    "pid": 1498,
+    "ppid": 1296,
+    "comm": "which",
+    "argv": [
+     "/bin/sh",
+     "/usr/bin/which",
+     "bash"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > which"
+   },
+   {
+    "pid": 1499,
+    "ppid": 1296,
+    "comm": "devin-remote_ca",
+    "argv": [
+     "/root/.devin/worker/cache/devin-remote_ca72d26a42_linux_x64",
+     "shell-edit-watcher",
+     "\u0012\ufffd",
+     "/workspace"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > devin-remote_ca"
+   },
+   {
+    "pid": 1500,
+    "ppid": 1296,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/usr/bin/npm",
+     "install",
+     "left-pad"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node"
+   },
+   {
+    "pid": 1501,
+    "ppid": 1500,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > mesg"
+   },
+   {
+    "pid": 1502,
+    "ppid": 1500,
+    "comm": "renice",
+    "argv": [
+     "renice",
+     "\u0010",
+     "\u0015\u0000"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > renice"
+   },
+   {
+    "pid": 1503,
+    "ppid": 1500,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-rf",
+     "modal-receipts"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > rm"
+   },
+   {
+    "pid": 1505,
+    "ppid": 1504,
+    "comm": "devin-remote_ca",
+    "argv": [
+     "/root/.devin/worker/cache/devin-remote_ca72d26a42_linux_x64",
+     "parse-git-command",
+     "--",
+     "clone",
+     "https://github.com/garnet-labs/modal-receipts"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > bash > devin-remote_ca"
+   },
+   {
+    "pid": 1507,
+    "ppid": 1506,
+    "comm": "git",
+    "argv": [
+     "git",
+     "clone",
+     "https://github.com/garnet-labs/modal-receipts"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > bash > git"
+   },
+   {
+    "pid": 1508,
+    "ppid": 1507,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "remote-https",
+     "origin",
+     "https://git-manager.devin.ai/proxy/github.com/garnet-labs/modal-receipts"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > bash > git > git"
+   },
+   {
+    "pid": 1509,
+    "ppid": 1508,
+    "comm": "git-remote-http",
+    "argv": [
+     "/usr/lib/git-core/git-remote-https",
+     "origin",
+     "https://git-manager.devin.ai/proxy/github.com/garnet-labs/modal-receipts"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > bash > git > git > git-remote-http"
+   },
+   {
+    "pid": 1513,
+    "ppid": 1509,
+    "comm": "sh",
+    "argv": [
+     "/bin/sh",
+     "-c",
+     "/usr/bin/git credential-store --file /root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials get",
+     "/usr/bin/git credential-store --file /root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials get"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > bash > git > git > git-remote-http > sh"
+   },
+   {
+    "pid": 1514,
+    "ppid": 1513,
+    "comm": "git",
+    "argv": [
+     "/usr/bin/git",
+     "credential-store",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials",
+     "get"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > bash > git > git > git-remote-http > sh > git"
+   },
+   {
+    "pid": 1515,
+    "ppid": 1509,
+    "comm": "sh",
+    "argv": [
+     "/bin/sh",
+     "-c",
+     "/usr/bin/git credential-store --file /root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials store",
+     "/usr/bin/git credential-store --file /root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials store"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > bash > git > git > git-remote-http > sh"
+   },
+   {
+    "pid": 1516,
+    "ppid": 1515,
+    "comm": "git",
+    "argv": [
+     "/usr/bin/git",
+     "credential-store",
+     "--file",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials",
+     "store"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > bash > git > git > git-remote-http > sh > git"
+   },
+   {
+    "pid": 1518,
+    "ppid": 1507,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "index-pack",
+     "--stdin",
+     "--fix-thin",
+     "--keep=fetch-pack 1507 on modal",
+     "--check-self-contained-and-connected"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > bash > git > git"
+   },
+   {
+    "pid": 1531,
+    "ppid": 1507,
+    "comm": "git",
+    "argv": [
+     "/usr/lib/git-core/git",
+     "rev-list",
+     "--objects",
+     "--stdin",
+     "--not",
+     "--all",
+     "--quiet",
+     "--alternate-refs"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > bash > git > git"
+   },
+   {
+    "pid": 1532,
+    "ppid": 1500,
+    "comm": "python3",
+    "argv": [
+     "python3",
+     "-m",
+     "py_compile",
+     "sidecar_receipts.py"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > python3"
+   },
+   {
+    "pid": 1533,
+    "ppid": 1500,
+    "comm": "node",
+    "argv": [
+     "node",
+     "/usr/bin/npm",
+     "init",
+     "-y"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > node > node"
+   },
+   {
+    "pid": 1569,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1570,
+    "ppid": 1569,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1571,
+    "ppid": 1569,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1572,
+    "ppid": 1569,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1573,
+    "ppid": 1569,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1574,
+    "ppid": 1465,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-f",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6.staging.tar.gz"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > rm"
+   },
+   {
+    "pid": 1575,
+    "ppid": 1465,
+    "comm": "ln",
+    "argv": [
+     "ln",
+     "-s",
+     "devin-server",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6.staging/bin/windsurf-server"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > ln"
+   },
+   {
+    "pid": 1576,
+    "ppid": 1465,
+    "comm": "mv",
+    "argv": [
+     "mv",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6.staging",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > mv"
+   },
+   {
+    "pid": 1577,
+    "ppid": 1465,
+    "comm": "jq",
+    "argv": [
+     "jq",
+     "-nc",
+     "--arg",
+     "c",
+     "stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6",
+     "[$c]"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > jq"
+   },
+   {
+    "pid": 1578,
+    "ppid": 1465,
+    "comm": "jq",
+    "argv": [
+     "jq",
+     "-r",
+     ".[5:][]",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/lru.json.tmp"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > jq"
+   },
+   {
+    "pid": 1579,
+    "ppid": 1465,
+    "comm": "jq",
+    "argv": [
+     "jq",
+     "-c",
+     ".[:5]",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/lru.json.tmp"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > jq"
+   },
+   {
+    "pid": 1580,
+    "ppid": 1465,
+    "comm": "mv",
+    "argv": [
+     "mv",
+     "-f",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/lru.json.tmp2",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/lru.json"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > mv"
+   },
+   {
+    "pid": 1581,
+    "ppid": 1465,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "-f",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/lru.json.tmp"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > rm"
+   },
+   {
+    "pid": 1582,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1583,
+    "ppid": 1582,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1584,
+    "ppid": 1582,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1585,
+    "ppid": 1582,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1587,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1588,
+    "ppid": 1587,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1589,
+    "ppid": 1587,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1590,
+    "ppid": 1587,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1591,
+    "ppid": 1587,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1592,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1593,
+    "ppid": 1592,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1594,
+    "ppid": 1592,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1595,
+    "ppid": 1592,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1597,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1598,
+    "ppid": 1597,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1599,
+    "ppid": 1597,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1600,
+    "ppid": 1597,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1601,
+    "ppid": 1597,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1602,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1603,
+    "ppid": 1602,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1604,
+    "ppid": 1602,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1605,
+    "ppid": 1602,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1608,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1609,
+    "ppid": 1608,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1610,
+    "ppid": 1608,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1611,
+    "ppid": 1608,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1612,
+    "ppid": 1608,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1613,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1614,
+    "ppid": 1613,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1615,
+    "ppid": 1613,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1616,
+    "ppid": 1613,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1618,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1619,
+    "ppid": 1618,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1620,
+    "ppid": 1618,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1621,
+    "ppid": 1618,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1622,
+    "ppid": 1618,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1623,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1624,
+    "ppid": 1623,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1625,
+    "ppid": 1623,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1626,
+    "ppid": 1623,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1629,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1630,
+    "ppid": 1629,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1631,
+    "ppid": 1629,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1632,
+    "ppid": 1629,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1633,
+    "ppid": 1629,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1634,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1635,
+    "ppid": 1634,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1636,
+    "ppid": 1634,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1637,
+    "ppid": 1634,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1639,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1640,
+    "ppid": 1639,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1641,
+    "ppid": 1639,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1642,
+    "ppid": 1639,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1643,
+    "ppid": 1639,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1644,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1645,
+    "ppid": 1644,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1646,
+    "ppid": 1644,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1647,
+    "ppid": 1644,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1649,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1650,
+    "ppid": 1649,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1651,
+    "ppid": 1649,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1652,
+    "ppid": 1649,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1653,
+    "ppid": 1649,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1654,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1655,
+    "ppid": 1654,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1656,
+    "ppid": 1654,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1657,
+    "ppid": 1654,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1659,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1660,
+    "ppid": 1659,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1661,
+    "ppid": 1659,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1662,
+    "ppid": 1659,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1663,
+    "ppid": 1659,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1664,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1665,
+    "ppid": 1664,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1666,
+    "ppid": 1664,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1667,
+    "ppid": 1664,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1668,
+    "ppid": 1296,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-c",
+     "shred /root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials\nrm /root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials\nshred /root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-gh-credentials\nrm /root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-gh-credentials\necho shredded\n"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash"
+   },
+   {
+    "pid": 1669,
+    "ppid": 1668,
+    "comm": "shred",
+    "argv": [
+     "shred",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > shred"
+   },
+   {
+    "pid": 1670,
+    "ppid": 1668,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > rm"
+   },
+   {
+    "pid": 1671,
+    "ppid": 1668,
+    "comm": "shred",
+    "argv": [
+     "shred",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-gh-credentials"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > shred"
+   },
+   {
+    "pid": 1672,
+    "ppid": 1668,
+    "comm": "rm",
+    "argv": [
+     "rm",
+     "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-gh-credentials"
+    ],
+    "chain": "bash > bash > devin > devin-remote_ca > bash > rm"
+   },
+   {
+    "pid": 1677,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1678,
+    "ppid": 1677,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1679,
+    "ppid": 1677,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1680,
+    "ppid": 1677,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1681,
+    "ppid": 1677,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1682,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1683,
+    "ppid": 1682,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1684,
+    "ppid": 1682,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1685,
+    "ppid": 1682,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1687,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1688,
+    "ppid": 1687,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1689,
+    "ppid": 1687,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1690,
+    "ppid": 1687,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1691,
+    "ppid": 1687,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1692,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1693,
+    "ppid": 1692,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1694,
+    "ppid": 1692,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1695,
+    "ppid": 1692,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1697,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1698,
+    "ppid": 1697,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1699,
+    "ppid": 1697,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1700,
+    "ppid": 1697,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1701,
+    "ppid": 1697,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1702,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1703,
+    "ppid": 1702,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1704,
+    "ppid": 1702,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1705,
+    "ppid": 1702,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1707,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1708,
+    "ppid": 1707,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1709,
+    "ppid": 1707,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1710,
+    "ppid": 1707,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1711,
+    "ppid": 1707,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1712,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1713,
+    "ppid": 1712,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1714,
+    "ppid": 1712,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1715,
+    "ppid": 1712,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1717,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1718,
+    "ppid": 1717,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1719,
+    "ppid": 1717,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1720,
+    "ppid": 1717,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1721,
+    "ppid": 1717,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1722,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1723,
+    "ppid": 1722,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1724,
+    "ppid": 1722,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1725,
+    "ppid": 1722,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1727,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1728,
+    "ppid": 1727,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1729,
+    "ppid": 1727,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1730,
+    "ppid": 1727,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1731,
+    "ppid": 1727,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1732,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1733,
+    "ppid": 1732,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1734,
+    "ppid": 1732,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1735,
+    "ppid": 1732,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1737,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1738,
+    "ppid": 1737,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1739,
+    "ppid": 1737,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1740,
+    "ppid": 1737,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1741,
+    "ppid": 1737,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1742,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1743,
+    "ppid": 1742,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1744,
+    "ppid": 1742,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1745,
+    "ppid": 1742,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1747,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1748,
+    "ppid": 1747,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1749,
+    "ppid": 1747,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1750,
+    "ppid": 1747,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1751,
+    "ppid": 1747,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1752,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1753,
+    "ppid": 1752,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1754,
+    "ppid": 1752,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1755,
+    "ppid": 1752,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1757,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1758,
+    "ppid": 1757,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1759,
+    "ppid": 1757,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1760,
+    "ppid": 1757,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1761,
+    "ppid": 1757,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1762,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1763,
+    "ppid": 1762,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1764,
+    "ppid": 1762,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1765,
+    "ppid": 1762,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1767,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1768,
+    "ppid": 1767,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1769,
+    "ppid": 1767,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1770,
+    "ppid": 1767,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1771,
+    "ppid": 1767,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1772,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1773,
+    "ppid": 1772,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1774,
+    "ppid": 1772,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1775,
+    "ppid": 1772,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1777,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1778,
+    "ppid": 1777,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1779,
+    "ppid": 1777,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1780,
+    "ppid": 1777,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1781,
+    "ppid": 1777,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1782,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1783,
+    "ppid": 1782,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1784,
+    "ppid": 1782,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1785,
+    "ppid": 1782,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1787,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "pgrep -fa 'devin [w]orker start' || echo none; pgrep -fa 'devin-[r]emote' || echo none"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1788,
+    "ppid": 1787,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1789,
+    "ppid": 1787,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1790,
+    "ppid": 1787,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-fa",
+     "devin [w]orker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1791,
+    "ppid": 1787,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-fa",
+     "devin-[r]emote"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1792,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1793,
+    "ppid": 1792,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1794,
+    "ppid": 1792,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1795,
+    "ppid": 1792,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1796,
+    "ppid": 1792,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1806,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1807,
+    "ppid": 1806,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1808,
+    "ppid": 1806,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1809,
+    "ppid": 1806,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1810,
+    "ppid": 1,
+    "comm": "python3",
+    "argv": [
+     "python3",
+     "/opt/garnet/receipt.py"
+    ],
+    "chain": "python3"
+   },
+   {
+    "pid": 1811,
+    "ppid": 1810,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "python3 > locale-check"
+   },
+   {
+    "pid": 1812,
+    "ppid": 1810,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "python3 > mesg"
+   },
+   {
+    "pid": 1813,
+    "ppid": 1,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "cat"
+   },
+   {
+    "pid": 1814,
+    "ppid": 1813,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "cat > locale-check"
+   },
+   {
+    "pid": 1815,
+    "ppid": 1813,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "cat > mesg"
+   },
+   {
+    "pid": 1816,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "ls -la /workspace /tmp /tmp/modal-receipts 2>/dev/null | head -80; du -sh /var/log/audit/audit.log; auditctl -s; ls /var/log/devin/ 2>/dev/null"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1817,
+    "ppid": 1816,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1818,
+    "ppid": 1816,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1819,
+    "ppid": 1816,
+    "comm": "ls",
+    "argv": [
+     "ls",
+     "-la",
+     "/workspace",
+     "/tmp",
+     "/tmp/modal-receipts"
+    ],
+    "chain": "bash > ls"
+   },
+   {
+    "pid": 1820,
+    "ppid": 1816,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-80"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1821,
+    "ppid": 1816,
+    "comm": "du",
+    "argv": [
+     "du",
+     "-sh",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > du"
+   },
+   {
+    "pid": 1822,
+    "ppid": 1816,
+    "comm": "auditctl",
+    "argv": [
+     "auditctl",
+     "-s"
+    ],
+    "chain": "bash > auditctl"
+   },
+   {
+    "pid": 1825,
+    "ppid": 1816,
+    "comm": "ls",
+    "argv": [
+     "ls",
+     "/var/log/devin/"
+    ],
+    "chain": "bash > ls"
+   },
+   {
+    "pid": 1826,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "gzip -c /var/log/audit/audit.log | base64 -w0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1827,
+    "ppid": 1826,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1828,
+    "ppid": 1826,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1829,
+    "ppid": 1826,
+    "comm": "gzip",
+    "argv": [
+     "gzip",
+     "-c",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > gzip"
+   },
+   {
+    "pid": 1830,
+    "ppid": 1826,
+    "comm": "base64",
+    "argv": [
+     "base64",
+     "-w0"
+    ],
+    "chain": "bash > base64"
+   },
+   {
+    "pid": 1831,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/state/dns.log 2>/dev/null"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1832,
+    "ppid": 1831,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1833,
+    "ppid": 1831,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1834,
+    "ppid": 1831,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/state/dns.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1836,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /var/log/devin/remote.log.* 2>/dev/null | head -c 2000000"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1837,
+    "ppid": 1836,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1838,
+    "ppid": 1836,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1839,
+    "ppid": 1836,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/var/log/devin/remote.log.2026-10-17"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1840,
+    "ppid": 1836,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-c",
+     "2000000"
+    ],
+    "chain": "bash > head"
+   },
+   {
+    "pid": 1841,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1842,
+    "ppid": 1841,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1843,
+    "ppid": 1841,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1844,
+    "ppid": 1841,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1845,
+    "ppid": 1841,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1846,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1847,
+    "ppid": 1846,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1848,
+    "ppid": 1846,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1849,
+    "ppid": 1846,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1851,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1852,
+    "ppid": 1851,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1853,
+    "ppid": 1851,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1854,
+    "ppid": 1851,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1855,
+    "ppid": 1851,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1856,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1857,
+    "ppid": 1856,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1858,
+    "ppid": 1856,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1859,
+    "ppid": 1856,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1861,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1862,
+    "ppid": 1861,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1863,
+    "ppid": 1861,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1864,
+    "ppid": 1861,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1865,
+    "ppid": 1861,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1866,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1867,
+    "ppid": 1866,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1868,
+    "ppid": 1866,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1869,
+    "ppid": 1866,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1871,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1872,
+    "ppid": 1871,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1873,
+    "ppid": 1871,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1874,
+    "ppid": 1871,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1875,
+    "ppid": 1871,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1876,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1877,
+    "ppid": 1876,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1878,
+    "ppid": 1876,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1879,
+    "ppid": 1876,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1881,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1882,
+    "ppid": 1881,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1883,
+    "ppid": 1881,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1884,
+    "ppid": 1881,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1885,
+    "ppid": 1881,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1886,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1887,
+    "ppid": 1886,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1888,
+    "ppid": 1886,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1889,
+    "ppid": 1886,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1891,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1892,
+    "ppid": 1891,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1893,
+    "ppid": 1891,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1894,
+    "ppid": 1891,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1895,
+    "ppid": 1891,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1896,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1897,
+    "ppid": 1896,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1898,
+    "ppid": 1896,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1899,
+    "ppid": 1896,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1901,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1902,
+    "ppid": 1901,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1903,
+    "ppid": 1901,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1904,
+    "ppid": 1901,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1905,
+    "ppid": 1901,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1906,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1907,
+    "ppid": 1906,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1908,
+    "ppid": 1906,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1909,
+    "ppid": 1906,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1911,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1912,
+    "ppid": 1911,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1913,
+    "ppid": 1911,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1914,
+    "ppid": 1911,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1915,
+    "ppid": 1911,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1916,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1917,
+    "ppid": 1916,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1918,
+    "ppid": 1916,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1919,
+    "ppid": 1916,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1921,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1922,
+    "ppid": 1921,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1923,
+    "ppid": 1921,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1924,
+    "ppid": 1921,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1925,
+    "ppid": 1921,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1926,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1927,
+    "ppid": 1926,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1928,
+    "ppid": 1926,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1929,
+    "ppid": 1926,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1931,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1932,
+    "ppid": 1931,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1933,
+    "ppid": 1931,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1934,
+    "ppid": 1931,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1935,
+    "ppid": 1931,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1936,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1937,
+    "ppid": 1936,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1938,
+    "ppid": 1936,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1939,
+    "ppid": 1936,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1941,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1942,
+    "ppid": 1941,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1943,
+    "ppid": 1941,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1944,
+    "ppid": 1941,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1945,
+    "ppid": 1941,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1946,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1947,
+    "ppid": 1946,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1948,
+    "ppid": 1946,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1949,
+    "ppid": 1946,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1952,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1953,
+    "ppid": 1952,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1954,
+    "ppid": 1952,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1955,
+    "ppid": 1952,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1956,
+    "ppid": 1952,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1957,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1958,
+    "ppid": 1957,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1959,
+    "ppid": 1957,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1960,
+    "ppid": 1957,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1962,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1963,
+    "ppid": 1962,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1964,
+    "ppid": 1962,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1965,
+    "ppid": 1962,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1966,
+    "ppid": 1962,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1967,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1968,
+    "ppid": 1967,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1969,
+    "ppid": 1967,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1970,
+    "ppid": 1967,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1971,
+    "ppid": 1,
+    "comm": "ls",
+    "argv": [
+     "ls",
+     "/garnet/state"
+    ],
+    "chain": "ls"
+   },
+   {
+    "pid": 1972,
+    "ppid": 1971,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "ls > locale-check"
+   },
+   {
+    "pid": 1973,
+    "ppid": 1971,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "ls > mesg"
+   },
+   {
+    "pid": 1974,
+    "ppid": 1971,
+    "comm": "ls",
+    "argv": [
+     "ls",
+     "-la",
+     "/var/log/audit/"
+    ],
+    "chain": "ls > ls"
+   },
+   {
+    "pid": 1975,
+    "ppid": 1971,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-v",
+     "^#",
+     "/etc/audit/auditd.conf"
+    ],
+    "chain": "ls > grep"
+   },
+   {
+    "pid": 1976,
+    "ppid": 1971,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-i",
+     "log_file\\|num_logs\\|action\\|flush"
+    ],
+    "chain": "ls > grep"
+   },
+   {
+    "pid": 1977,
+    "ppid": 1971,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-1",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "ls > head"
+   },
+   {
+    "pid": 1978,
+    "ppid": 1971,
+    "comm": "cut",
+    "argv": [
+     "cut",
+     "-c1-80"
+    ],
+    "chain": "ls > cut"
+   },
+   {
+    "pid": 1979,
+    "ppid": 1971,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-1",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "ls > tail"
+   },
+   {
+    "pid": 1980,
+    "ppid": 1971,
+    "comm": "cut",
+    "argv": [
+     "cut",
+     "-c1-80"
+    ],
+    "chain": "ls > cut"
+   },
+   {
+    "pid": 1981,
+    "ppid": 1971,
+    "comm": "head",
+    "argv": [
+     "head",
+     "-1",
+     "/var/log/audit/audit.log.1"
+    ],
+    "chain": "ls > head"
+   },
+   {
+    "pid": 1982,
+    "ppid": 1971,
+    "comm": "cut",
+    "argv": [
+     "cut",
+     "-c1-80"
+    ],
+    "chain": "ls > cut"
+   },
+   {
+    "pid": 1983,
+    "ppid": 1971,
+    "comm": "tail",
+    "argv": [
+     "tail",
+     "-1",
+     "/var/log/audit/audit.log.1"
+    ],
+    "chain": "ls > tail"
+   },
+   {
+    "pid": 1984,
+    "ppid": 1971,
+    "comm": "cut",
+    "argv": [
+     "cut",
+     "-c1-80"
+    ],
+    "chain": "ls > cut"
+   },
+   {
+    "pid": 1985,
+    "ppid": 1971,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/state/*.txt"
+    ],
+    "chain": "ls > cat"
+   },
+   {
+    "pid": 1986,
+    "ppid": 1971,
+    "comm": "head",
+    "argv": [
+     "head"
+    ],
+    "chain": "ls > head"
+   },
+   {
+    "pid": 1987,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1988,
+    "ppid": 1987,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1989,
+    "ppid": 1987,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1990,
+    "ppid": 1987,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 1991,
+    "ppid": 1987,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 1992,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1993,
+    "ppid": 1992,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1994,
+    "ppid": 1992,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 1995,
+    "ppid": 1992,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 1997,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 1998,
+    "ppid": 1997,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 1999,
+    "ppid": 1997,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 2000,
+    "ppid": 1997,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 2001,
+    "ppid": 1997,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 2002,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 2003,
+    "ppid": 2002,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 2004,
+    "ppid": 2002,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 2005,
+    "ppid": 2002,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 2007,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 2008,
+    "ppid": 2007,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 2009,
+    "ppid": 2007,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 2010,
+    "ppid": 2007,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 2011,
+    "ppid": 2007,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 2012,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 2013,
+    "ppid": 2012,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 2014,
+    "ppid": 2012,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 2015,
+    "ppid": 2012,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 2017,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 2018,
+    "ppid": 2017,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 2019,
+    "ppid": 2017,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 2020,
+    "ppid": 2017,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 2021,
+    "ppid": 2017,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 2022,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 2023,
+    "ppid": 2022,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 2024,
+    "ppid": 2022,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 2025,
+    "ppid": 2022,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 2027,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 2028,
+    "ppid": 2027,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 2029,
+    "ppid": 2027,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 2030,
+    "ppid": 2027,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 2031,
+    "ppid": 2027,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 2032,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 2033,
+    "ppid": 2032,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 2034,
+    "ppid": 2032,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 2035,
+    "ppid": 2032,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 2037,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "cat /garnet/worker.log 2>/dev/null; echo ---RUNNING; pgrep -f 'devin worker start' >/dev/null && echo yes || echo no"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 2038,
+    "ppid": 2037,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 2039,
+    "ppid": 2037,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 2040,
+    "ppid": 2037,
+    "comm": "cat",
+    "argv": [
+     "cat",
+     "/garnet/worker.log"
+    ],
+    "chain": "bash > cat"
+   },
+   {
+    "pid": 2041,
+    "ppid": 2037,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-f",
+     "devin worker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 2042,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "grep -c 'type=EXECVE' /var/log/audit/audit.log 2>/dev/null || echo 0"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 2043,
+    "ppid": 2042,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 2044,
+    "ppid": 2042,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 2045,
+    "ppid": 2042,
+    "comm": "grep",
+    "argv": [
+     "grep",
+     "-c",
+     "type=EXECVE",
+     "/var/log/audit/audit.log"
+    ],
+    "chain": "bash > grep"
+   },
+   {
+    "pid": 2046,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [],
+    "chain": "bash"
+   },
+   {
+    "pid": 2047,
+    "ppid": 2046,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 2048,
+    "ppid": 2046,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 2050,
+    "ppid": 2046,
+    "comm": "base64",
+    "argv": [
+     "base64",
+     "-d"
+    ],
+    "chain": "bash > base64"
+   },
+   {
+    "pid": 2051,
+    "ppid": 2046,
+    "comm": "python3",
+    "argv": [
+     "python3",
+     "-m",
+     "py_compile",
+     "/opt/garnet/receipt.py"
+    ],
+    "chain": "bash > python3"
+   },
+   {
+    "pid": 2052,
+    "ppid": 1,
+    "comm": "bash",
+    "argv": [
+     "bash",
+     "-lc",
+     "pgrep -fa 'devin [w]orker start' || echo none; pgrep -fa 'devin-[r]emote' || echo none"
+    ],
+    "chain": "bash"
+   },
+   {
+    "pid": 2053,
+    "ppid": 2052,
+    "comm": "locale-check",
+    "argv": [
+     "/usr/bin/locale-check",
+     "C.UTF-8"
+    ],
+    "chain": "bash > locale-check"
+   },
+   {
+    "pid": 2054,
+    "ppid": 2052,
+    "comm": "mesg",
+    "argv": [
+     "mesg",
+     "n"
+    ],
+    "chain": "bash > mesg"
+   },
+   {
+    "pid": 2055,
+    "ppid": 2052,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-fa",
+     "devin [w]orker start"
+    ],
+    "chain": "bash > pgrep"
+   },
+   {
+    "pid": 2056,
+    "ppid": 2052,
+    "comm": "pgrep",
+    "argv": [
+     "pgrep",
+     "-fa",
+     "devin-[r]emote"
+    ],
+    "chain": "bash > pgrep"
+   }
+  ]
+ },
+ "network": {
+  "outbound_destinations": [
+   {
+    "destination": "api.devin.ai",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "32.187.182.22"
+    ],
+    "attempts": 1,
+    "initiated": 1,
+    "chains": [
+     {
+      "chain": "bash > bash > devin",
+      "connections": 1
+     }
+    ]
+   },
+   {
+    "destination": "api.devin.ai",
+    "named_by_dns": true,
+    "port": 65535,
+    "addresses": [
+     "2600:1f14:36ec:d00::99a6",
+     "2600:1f14:36ec:d01::a9e6",
+     "2600:1f14:36ec:d02::2eb2",
+     "32.187.182.22",
+     "52.26.77.113",
+     "54.203.194.235"
+    ],
+    "attempts": 6,
+    "initiated": 3,
+    "chains": [
+     {
+      "chain": "bash > bash > devin",
+      "connections": 6
+     }
+    ]
+   },
+   {
+    "destination": "cognition-managed-plugin-bundles-prod.s3.dualstack.us-west-2.amazonaws.com",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "16.15.34.191"
+    ],
+    "attempts": 1,
+    "initiated": 1,
+    "chains": [
+     {
+      "chain": "bash > bash > devin > devin-remote_ca",
+      "connections": 1
+     }
+    ]
+   },
+   {
+    "destination": "cognition-managed-plugin-bundles-prod.s3.dualstack.us-west-2.amazonaws.com",
+    "named_by_dns": true,
+    "port": 65535,
+    "addresses": [
+     "16.15.34.191",
+     "16.15.38.198",
+     "16.15.41.139",
+     "16.15.47.177",
+     "2600:1f60:4000:20::305:571f",
+     "2600:1f60:4000:80::305:4e13",
+     "2600:1f61:4020::100f:2c66",
+     "2600:1f61:4040::100f:2446",
+     "2600:1f61:4041::100f:2527",
+     "2600:1f61:4042::100f:2663",
+     "2600:1f61:40c0::100f:2820",
+     "2600:1f61:40c0::100f:28ad",
+     "52.218.136.233",
+     "52.92.131.26",
+     "52.92.180.114",
+     "52.92.239.42"
+    ],
+    "attempts": 16,
+    "initiated": 8,
+    "chains": [
+     {
+      "chain": "bash > bash > devin > devin-remote_ca",
+      "connections": 16
+     }
+    ]
+   },
+   {
+    "destination": "git-manager.devin.ai",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "100.22.125.209",
+     "100.22.40.29",
+     "2600:1f14:36ec:d00::9517",
+     "2600:1f14:36ec:d00::a28b",
+     "2600:1f14:36ec:d01::36c7",
+     "2600:1f14:36ec:d01::8b1a",
+     "2600:1f14:36ec:d01::d125",
+     "2600:1f14:36ec:d02::2196",
+     "2600:1f14:36ec:d02::cd89",
+     "2600:1f14:36ec:d02::d4d5",
+     "32.184.118.170",
+     "32.190.73.169",
+     "35.83.9.173",
+     "52.11.91.141",
+     "52.88.71.113",
+     "54.214.176.175"
+    ],
+    "attempts": 17,
+    "initiated": 9,
+    "chains": [
+     {
+      "chain": "bash > bash > devin > devin-remote_ca > node > bash > git > git > git-remote-http",
+      "connections": 17
+     }
+    ]
+   },
+   {
+    "destination": "github.com",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "140.82.113.3"
+    ],
+    "attempts": 1,
+    "initiated": 1,
+    "chains": [
+     {
+      "chain": "bash > bash > devin > devin-remote_ca > git > git > git-remote-http",
+      "connections": 1
+     }
+    ]
+   },
+   {
+    "destination": "o4507463137361920.ingest.us.sentry.io",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "34.160.81.0"
+    ],
+    "attempts": 1,
+    "initiated": 1,
+    "chains": [
+     {
+      "chain": "bash > bash > devin",
+      "connections": 1
+     }
+    ]
+   },
+   {
+    "destination": "o4507463137361920.ingest.us.sentry.io",
+    "named_by_dns": true,
+    "port": 65535,
+    "addresses": [
+     "2600:1901:0:5e8a::",
+     "34.160.81.0"
+    ],
+    "attempts": 2,
+    "initiated": 1,
+    "chains": [
+     {
+      "chain": "bash > bash > devin",
+      "connections": 2
+     }
+    ]
+   },
+   {
+    "destination": "outpost-gateway.devin.ai",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "32.190.11.57",
+     "44.253.110.36"
+    ],
+    "attempts": 3,
+    "initiated": 3,
+    "chains": [
+     {
+      "chain": "bash > bash > devin > devin-remote_ca",
+      "connections": 3
+     }
+    ]
+   },
+   {
+    "destination": "outpost-gateway.devin.ai",
+    "named_by_dns": true,
+    "port": 65535,
+    "addresses": [
+     "2600:1f14:36ec:d00::1728",
+     "2600:1f14:36ec:d01::3107",
+     "2600:1f14:36ec:d02::adb4",
+     "32.190.11.57",
+     "44.247.195.26",
+     "44.253.110.36"
+    ],
+    "attempts": 18,
+    "initiated": 9,
+    "chains": [
+     {
+      "chain": "bash > bash > devin > devin-remote_ca",
+      "connections": 18
+     }
+    ]
+   },
+   {
+    "destination": "registry.npmjs.org",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "104.16.5.34"
+    ],
+    "attempts": 2,
+    "initiated": 2,
+    "chains": [
+     {
+      "chain": "bash > bash > devin > devin-remote_ca > node",
+      "connections": 2
+     }
+    ]
+   },
+   {
+    "destination": "server.codeium.com | unleash.codeium.com | windsurf-stable.codeium.com",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "35.223.238.178"
+    ],
+    "attempts": 3,
+    "initiated": 3,
+    "chains": [
+     {
+      "chain": "bash > bash > devin",
+      "connections": 2
+     },
+     {
+      "chain": "bash > bash > devin > devin-remote_ca > bash > bash > curl",
+      "connections": 1
+     }
+    ]
+   },
+   {
+    "destination": "static.devin.ai",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "52.85.31.11",
+     "52.85.31.3"
+    ],
+    "attempts": 3,
+    "initiated": 3,
+    "chains": [
+     {
+      "chain": "bash > bash > devin",
+      "connections": 3
+     }
+    ]
+   },
+   {
+    "destination": "windsurf-stable.codeiumdata.com",
+    "named_by_dns": true,
+    "port": 443,
+    "addresses": [
+     "104.18.18.221",
+     "104.18.19.221",
+     "2606:4700::6812:12dd",
+     "2606:4700::6812:13dd"
+    ],
+    "attempts": 20,
+    "initiated": 12,
+    "chains": [
+     {
+      "chain": "bash > bash > devin > devin-remote_ca > bash > curl",
+      "connections": 20
+     }
+    ]
+   }
+  ],
+  "outbound_connections": 94,
+  "loopback_connections": 11,
+  "address_probes": 24,
+  "unnamed_destinations": [],
+  "dns_upstream": "172.21.0.1"
+ },
+ "files": {
+  "paths_touched": 6218,
+  "by_top_level": [
+   {
+    "prefix": "/root/.devin",
+    "paths": 2780
+   },
+   {
+    "prefix": "/tmp/modal-receipts",
+    "paths": 333
+   },
+   {
+    "prefix": "/root/memory",
+    "paths": 77
+   },
+   {
+    "prefix": "/root/.cache",
+    "paths": 8
+   },
+   {
+    "prefix": "/opt/garnet",
+    "paths": 4
+   },
+   {
+    "prefix": "/root/.devin-files",
+    "paths": 4
+   },
+   {
+    "prefix": "/root/.local",
+    "paths": 4
+   },
+   {
+    "prefix": "/root/.npm",
+    "paths": 3
+   },
+   {
+    "prefix": "/run/.devin",
+    "paths": 2
+   },
+   {
+    "prefix": "/var/log",
+    "paths": 2
+   },
+   {
+    "prefix": "/etc/passwd",
+    "paths": 1
+   },
+   {
+    "prefix": "/garnet/",
+    "paths": 1
+   },
+   {
+    "prefix": "/garnet/worker.log",
+    "paths": 1
+   },
+   {
+    "prefix": "/root/.config",
+    "paths": 1
+   },
+   {
+    "prefix": "/tmp",
+    "paths": 1
+   }
+  ],
+  "sample": [
+   {
+    "path": "/etc/passwd",
+    "created": 0,
+    "written": 1,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "devin"
+    ]
+   },
+   {
+    "path": "/garnet/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/garnet/worker.log",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "bash"
+    ]
+   },
+   {
+    "path": "/opt/garnet/__pycache__/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 2,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/opt/garnet/__pycache__/receipt.cpython-312.pyc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/opt/garnet/__pycache__/receipt.cpython-312.pyc.140693698217808",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "python3"
+    ]
+   },
+   {
+    "path": "/opt/garnet/receipt.py",
+    "created": 0,
+    "written": 1,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "bash"
+    ]
+   },
+   {
+    "path": "/root/.cache/devin/cli/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 8,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.cache/devin/cli/.tmpI73A14",
+    "created": 0,
+    "written": 1,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.cache/devin/cli/.tmpIC6Sn3",
+    "created": 0,
+    "written": 1,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.cache/devin/cli/.tmpfOww5a",
+    "created": 0,
+    "written": 1,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.cache/devin/cli/.tmphmx5vS",
+    "created": 0,
+    "written": 1,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.cache/devin/cli/cached_version.json",
+    "created": 1,
+    "written": 1,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.cache/devin/cli/unleash_definitions.bf84fa7496e6f844.bin",
+    "created": 4,
+    "written": 0,
+    "removed": 3,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.cache/devin/telemetry_state.json",
+    "created": 0,
+    "written": 1,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.config/devin/cli/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/root/.devin-files/devin-remote_ca72d26a42_linux_x64-overflows-0/shell-7e85aa-0d9df4d7812b107d/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 4,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin-files/devin-remote_ca72d26a42_linux_x64-overflows-0/shell-7e85aa-0d9df4d7812b107d/content.txt",
+    "created": 3,
+    "written": 0,
+    "removed": 2,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin-files/devin-remote_ca72d26a42_linux_x64-overflows-0/shell-7e85aa-0d9df4d7812b107d/content.txt.tmp",
+    "created": 2,
+    "written": 0,
+    "removed": 2,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin-files/devin-remote_ca72d26a42_linux_x64-overflows-0/shell-7e85aa-0d9df4d7812b107d/metadata.json",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/root/.devin/worker/acceptor_id",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/cache/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 2,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/cache/devin-remote_ca72d26a42_linux_x64",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/cache/devin-remote_ca72d26a42_linux_x64.tmp-1128",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 28,
+    "by": [
+     "devin-main",
+     "git",
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-gh-credentials",
+    "created": 1,
+    "written": 1,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "bash",
+     "rm",
+     "shred"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials",
+    "created": 2,
+    "written": 2,
+    "removed": 2,
+    "renamed": 0,
+    "by": [
+     "bash",
+     "git",
+     "rm",
+     "shred"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin-integration-git-credentials.lock",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "git"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.devin_secrets.sh",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/.oidc_token.tmp",
+    "created": 0,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 1,
+    "by": [
+     "mv"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "mv"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin.tmp.BVGsdX",
+    "created": 0,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "rm"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin.tmp.BVGsdX/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 1,
+    "by": [
+     "mv"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin.tmp.BVGsdX/Devin-cli-linux-x64-3.10.67",
+    "created": 0,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "mv"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/binaries/devin.tmp.BVGsdX/cli.tar.gz",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "curl"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 4,
+    "by": [
+     "mv"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/lru.json",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "mv"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/lru.json.tmp",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "bash",
+     "rm"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/lru.json.tmp2",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "bash",
+     "mv"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "mv"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6.staging",
+    "created": 0,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "mv"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/cli_data/serve-web/stable-0b186d6e13a1a48a46430c51fe414dd0747d46f6.staging.tar.gz",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "curl",
+     "rm"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin-serve-web-data/install_devin_desktop_cli.sh",
+    "created": 1,
+    "written": 1,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin_bash_env",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "devin-remote_ca"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin_bashrc",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "devin-remote_ca"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin_git_hook.sh",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin_id",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/git_author",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig",
+    "created": 12,
+    "written": 0,
+    "removed": 11,
+    "renamed": 0,
+    "by": [
+     "devin-remote_ca",
+     "git"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/gitconfig.lock",
+    "created": 12,
+    "written": 0,
+    "removed": 12,
+    "renamed": 0,
+    "by": [
+     "git"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/oidc_token",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/outpost_connect_token",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "devin-main"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/outpost_connect_token.tmp",
+    "created": 1,
+    "written": 0,
+    "removed": 1,
+    "renamed": 0,
+    "by": [
+     "devin-main"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/package/custom_binaries/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": []
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/package/custom_binaries/gh_alias",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "devin-remote_ca"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/package/custom_binaries/gh_rate_limit.sh",
+    "created": 1,
+    "written": 0,
+    "removed": 0,
+    "renamed": 0,
+    "by": [
+     "devin-remote_ca"
+    ]
+   },
+   {
+    "path": "/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/plugins/",
+    "created": 0,
+    "written": 0,
+    "removed": 0,
+    "renamed": 10,
+    "by": [
+     "tokio-rt-worker"
+    ]
+   }
+  ]
+ },
+ "sidecar": {
+  "recorder": "garnet-sidecar-sni-relay",
+  "name": "garnet",
+  "connections": 20,
+  "relayed": 20,
+  "readiness_probes_excluded": 1,
+  "policy": null,
+  "hosts": [
+   {
+    "host": "windsurf-stable.codeiumdata.com",
+    "connections": 4,
+    "relayed": 4,
+    "refused_or_failed": 0,
+    "bytes_up": 4861,
+    "bytes_down": 208277630,
+    "upstreams": [
+     "104.18.18.221"
+    ],
+    "outcomes": {
+     "relayed": 4
+    }
+   },
+   {
+    "host": "outpost-gateway.devin.ai",
+    "connections": 3,
+    "relayed": 3,
+    "refused_or_failed": 0,
+    "bytes_up": 1686158,
+    "bytes_down": 250980,
+    "upstreams": [
+     "32.190.11.57",
+     "44.247.195.26",
+     "44.253.110.36"
+    ],
+    "outcomes": {
+     "relayed": 3
+    }
+   },
+   {
+    "host": "static.devin.ai",
+    "connections": 3,
+    "relayed": 3,
+    "refused_or_failed": 0,
+    "bytes_up": 5951,
+    "bytes_down": 82503292,
+    "upstreams": [
+     "52.85.31.11",
+     "52.85.31.20"
+    ],
+    "outcomes": {
+     "relayed": 3
+    }
+   },
+   {
+    "host": "registry.npmjs.org",
+    "connections": 2,
+    "relayed": 2,
+    "refused_or_failed": 0,
+    "bytes_up": 2427,
+    "bytes_down": 12282,
+    "upstreams": [
+     "104.16.10.34",
+     "104.16.5.34"
+    ],
+    "outcomes": {
+     "relayed": 2
+    }
+   },
+   {
+    "host": "api.devin.ai",
+    "connections": 1,
+    "relayed": 1,
+    "refused_or_failed": 0,
+    "bytes_up": 8524,
+    "bytes_down": 26195,
+    "upstreams": [
+     "32.187.182.22"
+    ],
+    "outcomes": {
+     "relayed": 1
+    }
+   },
+   {
+    "host": "cognition-managed-plugin-bundles-prod.s3.dualstack.us-west-2.amazonaws.com",
+    "connections": 1,
+    "relayed": 1,
+    "refused_or_failed": 0,
+    "bytes_up": 3918,
+    "bytes_down": 1647380,
+    "upstreams": [
+     "16.15.34.191"
+    ],
+    "outcomes": {
+     "relayed": 1
+    }
+   },
+   {
+    "host": "git-manager.devin.ai",
+    "connections": 1,
+    "relayed": 1,
+    "refused_or_failed": 0,
+    "bytes_up": 2688,
+    "bytes_down": 597962,
+    "upstreams": [
+     "32.184.118.170"
+    ],
+    "outcomes": {
+     "relayed": 1
+    }
+   },
+   {
+    "host": "github.com",
+    "connections": 1,
+    "relayed": 1,
+    "refused_or_failed": 0,
+    "bytes_up": 1085,
+    "bytes_down": 3786748,
+    "upstreams": [
+     "140.82.113.3"
+    ],
+    "outcomes": {
+     "relayed": 1
+    }
+   },
+   {
+    "host": "o4507463137361920.ingest.us.sentry.io",
+    "connections": 1,
+    "relayed": 1,
+    "refused_or_failed": 0,
+    "bytes_up": 1028,
+    "bytes_down": 4589,
+    "upstreams": [
+     "34.160.81.0"
+    ],
+    "outcomes": {
+     "relayed": 1
+    }
+   },
+   {
+    "host": "server.codeium.com",
+    "connections": 1,
+    "relayed": 1,
+    "refused_or_failed": 0,
+    "bytes_up": 2442,
+    "bytes_down": 6404,
+    "upstreams": [
+     "35.223.238.178"
+    ],
+    "outcomes": {
+     "relayed": 1
+    }
+   },
+   {
+    "host": "unleash.codeium.com",
+    "connections": 1,
+    "relayed": 1,
+    "refused_or_failed": 0,
+    "bytes_up": 2616,
+    "bytes_down": 1887699,
+    "upstreams": [
+     "35.223.238.178"
+    ],
+    "outcomes": {
+     "relayed": 1
+    }
+   },
+   {
+    "host": "windsurf-stable.codeium.com",
+    "connections": 1,
+    "relayed": 1,
+    "refused_or_failed": 0,
+    "bytes_up": 837,
+    "bytes_down": 5630,
+    "upstreams": [
+     "35.223.238.178"
+    ],
+    "outcomes": {
+     "relayed": 1
+    }
+   }
+  ],
+  "connections_outside_in_vm_window": {
+   "before_window": 0,
+   "after_window": 0
+  },
+  "coverage": "TCP/443 leaving the main container, relayed by Modal to the Sidecar; host name read from the TLS ClientHello SNI, nothing decrypted. Not covered: DNS, any other port, UDP, TLS without SNI (refused, recorded as refused_no_sni), traffic from the Sidecar itself.",
+  "original_destination_visible": false
+ },
+ "agreement": {
+  "verdict": "agree",
+  "both": [
+   "api.devin.ai",
+   "cognition-managed-plugin-bundles-prod.s3.dualstack.us-west-2.amazonaws.com",
+   "git-manager.devin.ai",
+   "github.com",
+   "o4507463137361920.ingest.us.sentry.io",
+   "outpost-gateway.devin.ai",
+   "registry.npmjs.org",
+   "server.codeium.com",
+   "static.devin.ai",
+   "unleash.codeium.com",
+   "windsurf-stable.codeium.com",
+   "windsurf-stable.codeiumdata.com"
+  ],
+  "sidecar_only": [],
+  "in_vm_only": [],
+  "in_vm_declared_complete": true,
+  "in_vm_lost": "0",
+  "process_by_host": {
+   "api.devin.ai": [
+    "bash > bash > devin"
+   ],
+   "cognition-managed-plugin-bundles-prod.s3.dualstack.us-west-2.amazonaws.com": [
+    "bash > bash > devin > devin-remote_ca"
+   ],
+   "git-manager.devin.ai": [
+    "bash > bash > devin > devin-remote_ca > node > bash > git > git > git-remote-http"
+   ],
+   "github.com": [
+    "bash > bash > devin > devin-remote_ca > git > git > git-remote-http"
+   ],
+   "o4507463137361920.ingest.us.sentry.io": [
+    "bash > bash > devin"
+   ],
+   "outpost-gateway.devin.ai": [
+    "bash > bash > devin > devin-remote_ca"
+   ],
+   "registry.npmjs.org": [
+    "bash > bash > devin > devin-remote_ca > node"
+   ],
+   "server.codeium.com": [
+    "bash > bash > devin",
+    "bash > bash > devin > devin-remote_ca > bash > bash > curl"
+   ],
+   "unleash.codeium.com": [
+    "bash > bash > devin",
+    "bash > bash > devin > devin-remote_ca > bash > bash > curl"
+   ],
+   "windsurf-stable.codeium.com": [
+    "bash > bash > devin",
+    "bash > bash > devin > devin-remote_ca > bash > bash > curl"
+   ],
+   "static.devin.ai": [
+    "bash > bash > devin"
+   ],
+   "windsurf-stable.codeiumdata.com": [
+    "bash > bash > devin > devin-remote_ca > bash > curl"
+   ]
+  },
+  "meaning": "agree: every host the Sidecar relayed inside the in-VM window also appears in the in-VM record. in_vm_record_incomplete_or_altered: the Sidecar relayed a host the in-VM record lacks; the record inside the sandbox (which root in the sandbox can edit) is incomplete or was changed."
+ },
+ "outpost": {
+  "outpost_id": "outpost_env-72393f54087644a59b31bae50b9686cb",
+  "name": "garnet-receipts",
+  "session_id": "devin-85ca56e38aee4ec894263fd673552650",
+  "queue_entry": null,
+  "worker": "devin worker start --once (Devin CLI, official)",
+  "sandbox_id": "sb-01M53MT4DJYHSYRD9RYB2Z0QM6",
+  "sidecar_id": "sb-01M53MT4DJYHSYRD9RYB2Z0QM6-ctr-EPFCBJMCZS",
+  "receipt_build_s": 3.04
+ }
+}
