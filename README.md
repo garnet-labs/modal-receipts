@@ -193,4 +193,4 @@ One long-lived VM Sandbox (ubuntu 24.04 + git/ffmpeg/auditd + Devin CLI) with th
 Files: `sidecar_receipts.py` (driver, `.map()` fan-out, merge, summary, allowlist), `sidecar/recorder.py`
 (the Sidecar), `sidecar_probe.py` (one sandbox, fail-closed + tamper), `guest/` (in-VM recorder and
 receipt builder), `cohorts.py`, `receipts.py` (the earlier in-VM-only driver), `samples/sidecar/`
-(every output quoted here), `ENGINEERING.md`, `IMPLICATIONS.md`, `NOTE-TO-ERIK.md`, `present.html`.
+(every output quoted here), `ENGINEERING.md`, `present.html`.
