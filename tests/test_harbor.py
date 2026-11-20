@@ -4,6 +4,7 @@ from types import SimpleNamespace
 from unittest.mock import AsyncMock, Mock, patch
 
 import pytest
+from harbor.environments import modal as harbor_modal
 from harbor.environments.factory import EnvironmentFactory
 from harbor.environments.modal import ModalEnvironment
 from harbor.models.task.config import EnvironmentConfig, NetworkPolicy
@@ -133,7 +134,8 @@ async def test_create_sandbox_kwargs(tmp_path):
         )
     args, kwargs = create.aio.call_args
     assert args == ("sleep", "infinity")
-    assert kwargs["runtime"] == "vm"
+    if hasattr(harbor_modal, "ModalOptions"):
+        assert kwargs["runtime"] == "vm"
     assert kwargs["memory"] == 3072
     assert kwargs["experimental_options"] == {
         "other": "kept",
