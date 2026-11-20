@@ -192,6 +192,19 @@ def main(source, job_names=None, expected_count=12, rebuild=False):
                 "verifier_environment_mode": result["verifier_environment_mode"],
             }
             summary.append(row)
+            guest_capture = json.loads((target / "guest-capture.json").read_text())
+            dns_stops = [
+                record
+                for line in guest_capture.get("dns_capture", {})
+                .get("log", "")
+                .splitlines()
+                if (record := json.loads(line)).get("event") == "stop"
+            ]
+            if len(dns_stops) == 1 and "skipped_non_dns" in dns_stops[0]:
+                row["dns_packet_counts"] = {
+                    key: dns_stops[0][key]
+                    for key in ("skipped_non_dns", "possible_dns_parse_gaps")
+                }
             if rebuild:
                 row["evaluation"] = (
                     "host-side reconstruction after AF_UNSPEC disconnect decoder fix"
@@ -230,6 +243,11 @@ def main(source, job_names=None, expected_count=12, rebuild=False):
                 lines.append(
                     f"| {check} | {value['state']} | {value['reason']} | {', '.join(value['evidence_refs'])} |"
                 )
+            if "dns_packet_counts" in row:
+                lines += [
+                    "",
+                    "DNS packet counters: " + json.dumps(row["dns_packet_counts"]),
+                ]
             lines += [
                 "",
                 "Numeric evidence dimensions (separate from task reward):",
@@ -278,6 +296,10 @@ def main(source, job_names=None, expected_count=12, rebuild=False):
 
 
 if __name__ == "__main__":
+    oracle_v2 = "--oracle-v2" in sys.argv
+    if oracle_v2:
+        sys.argv.remove("--oracle-v2")
+        ROOT = ROOT.with_name("harbor-proof-oracle-v2")
     frozen_live = "--frozen-live" in sys.argv
     if frozen_live:
         sys.argv.remove("--frozen-live")
@@ -293,7 +315,11 @@ if __name__ == "__main__":
             Path(sys.argv[1])
             if len(sys.argv) > 1
             else Path("/home/ubuntu/work/harbor-proof"),
-            job_names={"honest": "honest-dns-v2"} if honest_v2 else None,
-            expected_count=6 if honest_v2 else 12,
+            job_names={"oracle": "oracle"}
+            if oracle_v2
+            else {"honest": "honest-dns-v2"}
+            if honest_v2
+            else None,
+            expected_count=3 if oracle_v2 else 6 if honest_v2 else 12,
             rebuild=honest_v2,
         )
