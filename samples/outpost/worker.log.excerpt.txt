@@ -1,0 +1,96 @@
+# worker.log excerpt — ANSI stripped; 26 environment-variable lines (names + values shown as [REDACTED] by devin-remote) omitted; any token-like string replaced by <token>
+worker worker-384e201accde4050b7e9c29f20de489f starting
+serving outpost garnet-receipts (outpost_env-72393f54087644a59b31bae50b9686cb)
+Worker started! Now you can launch sessions on the webapp: https://app.devin.ai
+downloading https://static.devin.ai/devin-rs/remote/devin-remote_ca72d26a42_linux_x64
+serving session devin-85ca56e38aee4ec894263fd673552650 (remote pid Some(1296))
+writing logs to /var/log/devin/remote.log.<date> (JSON, daily rotation)
+2026-10-17T00:42:33.084524Z  INFO devin_remote::logging: writing logs to /var/log/devin/remote.log.<date> (JSON, daily rotation)
+2026-10-17T00:42:33.084681Z  INFO devin_remote::server: devin-remote starting on 127.0.0.1:0
+2026-10-17T00:42:33.084692Z  INFO devin_remote::server: OTel TracerProvider active version="ca72d26a42"
+2026-10-17T00:42:33.084712Z  INFO devin_remote::outpost: starting outpost connect-back tunnel config=OutpostConfig { gateway_url: "wss://outpost-gateway.devin.ai", connect_token: "[REDACTED]", session_id: "devin-85ca56e38aee4ec894263fd673552650" }
+2026-10-17T00:42:33.084749Z  INFO devin_remote::desktop_stream: starting outpost desktop (VNC) connect-back tunnel config=DesktopConfig { gateway_url: "wss://outpost-gateway.devin.ai", connect_token: "[REDACTED]", session_id: "devin-85ca56e38aee4ec894263fd673552650" }
+2026-10-17T00:42:33.091970Z ERROR enigo::platform::x11: DisplayParsingError(DisplayNotSet)
+2026-10-17T00:42:33.092000Z  WARN enigo::platform: failed to establish x11 connection: no connection could be established: (failed to establish the connection)
+2026-10-17T00:42:33.092009Z ERROR enigo::platform: no successful connection
+2026-10-17T00:42:33.092018Z  WARN devin_remote::computer_use::executor: Computer-use engine not yet available; actions disabled until setup_computer_use installs it error=enigo init failed: no connection could be established: (no successful connection)
+2026-10-17T00:42:33.093268Z  WARN devin_remote::registry: Chrome not found in DEVIN_CHROME_PATH or standard system locations; set DEVIN_CHROME_PATH to the Chrome/Chromium executable
+2026-10-17T00:42:33.094102Z  INFO devin_remote::service: Configuring EDITOR for exec sessions editor=/root/.devin/worker/cache/devin-remote_ca72d26a42_linux_x64 editor
+2026-10-17T00:42:33.094172Z  INFO devin_remote::service: Installed toolbox shell integration script path=/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/toolbox-shellIntegration-bash.sh
+2026-10-17T00:42:33.094213Z  INFO devin_remote::service: Installed init file path=/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin_bashrc bytes=2248 file="devin_bashrc"
+2026-10-17T00:42:33.094253Z  INFO devin_remote::service: Installed init file path=/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin_bash_env bytes=4946 file="devin_bash_env"
+2026-10-17T00:42:33.094372Z  INFO devin_remote::service: Installed gh wrapper path=/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/package/custom_binaries/gh_alias
+2026-10-17T00:42:33.094425Z  INFO devin_remote::service: Created VSCode workspace file path=/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/workspaces/devin_workspace.code-workspace
+2026-10-17T00:42:33.094625Z  INFO devin_remote::server: devin-remote listening on 127.0.0.1:43471
+2026-10-17T00:42:33.094646Z  INFO devin_remote::server: Bearer token auth enabled
+2026-10-17T00:42:33.094668Z  INFO devin_remote::server: Server running, waiting for connections...
+2026-10-17T00:42:33.390515Z  INFO devin_remote::outpost: connected to outpost gateway endpoint=wss://outpost-gateway.devin.ai/v1/connect/devin-85ca56e38aee4ec894263fd673552650
+2026-10-17T00:42:33.394576Z  INFO remote.ping: devin_remote::routes::core: ping
+2026-10-17T00:42:33.397200Z  INFO devin_remote::desktop_stream: connected to outpost gateway (desktop channel) endpoint=wss://outpost-gateway.devin.ai/v1/connect/devin-85ca56e38aee4ec894263fd673552650?channel=desktop
+2026-10-17T00:42:33.472859Z  INFO remote.enable_pty_bridge: devin_remote::routes::core: Starting PTY bridge (Rust brain detected)
+2026-10-17T00:42:33.472991Z  INFO devin_remote::pty_bridge: PTY bridge listening on 127.0.0.1:37911
+2026-10-17T00:42:33.551105Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=analytics-and-bi sub_path=None path=/workspace/repos/analytics-and-bi
+2026-10-17T00:42:33.551144Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=garnetctl-releases sub_path=None path=/workspace/repos/garnetctl-releases
+2026-10-17T00:42:33.551157Z  WARN devin_remote::desktop_stream: desktop probe: unsupported display error="no graphical desktop is available on this machine: DISPLAY is not set, and Devin does not manage a desktop on outpost (customer-managed) machines. To enable computer use, run the Devin outpost worker inside an X11 session (or point DISPLAY at a running X server, e.g. Xvfb) and restart the worker."
+2026-10-17T00:42:33.551161Z  INFO devin_remote::routes::core: write_secrets count=0
+2026-10-17T00:42:33.551162Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=roast sub_path=None path=/workspace/repos/roast
+2026-10-17T00:42:33.551177Z  INFO devin_remote::routes::core: get_environment_info home_dir=/root platform_name=Linux os_version=Ubuntu repos_dir=/workspace/repos browser_data_dir=/root/.browser_data_dir temp_dir=/tmp desktop_available=Some(false) working_dir=Some("/workspace") browser_available=false
+2026-10-17T00:42:33.551206Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=garnet-runtime-review-mcp sub_path=None path=/workspace/repos/garnet-runtime-review-mcp
+2026-10-17T00:42:33.551208Z  INFO remote.subscribe_remote_events: devin_remote::routes::core: subscribe_remote_events: new subscriber
+2026-10-17T00:42:33.551244Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=pnpm sub_path=None path=/workspace/repos/pnpm
+2026-10-17T00:42:33.551449Z  INFO devin_remote::routes::core: secrets file written successfully
+2026-10-17T00:42:33.551478Z  INFO remote.write_identity{request=WriteIdentityRequest { devin_id: "devin-85ca56e38aee4ec894263fd673552650" }}: devin_remote::routes::core: Wrote devin_id file path=/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/devin_id
+2026-10-17T00:42:33.551476Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=agent-install-kit sub_path=None path=/workspace/repos/agent-install-kit
+2026-10-17T00:42:33.551516Z  INFO devin_remote::routes::devin_desktop: ensure_devin_desktop_server quality=stable prewarm_commits=["0b186d6e13a1a48a46430c51fe414dd0747d46f6"]
+2026-10-17T00:42:33.551548Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=garnet-website-2026 sub_path=None path=/workspace/repos/garnet-website-2026
+2026-10-17T00:42:33.551548Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=posthog sub_path=None path=/workspace/repos/posthog
+2026-10-17T00:42:33.551558Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=garnet-documentation sub_path=None path=/workspace/repos/garnet-documentation
+2026-10-17T00:42:33.551568Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=garnet-replay sub_path=None path=/workspace/repos/garnet-replay
+2026-10-17T00:42:33.551571Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=action sub_path=None path=/workspace/repos/action
+2026-10-17T00:42:33.551583Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=control-plane sub_path=None path=/workspace/repos/control-plane
+2026-10-17T00:42:33.551598Z  INFO devin_remote::routes::git_creds: setup_git_credentials git_manager_host=git-manager.devin.ai git_manager_url=https://git-manager.devin.ai git_manager_local_url=http://git-manager.local:7000
+2026-10-17T00:42:33.551590Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=jibril sub_path=None path=/workspace/repos/jibril
+2026-10-17T00:42:33.551617Z  INFO devin_remote::routes::memory_drive: memory_drive_init: start dir=/root/memory has_download=true
+2026-10-17T00:42:33.551622Z  INFO devin_remote::routes::core: resolve_repo_path repo_name=garnet-ui sub_path=None path=/workspace/repos/garnet-ui
+2026-10-17T00:42:33.551622Z  INFO devin_remote::devin_desktop_server: devin_desktop_server: installing CLI quality="stable"
+2026-10-17T00:42:33.561378Z  WARN devin_remote::routes::core: boot profile collection failed error=systemctl show exited with exit status: 1: System has not been booted with systemd as init system (PID 1). Can't operate.
+Failed to connect to bus: Host is down
+2026-10-17T00:42:33.578827Z  INFO devin_remote::routes::git_creds: setup_git_credentials completed output=Git Manager Authenticated
+2026-10-17T00:42:33.781703Z  INFO remote.hands_invoke{extension=agent-ext/rules method=discover_rules}: devin_remote::routes::core: hands_invoke extension=agent-ext/rules method=discover_rules
+2026-10-17T00:42:33.781714Z  INFO devin_remote::routes::core: get_version version="ca72d26a42" pkg_version="0.37.77"
+2026-10-17T00:42:33.781824Z  INFO remote.hands_invoke{extension=agent-ext/skills method=discover_model_invocable}: devin_remote::routes::core: hands_invoke extension=agent-ext/skills method=discover_model_invocable
+2026-10-17T00:42:33.782003Z  INFO remote.write_identity_token: devin_remote::routes::core: Wrote identity token file path=/run/.devin/identity_token
+2026-10-17T00:42:33.782123Z  INFO devin_remote::routes::oidc_token: write_oidc_token completed path=/root/.devin/worker/sessions/devin-85ca56e38aee4ec894263fd673552650/oidc_token
+2026-10-17T00:42:33.782773Z  INFO remote.hands_invoke{extension=agent-ext/skills method=discover_model_invocable}: agent_ext::skills::hands: duration_ms=0 scopes_scanned=2 skills_found=0 returned=0 SkillsHands: DISCOVER_MODEL_INVOCABLE rescan
+2026-10-17T00:42:33.859848Z  INFO devin_remote::routes::managed_plugins: discover_repo_plugins subscribed path_count=1
+2026-10-17T00:42:34.069978Z  INFO devin_remote::devin_desktop_server: devin_desktop_server: prewarming REH commit="0b186d6e13a1a48a46430c51fe414dd0747d46f6" quality=stable
+2026-10-17T00:42:34.252261Z  INFO plugin::activate: plugin selection: installed=5 considered=5 active=5 blocked=0 unavailable=0 unreachable=0 unreadable_manifest=0
+2026-10-17T00:42:34.258859Z  INFO plugin::activate: plugins discovery: cwd=/root active_plugins=5 skills=72 hooks=0 rules=7 mcp_servers=3 agents=0
+2026-10-17T00:42:34.258908Z  INFO devin_remote::plugins: managed plugin setup timing apply_ms=468 reconcile_ms=0 prune_ms=0 load_ms=6 total_ms=476
+2026-10-17T00:42:34.258964Z  INFO devin_remote::routes::managed_plugins: setup_managed_plugins request carried no Devin-managed plugins
+2026-10-17T00:42:34.259860Z  INFO devin_remote::routes::managed_plugins: setup_managed_plugins activated managed-plugin skills, hooks, and rules activated=72 devin_managed_activated=0 newly_added=72 hooks=0 rules=7 devin_managed_rules=0
+2026-10-17T00:42:34.466379Z  INFO devin_remote::routes::memory_drive: memory_drive_init: downloaded + cloned stored repo dir=/root/memory
+2026-10-17T00:42:35.245771Z  INFO remote.prepare_tool{tool=exec}: devin_remote::routes::core: prepare_tool tool=exec arguments={
+  "command": "cd /tmp && rm -rf modal-receipts && git clone https://github.com/garnet-labs/modal-receipts && cd modal-receipts && python3 -m py_compile sidecar_receipts.py && npm init -y && npm install left-pad",
+  "env": {
+  }
+}
+2026-10-17T00:42:35.325169Z  INFO remote.execute_tool{tool=exec tool_id=exec:0}: devin_remote::routes::core: execute_tool tool=exec id=exec:0
+2026-10-17T00:42:35.326234Z  INFO remote.execute_tool{tool=exec tool_id=exec:0}: toolbox::tools::exec::session_manager: session_id=7e85aa [create_session] starting
+2026-10-17T00:42:35.326264Z  INFO remote.execute_tool{tool=exec tool_id=exec:0}: toolbox::tools::exec::session_manager: session_id=7e85aa [create_session] acquiring additional_env lock
+2026-10-17T00:42:35.326274Z  INFO remote.execute_tool{tool=exec tool_id=exec:0}: toolbox::tools::exec::session_manager: session_id=7e85aa [create_session] acquired additional_env lock
+2026-10-17T00:42:35.326287Z  INFO remote.execute_tool{tool=exec tool_id=exec:0}: toolbox::tools::exec::session_manager: session_id=7e85aa [create_session] acquiring sandbox_manager lock
+2026-10-17T00:42:35.326295Z  INFO remote.execute_tool{tool=exec tool_id=exec:0}: toolbox::tools::exec::session_manager: session_id=7e85aa [create_session] acquired sandbox_manager lock
+2026-10-17T00:42:35.326306Z  INFO remote.execute_tool{tool=exec tool_id=exec:0}: toolbox::tools::exec::session_manager: session_id=7e85aa [create_session] sandboxing disabled
+2026-10-17T00:42:35.326319Z  INFO remote.execute_tool{tool=exec tool_id=exec:0}: toolbox::tools::exec::session_manager: shell=NonInteractive { shell: Bash, command: "cd /tmp && rm -rf modal-receipts && git clone https://github.com/garnet-labs/modal-receipts && cd modal-receipts && python3 -m py_compile sidecar_receipts.py && npm init -y && npm install left-pad", login: false } session_id=7e85aa [create_session] creating PTY session
+2026-10-17T00:42:35.326338Z  INFO remote.execute_tool{tool=exec tool_id=exec:0}: toolbox::tools::exec::session_manager: session_id=7e85aa [create_session] creating RawExec session
+2026-10-17T00:42:35.326520Z  INFO remote.execute_tool{tool=exec tool_id=exec:0}: toolbox::tools::exec::session_manager: session_id=7e85aa [create_session] waiting for shell ready
+2026-10-17T00:42:35.327413Z  WARN remote.execute_tool{tool=exec tool_id=exec:0}: toolbox::tools::exec::shell_edits::linux: shell-edit watcher did not start; shell edits are not tracked
+2026-10-17T00:42:35.329200Z  INFO remote.execute_tool{tool=exec tool_id=exec:0}: toolbox_core::tools::context: Waiting for stop token 7a9b5398-b075-4bd2-87e8-dd3f7d680216 to stop
+2026-10-17T00:42:37.825582Z  INFO remote.hands_invoke{extension=agent-ext/skills method=list_model_invocable}: devin_remote::routes::core: hands_invoke extension=agent-ext/skills method=list_model_invocable
+2026-10-17T00:44:10.990460Z  INFO devin_remote::routes::git_creds: shred_git_credentials
+2026-10-17T00:44:10.995752Z  INFO devin_remote::routes::git_creds: shred_git_credentials completed output=shredded
+2026-10-17T00:44:11.074471Z  INFO devin_remote::routes::oidc_token: shred_oidc_token completed
+2026-10-17T00:44:11.438394Z  INFO remote.notify_session_ending: devin_remote::routes::core: session ending; outpost remote exiting after response flush
+2026-10-17T00:44:11.791567Z  INFO devin_remote::outpost: outpost tunnel closed; reconnecting
+session devin-85ca56e38aee4ec894263fd673552650 suspended; remote exited cleanly

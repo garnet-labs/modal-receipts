@@ -11,6 +11,21 @@ from collections import defaultdict
 
 STATE = "/garnet/state"
 AUDIT = "/var/log/audit/audit.log"
+
+
+def audit_files():
+    """All audit log files, oldest first (auditd rotates to audit.log.1, .2, ... when max_log_file is hit)."""
+    import glob
+    def age(path):
+        suffix = path[len(AUDIT):]
+        return int(suffix[1:]) if suffix.startswith(".") and suffix[1:].isdigit() else 0
+    return sorted(glob.glob(AUDIT + "*"), key=age, reverse=True)
+
+
+def audit_lines():
+    for path in audit_files():
+        for line in open(path, errors="replace"):
+            yield line
 SYSCALL_NAMES = {42: "connect", 59: "execve", 322: "execveat", 56: "clone", 435: "clone3",
                  57: "fork", 58: "vfork", 231: "exit_group", 257: "openat", 2: "open",
                  85: "creat", 437: "openat2", 87: "unlink", 263: "unlinkat", 82: "rename",
@@ -78,7 +93,7 @@ def status(text):
 def parse_events(t_start):
     events = {}
     order = []
-    for line in open(AUDIT, errors="replace"):
+    for line in audit_lines():
         m = MSG_RE.search(line)
         if m is None:
             continue
@@ -286,7 +301,7 @@ def main():
     receipt = {
         "schema": "garnet.sandbox-receipt/0.1",
         "capture": {
-            "recorder": "linux-audit",
+            "recorder": "linux-audit", "log_files": audit_files(),
             "ruleset": ruleset,
             "kernel": read(f"{STATE}/kernel").strip(),
             "window": {"start": t_start, "stop": t_stop, "seconds": round(t_stop - t_start, 3) if t_stop else None},
