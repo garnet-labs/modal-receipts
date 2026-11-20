@@ -47,7 +47,9 @@ class GarnetModalEnvironment(ModalEnvironment):
             parent_names = {
                 name
                 for cls in ModalEnvironment.__mro__
-                for name, parameter in inspect.signature(cls.__init__).parameters.items()
+                for name, parameter in inspect.signature(
+                    cls.__init__
+                ).parameters.items()
                 if parameter.kind
                 not in (inspect.Parameter.VAR_POSITIONAL, inspect.Parameter.VAR_KEYWORD)
             }

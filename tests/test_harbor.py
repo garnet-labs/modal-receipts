@@ -114,7 +114,7 @@ def test_invalid_options(kwargs):
 
 
 def test_unknown_environment_option_rejected(tmp_path):
-    with pytest.raises(ValidationError, match="sidecar_reserve_mb"):
+    with pytest.raises(ValueError, match="sidecar_reserve_mb"):
         make_env(tmp_path, sidecar_reserve_mb=2048)
 
 
