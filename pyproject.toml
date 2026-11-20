@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "modal-receipts"
+version = "0.1.0"
+description = "Sidecar network evidence for Modal Sandboxes and Harbor"
+requires-python = ">=3.12"
+dependencies = ["modal>=1.6.2"]
+
+[project.optional-dependencies]
+harbor = ["harbor[modal]>=0.26.0"]
+test = ["pytest", "pytest-asyncio", "harbor[modal]>=0.26.0"]
+
+[tool.setuptools]
+packages = ["modal_receipts", "sidecar"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]

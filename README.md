@@ -40,6 +40,77 @@ modal run sidecar_probe.py                                                 # 1 s
 The package list is the real top-of-registry install cohort in `cohorts.py` (npm + PyPI); nothing
 in it is constructed. The one constructed case is labelled `constructed:` in every output.
 
+## Harbor (Terminal-Bench on Modal)
+
+For phase-frozen rollout checks with a separate Rewardkit verifier, use the
+local cookbook `rollout-evidence` recipe and
+`--plugin modal_receipts.plugin:RolloutEvidencePlugin`. It requires a recipe-level
+`expected-hosts.json`, auditd in the agent image, and verifier edits; the plugin
+is not a drop-in grader for existing benchmarks. Frozen `rollout-evidence.json`
+and raw capture artifacts are retained in the host trial directory, before the
+existing stop-time network receipt. Missing capture is `unknown`, never clean.
+
+Install the custom environment into Harbor's tool environment, then select its
+documented `module:Class` environment import path:
+
+```sh
+uv tool install --python 3.12 'harbor[modal]' --with git+https://github.com/garnet-labs/modal-receipts
+harbor run -d terminal-bench/terminal-bench@4.1.0 \
+  -e modal_receipts.harbor:GarnetModalEnvironment \
+  -a claude-code -m anthropic/claude-sonnet-5 \
+  --base-url https://ai-gateway.vercel.sh \
+  --ae ANTHROPIC_AUTH_TOKEN="$AI_GATEWAY_API_KEY" -l 3
+```
+
+Set `AI_GATEWAY_API_KEY` in your shell and authenticate Modal (`modal setup` or
+`MODAL_TOKEN_ID` / `MODAL_TOKEN_SECRET`). Compared with the stock tbench.ai
+Modal command, the integration adds one `--with` dependency to installation and
+replaces `--env modal` with `--env modal_receipts.harbor:GarnetModalEnvironment`.
+The Gateway flags are optional model routing, not part of the observer.
+
+**Live-tested with Harbor 0.26.0 / Modal 1.6.4 on Terminal-Bench 2.0:** Oracle
+smoke plus three Claude Code tasks and a stock Modal baseline, all reward 1.0.
+The 4.1.0 command above is not live-tested; its task set differs from 2.0.
+See [sample receipts and comparison](samples/harbor/README.md). Offline tests cover
+factory resolution, options, creation arguments, lifecycle and receipt handling.
+Only direct, single-container CPU tasks are supported; Compose/DinD is rejected.
+The environment forces Modal's VM runtime and adds a native Sidecar relay (not a
+Docker Compose service). Defaults: 1024 MiB extra sandbox memory reserved for
+Sidecars, 512 MiB consumed by the recorder, 60 seconds for readiness. Override
+with `--ek sidecar_reserve_mib=2048 --ek sidecar_consume_mib=768` or
+`--ek sidecar_ready_timeout_secs=90`. Other stock Modal options remain available,
+except `modal_vm_runtime=false` is rejected.
+
+If your workspace uses Modal's legacy image builder, set
+`export MODAL_IMAGE_BUILDER_VERSION=2025.06` before running. The live comparison
+used this per-process override: the legacy builder failed while installing its
+old `aiohttp` dependency into the task's Python 3.13 image. No workspace settings
+were changed.
+
+Before sandbox deletion, network evidence is saved as
+`<job>/<trial>/garnet-receipt.json`, at the host-side trial root so it survives
+teardown without depending on another agent-log download. It includes connection
+records, distinct SNI hosts, counts/bytes, the environment's declared network
+policy, and `observed_outside_policy` hostname comparisons (including wildcards).
+Collection/parse errors are recorded when possible and warned about, never made
+trial failures. A failed relay startup still fails environment startup rather
+than allowing an unobserved agent run.
+
+Coverage is **TCP/443 ClientHello SNI only**, with no TLS decryption: not DNS,
+UDP, other ports, TLS without SNI (refused), or the Sidecar's own traffic. This
+integration does not enable the optional in-VM audit recorder or process
+attribution. Records are emitted when a connection finishes; active connections
+at collection time can be absent. SNI comparisons cannot evaluate IP/CIDR rules
+or prove that a policy was enforced. The Sidecar has its own outbound policy;
+this observer does not install an evidence-derived Sidecar allowlist. Modal's
+main-container policy must not be assumed to constrain the relay's own egress.
+
+Offline development:
+
+```sh
+uv run --extra test pytest
+```
+
 ## The four lines a customer adds
 
 ```python
