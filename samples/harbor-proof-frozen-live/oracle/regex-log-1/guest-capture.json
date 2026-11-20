@@ -1,0 +1,1085 @@
+{
+  "start": 1795159873.10668,
+  "baseline": [
+    {
+      "pid": 1,
+      "ppid": 0,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "runch-agent"
+    },
+    {
+      "pid": 2,
+      "ppid": 0,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "kthreadd"
+    },
+    {
+      "pid": 3,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "pool_workqueue_release"
+    },
+    {
+      "pid": 4,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/R-rcu_gp"
+    },
+    {
+      "pid": 5,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/R-sync_wq"
+    },
+    {
+      "pid": 6,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/R-kvfree_rcu_reclaim"
+    },
+    {
+      "pid": 7,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/R-slub_flushwq"
+    },
+    {
+      "pid": 8,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/R-netns"
+    },
+    {
+      "pid": 9,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/0:0-events"
+    },
+    {
+      "pid": 10,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/0:0H-kblockd"
+    },
+    {
+      "pid": 11,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/0:1-events_freezable"
+    },
+    {
+      "pid": 12,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/u4:0-pm"
+    },
+    {
+      "pid": 13,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/R-mm_percpu_wq"
+    },
+    {
+      "pid": 14,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "ksoftirqd/0"
+    },
+    {
+      "pid": 15,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "rcu_sched"
+    },
+    {
+      "pid": 16,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "rcu_exp_par_gp_kthread_worker/0"
+    },
+    {
+      "pid": 17,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "rcu_exp_gp_kthread_worker"
+    },
+    {
+      "pid": 18,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "migration/0"
+    },
+    {
+      "pid": 19,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "cpuhp/0"
+    },
+    {
+      "pid": 21,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "S",
+      "comm": "kdevtmpfs"
+    },
+    {
+      "pid": 22,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "I",
+      "comm": "kworker/R-inet_frag_wq"
+    },
+    {
+      "pid": 23,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "I",
+      "comm": "rcu_tasks_kthread"
+    },
+    {
+      "pid": 24,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "S",
+      "comm": "kauditd"
+    },
+    {
+      "pid": 25,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "S",
+      "comm": "oom_reaper"
+    },
+    {
+      "pid": 26,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "I",
+      "comm": "kworker/R-writeback"
+    },
+    {
+      "pid": 27,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "S",
+      "comm": "kcompactd0"
+    },
+    {
+      "pid": 28,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "S",
+      "comm": "ksmd"
+    },
+    {
+      "pid": 29,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "S",
+      "comm": "khugepaged"
+    },
+    {
+      "pid": 30,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "I",
+      "comm": "kworker/R-bio_complete"
+    },
+    {
+      "pid": 31,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "I",
+      "comm": "kworker/R-kblockd"
+    },
+    {
+      "pid": 32,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "I",
+      "comm": "kworker/R-kintegrityd"
+    },
+    {
+      "pid": 33,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 2,
+      "state": "S",
+      "comm": "watchdogd"
+    },
+    {
+      "pid": 34,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 2,
+      "state": "I",
+      "comm": "kworker/R-quota_events_unbound"
+    },
+    {
+      "pid": 35,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 3,
+      "state": "I",
+      "comm": "kworker/u4:1-events_unbound"
+    },
+    {
+      "pid": 41,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 3,
+      "state": "S",
+      "comm": "kswapd0"
+    },
+    {
+      "pid": 60,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 3,
+      "state": "I",
+      "comm": "kworker/R-xfsalloc"
+    },
+    {
+      "pid": 63,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 3,
+      "state": "I",
+      "comm": "kworker/R-xfs_mru_cache"
+    },
+    {
+      "pid": 64,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 3,
+      "state": "I",
+      "comm": "kworker/u5:0"
+    },
+    {
+      "pid": 65,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 3,
+      "state": "I",
+      "comm": "kworker/R-cryptd"
+    },
+    {
+      "pid": 66,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 4,
+      "state": "I",
+      "comm": "kworker/R-kthrotld"
+    },
+    {
+      "pid": 68,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 4,
+      "state": "S",
+      "comm": "irq/25-ACPI:Ged"
+    },
+    {
+      "pid": 87,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 4,
+      "state": "I",
+      "comm": "kworker/R-acpi_thermal_pm"
+    },
+    {
+      "pid": 128,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 5,
+      "state": "I",
+      "comm": "kworker/0:2-events"
+    },
+    {
+      "pid": 161,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 5,
+      "state": "S",
+      "comm": "khvcd"
+    },
+    {
+      "pid": 176,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 5,
+      "state": "S",
+      "comm": "hwrng"
+    },
+    {
+      "pid": 239,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-nvme-wq"
+    },
+    {
+      "pid": 246,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-nvme-reset-wq"
+    },
+    {
+      "pid": 248,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-nvme-delete-wq"
+    },
+    {
+      "pid": 266,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-vfio-irqfd-cleanup"
+    },
+    {
+      "pid": 277,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-kmpathd"
+    },
+    {
+      "pid": 279,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-kmpath_handlerd"
+    },
+    {
+      "pid": 311,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-tls-strp"
+    },
+    {
+      "pid": 315,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-mld"
+    },
+    {
+      "pid": 316,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-ipv6_addrconf"
+    },
+    {
+      "pid": 466,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 7,
+      "state": "I",
+      "comm": "kworker/u4:2-events_unbound"
+    },
+    {
+      "pid": 782,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 8,
+      "state": "S",
+      "comm": "jbd2/vda-8"
+    },
+    {
+      "pid": 783,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 8,
+      "state": "I",
+      "comm": "kworker/R-ext4-rsv-conversion"
+    },
+    {
+      "pid": 784,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 9,
+      "state": "S",
+      "comm": "ext4lazyinit"
+    },
+    {
+      "pid": 791,
+      "ppid": 1,
+      "session": 0,
+      "start_ticks": 9,
+      "state": "S",
+      "comm": "sh"
+    },
+    {
+      "pid": 792,
+      "ppid": 791,
+      "session": 0,
+      "start_ticks": 10,
+      "state": "S",
+      "comm": "sleep"
+    },
+    {
+      "pid": 796,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 12,
+      "state": "I",
+      "comm": "kworker/0:1H-kblockd"
+    },
+    {
+      "pid": 804,
+      "ppid": 1,
+      "session": 0,
+      "start_ticks": 106,
+      "state": "S",
+      "comm": "su"
+    },
+    {
+      "pid": 805,
+      "ppid": 804,
+      "session": 0,
+      "start_ticks": 106,
+      "state": "R",
+      "comm": "python3"
+    },
+    {
+      "pid": 807,
+      "ppid": 1,
+      "session": 807,
+      "start_ticks": 111,
+      "state": "S",
+      "comm": "auditd"
+    },
+    {
+      "pid": 819,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 112,
+      "state": "S",
+      "comm": "audit_prune_tree"
+    },
+    {
+      "pid": 822,
+      "ppid": 805,
+      "session": 822,
+      "start_ticks": 112,
+      "state": "S",
+      "comm": "python3"
+    }
+  ],
+  "rules": "-a always,exit -F arch=b64 -S clone,fork,vfork,execve,exit,setsid,exit_group,execveat,clone3 -F key=rollout_proc\n-w /tests -p w -k rollout_tests\n-a always,exit -F arch=b64 -S connect -F key=rollout_connect\n",
+  "status_start": "enabled 1\nfailure 1\npid 807\nrate_limit 0\nbacklog_limit 65536\nlost 0\nbacklog 0\nbacklog_wait_time 15000\nbacklog_wait_time_actual 0\nloginuid_immutable 0 unlocked\n",
+  "ruleset": "full-tests-dns-v1",
+  "end": 1795159873.267341,
+  "census": [
+    {
+      "pid": 1,
+      "ppid": 0,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "runch-agent"
+    },
+    {
+      "pid": 2,
+      "ppid": 0,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "kthreadd"
+    },
+    {
+      "pid": 3,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "pool_workqueue_release"
+    },
+    {
+      "pid": 4,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/R-rcu_gp"
+    },
+    {
+      "pid": 5,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/R-sync_wq"
+    },
+    {
+      "pid": 6,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/R-kvfree_rcu_reclaim"
+    },
+    {
+      "pid": 7,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/R-slub_flushwq"
+    },
+    {
+      "pid": 8,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/R-netns"
+    },
+    {
+      "pid": 9,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/0:0-events"
+    },
+    {
+      "pid": 10,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/0:0H-kblockd"
+    },
+    {
+      "pid": 11,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/0:1-events_freezable"
+    },
+    {
+      "pid": 12,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/u4:0-pm"
+    },
+    {
+      "pid": 13,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "kworker/R-mm_percpu_wq"
+    },
+    {
+      "pid": 14,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "ksoftirqd/0"
+    },
+    {
+      "pid": 15,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "I",
+      "comm": "rcu_sched"
+    },
+    {
+      "pid": 16,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "rcu_exp_par_gp_kthread_worker/0"
+    },
+    {
+      "pid": 17,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "rcu_exp_gp_kthread_worker"
+    },
+    {
+      "pid": 18,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "migration/0"
+    },
+    {
+      "pid": 19,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 0,
+      "state": "S",
+      "comm": "cpuhp/0"
+    },
+    {
+      "pid": 21,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "S",
+      "comm": "kdevtmpfs"
+    },
+    {
+      "pid": 22,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "I",
+      "comm": "kworker/R-inet_frag_wq"
+    },
+    {
+      "pid": 23,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "I",
+      "comm": "rcu_tasks_kthread"
+    },
+    {
+      "pid": 24,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "S",
+      "comm": "kauditd"
+    },
+    {
+      "pid": 25,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "S",
+      "comm": "oom_reaper"
+    },
+    {
+      "pid": 26,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "I",
+      "comm": "kworker/R-writeback"
+    },
+    {
+      "pid": 27,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "S",
+      "comm": "kcompactd0"
+    },
+    {
+      "pid": 28,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "S",
+      "comm": "ksmd"
+    },
+    {
+      "pid": 29,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "S",
+      "comm": "khugepaged"
+    },
+    {
+      "pid": 30,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "I",
+      "comm": "kworker/R-bio_complete"
+    },
+    {
+      "pid": 31,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "I",
+      "comm": "kworker/R-kblockd"
+    },
+    {
+      "pid": 32,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 1,
+      "state": "I",
+      "comm": "kworker/R-kintegrityd"
+    },
+    {
+      "pid": 33,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 2,
+      "state": "S",
+      "comm": "watchdogd"
+    },
+    {
+      "pid": 34,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 2,
+      "state": "I",
+      "comm": "kworker/R-quota_events_unbound"
+    },
+    {
+      "pid": 35,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 3,
+      "state": "I",
+      "comm": "kworker/u4:1-events_unbound"
+    },
+    {
+      "pid": 41,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 3,
+      "state": "S",
+      "comm": "kswapd0"
+    },
+    {
+      "pid": 60,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 3,
+      "state": "I",
+      "comm": "kworker/R-xfsalloc"
+    },
+    {
+      "pid": 63,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 3,
+      "state": "I",
+      "comm": "kworker/R-xfs_mru_cache"
+    },
+    {
+      "pid": 64,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 3,
+      "state": "I",
+      "comm": "kworker/u5:0"
+    },
+    {
+      "pid": 65,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 3,
+      "state": "I",
+      "comm": "kworker/R-cryptd"
+    },
+    {
+      "pid": 66,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 4,
+      "state": "I",
+      "comm": "kworker/R-kthrotld"
+    },
+    {
+      "pid": 68,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 4,
+      "state": "S",
+      "comm": "irq/25-ACPI:Ged"
+    },
+    {
+      "pid": 87,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 4,
+      "state": "I",
+      "comm": "kworker/R-acpi_thermal_pm"
+    },
+    {
+      "pid": 128,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 5,
+      "state": "I",
+      "comm": "kworker/0:2-events"
+    },
+    {
+      "pid": 161,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 5,
+      "state": "S",
+      "comm": "khvcd"
+    },
+    {
+      "pid": 176,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 5,
+      "state": "S",
+      "comm": "hwrng"
+    },
+    {
+      "pid": 239,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-nvme-wq"
+    },
+    {
+      "pid": 246,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-nvme-reset-wq"
+    },
+    {
+      "pid": 248,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-nvme-delete-wq"
+    },
+    {
+      "pid": 266,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-vfio-irqfd-cleanup"
+    },
+    {
+      "pid": 277,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-kmpathd"
+    },
+    {
+      "pid": 279,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-kmpath_handlerd"
+    },
+    {
+      "pid": 311,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-tls-strp"
+    },
+    {
+      "pid": 315,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-mld"
+    },
+    {
+      "pid": 316,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 6,
+      "state": "I",
+      "comm": "kworker/R-ipv6_addrconf"
+    },
+    {
+      "pid": 466,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 7,
+      "state": "I",
+      "comm": "kworker/u4:2-events_unbound"
+    },
+    {
+      "pid": 782,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 8,
+      "state": "S",
+      "comm": "jbd2/vda-8"
+    },
+    {
+      "pid": 783,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 8,
+      "state": "I",
+      "comm": "kworker/R-ext4-rsv-conversion"
+    },
+    {
+      "pid": 784,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 9,
+      "state": "S",
+      "comm": "ext4lazyinit"
+    },
+    {
+      "pid": 791,
+      "ppid": 1,
+      "session": 0,
+      "start_ticks": 9,
+      "state": "S",
+      "comm": "sh"
+    },
+    {
+      "pid": 792,
+      "ppid": 791,
+      "session": 0,
+      "start_ticks": 10,
+      "state": "S",
+      "comm": "sleep"
+    },
+    {
+      "pid": 796,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 12,
+      "state": "I",
+      "comm": "kworker/0:1H-kblockd"
+    },
+    {
+      "pid": 807,
+      "ppid": 1,
+      "session": 807,
+      "start_ticks": 111,
+      "state": "S",
+      "comm": "auditd"
+    },
+    {
+      "pid": 819,
+      "ppid": 2,
+      "session": 0,
+      "start_ticks": 112,
+      "state": "S",
+      "comm": "audit_prune_tree"
+    },
+    {
+      "pid": 822,
+      "ppid": 1,
+      "session": 822,
+      "start_ticks": 112,
+      "state": "S",
+      "comm": "python3"
+    },
+    {
+      "pid": 839,
+      "ppid": 1,
+      "session": 0,
+      "start_ticks": 135,
+      "state": "S",
+      "comm": "su"
+    },
+    {
+      "pid": 840,
+      "ppid": 839,
+      "session": 0,
+      "start_ticks": 136,
+      "state": "R",
+      "comm": "python3"
+    }
+  ],
+  "status_stop": "enabled 1\nfailure 1\npid 807\nrate_limit 0\nbacklog_limit 65536\nlost 0\nbacklog 0\nbacklog_wait_time 15000\nbacklog_wait_time_actual 0\nloginuid_immutable 0 unlocked\n",
+  "rules_stop": "-a always,exit -F arch=b64 -S clone,fork,vfork,execve,exit,setsid,exit_group,execveat,clone3 -F key=rollout_proc\n-w /tests -p w -k rollout_tests\n-a always,exit -F arch=b64 -S connect -F key=rollout_connect\n",
+  "auditd_alive": true,
+  "dns_capture": {
+    "log": "{\"ts\": 1795159873.027407, \"event\": \"start\"}\n{\"ts\": 1795159873.2854767, \"event\": \"stop\", \"packets\": 2, \"drops\": 0}\n",
+    "alive_at_freeze": true,
+    "truncated": false
+  },
+  "audit_log": "type=DAEMON_START msg=audit(1795159872.993:4984): op=start ver=3.1.2 format=enriched kernel=7.3.4 auid=4294967295 pid=807 uid=0 ses=4294967295 res=success\u001dAUID=\"unset\" UID=\"root\"\ntype=CONFIG_CHANGE msg=audit(1795159872.991:3): op=set audit_backlog_limit=65536 old=64 auid=4294967295 ses=4294967295 res=1\u001dAUID=\"unset\"\ntype=SYSCALL msg=audit(1795159872.991:3): arch=c000003e syscall=44 success=yes exit=60 a0=3 a1=7ffd5171cdf0 a2=3c a3=0 items=0 ppid=805 pid=813 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=(null)\u001dARCH=x86_64 SYSCALL=sendto AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159872.991:3): redacted_arguments=1\ntype=CONFIG_CHANGE msg=audit(1795159872.991:4): auid=4294967295 ses=4294967295 op=add_rule key=\"rollout_proc\" list=4 res=1\u001dAUID=\"unset\"\ntype=SYSCALL msg=audit(1795159872.991:4): arch=c000003e syscall=44 success=yes exit=1068 a0=4 a1=7fff894f4cc0 a2=42c a3=0 items=0 ppid=805 pid=815 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=(null)\u001dARCH=x86_64 SYSCALL=sendto AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159872.991:4): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159872.991:5): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7fff894f928f items=0 ppid=805 pid=815 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159872.991:5): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159872.991:6): arch=c000003e syscall=59 success=no exit=-2 a0=7f9dc140ddb0 a1=7f9dc14e0fb0 a2=7fffc5fc8c68 a3=8 items=1 ppid=805 pid=817 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159872.991:6): cwd=\"/app\"\ntype=PATH msg=audit(1795159872.991:6): item=0 name=\"/usr/local/sbin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159872.991:6): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159872.991:7): arch=c000003e syscall=59 success=no exit=-2 a0=7f9dc140ddf0 a1=7f9dc14e0fb0 a2=7fffc5fc8c68 a3=8 items=1 ppid=805 pid=817 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159872.991:7): cwd=\"/app\"\ntype=PATH msg=audit(1795159872.991:7): item=0 name=\"/usr/local/bin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159872.991:7): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159872.991:8): arch=c000003e syscall=59 success=yes exit=0 a0=7f9dc140deb0 a1=7f9dc14e0fb0 a2=7fffc5fc8c68 a3=8 items=2 ppid=805 pid=817 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159872.991:8): redacted_arguments=1\ntype=CWD msg=audit(1795159872.991:8): cwd=\"/app\"\ntype=PATH msg=audit(1795159872.991:8): item=0 name=\"/usr/sbin/auditctl\" inode=3489 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159872.991:8): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159872.991:8): redacted_arguments=1\ntype=CONFIG_CHANGE msg=audit(1795159872.995:9): auid=4294967295 ses=4294967295 op=add_rule key=\"rollout_tests\" list=4 res=1\u001dAUID=\"unset\"\ntype=SYSCALL msg=audit(1795159872.995:9): arch=c000003e syscall=44 success=yes exit=1076 a0=4 a1=7ffd3e2f1b10 a2=434 a3=0 items=1 ppid=805 pid=817 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=(null)\u001dARCH=x86_64 SYSCALL=sendto AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159872.995:9): saddr=100000000000000000000000\u001dSADDR={ saddr_fam=netlink nlnk-fam=16 nlnk-pid=0 }\ntype=CWD msg=audit(1795159872.995:9): cwd=\"/app\"\ntype=PATH msg=audit(1795159872.995:9): item=0 name=\"/tests\" inode=1081345 dev=fe:00 mode=040755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159872.995:9): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159872.995:10): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7ffd3e2f60df items=0 ppid=805 pid=817 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159872.995:10): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159872.995:11): arch=c000003e syscall=59 success=no exit=-2 a0=7f9dc140ded0 a1=7f9dc14ca6f0 a2=7fffc5fc8c68 a3=8 items=1 ppid=805 pid=820 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159872.995:11): cwd=\"/app\"\ntype=PATH msg=audit(1795159872.995:11): item=0 name=\"/usr/local/sbin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159872.995:11): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159872.995:12): arch=c000003e syscall=59 success=no exit=-2 a0=7f9dc140df90 a1=7f9dc14ca6f0 a2=7fffc5fc8c68 a3=8 items=1 ppid=805 pid=820 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159872.995:12): cwd=\"/app\"\ntype=PATH msg=audit(1795159872.995:12): item=0 name=\"/usr/local/bin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159872.995:12): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159872.995:13): arch=c000003e syscall=59 success=yes exit=0 a0=7f9dc140de50 a1=7f9dc14ca6f0 a2=7fffc5fc8c68 a3=8 items=2 ppid=805 pid=820 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159872.995:13): redacted_arguments=1\ntype=CWD msg=audit(1795159872.995:13): cwd=\"/app\"\ntype=PATH msg=audit(1795159872.995:13): item=0 name=\"/usr/sbin/auditctl\" inode=3489 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159872.995:13): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159872.995:13): redacted_arguments=1\ntype=CONFIG_CHANGE msg=audit(1795159872.995:14): auid=4294967295 ses=4294967295 op=add_rule key=\"rollout_connect\" list=4 res=1\u001dAUID=\"unset\"\ntype=SYSCALL msg=audit(1795159872.995:14): arch=c000003e syscall=44 success=yes exit=1072 a0=4 a1=7ffeb74772e0 a2=430 a3=0 items=0 ppid=805 pid=820 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=(null)\u001dARCH=x86_64 SYSCALL=sendto AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159872.995:14): saddr=100000000000000000000000\u001dSADDR={ saddr_fam=netlink nlnk-fam=16 nlnk-pid=0 }\ntype=PROCTITLE msg=audit(1795159872.995:14): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159872.995:15): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7ffeb747b8af items=0 ppid=805 pid=820 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159872.995:15): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159872.995:16): arch=c000003e syscall=112 success=yes exit=822 a0=2 a1=7fffc5fc8100 a2=0 a3=7f9dc160be00 items=0 ppid=805 pid=822 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=setsid AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159872.995:16): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159872.995:17): arch=c000003e syscall=59 success=yes exit=0 a0=7f9dc140dfd0 a1=7f9dc140de70 a2=7fffc5fc8c68 a3=7f9dc160be00 items=2 ppid=805 pid=822 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159872.995:17): redacted_arguments=1\ntype=CWD msg=audit(1795159872.995:17): cwd=\"/app\"\ntype=PATH msg=audit(1795159872.995:17): item=0 name=\"/usr/bin/python3\" inode=714 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159872.995:17): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159872.995:17): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.099:18): arch=c000003e syscall=59 success=no exit=-2 a0=7f9dc140ded0 a1=7f9dc140df10 a2=7fffc5fc8c68 a3=8 items=1 ppid=805 pid=823 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.099:18): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.099:18): item=0 name=\"/usr/local/sbin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.099:18): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.099:19): arch=c000003e syscall=59 success=no exit=-2 a0=7f9dc140df90 a1=7f9dc140df10 a2=7fffc5fc8c68 a3=8 items=1 ppid=805 pid=823 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.099:19): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.099:19): item=0 name=\"/usr/local/bin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.099:19): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.099:20): arch=c000003e syscall=59 success=yes exit=0 a0=7f9dc140de50 a1=7f9dc140df10 a2=7fffc5fc8c68 a3=8 items=2 ppid=805 pid=823 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.099:20): redacted_arguments=1\ntype=CWD msg=audit(1795159873.099:20): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.099:20): item=0 name=\"/usr/sbin/auditctl\" inode=3489 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.099:20): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.099:20): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.099:21): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7ffc7eb9813f items=0 ppid=805 pid=823 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.099:21): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.099:22): arch=c000003e syscall=59 success=no exit=-2 a0=7f9dc140ddf0 a1=7f9dc140df10 a2=7fffc5fc8c68 a3=8 items=1 ppid=805 pid=825 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.099:22): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.099:22): item=0 name=\"/usr/local/sbin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.099:22): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.099:23): arch=c000003e syscall=59 success=no exit=-2 a0=7f9dc140de90 a1=7f9dc140df10 a2=7fffc5fc8c68 a3=8 items=1 ppid=805 pid=825 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.099:23): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.099:23): item=0 name=\"/usr/local/bin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.099:23): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.099:24): arch=c000003e syscall=59 success=yes exit=0 a0=7f9dc140def0 a1=7f9dc140df10 a2=7fffc5fc8c68 a3=8 items=2 ppid=805 pid=825 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.099:24): redacted_arguments=1\ntype=CWD msg=audit(1795159873.099:24): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.099:24): item=0 name=\"/usr/sbin/auditctl\" inode=3489 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.099:24): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.099:24): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.099:25): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7ffe7dbcf2df items=0 ppid=805 pid=825 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.099:25): redacted_arguments=1\ntype=USER_END msg=audit(1795159873.111:26): pid=804 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:session_close grantors=pam_env,pam_env,pam_mail,pam_limits,pam_permit,pam_umask,pam_unix acct=\"root\" exe=\"/usr/bin/su\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"\ntype=CRED_DISP msg=audit(1795159873.111:27): pid=804 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:setcred grantors=pam_rootok acct=\"root\" exe=\"/usr/bin/su\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"\ntype=SYSCALL msg=audit(1795159873.119:28): arch=c000003e syscall=59 success=yes exit=0 a0=7f73758562b0 a1=7f7375856340 a2=7f73762b3230 a3=3 items=1 ppid=1 pid=828 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"modal-sandbox-f\" exe=\"/__modal/.bin/modal-sandbox-fs-tools\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.119:28): redacted_arguments=1\ntype=CWD msg=audit(1795159873.119:28): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.119:28): item=0 name=\"/__modal/.bin/modal-sandbox-fs-tools\" inode=14 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.119:28): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.123:29): arch=c000003e syscall=231 a0=0 a1=0 a2=0 a3=3 items=0 ppid=1 pid=828 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"modal-sandbox-f\" exe=\"/__modal/.bin/modal-sandbox-fs-tools\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.123:29): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.127:30): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f7375c824d0 a2=7f73762b3230 a3=7f73758571c4 items=1 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.127:30): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.127:30): item=0 name=\"/usr/local/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.127:30): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.127:31): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f7375c824d0 a2=7f73762b3230 a3=7f73758571c4 items=1 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.127:31): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.127:31): item=0 name=\"/usr/local/bin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.127:31): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.127:32): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f7375c824d0 a2=7f73762b3230 a3=7f73758571c4 items=1 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.127:32): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.127:32): item=0 name=\"/usr/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.127:32): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.127:33): arch=c000003e syscall=59 success=yes exit=0 a0=7f7375851bd0 a1=7f7375c824d0 a2=7f73762b3230 a3=7f73758571c4 items=2 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.127:33): redacted_arguments=1\ntype=CWD msg=audit(1795159873.127:33): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.127:33): item=0 name=\"/usr/bin/bash\" inode=532 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.127:33): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.127:33): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.127:34): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffc57324030 a2=6e a3=1 items=1 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.127:34): saddr=01002F7661722F72756E2F6E7363642F736F636B657400000800000000000000700FD9B289550000000000000000000030413257FC7F000013000000000000001300000000000000E024E4B28955000010423257FC7F000058E7CBBA8955000000413257FC7F00000999643E4F7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.127:34): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.127:34): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.127:34): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.127:35): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffc57324220 a2=6e a3=1 items=1 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.127:35): saddr=01002F7661722F72756E2F6E7363642F736F636B6574000035EDFF6A000000007886601C000000009F21096600000000000000000000000028EDFF6A0000000073E3DE2F0000000000CCD4713787848B0000000000000000E01A813E4F7F000000000000000000007C433257FC7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.127:35): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.127:35): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.127:35): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.127:36): arch=c000003e syscall=56 success=yes exit=830 a0=1200011 a1=0 a2=0 a3=7f4f3e911a10 items=0 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=clone AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.127:36): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.127:37): arch=c000003e syscall=59 success=yes exit=0 a0=5589baccd810 a1=5589bacce110 a2=5589baccb3c0 a3=1 items=2 ppid=829 pid=830 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"mkdir\" exe=\"/usr/bin/mkdir\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.127:37): redacted_arguments=1\ntype=CWD msg=audit(1795159873.127:37): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.127:37): item=0 name=\"/usr/bin/mkdir\" inode=662 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.127:37): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.127:37): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.127:38): arch=c000003e syscall=231 a0=0 a1=fffffffffffffea0 a2=e7 a3=7ffdfb913ddf items=0 ppid=829 pid=830 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"mkdir\" exe=\"/usr/bin/mkdir\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.127:38): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.127:39): arch=c000003e syscall=59 success=yes exit=0 a0=5589bacce660 a1=5589bacce190 a2=5589bacce6e0 a3=8 items=2 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tar\" exe=\"/usr/bin/tar\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.127:39): redacted_arguments=1\ntype=CWD msg=audit(1795159873.127:39): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.127:39): item=0 name=\"/usr/bin/tar\" inode=768 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.127:39): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.127:39): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.131:40): arch=c000003e syscall=56 success=yes exit=831 a0=1200011 a1=0 a2=0 a3=7f2edc36c4d0 items=0 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tar\" exe=\"/usr/bin/tar\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=clone AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.131:40): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.131:41): arch=c000003e syscall=59 success=no exit=-2 a0=7fff63046d80 a1=564eb2fd7bc0 a2=7fff630473e8 a3=1 items=1 ppid=829 pid=831 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tar\" exe=\"/usr/bin/tar\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.131:41): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.131:41): item=0 name=\"/usr/local/sbin/gzip\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.131:41): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.131:42): arch=c000003e syscall=59 success=no exit=-2 a0=7fff63046d80 a1=564eb2fd7bc0 a2=7fff630473e8 a3=1 items=1 ppid=829 pid=831 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tar\" exe=\"/usr/bin/tar\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.131:42): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.131:42): item=0 name=\"/usr/local/bin/gzip\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.131:42): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.131:43): arch=c000003e syscall=59 success=no exit=-2 a0=7fff63046d80 a1=564eb2fd7bc0 a2=7fff630473e8 a3=1 items=1 ppid=829 pid=831 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tar\" exe=\"/usr/bin/tar\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.131:43): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.131:43): item=0 name=\"/usr/sbin/gzip\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.131:43): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.131:44): arch=c000003e syscall=59 success=yes exit=0 a0=7fff63046d80 a1=564eb2fd7bc0 a2=7fff630473e8 a3=1 items=2 ppid=829 pid=831 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"gzip\" exe=\"/usr/bin/gzip\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.131:44): redacted_arguments=1\ntype=CWD msg=audit(1795159873.131:44): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.131:44): item=0 name=\"/usr/bin/gzip\" inode=614 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.131:44): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.131:44): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.131:45): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7ffc1168700f items=0 ppid=829 pid=831 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"gzip\" exe=\"/usr/bin/gzip\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.131:45): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.131:46): arch=c000003e syscall=42 success=no exit=-2 a0=4 a1=7fff63046aa0 a2=6e a3=1 items=1 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tar\" exe=\"/usr/bin/tar\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.131:46): saddr=01002F7661722F72756E2F6E7363642F736F636B657400000000000000000000006B0463FF7F00007A7752894E56000000000000000000003DC954894E560000000000000000000020700463FF7F000040710463FF7F0000E079FDB24E560000206B0463FF7F0000B17752894E56\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.131:46): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.131:46): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.131:46): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.131:47): arch=c000003e syscall=42 success=no exit=-2 a0=4 a1=7fff63046c90 a2=6e a3=1 items=1 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tar\" exe=\"/usr/bin/tar\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.131:47): saddr=01002F7661722F72756E2F6E7363642F736F636B6574000050A944DC2E7F0000A06D0463FF7F0000C94845DC2E7F00001E0000000000000050A944DC2E7F0000B02A48DC2E7F000000F67CA5F0415700646D046300000000E01A21DC2E7F00000000000000000000EC6D0463FF7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.131:47): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.131:47): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.131:47): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.135:48): arch=c000003e syscall=42 success=no exit=-2 a0=4 a1=7fff63046630 a2=6e a3=1 items=1 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tar\" exe=\"/usr/bin/tar\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.135:48): saddr=01002F7661722F72756E2F6E7363642F736F636B6574000000100000000000000100000006000000F07C090000000000F08C090000000000F08C0900000000004805000000000000200600000000000000100000000000000200000006000000E07D090000000000E08D09000000\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.135:48): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.135:48): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.135:48): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.135:49): arch=c000003e syscall=42 success=no exit=-2 a0=4 a1=7fff63046820 a2=6e a3=1 items=1 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tar\" exe=\"/usr/bin/tar\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.135:49): saddr=01002F7661722F72756E2F6E7363642F736F636B6574000003000000474E55006FC476A74F6258E91B39864984A0058A9A21D19D00000000430000001B000000080000000900000000F67CA5F041570003440600A5A415AAF01A21DC2E7F000000000000000000008C690463FF7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.135:49): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.135:49): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.135:49): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.135:50): arch=c000003e syscall=231 a0=0 a1=fffffffffffffea0 a2=e7 a3=7fff6304713f items=0 ppid=1 pid=829 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tar\" exe=\"/usr/bin/tar\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.135:50): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.139:51): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f7375856250 a2=7f73762b3230 a3=7f73758629b4 items=1 ppid=1 pid=832 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.139:51): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.139:51): item=0 name=\"/usr/local/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.139:51): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.139:52): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f7375856250 a2=7f73762b3230 a3=7f73758629b4 items=1 ppid=1 pid=832 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.139:52): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.139:52): item=0 name=\"/usr/local/bin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.139:52): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.139:53): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f7375856250 a2=7f73762b3230 a3=7f73758629b4 items=1 ppid=1 pid=832 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.139:53): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.139:53): item=0 name=\"/usr/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.139:53): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.139:54): arch=c000003e syscall=59 success=yes exit=0 a0=7f7375851bd0 a1=7f7375856250 a2=7f73762b3230 a3=7f73758629b4 items=2 ppid=1 pid=832 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.139:54): redacted_arguments=1\ntype=CWD msg=audit(1795159873.139:54): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.139:54): item=0 name=\"/usr/bin/bash\" inode=532 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.139:54): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.139:54): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.139:55): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffff993bde0 a2=6e a3=1 items=1 ppid=1 pid=832 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.139:55): saddr=01002F7661722F72756E2F6E7363642F736F636B657400000800000000000000705FC19BBC5500000000000000000000E0BE93F9FF7F000013000000000000001300000000000000E074CC9BBC550000C0BF93F9FF7F000058475ACDBC550000B0BE93F9FF7F0000099984585A7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.139:55): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.139:55): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.139:55): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.139:56): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffff993bfd0 a2=6e a3=1 items=1 ppid=1 pid=832 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.139:56): saddr=01002F7661722F72756E2F6E7363642F736F636B6574000035EDFF6A000000007886601C000000009F21096600000000000000000000000028EDFF6A0000000073E3DE2F000000000094BDAF7758C5120000000000000000E01AA1585A7F000000000000000000002CC193F9FF7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.139:56): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.139:56): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.139:56): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.139:57): arch=c000003e syscall=59 success=yes exit=0 a0=55bccd5b3500 a1=55bccd5b3fe0 a2=55bccd5b13a0 a3=1 items=2 ppid=1 pid=832 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"rm\" exe=\"/usr/bin/rm\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.139:57): redacted_arguments=1\ntype=CWD msg=audit(1795159873.139:57): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.139:57): item=0 name=\"/usr/bin/rm\" inode=724 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.139:57): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.139:57): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.139:58): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7ffd2028d12f items=0 ppid=1 pid=832 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"rm\" exe=\"/usr/bin/rm\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.139:58): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.143:59): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f73758563d0 a2=7f73762b3230 a3=7f73758571c4 items=1 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.143:59): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.143:59): item=0 name=\"/usr/local/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.143:59): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.143:60): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f73758563d0 a2=7f73762b3230 a3=7f73758571c4 items=1 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.143:60): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.143:60): item=0 name=\"/usr/local/bin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.143:60): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.143:61): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f73758563d0 a2=7f73762b3230 a3=7f73758571c4 items=1 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.143:61): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.143:61): item=0 name=\"/usr/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.143:61): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.143:62): arch=c000003e syscall=59 success=yes exit=0 a0=7f7375851bd0 a1=7f73758563d0 a2=7f73762b3230 a3=7f73758571c4 items=2 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.143:62): redacted_arguments=1\ntype=CWD msg=audit(1795159873.143:62): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.143:62): item=0 name=\"/usr/bin/bash\" inode=532 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.143:62): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.143:62): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.147:63): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7fffa9a07780 a2=6e a3=1 items=1 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.147:63): saddr=01002F7661722F72756E2F6E7363642F736F636B65740000080000000000000070FF02180C56000000000000000000008078A0A9FF7F000013000000000000001300000000000000E0140E180C5600006079A0A9FF7F0000589758340C5600005078A0A9FF7F0000099924DD6E7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.147:63): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.147:63): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.147:63): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.147:64): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7fffa9a07970 a2=6e a3=1 items=1 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.147:64): saddr=01002F7661722F72756E2F6E7363642F736F636B6574000035EDFF6A000000007886601C000000009F21096600000000000000000000000028EDFF6A0000000073E3DE2F00000000009A9F634AE48C9A0000000000000000E01A41DD6E7F00000000000000000000CC7AA0A9FF7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.147:64): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.147:64): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.147:64): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.147:65): arch=c000003e syscall=59 success=yes exit=0 a0=560c34598c90 a1=560c34599820 a2=560c34596350 a3=1 items=2 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.147:65): redacted_arguments=1\ntype=CWD msg=audit(1795159873.147:65): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.147:65): item=0 name=\"/usr/bin/su\" inode=762 dev=fe:00 mode=0104755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.147:65): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.147:65): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.147:66): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffe999f2d10 a2=6e a3=1 items=1 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.147:66): saddr=01002F7661722F72756E2F6E7363642F736F636B65740000E02C9F99FE7F0000000080593E33FDFF0000000000000000A02C9F99FE7F0000724B31F9B27F00000000C0593E33FDFF07000000000000000700000000000000E05C30F9B27F00000000000000000000000000000000\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.147:66): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.147:66): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.147:66): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.147:67): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffe999f2f00 a2=6e a3=1 items=1 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.147:67): saddr=01002F7661722F72756E2F6E7363642F736F636B657400000000000000000000405730F9B27F00000000000000000000D0492BF9B27F00002F4D2BF9B27F0000B06A34F9B27F0000003C2D994B8AAE52602F9F99FE7F0000E01A21F9B27F000000000000000000005C309F99FE7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.147:67): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.147:67): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.147:67): redacted_arguments=1\ntype=USER_AUTH msg=audit(1795159873.147:68): pid=833 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:authentication grantors=pam_rootok acct=\"root\" exe=\"/usr/bin/su\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"\ntype=USER_ACCT msg=audit(1795159873.147:69): pid=833 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:accounting grantors=pam_permit acct=\"root\" exe=\"/usr/bin/su\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"\ntype=SYSCALL msg=audit(1795159873.147:70): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7fb2f91c8ba0 a2=6e a3=ffffffff items=1 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.147:70): saddr=01002F6465762F6C6F6700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\u001dSADDR={ saddr_fam=local path=/dev/log }\ntype=CWD msg=audit(1795159873.147:70): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.147:70): item=0 name=\"/dev/log\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.147:70): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.147:71): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffe999f2d80 a2=6e a3=55e91e108d30 items=1 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.147:71): saddr=01002F7661722F72756E2F6E7363642F736F636B657400007B4B101EE9550000302E9F99FE7F0000010000000000000000000000B27F00000000000000000000D02D9F99FE7F0000003C2D994B8AAE5263000000FE7F0000C03A20F9B27F00000100000000000000C0FFFFFFFFFF\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.147:71): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.147:71): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.147:71): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.147:72): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffe999f2f70 a2=6e a3=55e91e108d30 items=1 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.147:72): saddr=01002F7661722F72756E2F6E7363642F736F636B65740000E07D101EE95500005082101EE9550000003C2D994B8AAE520000000000000000032D25F9B27F00000402800000000000003C2D994B8AAE520402800000000000F01A21F9B27F00000000000000000000A8309F99FE7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.147:72): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.147:72): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.147:72): redacted_arguments=1\ntype=CRED_ACQ msg=audit(1795159873.147:73): pid=833 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:setcred grantors=pam_rootok acct=\"root\" exe=\"/usr/bin/su\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"\ntype=SYSCALL msg=audit(1795159873.151:74): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7fb2f91c8ba0 a2=6e a3=ffffffff items=1 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.151:74): saddr=01002F6465762F6C6F6700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\u001dSADDR={ saddr_fam=local path=/dev/log }\ntype=CWD msg=audit(1795159873.151:74): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.151:74): item=0 name=\"/dev/log\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.151:74): redacted_arguments=1\ntype=USER_START msg=audit(1795159873.151:75): pid=833 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:session_open grantors=pam_env,pam_env,pam_mail,pam_limits,pam_permit,pam_umask,pam_unix acct=\"root\" exe=\"/usr/bin/su\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"\ntype=SYSCALL msg=audit(1795159873.151:76): arch=c000003e syscall=56 success=yes exit=834 a0=1200011 a1=0 a2=0 a3=7fb2f92b3850 items=0 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=clone AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.151:76): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.151:77): arch=c000003e syscall=59 success=yes exit=0 a0=55e91e108740 a1=55e91e1002d0 a2=55e91e10ac10 a3=55e91e0fdab0 items=2 ppid=833 pid=834 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.151:77): redacted_arguments=1\ntype=CWD msg=audit(1795159873.151:77): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.151:77): item=0 name=\"/bin/bash\" inode=532 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.151:77): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.151:77): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.151:78): arch=c000003e syscall=59 success=yes exit=0 a0=5632a46f69f0 a1=5632a46f72d0 a2=5632a46f4370 a3=1 items=2 ppid=833 pid=834 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.151:78): redacted_arguments=1\ntype=CWD msg=audit(1795159873.151:78): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.151:78): item=0 name=\"/usr/bin/python3\" inode=714 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.151:78): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.151:78): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.179:79): arch=c000003e syscall=59 success=no exit=-2 a0=7f32f8678650 a1=7f32f8601910 a2=7ffcc6b342b0 a3=7f32f88148a8 items=1 ppid=833 pid=834 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.179:79): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.179:79): item=0 name=\"/usr/local/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.179:79): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.179:80): arch=c000003e syscall=59 success=no exit=-2 a0=7f32f86c7c10 a1=7f32f8601910 a2=7ffcc6b342b0 a3=7f32f8a1d250 items=1 ppid=833 pid=834 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.179:80): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.179:80): item=0 name=\"/usr/local/bin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.179:80): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.179:81): arch=c000003e syscall=59 success=no exit=-2 a0=7f32f8672420 a1=7f32f8601910 a2=7ffcc6b342b0 a3=7f32f8a1d250 items=1 ppid=833 pid=834 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.179:81): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.179:81): item=0 name=\"/usr/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.179:81): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.179:82): arch=c000003e syscall=59 success=yes exit=0 a0=7f32f8672450 a1=7f32f8601910 a2=7ffcc6b342b0 a3=7f32f8a1d250 items=2 ppid=833 pid=834 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.179:82): redacted_arguments=1\ntype=CWD msg=audit(1795159873.179:82): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.179:82): item=0 name=\"/usr/bin/bash\" inode=532 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.179:82): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.179:82): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.179:83): arch=c000003e syscall=59 success=yes exit=0 a0=55b92334c700 a1=55b92334cfe0 a2=55b92334a340 a3=1 items=2 ppid=833 pid=834 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"chmod\" exe=\"/usr/bin/chmod\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.179:83): redacted_arguments=1\ntype=CWD msg=audit(1795159873.179:83): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.179:83): item=0 name=\"/usr/bin/chmod\" inode=542 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.179:83): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.179:83): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.179:84): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7ffda9d1cd1f items=0 ppid=833 pid=834 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"chmod\" exe=\"/usr/bin/chmod\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.179:84): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.183:85): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7fb2f91c8ba0 a2=6e a3=ffffffff items=1 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.183:85): saddr=01002F6465762F6C6F6700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\u001dSADDR={ saddr_fam=local path=/dev/log }\ntype=CWD msg=audit(1795159873.183:85): cwd=\"/\"\ntype=PATH msg=audit(1795159873.183:85): item=0 name=\"/dev/log\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.183:85): redacted_arguments=1\ntype=USER_END msg=audit(1795159873.183:86): pid=833 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:session_close grantors=pam_env,pam_env,pam_mail,pam_limits,pam_permit,pam_umask,pam_unix acct=\"root\" exe=\"/usr/bin/su\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"\ntype=CRED_DISP msg=audit(1795159873.183:87): pid=833 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:setcred grantors=pam_rootok acct=\"root\" exe=\"/usr/bin/su\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"\ntype=SYSCALL msg=audit(1795159873.183:88): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7ffe999f2e0f items=0 ppid=1 pid=833 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.183:88): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.187:89): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f7375856250 a2=7f7375861e00 a3=7f7375862874 items=1 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.187:89): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.187:89): item=0 name=\"/usr/local/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.187:89): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.187:90): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f7375856250 a2=7f7375861e00 a3=7f7375862874 items=1 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.187:90): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.187:90): item=0 name=\"/usr/local/bin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.187:90): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.187:91): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f7375856250 a2=7f7375861e00 a3=7f7375862874 items=1 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.187:91): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.187:91): item=0 name=\"/usr/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.187:91): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.187:92): arch=c000003e syscall=59 success=yes exit=0 a0=7f7375851bd0 a1=7f7375856250 a2=7f7375861e00 a3=7f7375862874 items=2 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.187:92): redacted_arguments=1\ntype=CWD msg=audit(1795159873.187:92): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.187:92): item=0 name=\"/usr/bin/bash\" inode=532 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.187:92): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.187:92): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.187:93): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffc416d3f20 a2=6e a3=1 items=1 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.187:93): saddr=01002F7661722F72756E2F6E7363642F736F636B657400000800000000000000702F41DD35560000000000000000000020406D41FC7F000013000000000000001300000000000000E0444CDD3556000000416D41FC7F00005897F3E735560000F03F6D41FC7F0000099924DA5E7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.187:93): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.187:93): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.187:93): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.187:94): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffc416d4110 a2=6e a3=1 items=1 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.187:94): saddr=01002F7661722F72756E2F6E7363642F736F636B6574000035EDFF6A000000007886601C000000009F21096600000000000000000000000028EDFF6A0000000073E3DE2F0000000000F4960086A899590000000000000000E01A41DA5E7F000000000000000000006C426D41FC7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.187:94): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.187:94): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.187:94): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.187:95): arch=c000003e syscall=59 success=yes exit=0 a0=5635e7f489b0 a1=5635e7f49290 a2=5635e7f46450 a3=1 items=2 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.187:95): redacted_arguments=1\ntype=CWD msg=audit(1795159873.187:95): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.187:95): item=0 name=\"/usr/bin/python3\" inode=714 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.187:95): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.187:95): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.215:96): arch=c000003e syscall=59 success=no exit=-2 a0=7fd7a9434f90 a1=7fd7a92fd910 a2=3275eef0 a3=7fd7a96148a8 items=1 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.215:96): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.215:96): item=0 name=\"/usr/local/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.215:96): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.215:97): arch=c000003e syscall=59 success=no exit=-2 a0=7fd7a9374490 a1=7fd7a92fd910 a2=3275eef0 a3=7fd7a981a250 items=1 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.215:97): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.215:97): item=0 name=\"/usr/local/bin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.215:97): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.215:98): arch=c000003e syscall=59 success=no exit=-2 a0=7fd7a936e2d0 a1=7fd7a92fd910 a2=3275eef0 a3=7fd7a981a250 items=1 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.215:98): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.215:98): item=0 name=\"/usr/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.215:98): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.215:99): arch=c000003e syscall=59 success=yes exit=0 a0=7fd7a936e300 a1=7fd7a92fd910 a2=3275eef0 a3=7fd7a981a250 items=2 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.215:99): redacted_arguments=1\ntype=CWD msg=audit(1795159873.215:99): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.215:99): item=0 name=\"/usr/bin/bash\" inode=532 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.215:99): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.215:99): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.215:100): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffc21187db0 a2=6e a3=1 items=1 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.215:100): saddr=01002F7661722F72756E2F6E7363642F736F636B65740000080000000000000070FF80A52B5600000000000000000000B07E1821FC7F000013000000000000001300000000000000E0148CA52B560000907F1821FC7F0000D8F1FEC72B560000807E1821FC7F00000999C4AC2F7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.215:100): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.215:100): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.215:100): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.215:101): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffc21187fa0 a2=6e a3=1 items=1 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.215:101): saddr=01002F7661722F72756E2F6E7363642F736F636B6574000035EDFF6A000000007886601C000000009F21096600000000000000000000000028EDFF6A0000000073E3DE2F0000000000BEB779D3D0C7810000000000000000E01AE1AC2F7F00000000000000000000FC801821FC7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.215:101): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.215:101): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.215:101): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.215:102): arch=c000003e syscall=56 success=yes exit=836 a0=1200011 a1=0 a2=0 a3=7f2facedca10 items=0 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=clone AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.215:102): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.215:103): arch=c000003e syscall=59 success=yes exit=0 a0=562bc7ffe050 a1=562bc7ffc470 a2=562bc7ffbe60 a3=8 items=3 ppid=835 pid=836 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"solve.sh\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.215:103): redacted_arguments=1\ntype=CWD msg=audit(1795159873.215:103): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.215:103): item=0 name=\"/solution/solve.sh\" inode=19070978 dev=fe:00 mode=0100755 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"ubuntu\" OGID=\"ubuntu\"\ntype=PATH msg=audit(1795159873.215:103): item=1 name=\"/bin/bash\" inode=532 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.215:103): item=2 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.215:103): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.219:104): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7fff7b04e790 a2=6e a3=1 items=1 ppid=835 pid=836 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"solve.sh\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.219:104): saddr=01002F7661722F72756E2F6E7363642F736F636B65740000080000000000000070BFFA388D550000000000000000000090E8047BFF7F000013000000000000001300000000000000E0D405398D55000070E9047BFF7F0000D871EE638D55000060E8047BFF7F00000999A493117F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.219:104): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.219:104): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.219:104): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.219:105): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7fff7b04e980 a2=6e a3=1 items=1 ppid=835 pid=836 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"solve.sh\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.219:105): saddr=01002F7661722F72756E2F6E7363642F736F636B65740000C062EE638D550000C062EE638D550000B4ADBC93117F000030EA047BFF7F0000521EA993117F0000D044A993117F0000007171A4AD86A9E60000000000000000E01AC193117F00000000000000000000DCEA047BFF7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.219:105): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.219:105): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.219:105): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.219:106): arch=c000003e syscall=56 success=yes exit=837 a0=1200011 a1=0 a2=0 a3=7f1193d43a10 items=0 ppid=835 pid=836 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"solve.sh\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=clone AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.219:106): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.219:107): arch=c000003e syscall=59 success=yes exit=0 a0=558d63ef6f10 a1=558d63ef4380 a2=558d63ef3d70 a3=558d63ef4380 items=2 ppid=836 pid=837 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"cat\" exe=\"/usr/bin/cat\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.219:107): redacted_arguments=1\ntype=CWD msg=audit(1795159873.219:107): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.219:107): item=0 name=\"/usr/bin/cat\" inode=536 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.219:107): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.219:107): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.219:108): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7ffd3087e47f items=0 ppid=836 pid=837 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"cat\" exe=\"/usr/bin/cat\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.219:108): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.219:109): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7fff7b04edbf items=0 ppid=835 pid=836 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"solve.sh\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.219:109): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.219:110): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7ffc211883df items=0 ppid=1 pid=835 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.219:110): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.223:111): arch=c000003e syscall=59 success=yes exit=0 a0=7f73758562b0 a1=7f7375856340 a2=7f73762b3230 a3=3 items=1 ppid=1 pid=838 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"modal-sandbox-f\" exe=\"/__modal/.bin/modal-sandbox-fs-tools\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.223:111): redacted_arguments=1\ntype=CWD msg=audit(1795159873.223:111): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.223:111): item=0 name=\"/__modal/.bin/modal-sandbox-fs-tools\" inode=14 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.223:111): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.223:112): arch=c000003e syscall=231 a0=0 a1=0 a2=0 a3=3 items=0 ppid=1 pid=838 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"modal-sandbox-f\" exe=\"/__modal/.bin/modal-sandbox-fs-tools\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.223:112): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.231:113): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f7375c82470 a2=7f73762b3230 a3=7f73758629b4 items=1 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.231:113): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.231:113): item=0 name=\"/usr/local/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.231:113): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.231:114): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f7375c82470 a2=7f73762b3230 a3=7f73758629b4 items=1 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.231:114): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.231:114): item=0 name=\"/usr/local/bin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.231:114): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.231:115): arch=c000003e syscall=59 success=no exit=-2 a0=7f7375851bd0 a1=7f7375c82470 a2=7f73762b3230 a3=7f73758629b4 items=1 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"tokio-runtime-w\" exe=\"/__modal/runch-agent\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.231:115): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.231:115): item=0 name=\"/usr/sbin/bash\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.231:115): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.231:116): arch=c000003e syscall=59 success=yes exit=0 a0=7f7375851bd0 a1=7f7375c82470 a2=7f73762b3230 a3=7f73758629b4 items=2 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.231:116): redacted_arguments=1\ntype=CWD msg=audit(1795159873.231:116): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.231:116): item=0 name=\"/usr/bin/bash\" inode=532 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.231:116): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.231:116): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.231:117): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffe08528870 a2=6e a3=1 items=1 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.231:117): saddr=01002F7661722F72756E2F6E7363642F736F636B65740000080000000000000070DF59F12D560000000000000000000070895208FE7F000013000000000000001300000000000000E0F464F12D560000508A5208FE7F00005887220D2E56000040895208FE7F00000999447FC87F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.231:117): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.231:117): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.231:117): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.231:118): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7ffe08528a60 a2=6e a3=1 items=1 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.231:118): saddr=01002F7661722F72756E2F6E7363642F736F636B6574000035EDFF6A000000007886601C000000009F21096600000000000000000000000028EDFF6A0000000073E3DE2F00000000001E9170A091A2830000000000000000E01A617FC87F00000000000000000000BC8B5208FE7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.231:118): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.231:118): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.231:118): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.231:119): arch=c000003e syscall=59 success=yes exit=0 a0=562e0d237a60 a1=562e0d237450 a2=562e0d2353a0 a3=8 items=2 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.231:119): redacted_arguments=1\ntype=CWD msg=audit(1795159873.231:119): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.231:119): item=0 name=\"/usr/bin/su\" inode=762 dev=fe:00 mode=0104755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.231:119): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.231:119): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.231:120): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7fff808abf00 a2=6e a3=1 items=1 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.231:120): saddr=01002F7661722F72756E2F6E7363642F736F636B65740000D0BE8A80FF7F00000000607D1501FFFF000000000000000090BE8A80FF7F000072CBEC4C797F00000000A07D1501FFFF07000000000000000700000000000000E0DCEB4C797F00000000000000000000000000000000\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.231:120): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.231:120): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.231:120): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.231:121): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7fff808ac0f0 a2=6e a3=1 items=1 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.231:121): saddr=01002F7661722F72756E2F6E7363642F736F636B65740000000000000000000040D7EB4C797F00000000000000000000D0C9E64C797F00002FCDE64C797F0000B0EAEF4C797F000000EFD60AFE0EC10F50C18A80FF7F0000E01AE14C797F000000000000000000004CC28A80FF7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.231:121): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.231:121): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.231:121): redacted_arguments=1\ntype=USER_AUTH msg=audit(1795159873.235:122): pid=839 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:authentication grantors=pam_rootok acct=\"root\" exe=\"/usr/bin/su\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"\ntype=USER_ACCT msg=audit(1795159873.235:123): pid=839 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:accounting grantors=pam_permit acct=\"root\" exe=\"/usr/bin/su\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"\ntype=SYSCALL msg=audit(1795159873.235:124): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7f794cdc8ba0 a2=6e a3=ffffffff items=1 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.235:124): saddr=01002F6465762F6C6F6700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\u001dSADDR={ saddr_fam=local path=/dev/log }\ntype=CWD msg=audit(1795159873.235:124): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.235:124): item=0 name=\"/dev/log\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.235:124): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.235:125): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7fff808abf70 a2=6e a3=55d64b9f2d30 items=1 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.235:125): saddr=01002F7661722F72756E2F6E7363642F736F636B657400007BEB9E4BD655000020C08A80FF7F0000010000000000000000000000797F00000000000000000000C0BF8A80FF7F000000EFD60AFE0EC10F63000000FF7F0000C03AE04C797F00000100000000000000C0FFFFFFFFFF\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.235:125): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.235:125): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.235:125): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.235:126): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7fff808ac160 a2=6e a3=55d64b9f2d30 items=1 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.235:126): saddr=01002F7661722F72756E2F6E7363642F736F636B65740000E01D9F4BD655000050229F4BD655000000EFD60AFE0EC10F000000000000000003FDB44C797F0000040280000000000000EFD60AFE0EC10F0402800000000000F01AE14C797F0000000000000000000098C28A80FF7F\u001dSADDR={ saddr_fam=local path=/var/run/nscd/socket }\ntype=CWD msg=audit(1795159873.235:126): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.235:126): item=0 name=\"/var/run/nscd/socket\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.235:126): redacted_arguments=1\ntype=CRED_ACQ msg=audit(1795159873.235:127): pid=839 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:setcred grantors=pam_rootok acct=\"root\" exe=\"/usr/bin/su\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"\ntype=SYSCALL msg=audit(1795159873.235:128): arch=c000003e syscall=42 success=no exit=-2 a0=3 a1=7f794cdc8ba0 a2=6e a3=ffffffff items=1 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_connect\"\u001dARCH=x86_64 SYSCALL=connect AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.235:128): saddr=01002F6465762F6C6F6700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000\u001dSADDR={ saddr_fam=local path=/dev/log }\ntype=CWD msg=audit(1795159873.235:128): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.235:128): item=0 name=\"/dev/log\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.235:128): redacted_arguments=1\ntype=USER_START msg=audit(1795159873.235:129): pid=839 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:session_open grantors=pam_env,pam_env,pam_mail,pam_limits,pam_permit,pam_umask,pam_unix acct=\"root\" exe=\"/usr/bin/su\" hostname=? addr=? terminal=? res=success'\u001dUID=\"root\" AUID=\"unset\"\ntype=SYSCALL msg=audit(1795159873.235:130): arch=c000003e syscall=56 success=yes exit=840 a0=1200011 a1=0 a2=0 a3=7f794ce6b850 items=0 ppid=1 pid=839 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"su\" exe=\"/usr/bin/su\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=clone AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.235:130): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.235:131): arch=c000003e syscall=59 success=yes exit=0 a0=55d64b9f2740 a1=55d64b9ea2d0 a2=55d64b9f4c10 a3=55d64b9e7ab0 items=2 ppid=839 pid=840 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"bash\" exe=\"/usr/bin/bash\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.235:131): redacted_arguments=1\ntype=CWD msg=audit(1795159873.235:131): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.235:131): item=0 name=\"/bin/bash\" inode=532 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.235:131): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.235:131): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.235:132): arch=c000003e syscall=59 success=yes exit=0 a0=560a981d0730 a1=560a981d1010 a2=560a981ce350 a3=1 items=2 ppid=839 pid=840 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.235:132): redacted_arguments=1\ntype=CWD msg=audit(1795159873.235:132): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.235:132): item=0 name=\"/usr/bin/python3\" inode=714 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.235:132): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.235:132): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.267:133): arch=c000003e syscall=59 success=no exit=-2 a0=7f380b0adbb0 a1=7f380b0adc30 a2=7ffd7db05b88 a3=7f380b4148a8 items=1 ppid=840 pid=841 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.267:133): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.267:133): item=0 name=\"/usr/local/sbin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.267:133): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.267:134): arch=c000003e syscall=59 success=no exit=-2 a0=7f380b0adcb0 a1=7f380b0adc30 a2=7ffd7db05b88 a3=7f380b4148a8 items=1 ppid=840 pid=841 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.267:134): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.267:134): item=0 name=\"/usr/local/bin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.267:134): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.267:135): arch=c000003e syscall=59 success=yes exit=0 a0=7f380b0adbd0 a1=7f380b0adc30 a2=7ffd7db05b88 a3=7f380b4148a8 items=2 ppid=840 pid=841 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.267:135): redacted_arguments=1\ntype=CWD msg=audit(1795159873.267:135): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.267:135): item=0 name=\"/usr/sbin/auditctl\" inode=3489 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.267:135): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.267:135): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.267:136): arch=c000003e syscall=58 success=yes exit=841 a0=6df22d a1=0 a2=0 a3=7f380b414a70 items=0 ppid=839 pid=840 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=vfork AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.267:136): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.267:137): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7ffc5def598f items=0 ppid=840 pid=841 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.267:137): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.267:138): arch=c000003e syscall=59 success=no exit=-2 a0=7f380b0adcd0 a1=7f380b0adc30 a2=7ffd7db05b88 a3=8 items=1 ppid=840 pid=844 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.267:138): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.267:138): item=0 name=\"/usr/local/sbin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.267:138): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.267:139): arch=c000003e syscall=59 success=no exit=-2 a0=7f380b0ae350 a1=7f380b0adc30 a2=7ffd7db05b88 a3=8 items=1 ppid=840 pid=844 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.267:139): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.267:139): item=0 name=\"/usr/local/bin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.267:139): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.267:140): arch=c000003e syscall=59 success=yes exit=0 a0=7f380b0adbf0 a1=7f380b0adc30 a2=7ffd7db05b88 a3=8 items=2 ppid=840 pid=844 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.267:140): redacted_arguments=1\ntype=CWD msg=audit(1795159873.267:140): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.267:140): item=0 name=\"/usr/sbin/auditctl\" inode=3489 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.267:140): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.267:140): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.267:141): arch=c000003e syscall=58 success=yes exit=844 a0=6df22d a1=0 a2=0 a3=8 items=0 ppid=839 pid=840 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=vfork AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.267:141): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.271:142): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff88 a2=e7 a3=7ffd3a1c6e7f items=0 ppid=840 pid=844 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.271:142): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.283:143): arch=c000003e syscall=231 a0=0 a1=ffffffffffffff78 a2=e7 a3=7ffec7e6d97f items=0 ppid=1 pid=822 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=exit_group AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.283:143): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.375:144): arch=c000003e syscall=59 success=no exit=-2 a0=7f380b0adbb0 a1=7f380b0adc10 a2=7ffd7db05b88 a3=8 items=1 ppid=840 pid=846 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.375:144): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.375:144): item=0 name=\"/usr/local/sbin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.375:144): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.375:145): arch=c000003e syscall=59 success=no exit=-2 a0=7f380b0adbf0 a1=7f380b0adc10 a2=7ffd7db05b88 a3=8 items=1 ppid=840 pid=846 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=CWD msg=audit(1795159873.375:145): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.375:145): item=0 name=\"/usr/local/bin/auditctl\" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\ntype=PROCTITLE msg=audit(1795159873.375:145): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.375:146): arch=c000003e syscall=59 success=yes exit=0 a0=7f380b0adcb0 a1=7f380b0adc10 a2=7ffd7db05b88 a3=8 items=2 ppid=840 pid=846 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=execve AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=EXECVE msg=audit(1795159873.375:146): redacted_arguments=1\ntype=CWD msg=audit(1795159873.375:146): cwd=\"/app\"\ntype=PATH msg=audit(1795159873.375:146): item=0 name=\"/usr/sbin/auditctl\" inode=3489 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PATH msg=audit(1795159873.375:146): item=1 name=\"/lib64/ld-linux-x86-64.so.2\" inode=2491 dev=fe:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0\u001dOUID=\"root\" OGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.375:146): redacted_arguments=1\ntype=SYSCALL msg=audit(1795159873.375:147): arch=c000003e syscall=58 success=yes exit=846 a0=6df22d a1=0 a2=0 a3=8 items=0 ppid=839 pid=840 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"python3\" exe=\"/usr/bin/python3.12\" key=\"rollout_proc\"\u001dARCH=x86_64 SYSCALL=vfork AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=PROCTITLE msg=audit(1795159873.375:147): redacted_arguments=1\ntype=CONFIG_CHANGE msg=audit(1795159873.375:148): op=set audit_enabled=0 old=1 auid=4294967295 ses=4294967295 res=1\u001dAUID=\"unset\"\ntype=SYSCALL msg=audit(1795159873.375:148): arch=c000003e syscall=44 success=yes exit=60 a0=3 a1=7ffdd93ede30 a2=3c a3=0 items=0 ppid=840 pid=846 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm=\"auditctl\" exe=\"/usr/sbin/auditctl\" key=(null)\u001dARCH=x86_64 SYSCALL=sendto AUID=\"unset\" UID=\"root\" GID=\"root\" EUID=\"root\" SUID=\"root\" FSUID=\"root\" EGID=\"root\" SGID=\"root\" FSGID=\"root\"\ntype=SOCKADDR msg=audit(1795159873.375:148): saddr=100000000000000000000000\u001dSADDR={ saddr_fam=netlink nlnk-fam=16 nlnk-pid=0 }\ntype=PROCTITLE msg=audit(1795159873.375:148): redacted_arguments=1\n",
+  "roots": [
+    {
+      "pid": 834
+    },
+    {
+      "pid": 835
+    }
+  ],
+  "truncated": false
+}
