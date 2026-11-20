@@ -261,7 +261,8 @@ def test_dns_decoder_cname_and_packet_filtering():
     )
     ethernet = b"\0" * 12 + b"\x08\x00"
     assert packet_record(ethernet + ip + udp, 15)["payload_hex"] == query.hex()
-    assert packet_record(b"", 15) is None
+    with pytest.raises(ValueError, match="Ethernet"):
+        packet_record(b"", 15)
     with pytest.raises(ValueError):
         packet_record(ethernet + ip + udp[:-1], 15)
     with pytest.raises(ValueError):
