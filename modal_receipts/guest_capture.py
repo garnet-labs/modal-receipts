@@ -116,13 +116,59 @@ def start():
     print(json.dumps(snapshot))
 
 
+def audit_flushed(marker):
+    with AUDIT.open("rb") as log:
+        log.seek(0, os.SEEK_END)
+        log.seek(max(0, log.tell() - 65536))
+        if marker.encode() not in log.read():
+            return False
+        os.fsync(log.fileno())
+    return True
+
+
+def drain_audit(timeout=60, interval=0.25):
+    started = time.monotonic()
+    before = command("auditctl", "-s")
+    marker = f"garnet-drain-{os.getpid()}-{time.time_ns()}"
+    command("auditctl", "-m", marker)
+    flushed = False
+    while True:
+        status = command("auditctl", "-s")
+        fields = dict(
+            line.split(maxsplit=1) for line in status.splitlines() if " " in line
+        )
+        backlog = int(fields.get("backlog", "-1"))
+        lost = int(fields.get("lost", "-1"))
+        if backlog == 0:
+            flushed = audit_flushed(marker)
+        elapsed = time.monotonic() - started
+        complete = (
+            backlog == 0 and lost == 0 and flushed and fields.get("enabled") == "1"
+        )
+        timed_out = elapsed >= timeout and not complete
+        if complete or timed_out or lost != 0 or fields.get("enabled") != "1":
+            before_fields = dict(
+                line.split(maxsplit=1) for line in before.splitlines() if " " in line
+            )
+            return {
+                "status_before": before,
+                "status_at_freeze": status,
+                "backlog_before": int(before_fields.get("backlog", "-1")),
+                "backlog_at_freeze": backlog,
+                "lost": lost,
+                "seconds": elapsed,
+                "timed_out": timed_out,
+                "flushed": flushed,
+                "complete": complete,
+            }
+        time.sleep(min(interval, max(0, timeout - elapsed)))
+
+
 def end():
     snapshot = json.loads((STATE / "start.json").read_text())
     snapshot.update(
         end=time.time(),
         census=census(),
-        status_stop=command("auditctl", "-s"),
-        rules_stop=command("auditctl", "-l"),
     )
     snapshot["auditd_alive"] = any(p["comm"] == "auditd" for p in snapshot["census"])
     pid = int((STATE / "dns-pid").read_text())
@@ -143,13 +189,16 @@ def end():
         "alive_at_freeze": alive,
         "truncated": False,
     }
+    snapshot["rules_stop"] = command("auditctl", "-l")
+    snapshot["audit_drain"] = drain_audit()
+    snapshot["status_stop"] = snapshot["audit_drain"]["status_at_freeze"]
     command("auditctl", "-e", "0")
     time.sleep(0.5)
     snapshot["audit_log"] = AUDIT.read_text()
     snapshot["roots"] = command_roots(
         snapshot["audit_log"], snapshot["start"], snapshot["end"]
     )
-    snapshot["truncated"] = False
+    snapshot["truncated"] = not snapshot["audit_drain"]["complete"]
     print(json.dumps(snapshot))
 
 

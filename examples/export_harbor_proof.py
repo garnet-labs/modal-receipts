@@ -193,6 +193,8 @@ def main(source, job_names=None, expected_count=12, rebuild=False):
             }
             summary.append(row)
             guest_capture = json.loads((target / "guest-capture.json").read_text())
+            if "audit_drain" in guest_capture:
+                row["audit_drain"] = guest_capture["audit_drain"]
             dns_stops = [
                 record
                 for line in guest_capture.get("dns_capture", {})
@@ -248,6 +250,8 @@ def main(source, job_names=None, expected_count=12, rebuild=False):
                     "",
                     "DNS packet counters: " + json.dumps(row["dns_packet_counts"]),
                 ]
+            if "audit_drain" in row:
+                lines += ["", "Audit drain: " + json.dumps(row["audit_drain"])]
             lines += [
                 "",
                 "Numeric evidence dimensions (separate from task reward):",
@@ -296,6 +300,10 @@ def main(source, job_names=None, expected_count=12, rebuild=False):
 
 
 if __name__ == "__main__":
+    oracle_v3 = "--oracle-v3" in sys.argv
+    if oracle_v3:
+        sys.argv.remove("--oracle-v3")
+        ROOT = ROOT.with_name("harbor-proof-oracle-v3")
     oracle_v2 = "--oracle-v2" in sys.argv
     if oracle_v2:
         sys.argv.remove("--oracle-v2")
@@ -316,10 +324,10 @@ if __name__ == "__main__":
             if len(sys.argv) > 1
             else Path("/home/ubuntu/work/harbor-proof"),
             job_names={"oracle": "oracle"}
-            if oracle_v2
+            if oracle_v2 or oracle_v3
             else {"honest": "honest-dns-v2"}
             if honest_v2
             else None,
-            expected_count=3 if oracle_v2 else 6 if honest_v2 else 12,
+            expected_count=3 if oracle_v2 or oracle_v3 else 6 if honest_v2 else 12,
             rebuild=honest_v2,
         )
