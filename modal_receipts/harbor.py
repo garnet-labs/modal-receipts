@@ -2,6 +2,7 @@
 
 import asyncio
 import base64
+import inspect
 import json
 import shlex
 import time
@@ -43,8 +44,20 @@ class GarnetModalEnvironment(ModalEnvironment):
     def __init__(self, *args, **kwargs):
         if not hasattr(harbor_modal, "ModalOptions"):
             option_names = GarnetModalOptions.model_fields
+            parent_names = {
+                name
+                for cls in ModalEnvironment.__mro__
+                for name, parameter in inspect.signature(cls.__init__).parameters.items()
+                if parameter.kind
+                not in (inspect.Parameter.VAR_POSITIONAL, inspect.Parameter.VAR_KEYWORD)
+            }
+            parent_names.update({"region", "keepalive", "dind_image"})
             self.options = GarnetModalOptions.model_validate(
-                {name: kwargs.pop(name) for name in option_names if name in kwargs}
+                {
+                    name: kwargs.pop(name)
+                    for name in list(kwargs)
+                    if name in option_names or name not in parent_names
+                }
             )
             kwargs["modal_vm_runtime"] = self.options.modal_vm_runtime
         self._garnet_sidecar = None

@@ -113,6 +113,16 @@ def test_invalid_options(kwargs):
         GarnetModalOptions.model_validate(kwargs)
 
 
+def test_unknown_environment_option_rejected(tmp_path):
+    with pytest.raises(ValidationError, match="sidecar_reserve_mb"):
+        make_env(tmp_path, sidecar_reserve_mb=2048)
+
+
+def test_parent_environment_options_preserved(tmp_path):
+    env = make_env(tmp_path, region="us-east", override_memory_mb=4096)
+    assert env._memory_config() == 5120
+
+
 def test_compose_rejected(tmp_path):
     env_dir = tmp_path / "environment"
     env_dir.mkdir()
