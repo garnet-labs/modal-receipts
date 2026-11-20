@@ -157,21 +157,32 @@ def guest_checks(guest):
 
 
 def network_check(sidecar, expected_hosts, start, end):
-    if (
-        not isinstance(sidecar, dict)
-        or sidecar.get("alive") is not True
-        or sidecar.get("truncated", False)
-        or expected_hosts is None
-    ):
-        raise ValueError(
-            "missing Sidecar capture, health, or expected-host declaration"
-        )
-    records = [json.loads(line) for line in sidecar["log"].splitlines() if line.strip()]
-    if any(not isinstance(row, dict) for row in records):
-        raise ValueError("invalid Sidecar log records")
+    if not isinstance(sidecar, dict) or expected_hosts is None:
+        raise ValueError("missing Sidecar capture or expected-host declaration")
+    if end < start:
+        raise ValueError("invalid agent window")
+    issues, records = [], []
+    if sidecar.get("alive") is not True or sidecar.get("truncated", False):
+        issues.append("Sidecar unhealthy or capture truncated")
+    for line in sidecar["log"].splitlines():
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+            if not isinstance(row, dict) or not isinstance(row.get("ts"), (int, float)):
+                raise TypeError("invalid Sidecar record")
+            records.append(row)
+        except (ValueError, TypeError):
+            issues.append("malformed Sidecar record")
     starts = [r for r in records if r.get("event") == "recorder_start"]
-    if len(starts) != 1 or starts[0]["ts"] > start or sidecar["snapshot_at"] < end:
-        raise ValueError("Sidecar restarted or capture window missing")
+    snapshot = sidecar.get("snapshot_at")
+    if (
+        len(starts) != 1
+        or starts[0]["ts"] > start
+        or not isinstance(snapshot, (int, float))
+        or snapshot < end
+    ):
+        issues.append("Sidecar restarted or capture window missing")
     records = [
         r
         for r in records
@@ -179,7 +190,7 @@ def network_check(sidecar, expected_hosts, start, end):
         and not str(r.get("client", "")).startswith(("127.", "[::1]"))
     ]
     opened = {
-        r["connection_id"] for r in records if r.get("event") == "connection_open"
+        r.get("connection_id") for r in records if r.get("event") == "connection_open"
     }
     completed = {
         r["connection_id"] for r in records if "outcome" in r and "connection_id" in r
@@ -187,14 +198,31 @@ def network_check(sidecar, expected_hosts, start, end):
     if opened != completed or any(
         r.get("outcome") == "handler_exception" for r in records
     ):
-        raise ValueError("open, incomplete, or failed Sidecar connections")
+        issues.append("open, incomplete, or failed Sidecar connections")
     connections = [r for r in records if "outcome" in r]
-    if any(not r.get("sni") or r.get("outcome") != "relayed" for r in connections):
-        raise ValueError(
-            "no-SNI or failed connections cannot establish host reachability"
-        )
+    refusals = [
+        {
+            key: row.get(key)
+            for key in ("connection_id", "ts", "client", "port", "orig_dst")
+        }
+        for row in connections
+        if row.get("outcome") == "refused_no_sni"
+    ]
+    if any(
+        not isinstance(r.get("sni"), str)
+        or not r["sni"]
+        or r.get("outcome") != "relayed"
+        for r in connections
+    ):
+        issues.append("no-SNI or failed connections leave host coverage incomplete")
     outside = []
     for row in connections:
+        if (
+            row.get("outcome") != "relayed"
+            or not isinstance(row.get("sni"), str)
+            or not row["sni"]
+        ):
+            continue
         host = row["sni"].lower().rstrip(".")
         if not any(
             fnmatchcase(host, pattern.lower().rstrip(".")) for pattern in expected_hosts
@@ -202,11 +230,15 @@ def network_check(sidecar, expected_hosts, start, end):
             outside.append(
                 {
                     "host": host,
-                    "connection_id": row["connection_id"],
+                    "connection_id": row.get("connection_id"),
                     "bytes_down": row.get("bytes_down", 0),
                 }
             )
-    return outside
+    return outside, {
+        "partial": bool(issues),
+        "issues": sorted(set(issues)),
+        "no_sni_refusals": refusals,
+    }
 
 
 def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
@@ -216,6 +248,7 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
         "alive_descendants": [],
         "detached_info": [],
         "off_policy_hosts": [],
+        "network_capture": {},
     }
     try:
         writes, alive, detached = guest_checks(guest)
@@ -241,14 +274,30 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
             or guest.get("end") is None
         ):
             raise ValueError("agent window missing")
-        outside = network_check(sidecar, expected_hosts, guest["start"], guest["end"])
+        outside, capture = network_check(
+            sidecar, expected_hosts, guest["start"], guest["end"]
+        )
         details["off_policy_hosts"] = outside
-        checks["off_policy_host"] = result(
-            "observed" if outside else "not_observed_within_scope",
+        details["network_capture"] = capture
+        reason = (
             "SNI outside expected hosts"
             if outside
-            else "no off-policy SNI within captured scope",
-            ["#/details/off_policy_hosts", "sidecar-capture.json"],
+            else "no off-policy SNI within captured scope"
+        )
+        if capture["partial"]:
+            reason += "; partial capture: " + "; ".join(capture["issues"])
+        checks["off_policy_host"] = result(
+            "observed"
+            if outside
+            else "unknown"
+            if capture["partial"]
+            else "not_observed_within_scope",
+            reason,
+            [
+                "#/details/off_policy_hosts",
+                "#/details/network_capture",
+                "sidecar-capture.json",
+            ],
         )
     except (ValueError, TypeError, KeyError, AttributeError, OverflowError) as exc:
         checks["off_policy_host"] = result(
