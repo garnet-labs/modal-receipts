@@ -4,6 +4,7 @@ import base64
 import json
 import os
 import re
+import signal
 import subprocess
 import sys
 import time
@@ -72,6 +73,36 @@ def start():
         "rollout_proc",
     )
     command("auditctl", "-w", "/tests", "-p", "w", "-k", "rollout_tests")
+    command(
+        "auditctl",
+        "-a",
+        "always,exit",
+        "-F",
+        "arch=b64",
+        "-S",
+        "connect",
+        "-k",
+        "rollout_connect",
+    )
+    (STATE / "dns-ready").unlink(missing_ok=True)
+    with (STATE / "dns-error.log").open("w") as log:
+        recorder = subprocess.Popen(
+            [
+                sys.executable,
+                str(Path(__file__).with_name("dns_capture.py")),
+                str(STATE),
+            ],
+            stdout=log,
+            stderr=subprocess.STDOUT,
+            start_new_session=True,
+        )
+    (STATE / "dns-pid").write_text(str(recorder.pid))
+    for _ in range(50):
+        if (STATE / "dns-ready").exists() and recorder.poll() is None:
+            break
+        time.sleep(0.1)
+    else:
+        raise RuntimeError("DNS capture did not become ready")
     rules = command("auditctl", "-l")
     health = command("auditctl", "-s")
     snapshot = {
@@ -79,7 +110,7 @@ def start():
         "baseline": census(),
         "rules": rules,
         "status_start": health,
-        "ruleset": "full-tests",
+        "ruleset": "full-tests-dns-v1",
     }
     (STATE / "start.json").write_text(json.dumps(snapshot))
     print(json.dumps(snapshot))
@@ -94,6 +125,24 @@ def end():
         rules_stop=command("auditctl", "-l"),
     )
     snapshot["auditd_alive"] = any(p["comm"] == "auditd" for p in snapshot["census"])
+    pid = int((STATE / "dns-pid").read_text())
+    alive = any(
+        p["pid"] == pid and p["state"] not in ("Z", "X") for p in snapshot["census"]
+    )
+    if alive:
+        os.kill(pid, signal.SIGTERM)
+    for _ in range(30):
+        dns_log = (STATE / "dns.jsonl").read_text()
+        if any(
+            json.loads(line).get("event") == "stop" for line in dns_log.splitlines()
+        ):
+            break
+        time.sleep(0.1)
+    snapshot["dns_capture"] = {
+        "log": dns_log,
+        "alive_at_freeze": alive,
+        "truncated": False,
+    }
     command("auditctl", "-e", "0")
     time.sleep(0.5)
     snapshot["audit_log"] = AUDIT.read_text()
