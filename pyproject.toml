@@ -10,8 +10,8 @@ requires-python = ">=3.12"
 dependencies = ["modal>=1.6.2"]
 
 [project.optional-dependencies]
-harbor = ["harbor[modal]>=0.26.0"]
-test = ["pytest", "pytest-asyncio", "harbor[modal]>=0.26.0"]
+harbor = ["harbor[modal]>=0.23.0"]
+test = ["pytest", "pytest-asyncio", "harbor[modal]>=0.23.0"]
 
 [tool.setuptools]
 packages = ["modal_receipts", "sidecar"]

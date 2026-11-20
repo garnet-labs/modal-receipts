@@ -2,21 +2,27 @@
 
 import asyncio
 import base64
+import inspect
 import json
 import shlex
 import time
 from importlib.resources import files
 
 import modal
-from harbor.environments.modal import ModalEnvironment, ModalOptions
-from pydantic import Field, model_validator
+from harbor.environments import modal as harbor_modal
+from harbor.environments.modal import ModalEnvironment
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from modal_receipts.evidence import build_receipt
 from modal_receipts.plugin import ENVIRONMENTS
 from modal_receipts.rollout import build_rollout_evidence
 
 
-class GarnetModalOptions(ModalOptions):
+class _LegacyModalOptions(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+
+class GarnetModalOptions(getattr(harbor_modal, "ModalOptions", _LegacyModalOptions)):
     modal_vm_runtime: bool = True
     sidecar_reserve_mib: int = Field(default=1024, ge=1024)
     sidecar_consume_mib: int = Field(default=512, gt=0)
@@ -36,6 +42,26 @@ class GarnetModalEnvironment(ModalEnvironment):
     options: GarnetModalOptions
 
     def __init__(self, *args, **kwargs):
+        if not hasattr(harbor_modal, "ModalOptions"):
+            option_names = GarnetModalOptions.model_fields
+            parent_names = {
+                name
+                for cls in ModalEnvironment.__mro__
+                for name, parameter in inspect.signature(
+                    cls.__init__
+                ).parameters.items()
+                if parameter.kind
+                not in (inspect.Parameter.VAR_POSITIONAL, inspect.Parameter.VAR_KEYWORD)
+            }
+            parent_names.update({"region", "keepalive", "dind_image"})
+            self.options = GarnetModalOptions.model_validate(
+                {
+                    name: kwargs.pop(name)
+                    for name in list(kwargs)
+                    if name in option_names or name not in parent_names
+                }
+            )
+            kwargs["modal_vm_runtime"] = self.options.modal_vm_runtime
         self._garnet_sidecar = None
         self._garnet_error = None
         self._garnet_collected = False
