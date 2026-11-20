@@ -154,6 +154,29 @@ async def test_create_sandbox_kwargs(tmp_path):
     }
 
 
+@pytest.mark.skipif(hasattr(harbor_modal, "ModalOptions"), reason="legacy startup")
+async def test_legacy_start_combines_vm_and_sidecar_options(tmp_path):
+    env = make_env(tmp_path)
+    image = Mock()
+    image.build.aio = AsyncMock(return_value=image)
+    sandbox = Mock()
+    env._sdk_exec = AsyncMock()
+    env._upload_environment_dir_after_start = AsyncMock()
+    with (
+        patch("harbor.environments.modal.Image.from_dockerfile", return_value=image),
+        patch("harbor.environments.modal.App.lookup") as lookup,
+        patch("harbor.environments.modal.Sandbox.create") as create,
+    ):
+        lookup.aio = AsyncMock(return_value=Mock())
+        create.aio = AsyncMock(return_value=sandbox)
+        await env._strategy.start(False)
+    assert create.aio.call_args.kwargs["experimental_options"] == {
+        "vm_runtime": True,
+        "proxy_traffic_via_sidecar": "garnet",
+        "vm_sidecar_memory_reserve_mib": 1024,
+    }
+
+
 async def test_start_builds_sidecar_and_waits(tmp_path):
     env = make_env(tmp_path)
     env._app = Mock()
