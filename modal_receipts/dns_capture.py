@@ -1,0 +1,161 @@
+"""Passive port-53 capture in the guest; no decrypted application traffic."""
+
+import json
+import signal
+import socket
+import struct
+import sys
+import time
+from pathlib import Path
+
+
+def packet_record(packet, timestamp):
+    if len(packet) < 14:
+        return None
+    if packet[12:14] == b"\x08\x00":
+        if len(packet) < 34:
+            raise ValueError("short IPv4 header")
+        offset = 14 + (packet[14] & 15) * 4
+        protocol = packet[23]
+        source = socket.inet_ntop(socket.AF_INET, packet[26:30])
+        destination = socket.inet_ntop(socket.AF_INET, packet[30:34])
+        if struct.unpack_from("!H", packet, 20)[0] & 0x3FFF:
+            raise ValueError("fragmented IP packet")
+    elif packet[12:14] == b"\x86\xdd":
+        if len(packet) < 54:
+            raise ValueError("short IPv6 header")
+        protocol, offset = packet[20], 54
+        source = socket.inet_ntop(socket.AF_INET6, packet[22:38])
+        destination = socket.inet_ntop(socket.AF_INET6, packet[38:54])
+        if protocol in (0, 43, 44, 50, 51, 60):
+            raise ValueError("unsupported IPv6 extension header")
+    else:
+        return None
+    if protocol not in (socket.IPPROTO_UDP, socket.IPPROTO_TCP):
+        return None
+    if len(packet) < offset + 8:
+        raise ValueError("short transport header")
+    sport, dport = struct.unpack_from("!HH", packet, offset)
+    if 53 not in (sport, dport):
+        return None
+    if protocol == socket.IPPROTO_TCP:
+        raise ValueError("TCP DNS requires stream reassembly")
+    length = struct.unpack_from("!H", packet, offset + 4)[0]
+    if length < 8 or len(packet) < offset + length:
+        raise ValueError("truncated DNS datagram")
+    return {
+        "event": "dns_udp",
+        "ts": timestamp,
+        "source_ip": source,
+        "source_port": sport,
+        "destination_ip": destination,
+        "destination_port": dport,
+        "payload_hex": packet[offset + 8 : offset + length].hex(),
+    }
+
+
+def _dns_message(data):
+    def name(offset, seen=()):
+        labels = []
+        while True:
+            size = data[offset]
+            offset += 1
+            if size == 0:
+                return ".".join(labels).lower(), offset
+            if size & 0xC0 == 0xC0:
+                pointer = ((size & 63) << 8) | data[offset]
+                if pointer in seen or len(seen) >= 32:
+                    raise ValueError("DNS compression loop")
+                suffix, _ = name(pointer, (*seen, pointer))
+                return ".".join([*labels, suffix]), offset + 1
+            if size > 63 or offset + size > len(data):
+                raise ValueError("invalid DNS label")
+            labels.append(data[offset : offset + size].decode("ascii"))
+            offset += size
+            if len(labels) > 127:
+                raise ValueError("DNS name too long")
+
+    ident, flags, qd, an, ns, ar = struct.unpack_from("!6H", data)
+    offset, questions, answers = 12, [], []
+    if qd != 1 or an + ns + ar > 4096:
+        raise ValueError("unsupported DNS record count")
+    for _ in range(qd):
+        host, offset = name(offset)
+        kind, cls = struct.unpack_from("!HH", data, offset)
+        offset += 4
+        questions.append((host, kind, cls))
+    for index in range(an + ns + ar):
+        host, offset = name(offset)
+        kind, cls, ttl, size = struct.unpack_from("!HHIH", data, offset)
+        offset += 10
+        end = offset + size
+        if end > len(data):
+            raise ValueError("truncated DNS record")
+        value = None
+        if cls == 1 and kind in (1, 28):
+            value = socket.inet_ntop(
+                socket.AF_INET if kind == 1 else socket.AF_INET6, data[offset:end]
+            )
+        elif cls == 1 and kind == 5:
+            value, consumed = name(offset)
+            if consumed != end:
+                raise ValueError("invalid CNAME length")
+        if index < an and value is not None:
+            answers.append({"host": host, "type": kind, "ttl": ttl, "value": value})
+        offset = end
+    if offset != len(data):
+        raise ValueError("trailing DNS bytes")
+    return {"id": ident, "flags": flags, "questions": questions, "answers": answers}
+
+
+def dns_message(data):
+    try:
+        return _dns_message(data)
+    except (IndexError, struct.error, OSError) as exc:
+        raise ValueError("malformed DNS message") from exc
+
+
+def record(state):
+    running = True
+
+    def stop(*_):
+        nonlocal running
+        running = False
+
+    signal.signal(signal.SIGTERM, stop)
+    signal.signal(signal.SIGINT, stop)
+    with (state / "dns.jsonl").open("w", buffering=1) as log:
+
+        def emit(row):
+            log.write(json.dumps({"ts": time.time(), **row}) + "\n")
+
+        with socket.socket(
+            socket.AF_PACKET, socket.SOCK_RAW, socket.htons(3)
+        ) as capture:
+            capture.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 4 * 1024 * 1024)
+            capture.settimeout(0.2)
+            emit({"event": "start"})
+            (state / "dns-ready").touch()
+            count = 0
+            while running:
+                try:
+                    packet = capture.recv(65535)
+                except TimeoutError:
+                    continue
+                try:
+                    row = packet_record(packet, time.time())
+                except (ValueError, OSError, struct.error) as exc:
+                    emit({"event": "error", "reason": str(exc)})
+                    continue
+                if row:
+                    emit(row)
+                    count += 1
+                    if count >= 100000:
+                        emit({"event": "error", "reason": "DNS capture limit reached"})
+                        break
+            packets, drops = struct.unpack("II", capture.getsockopt(263, 6, 8))
+            emit({"event": "stop", "packets": packets, "drops": drops})
+
+
+if __name__ == "__main__":
+    record(Path(sys.argv[1]))

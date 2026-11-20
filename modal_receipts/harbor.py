@@ -158,6 +158,10 @@ class GarnetModalEnvironment(ModalEnvironment):
                 str(files("modal_receipts").joinpath("guest_capture.py")),
                 "/opt/garnet/rollout_capture.py",
             )
+            await self.upload_file(
+                str(files("modal_receipts").joinpath("dns_capture.py")),
+                "/opt/garnet/dns_capture.py",
+            )
             capture = await super().exec(
                 "python3 /opt/garnet/rollout_capture.py start", user="root"
             )

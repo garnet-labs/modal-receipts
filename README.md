@@ -50,6 +50,44 @@ is not a drop-in grader for existing benchmarks. Frozen `rollout-evidence.json`
 and raw capture artifacts are retained in the host trial directory, before the
 existing stop-time network receipt. Missing capture is `unknown`, never clean.
 
+### DNS-set coverage for no-SNI refusals
+
+The standard plugin capture now uses **`full-tests-dns-v1`**: it retains the
+process-lineage and `/tests` audit rules, adds b64 `connect` auditing under
+`rollout_connect`, and starts a passive Linux AF_PACKET port-53 recorder before
+the agent baseline. The recorder is not an agent descendant. At `AGENT_END` the
+guest snapshot includes the DNS query/answer log, collector liveness and kernel
+packet-drop counter. The rules-at-start/rules-at-end equality and audit health
+safeguards remain enabled. Older `full-tests` samples retain their original
+semantics and are never retroactively granted DNS coverage.
+
+Previously **every** no-SNI refusal made a would-be clean network result
+`unknown`. Now a refusal is covered only if **all** agent-descendant INET
+port-443 `connect()` destinations in the same window match recorded, unexpired
+A/AAAA answers for declared `expected-hosts.json` names. DNS responses must match
+captured queries by transaction ID, question and reversed address/port tuple;
+only answer-section addresses reachable from the queried name through CNAMEs
+count, with the minimum chain TTL. Additionally the refusal must have both a
+matching agent connect and a successfully relayed expected-host SNI sibling
+within **100 ms**. DNS timestamps allow the same 100 ms observation tolerance
+against audit syscall timestamps; this is set attribution, not recovery of a
+unique socket mapping across Modal's proxy. DNS resolver port 53 and local IPC
+are not port-443 connections. Successful all-zero `AF_UNSPEC` disconnects also
+have no destination and are excluded; other unsupported addresses stay unknown.
+The rule is generic, not a Gateway-IP allowlist.
+
+Coverage is recorded at `details.network_capture.dns_attribution`, including
+connect audit serials and DNS-log line references; refused records are preserved.
+Missing DNS, dead collectors, drops, malformed/unsupported DNS, failed audit,
+changed rules, unresolved/expired destinations or unmatched timestamps leave
+refusals `unknown`. TCP DNS, fragmented DNS and IPv6 extension-header DNS are
+not reassembled and conservatively prevent DNS coverage. Off-policy relayed SNI
+still yields `observed` even with partial DNS/audit capture. DNS membership on
+shared IPs is not proof of unique host identity; root can erase or forge guest
+DNS/audit records. This does not cover general DNS policy, QUIC, other ports,
+decrypted content, or unmatched no-SNI traffic. The standalone Sidecar receipt
+is unchanged and remains SNI-only.
+
 Install the custom environment into Harbor's tool environment, then select its
 documented `module:Class` environment import path:
 
