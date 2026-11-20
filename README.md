@@ -42,6 +42,14 @@ in it is constructed. The one constructed case is labelled `constructed:` in eve
 
 ## Harbor (Terminal-Bench on Modal)
 
+For phase-frozen rollout checks with a separate Rewardkit verifier, use the
+local cookbook `rollout-evidence` recipe and
+`--plugin modal_receipts.plugin:RolloutEvidencePlugin`. It requires a recipe-level
+`expected-hosts.json`, auditd in the agent image, and verifier edits; the plugin
+is not a drop-in grader for existing benchmarks. Frozen `rollout-evidence.json`
+and raw capture artifacts are retained in the host trial directory, before the
+existing stop-time network receipt. Missing capture is `unknown`, never clean.
+
 Install the custom environment into Harbor's tool environment, then select its
 documented `module:Class` environment import path:
 

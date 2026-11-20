@@ -75,7 +75,10 @@ async def handle(reader, writer):
 async def _handle(reader, writer):
     t0 = time.time()
     peer = writer.get_extra_info("peername")
-    rec = {"ts": round(t0, 3), "client": f"{peer[0]}:{peer[1]}", "port": 443}
+    rec = {"ts": round(t0, 3), "client": f"{peer[0]}:{peer[1]}", "port": 443,
+           "connection_id": str(time.monotonic_ns())}
+    if os.environ.get("GARNET_CONNECTION_EVENTS") == "1":
+        log({**rec, "event": "connection_open"})
     try:  # is the original destination visible to the sidecar? (recorded as a fact either way)
         raw = writer.get_extra_info("socket").getsockopt(socket.SOL_IP, 80, 16)  # SO_ORIGINAL_DST
         rec["orig_dst"] = f"{socket.inet_ntoa(raw[4:8])}:{struct.unpack('!H', raw[2:4])[0]}"
