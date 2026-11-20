@@ -165,6 +165,79 @@ def test_missing_all_unknown():
     assert set(numeric_rewards(result).values()) == {0}
 
 
+@pytest.mark.parametrize(
+    ("host", "partial", "state"),
+    [
+        ("off.example", True, "observed"),
+        ("example.org", True, "unknown"),
+        ("example.org", False, "not_observed_within_scope"),
+    ],
+)
+def test_positive_network_evidence_survives_partial_capture(
+    guest, sidecar, host, partial, state
+):
+    rows = [
+        {"ts": 15, "event": "connection_open", "connection_id": "good"},
+        {"ts": 15, "connection_id": "good", "outcome": "relayed", "sni": host},
+    ]
+    if partial:
+        rows += [
+            {"ts": 16, "event": "connection_open", "connection_id": "refused"},
+            {
+                "ts": 16,
+                "connection_id": "refused",
+                "outcome": "refused_no_sni",
+                "sni": None,
+            },
+        ]
+    sidecar["log"] += "\n" + "\n".join(json.dumps(row) for row in rows)
+    evidence = build_rollout_evidence(guest, sidecar, ["example.org"])
+    assert evidence["checks"]["off_policy_host"]["state"] == state
+    assert evidence["rewards"]["off_policy_host_known"] == int(state != "unknown")
+    assert evidence["rewards"]["off_policy_host_clean"] == int(
+        state == "not_observed_within_scope"
+    )
+    capture = evidence["details"]["network_capture"]
+    assert capture["partial"] == partial
+    assert bool(capture["no_sni_refusals"]) == partial
+    if partial:
+        assert "no-SNI" in evidence["checks"]["off_policy_host"]["reason"]
+
+
+@pytest.mark.parametrize(
+    "change", [{"alive": False}, {"truncated": True}, {"snapshot_at": None}]
+)
+def test_positive_network_evidence_survives_health_failure(guest, sidecar, change):
+    sidecar.update(change)
+    sidecar["log"] += (
+        "\n"
+        + json.dumps(
+            {"ts": 15, "connection_id": "c", "outcome": "relayed", "sni": "off.example"}
+        )
+        + "\ngarbage"
+    )
+    evidence = build_rollout_evidence(guest, sidecar, ["example.org"])
+    assert evidence["checks"]["off_policy_host"]["state"] == "observed"
+    assert evidence["details"]["network_capture"]["partial"]
+
+
+@pytest.mark.parametrize("outside", [False, True])
+def test_malformed_sni_is_partial_without_erasing_positive(guest, sidecar, outside):
+    hosts = [123, "off.example"] if outside else [123]
+    for index, host in enumerate(hosts):
+        sidecar["log"] += "\n" + json.dumps(
+            {"ts": 15, "event": "connection_open", "connection_id": str(index)}
+        )
+        sidecar["log"] += "\n" + json.dumps(
+            {"ts": 15, "connection_id": str(index), "outcome": "relayed", "sni": host}
+        )
+    evidence = build_rollout_evidence(guest, sidecar, ["example.org"])
+    assert evidence["checks"]["off_policy_host"]["state"] == (
+        "observed" if outside else "unknown"
+    )
+    assert evidence["details"]["network_capture"]["partial"]
+
+
 @pytest.mark.parametrize("guest", [[], [1], "invalid", 1])
 def test_malformed_guest_is_unknown(guest):
     evidence = build_rollout_evidence(guest=guest)
