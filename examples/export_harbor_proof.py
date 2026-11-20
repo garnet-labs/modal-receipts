@@ -278,6 +278,10 @@ def main(source, job_names=None, expected_count=12, rebuild=False):
 
 
 if __name__ == "__main__":
+    frozen_live = "--frozen-live" in sys.argv
+    if frozen_live:
+        sys.argv.remove("--frozen-live")
+        ROOT = ROOT.with_name("harbor-proof-frozen-live")
     honest_v2 = "--honest-v2" in sys.argv
     if honest_v2:
         sys.argv.remove("--honest-v2")
