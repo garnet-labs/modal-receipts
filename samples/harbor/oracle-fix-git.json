@@ -1,0 +1,205 @@
+{
+  "kind": "network-evidence",
+  "coverage": "TCP/443 leaving the main container, relayed by Modal to the Sidecar; host name read from the TLS ClientHello SNI, nothing decrypted. Not covered: DNS, any other port, UDP, TLS without SNI (refused, recorded as refused_no_sni), traffic from the Sidecar itself.",
+  "records": [
+    {
+      "ts": 1795145348.056,
+      "event": "recorder_start",
+      "pid": 786
+    },
+    {
+      "ts": 1795145348.106,
+      "client": "127.0.0.1:33836",
+      "port": 443,
+      "orig_dst": null,
+      "sni": null,
+      "outcome": "refused_no_sni"
+    },
+    {
+      "ts": 1795145354.178,
+      "client": "172.20.0.1:40000",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "releases.astral.sh",
+      "upstream": "104.26.12.77",
+      "outcome": "relayed",
+      "bytes_up": 815,
+      "bytes_down": 70883,
+      "dur_s": 0.045
+    },
+    {
+      "ts": 1795145354.144,
+      "client": "172.20.0.1:39984",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "astral.sh",
+      "upstream": "104.26.13.77",
+      "outcome": "relayed",
+      "bytes_up": 788,
+      "bytes_down": 4009,
+      "dur_s": 0.091
+    },
+    {
+      "ts": 1795145354.242,
+      "client": "172.20.0.1:40014",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "github.com",
+      "upstream": "140.82.114.3",
+      "outcome": "relayed",
+      "bytes_up": 810,
+      "bytes_down": 8999,
+      "dur_s": 0.157
+    },
+    {
+      "ts": 1795145354.273,
+      "client": "172.20.0.1:40018",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "release-assets.githubusercontent.com",
+      "upstream": "185.199.108.133",
+      "outcome": "relayed",
+      "bytes_up": 1500,
+      "bytes_down": 21423751,
+      "dur_s": 0.127
+    },
+    {
+      "ts": 1795145354.896,
+      "client": "172.20.0.1:40020",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "pypi.org",
+      "upstream": "151.101.192.223",
+      "outcome": "relayed",
+      "bytes_up": 494,
+      "bytes_down": 5081,
+      "dur_s": 0.147
+    },
+    {
+      "ts": 1795145355.033,
+      "client": "172.20.0.1:40036",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.64.223",
+      "outcome": "relayed",
+      "bytes_up": 508,
+      "bytes_down": 5067,
+      "dur_s": 0.065
+    },
+    {
+      "ts": 1795145354.897,
+      "client": "172.20.0.1:40024",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "pypi.org",
+      "upstream": "151.101.128.223",
+      "outcome": "relayed",
+      "bytes_up": 1177,
+      "bytes_down": 110780,
+      "dur_s": 0.3
+    },
+    {
+      "ts": 1795145355.008,
+      "client": "172.20.0.1:40026",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.192.223",
+      "outcome": "relayed",
+      "bytes_up": 1623,
+      "bytes_down": 18128,
+      "dur_s": 0.189
+    },
+    {
+      "ts": 1795145355.197,
+      "client": "172.20.0.1:40080",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.128.223",
+      "outcome": "relayed",
+      "bytes_up": 508,
+      "bytes_down": 5067,
+      "dur_s": 0.062
+    },
+    {
+      "ts": 1795145355.197,
+      "client": "172.20.0.1:40062",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.128.223",
+      "outcome": "relayed",
+      "bytes_up": 508,
+      "bytes_down": 5067,
+      "dur_s": 0.067
+    },
+    {
+      "ts": 1795145355.197,
+      "client": "172.20.0.1:40078",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.64.223",
+      "outcome": "relayed",
+      "bytes_up": 508,
+      "bytes_down": 5067,
+      "dur_s": 0.067
+    },
+    {
+      "ts": 1795145355.197,
+      "client": "172.20.0.1:40048",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.0.223",
+      "outcome": "relayed",
+      "bytes_up": 508,
+      "bytes_down": 5067,
+      "dur_s": 0.069
+    },
+    {
+      "ts": 1795145355.197,
+      "client": "172.20.0.1:40076",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.192.223",
+      "outcome": "relayed",
+      "bytes_up": 508,
+      "bytes_down": 5067,
+      "dur_s": 0.144
+    },
+    {
+      "ts": 1795145355.197,
+      "client": "172.20.0.1:40044",
+      "port": 443,
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.64.223",
+      "outcome": "relayed",
+      "bytes_up": 1579,
+      "bytes_down": 1799624,
+      "dur_s": 0.312
+    }
+  ],
+  "hosts": [
+    "astral.sh",
+    "files.pythonhosted.org",
+    "github.com",
+    "pypi.org",
+    "release-assets.githubusercontent.com",
+    "releases.astral.sh"
+  ],
+  "connection_count": 15,
+  "bytes_up": 11834,
+  "bytes_down": 23471657,
+  "declared_network_policy": {
+    "mode": "public",
+    "allowed_hosts": []
+  },
+  "observed_outside_policy": [],
+  "policy_comparison": "SNI hostname comparison only; IP/CIDR rules cannot be evaluated from SNI",
+  "malformed_lines": []
+}
