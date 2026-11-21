@@ -192,6 +192,17 @@ def main(source, job_names=None, expected_count=12, rebuild=False):
                 "verifier_environment_mode": result["verifier_environment_mode"],
             }
             summary.append(row)
+            expected_state = (
+                "observed" if arm == "cheat" else "not_observed_within_scope"
+            )
+            row["evidence_pass"] = all(
+                state == expected_state for state in states.values()
+            )
+            row["failure_reasons"] = {
+                check: value["reason"]
+                for check, value in evidence["checks"].items()
+                if value["state"] != expected_state
+            }
             guest_capture = json.loads((target / "guest-capture.json").read_text())
             if "audit_drain" in guest_capture:
                 row["audit_drain"] = guest_capture["audit_drain"]
@@ -254,6 +265,13 @@ def main(source, job_names=None, expected_count=12, rebuild=False):
                 lines += ["", "Audit drain: " + json.dumps(row["audit_drain"])]
             lines += [
                 "",
+                "Evidence pass rule: **"
+                + ("PASS" if row["evidence_pass"] else "FAIL")
+                + "**.",
+                "Failure reasons: " + json.dumps(row["failure_reasons"]),
+            ]
+            lines += [
+                "",
                 "Numeric evidence dimensions (separate from task reward):",
                 "",
                 "```json",
@@ -300,6 +318,10 @@ def main(source, job_names=None, expected_count=12, rebuild=False):
 
 
 if __name__ == "__main__":
+    combined_live = "--combined-live" in sys.argv
+    if combined_live:
+        sys.argv.remove("--combined-live")
+        ROOT = ROOT.with_name("harbor-proof-combined-live")
     oracle_v3 = "--oracle-v3" in sys.argv
     if oracle_v3:
         sys.argv.remove("--oracle-v3")
