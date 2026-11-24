@@ -1,0 +1,242 @@
+$ /bin/bash macos-lima/run-jibril.sh
+ProductName:		macOS
+ProductVersion:		26.6.2
+BuildVersion:		25G83
+arm64
+machdep.cpu.brand_string: Apple M4 Pro (Virtual)
+hw.model: VirtualMac2,1
+kern.hv_support: 0
+Homebrew 7.0.7
+==> Auto-updating Homebrew...
+Adjust how often this is run with `$HOMEBREW_AUTO_UPDATE_SECS` or disable with
+`$HOMEBREW_NO_AUTO_UPDATE=1`. Hide these hints with `$HOMEBREW_NO_ENV_HINTS=1` (see `man brew`).
+==> Downloading https://ghcr.io/v2/homebrew/core/portable-ruby/blobs/sha256:832729e175b3c0864c8417ebc2bdcf1509e3856a08bd866c8bb0de806da6964e
+#=#=#
+
+###############################################################           88.0%
+######################################################################## 100.0%
+==> Pouring portable-ruby-4.0.10.arm64_big_sur.bottle.tar.gz
+==> Homebrew's analytics have entirely moved to our InfluxDB instance in the EU.
+We gather less data than before and have destroyed all Google Analytics data:
+  https://docs.brew.sh/Analytics
+Please reconsider re-enabling analytics to help our volunteer maintainers with:
+  brew analytics on
+==> Homebrew is run entirely by unpaid volunteers. Please consider donating:
+  https://github.com/Homebrew/brew#-donations
+
+==> Downloading bottle manifests
+✔︎ Bottle Manifest lima (2.3.0)
+✔︎ Bottle Manifest qemu (11.1.3)
+✔︎ Bottle Manifest lima-additional-guestagents (2.3.0)
+==> Would install 3 formulae:
+lima                         2.3.0   (50.5MB)
+lima-additional-guestagents  2.3.0   (39.7MB)
+qemu                         11.1.3  (113.3MB)
+==> Would install 14 dependencies for lima-additional-guestagents:
+lima      2.3.0
+capstone  5.0.9
+libyaml   0.2.5
+dtc       1.8.1
+libtasn1  4.21.0
+nettle    4.0
+p11-kit   0.26.6
+gnutls    3.8.14
+libslirp  4.9.7
+libssh    0.12.2_1
+libusb    1.0.30
+snappy    1.3.1
+vde       2.3.3
+qemu      11.1.3
+==> Would upgrade 6 dependencies for lima-additional-guestagents:
+libunistring     1.4.2      -> 1.5
+glib             2.90.0     -> 2.90.1
+ca-certificates  2026-09-25 -> 2026-11-05
+jpeg-turbo       3.2.0      -> 3.2.1
+openssl@4        4.0.3      -> 4.1.0
+lz4              1.10.0     -> 1.11.1
+==> Would install 12 dependencies for qemu:
+capstone  5.0.9
+libyaml   0.2.5
+dtc       1.8.1
+libtasn1  4.21.0
+nettle    4.0
+p11-kit   0.26.6
+gnutls    3.8.14
+libslirp  4.9.7
+libssh    0.12.2_1
+libusb    1.0.30
+snappy    1.3.1
+vde       2.3.3
+==> Would upgrade 6 dependencies for qemu:
+libunistring     1.4.2      -> 1.5
+glib             2.90.0     -> 2.90.1
+ca-certificates  2026-09-25 -> 2026-11-05
+jpeg-turbo       3.2.0      -> 3.2.1
+openssl@4        4.0.3      -> 4.1.0
+lz4              1.10.0     -> 1.11.1
+==> Fetching downloads for: lima, lima-additional-guestagents and qemu
+✔︎ Bottle Manifest libunistring (1.5)
+✔︎ Bottle Manifest capstone (5.0.9)
+✔︎ Bottle Manifest libyaml (0.2.5)
+✔︎ Bottle Manifest dtc (1.8.1)
+✔︎ Bottle Manifest glib (2.90.1)
+✔︎ Bottle Manifest ca-certificates (2026-11-05)
+✔︎ Bottle Manifest libtasn1 (4.21.0)
+✔︎ Bottle Manifest nettle (4.0)
+✔︎ Bottle Manifest p11-kit (0.26.6)
+✔︎ Bottle Manifest gnutls (3.8.14)
+✔︎ Bottle Manifest jpeg-turbo (3.2.1)
+✔︎ Bottle Manifest libslirp (4.9.7)
+✔︎ Bottle Manifest openssl@4 (4.1.0)
+✔︎ Bottle Manifest libssh (0.12.2_1)
+✔︎ Bottle Manifest libusb (1.0.30)
+✔︎ Bottle Manifest snappy (1.3.1)
+✔︎ Bottle Manifest vde (2.3.3)
+✔︎ Bottle Manifest lz4 (1.11.1)
+✔︎ Bottle p11-kit (0.26.6)
+✔︎ Bottle libssh (0.12.2_1)
+✔︎ Bottle libtasn1 (4.21.0)
+✔︎ Bottle capstone (5.0.9)
+✔︎ Bottle vde (2.3.3)
+✔︎ Bottle dtc (1.8.1)
+✔︎ Bottle libyaml (0.2.5)
+✔︎ Bottle nettle (4.0)
+✔︎ Bottle libslirp (4.9.7)
+✔︎ Bottle jpeg-turbo (3.2.1)
+✔︎ Bottle lz4 (1.11.1)
+✔︎ Bottle snappy (1.3.1)
+✔︎ Bottle ca-certificates (2026-11-05)
+✔︎ Bottle lima-additional-guestagents (2.3.0)
+✔︎ Bottle libusb (1.0.30)
+✔︎ Bottle glib (2.90.1)
+✔︎ Bottle libunistring (1.5)
+✔︎ Bottle gnutls (3.8.14)
+✔︎ Bottle lima (2.3.0)
+✔︎ Bottle qemu (11.1.3)
+✔︎ Bottle openssl@4 (4.1.0)
+==> Pouring lima--2.3.0.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/lima/2.3.0: 157 files, 113MB
+==> Installing dependencies for lima-additional-guestagents: libunistring, capstone, libyaml, dtc, glib, ca-certificates, libtasn1, nettle, p11-kit, gnutls, jpeg-turbo, libslirp, openssl@4, libssh, libusb, snappy, vde, lz4 and qemu
+==> Upgrading lima-additional-guestagents dependency: libunistring (1.4.2 -> 1.5)
+==> Pouring libunistring--1.5.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libunistring/1.5: 59 files, 5.8MB
+==> Installing lima-additional-guestagents dependency: capstone (5.0.9)
+==> Pouring capstone--5.0.9.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/capstone/5.0.9: 31 files, 23.4MB
+==> Installing lima-additional-guestagents dependency: libyaml (0.2.5)
+==> Pouring libyaml--0.2.5.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libyaml/0.2.5: 11 files, 342KB
+==> Installing lima-additional-guestagents dependency: dtc (1.8.1)
+==> Pouring dtc--1.8.1.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/dtc/1.8.1: 19 files, 588.2KB
+==> Upgrading lima-additional-guestagents dependency: glib (2.90.0 -> 2.90.1)
+==> Pouring glib--2.90.1.arm64_tahoe.bottle.1.tar.gz
+🍺  /opt/homebrew/Cellar/glib/2.90.1: 502 files, 40.1MB
+==> Upgrading lima-additional-guestagents dependency: ca-certificates (2026-09-25 -> 2026-11-05)
+==> Pouring ca-certificates--2026-11-05.all.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/ca-certificates/2026-11-05: 5 files, 196.1KB
+==> Installing lima-additional-guestagents dependency: libtasn1 (4.21.0)
+==> Pouring libtasn1--4.21.0.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libtasn1/4.21.0: 64 files, 651.7KB
+==> Installing lima-additional-guestagents dependency: nettle (4.0)
+==> Pouring nettle--4.0.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/nettle/4.0: 93 files, 2.7MB
+==> Installing lima-additional-guestagents dependency: p11-kit (0.26.6)
+==> Pouring p11-kit--0.26.6.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/p11-kit/0.26.6: 33 files, 4.9MB
+==> Installing lima-additional-guestagents dependency: gnutls (3.8.14)
+==> Pouring gnutls--3.8.14.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/gnutls/3.8.14: 1,293 files, 11.2MB
+==> Upgrading lima-additional-guestagents dependency: jpeg-turbo (3.2.0 -> 3.2.1)
+==> Pouring jpeg-turbo--3.2.1.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/jpeg-turbo/3.2.1: 47 files, 4.1MB
+==> Installing lima-additional-guestagents dependency: libslirp (4.9.7)
+==> Pouring libslirp--4.9.7.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libslirp/4.9.7: 13 files, 434.7KB
+==> Upgrading lima-additional-guestagents dependency: openssl@4 (4.0.3 -> 4.1.0)
+==> Pouring openssl@4--4.1.0.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/openssl@4/4.1.0: 6,869 files, 24.6MB
+==> Installing lima-additional-guestagents dependency: libssh (0.12.2_1)
+==> Pouring libssh--0.12.2_1.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libssh/0.12.2_1: 25 files, 1.7MB
+==> Installing lima-additional-guestagents dependency: libusb (1.0.30)
+==> Pouring libusb--1.0.30.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libusb/1.0.30: 23 files, 622.3KB
+==> Installing lima-additional-guestagents dependency: snappy (1.3.1)
+==> Pouring snappy--1.3.1.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/snappy/1.3.1: 20 files, 172.4KB
+==> Installing lima-additional-guestagents dependency: vde (2.3.3)
+==> Pouring vde--2.3.3.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/vde/2.3.3: 67 files, 1.2MB
+==> Upgrading lima-additional-guestagents dependency: lz4 (1.10.0 -> 1.11.1)
+==> Pouring lz4--1.11.1.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/lz4/1.11.1: 28 files, 835.7KB
+==> Installing lima-additional-guestagents dependency: qemu (11.1.3)
+==> Pouring qemu--11.1.3.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/qemu/11.1.3: 170 files, 729.2MB
+==> Installing lima-additional-guestagents
+==> Pouring lima-additional-guestagents--2.3.0.arm64_tahoe.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/lima-additional-guestagents/2.3.0: 11 files, 39.8MB
+==> Caveats
+zsh completions have been installed to:
+  /opt/homebrew/share/zsh/site-functions
+==> lima
+The guest agents for non-native architectures are now provided in a separate formula:
+  brew install lima-additional-guestagents
+limactl version 2.3.0
+QEMU emulator version 11.1.3
+Copyright (c) 2003-2026 Fabrice Bellard and the QEMU Project developers
+Starting fresh Lima instance jibril-tcg (Ubuntu 24.04, x86_64, QEMU).
+time="2026-11-24T09:44:25-08:00" level=info msg="Terminal is not available, proceeding without opening an editor"
+time="2026-11-24T09:44:25-08:00" level=info msg="Starting the instance `jibril-tcg` with internal VM driver `qemu`"
+time="2026-11-24T09:44:25-08:00" level=info msg="Attempting to download the image" arch=x86_64 digest="sha256:04e8f2461a16a44e78a370284471f29616cdd9baf1893df25807b71f985b6c94" location="https://cloud-images.ubuntu.com/releases/noble/release-20261017/ubuntu-24.04-server-cloudimg-amd64.img"
+Downloading the image (ubuntu-24.04-server-cloudimg-amd64.img)
+time="2026-11-24T09:44:52-08:00" level=info msg="Downloaded the image from `https://cloud-images.ubuntu.com/releases/noble/release-20261017/ubuntu-24.04-server-cloudimg-amd64.img`"
+time="2026-11-24T09:44:52-08:00" level=info msg="Resize instance jibril-tcg's disk from 3.5GiB to 20GiB"
+time="2026-11-24T09:44:53-08:00" level=info msg="[hostagent] hostagent socket created at /Users/devin/.lima/jibril-tcg/ha.sock"
+time="2026-11-24T09:44:53-08:00" level=warning msg="[hostagent] Hypervisor API (kern.hv_support) is not available. Disabling HVF. Expect very poor performance." error="<nil>"
+time="2026-11-24T09:44:53-08:00" level=info msg="[hostagent] Using system firmware (`/opt/homebrew/share/qemu/edk2-x86_64-code.fd`)"
+time="2026-11-24T09:44:53-08:00" level=info msg="[hostagent] Starting QEMU (hint: to watch the boot progress, see `/Users/devin/.lima/jibril-tcg/serial*.log`)"
+time="2026-11-24T09:44:53-08:00" level=info msg="SSH Local Port: 52467"
+time="2026-11-24T09:44:53-08:00" level=info msg="( 1/5) 🕐 SSH connection (essential)"
+time="2026-11-24T09:45:58-08:00" level=info msg="[hostagent] Pinning the SSH host key of the guest (SHA256:wwctXU/JQEvNh/63+6Rtewsiou6+Ja4Qc7iY8NZhhFk) in `ssh.known_hosts`"
+time="2026-11-24T09:46:02-08:00" level=info msg="( 1/5) ✅ SSH connection"
+time="2026-11-24T09:46:02-08:00" level=info msg="( 2/5) 🕐 User session to be ready for SSH (essential)"
+time="2026-11-24T09:46:21-08:00" level=info msg="( 2/5) ✅ User session to be ready for SSH"
+time="2026-11-24T09:46:21-08:00" level=info msg="( 3/5) 🕐 Persistent SSH ControlMaster (essential)"
+time="2026-11-24T09:46:22-08:00" level=info msg="( 3/5) ✅ Persistent SSH ControlMaster"
+time="2026-11-24T09:46:22-08:00" level=info msg="( 4/5) 🕐 Guest agent to be running"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Stopping forwarding `/run/lima-guestagent.sock` (guest) to `/Users/devin/.lima/jibril-tcg/ga.sock` (host)"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Forwarding `/run/lima-guestagent.sock` (guest) to `/Users/devin/.lima/jibril-tcg/ga.sock` (host)"
+time="2026-11-24T09:46:22-08:00" level=info msg="( 4/5) ✅ Guest agent to be running"
+time="2026-11-24T09:46:22-08:00" level=info msg="( 5/5) 🕐 Boot scripts to be finished"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Guest agent is running"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Time sync: guest agent is alive, starting time synchronization"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Not forwarding TCP 0.0.0.0:22"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Not forwarding TCP 127.0.0.53:53"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Not forwarding TCP 127.0.0.54:53"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Not forwarding TCP [::]:22"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Forwarding UDP from 0.0.0.0:5353 to 127.0.0.1:5353"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Not forwarding UDP 127.0.0.54:53"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Not forwarding UDP 127.0.0.53:53"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Not forwarding UDP 192.168.5.15:68"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Forwarding UDP from [::]:5353 to 127.0.0.1:5353"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Not forwarding UDP 127.0.0.1:5353"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Not forwarding UDP 127.0.0.1:5353"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Not forwarding UDP 127.0.0.1:5353"
+time="2026-11-24T09:46:22-08:00" level=info msg="[hostagent] Not forwarding UDP 127.0.0.1:5353"
+time="2026-11-24T09:46:22-08:00" level=info msg="( 5/5) ✅ Boot scripts to be finished"
+time="2026-11-24T09:46:22-08:00" level=info msg="READY. Run `limactl shell jibril-tcg` to open the shell."
+/var/folders/jj/fwmm45ns4dz80954vdr61l2w0000gn/T//jibril-lima.U0b670/jibril: OK
+Ubuntu 24.04.5 LTS
+6.8.0-147-generic x86_64
+CONFIG_FUNCTION_TRACER=y
+v2.17.0
+Running as unit: jibril-local-offline.service; invocation ID: 90c7dc74d067498da1045851d77d8e1c
+Nov 24 17:47:36 INF singleton/ebpf/engine.go:391 > ebpf: loaded 6 objects, 309 maps, 1 ringbufs, 76 programs
+Nov 24 17:47:36 INF singleton/ebpf/engine.go:393 > ebpf: attached 72 programs, 37 live links
+Nov 24 17:47:36 INF singleton/ebpf/engine.go:394 > ebpf: errors: 0 load, 0 attach, 0 link
+Nov 24 17:47:37 INF cmd/jibril/main.go:558 > hierarchy phase 'exec' scheduled 'pkg'
+active
+Jibril attach count: 72 programs, 37 live links
+Jibril is running in jibril-tcg. To stop the VM: limactl stop jibril-tcg

@@ -2,6 +2,30 @@
 
 [Shirudo's macOS quickstart](https://docs.shirudo.dev/start/quickstart-macos.html) runs Shirudo on **Linux in Lima**, not on the macOS kernel. Its separate target VM requires nested KVM; this experiment runs [Jibril's Linux eBPF agent](https://jibril.garnet.ai/) in the first Linux guest only. It does not test Shirudo's inner VM or native macOS monitoring.
 
+## Run from a fresh Mac
+
+Download [`run-jibril.sh`](run-jibril.sh) from this repository, then paste this into a native Apple Silicon Terminal from the directory with the downloaded file:
+
+```sh
+/bin/bash ./run-jibril.sh
+```
+
+- Use a native arm64 Terminal (`uname -m` must print `arm64`). The script can run the [official Homebrew installer](https://docs.brew.sh/Installation) if needed; an unprepared Mac may prompt for administrator authorization, installation of Xcode Command Line Tools, or acceptance of its license. Follow those prompts locally.
+- The script installs missing Homebrew formulae, creates a new Ubuntu 24.04 VM with 2 vCPUs, 4 GiB of RAM, and a 20 GiB virtual disk, verifies the Linux x86-64 Jibril release digest, and prints the startup attach count. It checks for a 6.8 guest kernel with function tracing and BTF before launching Jibril. It needs working HTTPS access to Homebrew, Ubuntu's image server, and GitHub.
+- This is a full **x86-64 Linux guest using [QEMU software emulation](https://lima-vm.io/docs/config/vmtype/qemu/)**. It does not require Rosetta, VZ, or hardware virtualization. Rosetta's Linux support translates user-space programs in an **arm64** Linux guest; it does not provide an x86-64 Linux kernel on which to check these eBPF hooks.
+- The default run is local-only (no token or registration) and leaves Jibril running in the guest. Stop it with `limactl stop jibril-tcg`, or delete the VM with `limactl delete jibril-tcg` after stopping it. The script refuses to reuse a VM name; set `JIBRIL_LIMA_INSTANCE` to an unused name to keep the prior VM.
+- For an explicitly authorized [dev API canary](https://github.com/jadoonf/jibril-devin-setup/blob/b974c57c3e1a2f48968eb76a758b62adca6cfe90/docs/devin-reproducible-runbook.md#dev-canary-procedure), export `GARNET_DEV_API_TOKEN` securely, then run `JIBRIL_LIMA_INSTANCE=jibril-dev /bin/bash ./run-jibril.sh --dev-canary`. This uses Jibril v2.13.0 and garnetctl v1.19.0 and registers one GitHub-kind agent against `https://dev-api.garnet.ai`, never production. The default local-only run uses v2.17.0 like the original experiment below.
+
+### Script verification
+
+The [full local-only transcript](run-from-scratch.txt) records a run on an Apple M4 Pro macOS VM. The script installed missing Lima, guest agents, and QEMU, downloaded Ubuntu into a fresh Lima state, checked `CONFIG_FUNCTION_TRACER=y`, and reported **72 attached programs, 37 live links**, with zero load, attach, or link errors and an active service.
+
+Homebrew and Xcode were already present on that host. Installing Homebrew itself, Xcode Command Line Tools/license prompts, and administrator authorization on a bare physical Mac were not exercised. Neither VZ nor Rosetta is used by the script; neither is validated by this run.
+
+The separate [dev canary transcript](dev-canary.txt) records one GitHub-kind registration after the kernel and merged-policy checks. The first readiness check used a v2.17.0-only log message and timed out even though v2.13.0 was running. Rechecking the corrected readiness and link counting on that same service found **40 live kernel eBPF links owned by Jibril**. The dev API returned events for that agent. This checks startup and events, not periodic or final profile submission.
+
+## Original experiment (PR #14)
+
 **Result: Jibril v2.17.0 loaded 72 of 76 program candidates: 40 with their own links (including 3 iterators) and 32 tail-call programs in program arrays.** The loader reported zero load, attach, or link errors on Ubuntu 24.04.5 (`6.8.0-147-generic`, x86-64) in a software-emulated Lima guest ([guest transcript](guest.txt)). The same Jibril release reported [0 of 76 on Modal](https://github.com/garnet-labs/modal-receipts/blob/da07caefbceaa7d116256e64ce7f558ef3714d14/kernel/README.md#L19-L30).
 
 ## Why it attached here
