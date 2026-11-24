@@ -64,7 +64,8 @@ sudo timeout 180 sh -c '
   until journalctl "_SYSTEMD_INVOCATION_ID=$1" --no-pager -o cat | grep -Fq "$2"; do
     sleep 1
   done
-' sh "$invocation_id" "hierarchy phase 'exec' scheduled 'pkg'" || exit 1
+' sh "$invocation_id" "hierarchy phase 'exec' scheduled 'pkg'" ||
+  echo 'Jibril did not reach exec within 180s; check the journal below.' >&2
 
 sudo journalctl -u jibril-local-offline --no-pager -o cat
 sudo bpftool prog show
