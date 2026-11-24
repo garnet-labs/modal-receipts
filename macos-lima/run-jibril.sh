@@ -60,6 +60,7 @@ printf 'Starting fresh Lima instance %s (Ubuntu 24.04, x86_64, QEMU).\n' "$insta
 limactl start --tty=false --name="$instance" --vm-type=qemu --arch=x86_64 \
   --cpus=2 --memory=4 --disk=20 --mount-none --containerd=none \
   --timeout=15m template:ubuntu-24.04
+printf 'To stop the VM: %q stop %q\n' "$limactl_bin" "$instance"
 lima_shell() { limactl shell --workdir / "$instance" -- "$@"; }
 
 curl -fsSL "https://github.com/garnet-org/jibril-releases/releases/download/$version/jibril" \
@@ -228,4 +229,3 @@ GUEST
 
 printf 'Jibril is running in %s.\n' "$instance"
 printf 'To open a guest shell: %q shell %q\n' "$limactl_bin" "$instance"
-printf 'To stop the VM: %q stop %q\n' "$limactl_bin" "$instance"
