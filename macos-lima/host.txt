@@ -1,0 +1,34 @@
+$ sw_vers
+ProductName:	macOS
+ProductVersion:	26.6.2
+BuildVersion:	25G83
+$ uname -m
+arm64
+$ sysctl machdep.cpu.brand_string hw.model kern.hv_support
+machdep.cpu.brand_string: Apple M4 Pro (Virtual)
+hw.model: VirtualMac2,1
+kern.hv_support: 0
+$ limactl --version
+limactl version 2.3.0
+$ limactl start --tty=false --name=jibril-stock template:ubuntu-24.04
+time="2026-11-24T09:27:02-08:00" level=info msg="Starting the instance `jibril-stock` with internal VM driver `vz`"
+time="2026-11-24T09:27:42-08:00" level=info msg="[hostagent] Starting VZ (hint: to watch the boot progress, see `/Users/devin/.lima/jibril-stock/serial*.log`)"
+time="2026-11-24T09:27:42-08:00" level=fatal msg="exiting, status={Running:false Degraded:false Exiting:true Errors:[] SSHLocalPort:0 CloudInitProgress:<nil> PortForward:<nil> Vsock:<nil> RequirementProgress:<nil>} (hint: see `/Users/devin/.lima/jibril-stock/ha.stderr.log`)"
+[exit 1; intervening download and setup lines omitted]
+$ tail -n 1 ~/.lima/jibril-stock/ha.stderr.log
+{"level":"fatal","msg":"Error Domain=VZErrorDomain Code=2 Description=\"Invalid virtual machine configuration. Virtualization is not available on this hardware.\" UserInfo={\n    NSLocalizedFailure = \"Invalid virtual machine configuration.\";\n    NSLocalizedFailureReason = \"Virtualization is not available on this hardware.\";\n}","time":"2026-11-24T09:27:42-08:00"}
+$ file ~/jibril-v2.13.0 ~/jibril-v2.17.0
+/Users/devin/jibril-v2.13.0: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, BuildID[sha1]=004d188c383d61efbab5b3ab0c5461ffc18657e1, for GNU/Linux 3.2.0, stripped
+/Users/devin/jibril-v2.17.0: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, BuildID[sha1]=e4c461cddb2198c6ca668c783706f9d92c88bba8, for GNU/Linux 3.2.0, stripped
+$ shasum -a 256 ~/jibril-v2.17.0
+05285e7ba90c64e934ebd8705b8cfd8512b5dafc0c79209d436a66f67409e3f3  /Users/devin/jibril-v2.17.0
+$ qemu-system-x86_64 --version
+QEMU emulator version 11.1.3
+$ limactl start --tty=false --name=jibril-tcg --vm-type=qemu --arch=x86_64 --cpus=2 --memory=4 --disk=20 --mount-none --containerd=none --timeout=15m template:ubuntu-24.04
+time="2026-11-24T09:28:21-08:00" level=info msg="Starting the instance `jibril-tcg` with internal VM driver `qemu`"
+time="2026-11-24T09:28:21-08:00" level=info msg="Attempting to download the image" arch=x86_64 digest="sha256:04e8f2461a16a44e78a370284471f29616cdd9baf1893df25807b71f985b6c94" location="https://cloud-images.ubuntu.com/releases/noble/release-20261017/ubuntu-24.04-server-cloudimg-amd64.img"
+time="2026-11-24T09:28:43-08:00" level=warning msg="[hostagent] Hypervisor API (kern.hv_support) is not available. Disabling HVF. Expect very poor performance." error="<nil>"
+time="2026-11-24T09:28:43-08:00" level=info msg="[hostagent] Starting QEMU (hint: to watch the boot progress, see `/Users/devin/.lima/jibril-tcg/serial*.log`)"
+time="2026-11-24T09:29:59-08:00" level=info msg="READY. Run `limactl shell jibril-tcg` to open the shell."
+$ ps -axo command | grep '^qemu-system-x86_64 '
+qemu-system-x86_64 -m 4096 -cpu max,-avx512vl,-pdpe1gb -machine q35,vmport=off -accel tcg,thread=multi,tb-size=512 -global ICH9-LPC.disable_s3=1 -global ICH9-LPC.disable_s4=1 -smp 2,sockets=1,cores=2,threads=1 [remaining arguments omitted]

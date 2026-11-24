@@ -1,0 +1,76 @@
+$ uname -r -m
+6.8.0-147-generic x86_64
+$ . /etc/os-release; printf '%s\n' "$PRETTY_NAME"
+Ubuntu 24.04.5 LTS
+$ grep -E '^CONFIG_(BPF_SYSCALL|BPF_JIT|BPF_LSM|KPROBES|MODULES|DEBUG_INFO_BTF|FTRACE|FUNCTION_TRACER|FPROBE|KPROBE_EVENTS|BPF_EVENTS)=' /boot/config-$(uname -r)
+CONFIG_BPF_SYSCALL=y
+CONFIG_BPF_JIT=y
+CONFIG_BPF_LSM=y
+CONFIG_KPROBES=y
+CONFIG_MODULES=y
+CONFIG_DEBUG_INFO_BTF=y
+CONFIG_FTRACE=y
+CONFIG_FUNCTION_TRACER=y
+CONFIG_FPROBE=y
+CONFIG_KPROBE_EVENTS=y
+CONFIG_BPF_EVENTS=y
+$ stat -c '%n: %s bytes' /sys/kernel/btf/vmlinux
+/sys/kernel/btf/vmlinux: 6103569 bytes
+$ sudo stat -c '%n: %F' /sys/kernel/tracing/available_events /sys/kernel/tracing/kprobe_events
+/sys/kernel/tracing/available_events: regular empty file
+/sys/kernel/tracing/kprobe_events: regular empty file
+$ sudo bpftool version
+bpftool v7.4.0
+using libbpf v1.4
+features:
+$ sudo apt-get install -y --no-install-recommends linux-tools-common linux-tools-$(uname -r)
+linux-tools-6.8.0-147-generic is already the newest version (6.8.0-147.147).
+The following packages will be upgraded:
+  linux-libc-dev linux-tools-common
+2 upgraded, 0 newly installed, 0 to remove and 63 not upgraded.
+$ sudo env -i HOME=/root PATH=/usr/sbin:/usr/bin:/sbin:/bin /usr/local/bin/jibril --version
+v2.17.0
+$ sudo journalctl -u jibril-local-test --no-pager -o cat
+[selected lines, ANSI colors removed]
+Nov 24 17:31:53 INF singleton/ebpf/engine.go:391 > ebpf: loaded 6 objects, 309 maps, 1 ringbufs, 76 programs
+Nov 24 17:31:53 INF singleton/ebpf/engine.go:393 > ebpf: attached 72 programs, 37 live links
+Nov 24 17:31:53 INF singleton/ebpf/engine.go:394 > ebpf: errors: 0 load, 0 attach, 0 link
+Nov 24 17:31:54 ERR pkgs/hierarchy/hierarchy.go:641 > init failed for 'agent' failed to decide project token: GARNET_API_TOKEN (project API token) is required.
+jibril-local-test.service: Main process exited, code=exited, status=1/FAILURE
+
+$ sudo journalctl -u jibril-local-offline --no-pager -o cat
+[selected lines, ANSI colors removed]
+Nov 24 17:34:37 INF singleton/ebpf/engine.go:391 > ebpf: loaded 6 objects, 309 maps, 1 ringbufs, 76 programs
+Nov 24 17:34:37 INF singleton/ebpf/engine.go:393 > ebpf: attached 72 programs, 37 live links
+Nov 24 17:34:37 INF singleton/ebpf/engine.go:394 > ebpf: errors: 0 load, 0 attach, 0 link
+Nov 24 17:34:38 WRN services/agent/engine.go:40 > skipping agent registration
+Nov 24 17:34:39 INF cmd/jibril/main.go:558 > hierarchy phase 'exec' scheduled 'pkg'
+$ systemctl show jibril-local-offline -p ActiveState -p SubState -p MainPID
+MainPID=2491
+ActiveState=active
+SubState=running
+
+[Results of comparing IDs from sudo bpftool -j prog show and sudo bpftool -j link show,
+ captured immediately before offline launch and again after Jibril reached exec.]
+progs: before=40 after=86 new=72 gone=26
+new types: {'cgroup_skb': 22, 'kprobe': 2, 'tracepoint': 18, 'tracing': 30}
+links: before=2 after=42 new=40 gone=0
+new types: {'cgroup': 2, 'iter': 3, 'perf_event': 8, 'raw_tracepoint': 3, 'tracing': 24}
+unique new linked program IDs: 40
+new programs with links: 40
+new programs without links: 32
+new unlinked tail-call programs: 32
+
+$ sudo bpftool btf dump file /sys/kernel/btf/vmlinux format raw
+[only the function IDs for the four socket hook groups]
+[102902] FUNC '__sys_connect_file' type_id=102901 linkage=static
+[110921] FUNC 'security_socket_connect' type_id=37132 linkage=static
+[110929] FUNC 'security_socket_post_create' type_id=37148 linkage=static
+[110930] FUNC 'security_socket_recvmsg' type_id=37150 linkage=static
+[110931] FUNC 'security_socket_sendmsg' type_id=37152 linkage=static
+[111344] FUNC 'sock_alloc_file' type_id=111343 linkage=static
+[111366] FUNC 'sock_recvmsg' type_id=111365 linkage=static
+[111371] FUNC 'sock_sendmsg' type_id=111370 linkage=static
+[Joined bpftool link JSON target_btf_id (target_obj_id=1) to the above function IDs.]
+primary targets found: ['security_socket_connect', 'security_socket_post_create', 'security_socket_recvmsg', 'security_socket_sendmsg']
+fallback targets found: []
