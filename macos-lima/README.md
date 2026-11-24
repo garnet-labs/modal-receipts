@@ -2,7 +2,7 @@
 
 [Shirudo's macOS quickstart](https://docs.shirudo.dev/start/quickstart-macos.html) runs Shirudo on **Linux in Lima**, not on the macOS kernel. Its separate target VM requires nested KVM; this experiment runs [Jibril's Linux eBPF agent](https://jibril.garnet.ai/) in the first Linux guest only. It does not test Shirudo's inner VM or native macOS monitoring.
 
-**Result: Jibril v2.17.0 attached 72 of 76 program candidates with zero load, attach, or link errors** on Ubuntu 24.04.5 (`6.8.0-147-generic`, x86-64) in a software-emulated Lima guest ([guest transcript](guest.txt)). The same Jibril release attached [0 of 76 on Modal](https://github.com/garnet-labs/modal-receipts/blob/da07caefbceaa7d116256e64ce7f558ef3714d14/kernel/README.md#L19-L30).
+**Result: Jibril v2.17.0 loaded 72 of 76 program candidates: 40 with their own links (including 3 iterators) and 32 tail-call programs in program arrays.** The loader reported zero load, attach, or link errors on Ubuntu 24.04.5 (`6.8.0-147-generic`, x86-64) in a software-emulated Lima guest ([guest transcript](guest.txt)). The same Jibril release reported [0 of 76 on Modal](https://github.com/garnet-labs/modal-receipts/blob/da07caefbceaa7d116256e64ce7f558ef3714d14/kernel/README.md#L19-L30).
 
 ## Why it attached here
 
@@ -51,7 +51,7 @@ sudo /usr/local/bin/jibril --version
 
 `bpftool` was already present on the selected Ubuntu image. The optional `sudo apt-get update && sudo apt-get install -y --no-install-recommends linux-tools-common linux-tools-$(uname -r)` upgraded two ancillary packages, not the boot kernel ([guest transcript](guest.txt)).
 
-**Custom local-only launch:** the first run, with an empty environment and no token, attached programs and then exited because agent initialization required a project token ([guest transcript](guest.txt)). The second run uses the release's [`GARNET_SAR` registration bypass](https://github.com/garnet-org/jibril/blob/3478c051434fdff3d921c86cae9feffa21fb21a6/pkg/services/agent/engine.go#L33-L54) and [`GARNET_SAR_PRINTER` printer bypass](https://github.com/garnet-org/jibril/blob/3478c051434fdff3d921c86cae9feffa21fb21a6/pkg/printers/garnet/garnet.go#L35-L56). No credentials are passed and no Garnet agent is registered or profiles submitted.
+**Custom local-only launch:** the first run, with an empty environment and no token, finished loading the eBPF programs and then exited because agent initialization required a project token ([guest transcript](guest.txt)). The second run uses the release's [`GARNET_SAR` registration bypass](https://github.com/garnet-org/jibril/blob/3478c051434fdff3d921c86cae9feffa21fb21a6/pkg/services/agent/engine.go#L33-L54) and [`GARNET_SAR_PRINTER` printer bypass](https://github.com/garnet-org/jibril/blob/3478c051434fdff3d921c86cae9feffa21fb21a6/pkg/printers/garnet/garnet.go#L35-L56). No credentials are passed and no Garnet agent is registered or profiles submitted.
 
 ```sh
 sudo systemd-run --unit=jibril-local-offline --property=Type=exec \
