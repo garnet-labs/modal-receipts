@@ -50,7 +50,8 @@ done
 if [[ ${#missing[@]} -gt 0 ]]; then
   "$brew_bin" install "${missing[@]}"
 fi
-limactl --version
+limactl_bin=$(command -v limactl)
+"$limactl_bin" --version
 qemu-system-x86_64 --version
 
 [[ ! -e ${LIMA_HOME:-$HOME/.lima}/$instance ]] ||
@@ -225,4 +226,6 @@ GUEST
   exec /bin/bash -s -- "$@"
 ' bash "$stage" "$mode" "$version"
 
-printf 'Jibril is running in %s. To stop the VM: limactl stop %s\n' "$instance" "$instance"
+printf 'Jibril is running in %s.\n' "$instance"
+printf 'To open a guest shell: %q shell %q\n' "$limactl_bin" "$instance"
+printf 'To stop the VM: %q stop %q\n' "$limactl_bin" "$instance"
