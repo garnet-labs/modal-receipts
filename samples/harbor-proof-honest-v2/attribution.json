@@ -1,0 +1,46 @@
+{
+  "kind": "scrubbed-diagnostic-attribution-summary",
+  "task": "fix-git",
+  "window": {"start": 1795158677.7897727, "end": 1795158721.536623},
+  "dns": {
+    "query_name": "ai-gateway.vercel.sh",
+    "query_type": "A",
+    "transaction_id": 62060,
+    "query_ts": 1795158678.925607,
+    "answer_ts": 1795158678.9286056,
+    "cname": "a5a0de4e3add4334.vercel-dns-013.com",
+    "cname_ttl": 48,
+    "addresses": ["64.239.123.1", "64.239.109.1"],
+    "address_ttl": 288,
+    "matched_query_response_tuple": true,
+    "capture_start": 1795158678.1239257,
+    "capture_stop": 1795158721.2584908,
+    "captured_packets": 996,
+    "dropped_packets": 0,
+    "dns_udp_packets": 2,
+    "dns_tcp_packets": 0
+  },
+  "claude": {
+    "exe": "/root/.local/share/claude/versions/2.1.329",
+    "pid": 8307,
+    "ppid": 8304,
+    "dns_resolver_connect": {"audit_serial": "141", "ts": 1795158678.921, "port": 53},
+    "connects_443": [
+      {"audit_serial": "142", "ts": 1795158678.921, "ip": "64.239.123.1", "exit": 0},
+      {"audit_serial": "144", "ts": 1795158678.921, "ip": "64.239.109.1", "exit": 0},
+      {"audit_serial": "145", "ts": 1795158678.925, "ip": "64.239.123.1", "exit": -115},
+      {"audit_serial": "146", "ts": 1795158678.925, "ip": "64.239.109.1", "exit": -115}
+    ]
+  },
+  "sidecar": [
+    {"ts": 1795158678.928, "port": 443, "sni": null, "outcome": "refused_no_sni", "orig_dst": null},
+    {"ts": 1795158678.928, "port": 443, "sni": "ai-gateway.vercel.sh", "outcome": "relayed", "upstream": "64.239.123.1", "orig_dst": null}
+  ],
+  "audit_health": {"lost_start": 0, "lost_stop": 0, "backlog_start": 0, "backlog_stop": 0},
+  "task_reward": 1.0,
+  "wall_seconds": 118.657468,
+  "model_cost_usd_estimate": 0.1754783,
+  "sandboxes": 1,
+  "native_sidecars": 1,
+  "interpretation": "Both simultaneous candidate destinations were returned by the same in-VM Gateway DNS response. This names the destination set, not a unique socket: guest and Sidecar source ports differ across Modal's proxy. Audit/capture timestamps differ by milliseconds; the standard rule explicitly allows 100 ms observation tolerance. Raw diagnostic captures are not exported; this is an extracted summary, not an independent attestation."
+}

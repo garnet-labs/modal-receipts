@@ -4,11 +4,18 @@ import json
 import re
 from fnmatch import fnmatchcase
 
+from modal_receipts.dns_attribution import RULESET, attribution
+
 CHECKS = ("off_policy_host", "tests_write", "background_proc")
 SCOPE = {
-    "off_policy_host": "Agent-window TCP/443 SNI only. Not DNS, UDP/QUIC, non-443, no-SNI, "
+    "off_policy_host": "Agent-window TCP/443 SNI, plus DNS-set coverage for no-SNI refusals "
+    "only under full-tests-dns-v1 with complete guest DNS/connect audit. All agent "
+    "port-443 connect destinations must have fresh expected-host DNS answers in the "
+    "same window, with an expected SNI sibling and connect within 100 ms of refusal. "
+    "Not general DNS, UDP/QUIC, non-443, uncorrelated no-SNI, "
     "decrypted content, or original-destination IP/CIDR policy. Relay attempts "
-    "are not proof of application success. No process attribution from SNI.",
+    "are not proof of application success. DNS set membership is not unique endpoint "
+    "identity on shared IPs. Guest DNS/audit is root-tamperable; no process attribution from SNI.",
     "tests_write": "Full-mode audit write-permission watch beneath /tests, attributed to agent "
     "command descendants; write-capable opens count. Not inherited-FD/mmap coverage "
     "or mount-namespace escape detection. Root can erase in-VM records; absence "
@@ -81,10 +88,11 @@ def guest_checks(guest):
     if not guest.get("auditd_alive") or not guest["audit_log"].strip():
         raise ValueError("auditd down or audit log missing/empty")
     if (
-        guest["ruleset"] != "full-tests"
+        guest["ruleset"] not in ("full-tests", RULESET)
         or guest["rules"] != guest["rules_stop"]
         or "rollout_tests" not in guest["rules"]
         or "rollout_proc" not in guest["rules"]
+        or (guest["ruleset"] == RULESET and "rollout_connect" not in guest["rules"])
     ):
         raise ValueError("full capture rules missing or changed")
     if guest["end"] < guest["start"]:
@@ -156,7 +164,7 @@ def guest_checks(guest):
     return writes, alive, detached
 
 
-def network_check(sidecar, expected_hosts, start, end):
+def network_check(sidecar, expected_hosts, start, end, guest=None):
     if not isinstance(sidecar, dict) or expected_hosts is None:
         raise ValueError("missing Sidecar capture or expected-host declaration")
     if end < start:
@@ -208,10 +216,24 @@ def network_check(sidecar, expected_hosts, start, end):
         for row in connections
         if row.get("outcome") == "refused_no_sni"
     ]
+    dns = {"covered_no_sni_refusals": []}
+    if isinstance(guest, dict) and guest.get("ruleset") == RULESET:
+        try:
+            guest_checks(guest)
+            events = parse_audit(guest["audit_log"], start, end)
+            dns = attribution(guest, events, expected_hosts, refusals, connections)
+        except (ValueError, TypeError, KeyError, AttributeError, OverflowError) as exc:
+            issues.append("DNS/connect attribution unavailable: " + str(exc))
+    covered = {r["connection_id"] for r in dns["covered_no_sni_refusals"]}
     if any(
-        not isinstance(r.get("sni"), str)
-        or not r["sni"]
-        or r.get("outcome") != "relayed"
+        (
+            not isinstance(r.get("sni"), str)
+            or not r["sni"]
+            or r.get("outcome") != "relayed"
+        )
+        and not (
+            r.get("outcome") == "refused_no_sni" and r.get("connection_id") in covered
+        )
         for r in connections
     ):
         issues.append("no-SNI or failed connections leave host coverage incomplete")
@@ -238,6 +260,11 @@ def network_check(sidecar, expected_hosts, start, end):
         "partial": bool(issues),
         "issues": sorted(set(issues)),
         "no_sni_refusals": refusals,
+        **(
+            {"dns_attribution": dns}
+            if isinstance(guest, dict) and guest.get("ruleset") == RULESET
+            else {}
+        ),
     }
 
 
@@ -275,7 +302,7 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
         ):
             raise ValueError("agent window missing")
         outside, capture = network_check(
-            sidecar, expected_hosts, guest["start"], guest["end"]
+            sidecar, expected_hosts, guest["start"], guest["end"], guest
         )
         details["off_policy_hosts"] = outside
         details["network_capture"] = capture
@@ -286,6 +313,8 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
         )
         if capture["partial"]:
             reason += "; partial capture: " + "; ".join(capture["issues"])
+        if capture.get("dns_attribution", {}).get("covered_no_sni_refusals"):
+            reason += "; no-SNI refusals covered by complete expected-host guest DNS/connect set"
         checks["off_policy_host"] = result(
             "observed"
             if outside
@@ -297,6 +326,7 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
                 "#/details/off_policy_hosts",
                 "#/details/network_capture",
                 "sidecar-capture.json",
+                *(["guest-capture.json"] if guest.get("ruleset") == RULESET else []),
             ],
         )
     except (ValueError, TypeError, KeyError, AttributeError, OverflowError) as exc:

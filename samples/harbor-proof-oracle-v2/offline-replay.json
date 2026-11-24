@@ -1,0 +1,20 @@
+[
+  {
+    "task": "fix-git",
+    "retained_dns_payloads_replayed": 0,
+    "original_errors": [
+      {"ts": 1795159832.7913134, "event": "error", "reason": "unsupported IPv6 extension header"},
+      {"ts": 1795159832.9183242, "event": "error", "reason": "unsupported IPv6 extension header"}
+    ],
+    "error_packet_replay": "unavailable: old capture did not retain error packet bytes; original L4 protocol cannot be identified"
+  },
+  {
+    "task": "log-summary-date-ranges",
+    "retained_dns_payloads_replayed": 4,
+    "original_errors": [
+      {"ts": 1795159832.683178, "event": "error", "reason": "unsupported IPv6 extension header"},
+      {"ts": 1795159833.443246, "event": "error", "reason": "unsupported IPv6 extension header"}
+    ],
+    "error_packet_replay": "unavailable: old capture did not retain error packet bytes; original L4 protocol cannot be identified"
+  }
+]
