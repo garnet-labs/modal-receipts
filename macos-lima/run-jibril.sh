@@ -10,7 +10,8 @@ case "${1:-}" in
   *) die "Usage: bash run-jibril.sh [--dev-canary]" ;;
 esac
 [[ $# -le 1 ]] || die "Usage: bash run-jibril.sh [--dev-canary]"
-[[ $(uname -s) == Darwin && $(uname -m) == arm64 ]] ||
+[[ $(uname -s) == Darwin && $(uname -m) == arm64 &&
+   $(sysctl -n sysctl.proc_translated 2>/dev/null || printf 0) == 0 ]] ||
   die "Run this in a native Apple Silicon macOS terminal, not under Rosetta."
 
 version=v2.17.0
@@ -30,24 +31,24 @@ sysctl machdep.cpu.brand_string hw.model kern.hv_support
 tmp=$(mktemp -d "${TMPDIR:-/tmp}/jibril-lima.XXXXXX")
 trap 'rm -rf -- "$tmp"' EXIT
 
-if [[ ! -x /opt/homebrew/bin/brew ]] && ! command -v brew >/dev/null; then
+brew_bin=/opt/homebrew/bin/brew
+if [[ ! -x $brew_bin ]]; then
   printf 'Installing Homebrew; follow any macOS authorization prompts.\n'
   curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh -o "$tmp/homebrew.sh"
   /bin/bash "$tmp/homebrew.sh"
 fi
-brew_bin=$(command -v brew || printf /opt/homebrew/bin/brew)
-[[ ! -x /opt/homebrew/bin/brew ]] || brew_bin=/opt/homebrew/bin/brew
+[[ -x $brew_bin ]] || die "Native Homebrew is not available at $brew_bin."
 brew_env=$("$brew_bin" shellenv)
 eval "$brew_env"
-brew --version
+"$brew_bin" --version
 missing=()
 for formula in lima lima-additional-guestagents qemu; do
-  if [[ -z $(brew list --versions "$formula") ]]; then
+  if [[ -z $("$brew_bin" list --versions "$formula") ]]; then
     missing+=("$formula")
   fi
 done
 if [[ ${#missing[@]} -gt 0 ]]; then
-  brew install "${missing[@]}"
+  "$brew_bin" install "${missing[@]}"
 fi
 limactl --version
 qemu-system-x86_64 --version
