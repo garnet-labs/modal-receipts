@@ -57,6 +57,15 @@ sudo /usr/local/bin/jibril --version
 sudo systemd-run --unit=jibril-local-offline --property=Type=exec \
   /usr/bin/env -i HOME=/root PATH=/usr/sbin:/usr/bin:/sbin:/bin \
   GARNET_SAR=true GARNET_SAR_PRINTER=true /usr/local/bin/jibril
+
+# systemd-run returns before Jibril reaches its exec phase.
+invocation_id=$(systemctl show -p InvocationID --value jibril-local-offline)
+sudo timeout 180 sh -c '
+  until journalctl "_SYSTEMD_INVOCATION_ID=$1" --no-pager -o cat | grep -Fq "$2"; do
+    sleep 1
+  done
+' sh "$invocation_id" "hierarchy phase 'exec' scheduled 'pkg'" || exit 1
+
 sudo journalctl -u jibril-local-offline --no-pager -o cat
 sudo bpftool prog show
 sudo bpftool link show
