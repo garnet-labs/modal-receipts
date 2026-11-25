@@ -45,7 +45,7 @@ def census():
 
 def integrity_watches():
     missing = {}
-    paths = {"harness_executables": [], "git_objects": None}
+    paths = {"harness_executables": [], "git_objects": None, "git_remotes": []}
 
     def watch(flag, path, permission, key, check):
         try:
@@ -95,6 +95,10 @@ def integrity_watches():
             paths["git_objects"] = str(objects)
     else:
         missing["git_history"] = str(objects)
+    try:
+        paths["git_remotes"] = command("git", "remote").splitlines()
+    except (RuntimeError, FileNotFoundError):
+        pass
     return missing, paths
 
 

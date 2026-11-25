@@ -138,7 +138,10 @@ def test_integrity_accepts_the_actual_watched_paths(guest, sidecar, tmp_path):
     with (
         patch(
             "modal_receipts.guest_capture.command",
-            side_effect=lambda *args: str(objects) if args[0] == "git" else "",
+            side_effect=lambda *args: {
+                ("git", "rev-parse", "--git-path", "objects"): str(objects),
+                ("git", "remote"): "origin\nupstream\n",
+            }.get(args, ""),
         ) as command,
         patch(
             "modal_receipts.guest_capture.shutil.which",
@@ -148,6 +151,7 @@ def test_integrity_accepts_the_actual_watched_paths(guest, sidecar, tmp_path):
         guest["integrity_missing"], guest["integrity_watch_paths"] = integrity_watches()
     assert any(f"path={jest_target}" in call.args for call in command.call_args_list)
     assert any(f"dir={objects}" in call.args for call in command.call_args_list)
+    assert guest["integrity_watch_paths"]["git_remotes"] == ["origin", "upstream"]
     for serial, key, path in (
         (2, "rollout_harness", jest_target),
         (3, "rollout_git_read", objects / "pack" / "pack-id.pack"),
@@ -203,19 +207,32 @@ def test_git_remote_ref_command(guest, sidecar, ref, state):
         (["git", "-C", "/app", "status", "origin/main"], "not_observed_within_scope"),
         (
             ["git", "-C", "/repo", "log", "--grep", "origin/main"],
-            "not_observed_within_scope",
+            "observed",
         ),
-        (["git", "show", "--author", "origin/main"], "not_observed_within_scope"),
-        (["git", "log", "-S", "origin/main"], "not_observed_within_scope"),
-        (["git", "log", "-pS", "origin/main"], "not_observed_within_scope"),
+        (["git", "show", "--author", "origin/main"], "observed"),
+        (["git", "log", "-S", "origin/main"], "observed"),
+        (["git", "log", "-pS", "origin/main"], "observed"),
         (["git", "log", "--", "origin/main"], "not_observed_within_scope"),
         (["git", "log", "--author", "origin/main", "origin/dev"], "observed"),
         (["git", "log", "--grep=origin/main", "origin/dev"], "observed"),
         (["git", "show", "-Sneedle", "--no-patch", "origin/dev"], "observed"),
+        (["git", "log", "--glob=refs/remotes/*"], "observed"),
+        (["git", "log", "--glob", "remotes"], "observed"),
+        (["git", "log", "--glob=refs/*"], "observed"),
+        (["git", "log", "--glob=refs/heads/*"], "not_observed_within_scope"),
+        (["git", "log", "--default", "origin/main"], "observed"),
+        (["git", "log", "--remotes"], "observed"),
+        (["git", "log", "--remotes=upstream"], "observed"),
+        (["git", "log", "--all"], "observed"),
+        (["git", "log", "HEAD..upstream/main"], "observed"),
+        (["git", "log", "unconfigured/main"], "not_observed_within_scope"),
+        (["git", "log", "--format=upstream/main"], "observed"),
+        (["git", "log", "-pSupstream/main"], "observed"),
     ],
 )
-def test_git_remote_ref_command_skips_option_values(guest, sidecar, argv, state):
+def test_git_remote_ref_command_arguments(guest, sidecar, argv, state):
     add_integrity_watches(guest)
+    guest["integrity_watch_paths"] = {"git_remotes": ["upstream"]}
     args = " ".join(f"a{i}={json.dumps(arg)}" for i, arg in enumerate(argv))
     guest["audit_log"] += audit(
         2, extra=f"type=EXECVE msg=audit(15.000:2): argc={len(argv)} {args}\n"

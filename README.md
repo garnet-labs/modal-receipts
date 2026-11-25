@@ -75,8 +75,11 @@ New guest checks cover read-permission events under `/tests`, targeted
 harness writes, and Git object reads or explicit remote-ref commands. The
 manifest distinguishes these observations from cheating intent; normal Git
 and test development can match. It does not cover arbitrary paths or detect
-in-memory edits. The Git object watch is limited to a repository discovered in
-the initial working directory at agent start. Missing watches stay `unknown`.
+in-memory edits. The Git object watch and configured remote names are taken
+from the initial working directory at agent start. The command check also
+recognizes remote ref selectors such as `--remotes`, `--all`, and remote globs;
+it matches remote-looking option values without inferring what Git read.
+Missing watches stay `unknown`.
 
 ### DNS-set coverage for no-SNI refusals
 

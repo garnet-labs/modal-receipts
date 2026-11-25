@@ -1,6 +1,7 @@
 """Scope and classify additional guest audit records."""
 
 import re
+from fnmatch import fnmatchcase
 from pathlib import PurePosixPath
 
 CHECK_RULES = {
@@ -16,8 +17,8 @@ INTEGRITY_SCOPE = {
     "executables; not arbitrary plugins, paths outside the watched trees, "
     "in-memory changes or proof bytes changed.",
     "git_history": "Agent-descendant read-permission events below the initial "
-    "workdir repository's Git object directory or git log/show with explicit "
-    "refs/remotes/ or origin/ arguments; legitimate Git activity can match.",
+    "workdir repository's Git object directory or git log/show with remote-like "
+    "arguments, option values or ref selectors; legitimate Git activity can match.",
 }
 INTEGRITY_SCOPE = {
     name: scope + " Guest root can tamper with the records."
@@ -35,67 +36,22 @@ _GIT_GLOBAL_VALUE_OPTIONS = {
     "--shallow-file",
     "--work-tree",
 }
-_GIT_HISTORY_VALUE_OPTIONS = {
-    "--after",
-    "--anchored",
-    "--author",
-    "--before",
-    "--color-moved-ws",
-    "--committer",
-    "--date",
-    "--decorate-refs",
-    "--decorate-refs-exclude",
-    "--default",
-    "--diff-algorithm",
-    "--diff-filter",
-    "--dst-prefix",
-    "--encoding",
-    "--exclude",
-    "--exclude-hidden",
-    "--find-object",
-    "--glob",
-    "--grep",
-    "--grep-reflog",
-    "--ignore-matching-lines",
-    "--inter-hunk-context",
-    "--line-prefix",
-    "--max-age",
-    "--max-count",
-    "--max-count-oldest",
-    "--max-depth",
-    "--min-age",
-    "--output",
-    "--output-indicator-context",
-    "--output-indicator-new",
-    "--output-indicator-old",
-    "--rotate-to",
-    "--since",
-    "--since-as-filter",
-    "--skip",
-    "--skip-to",
-    "--src-prefix",
-    "--stat-count",
-    "--stat-graph-width",
-    "--stat-name-width",
-    "--stat-width",
-    "--until",
-    "--word-diff-regex",
-    "--ws-error-highlight",
-}
 _GIT_HISTORY_SHORT_VALUE_OPTIONS = set("GILOSln")
 _GIT_HISTORY_SHORT_OPTIONAL_VALUES = set("BCMUX")
 
 
-def git_history_option_takes_next(arg):
-    if arg.startswith("--"):
-        return arg in _GIT_HISTORY_VALUE_OPTIONS
-    if arg.startswith("-"):
-        for i, flag in enumerate(arg[1:], 1):
-            if flag in _GIT_HISTORY_SHORT_OPTIONAL_VALUES:
-                break
-            if flag in _GIT_HISTORY_SHORT_VALUE_OPTIONS:
-                return i == len(arg) - 1
-    return False
+def git_history_short_value(arg):
+    for i, flag in enumerate(arg[1:], 1):
+        if flag in _GIT_HISTORY_SHORT_OPTIONAL_VALUES:
+            break
+        if flag in _GIT_HISTORY_SHORT_VALUE_OPTIONS:
+            return arg[i + 1 :]
+    return ""
+
+
+def git_glob_targets_remotes(glob):
+    namespace = glob.removeprefix("refs/").split("/", 1)[0]
+    return fnmatchcase("remotes", namespace)
 
 
 def decoded(value):
@@ -158,7 +114,7 @@ def read_capable_open(call, records):
     return not flags & 0o10000000 and flags & 3 in (0, 2)
 
 
-def git_remote_commands(records):
+def git_remote_commands(records, remotes=()):
     args = {}
     for record in records:
         if record.get("type") == "EXECVE":
@@ -176,12 +132,24 @@ def git_remote_commands(records):
         command += 2 if option in _GIT_GLOBAL_VALUE_OPTIONS else 1
     if args.get(command) not in ("log", "show"):
         return False
+    prefixes = ("refs/remotes/", "origin/", *(f"{remote}/" for remote in remotes))
     index = command + 1
     while (arg := args.get(index)) is not None and arg != "--":
-        if git_history_option_takes_next(arg):
-            index += 2
-            continue
-        if arg.startswith(("refs/remotes/", "origin/")):
+        value = arg
+        if arg.startswith("--"):
+            option, equals, value = arg.partition("=")
+            if option in ("--all", "--remotes"):
+                return True
+            if option == "--glob" and git_glob_targets_remotes(
+                value if equals else args.get(index + 1, "")
+            ):
+                return True
+        elif arg.startswith("-"):
+            value = git_history_short_value(arg)
+        if any(
+            revision.lstrip("^").startswith(prefixes)
+            for revision in re.split(r"\.{2,3}", value)
+        ):
             return True
         index += 1
     return False
@@ -241,7 +209,7 @@ def integrity_events(guest, syscalls, descendants):
         elif (
             key == "rollout_proc"
             and int(call["syscall"]) in (59, 322)
-            and git_remote_commands(records)
+            and git_remote_commands(records, watch_paths.get("git_remotes", ()))
         ):
             matches["git_history"].append(
                 {"audit_serial": serial, "event": "git_remote_ref_command"}
