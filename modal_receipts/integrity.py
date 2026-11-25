@@ -36,6 +36,53 @@ _GIT_GLOBAL_VALUE_OPTIONS = {
     "--shallow-file",
     "--work-tree",
 }
+_GIT_HISTORY_VALUE_OPTIONS = {
+    "--after",
+    "--anchored",
+    "--author",
+    "--before",
+    "--color-moved-ws",
+    "--committer",
+    "--date",
+    "--decorate-refs",
+    "--decorate-refs-exclude",
+    "--default",
+    "--diff-algorithm",
+    "--diff-filter",
+    "--dst-prefix",
+    "--encoding",
+    "--exclude",
+    "--exclude-hidden",
+    "--find-object",
+    "--glob",
+    "--grep",
+    "--grep-reflog",
+    "--ignore-matching-lines",
+    "--inter-hunk-context",
+    "--line-prefix",
+    "--max-age",
+    "--max-count",
+    "--max-count-oldest",
+    "--max-depth",
+    "--min-age",
+    "--output",
+    "--output-indicator-context",
+    "--output-indicator-new",
+    "--output-indicator-old",
+    "--rotate-to",
+    "--since",
+    "--since-as-filter",
+    "--skip",
+    "--skip-to",
+    "--src-prefix",
+    "--stat-count",
+    "--stat-graph-width",
+    "--stat-name-width",
+    "--stat-width",
+    "--until",
+    "--word-diff-regex",
+    "--ws-error-highlight",
+}
 _GIT_HISTORY_SHORT_VALUE_OPTIONS = set("GILOSln")
 _GIT_HISTORY_SHORT_OPTIONAL_VALUES = set("BCMUX")
 
@@ -46,7 +93,7 @@ def git_history_short_value(arg):
             break
         if flag in _GIT_HISTORY_SHORT_VALUE_OPTIONS:
             return arg[i + 1 :]
-    return ""
+    return None
 
 
 def git_glob_targets_remotes(glob):
@@ -164,20 +211,28 @@ def git_remote_commands(records, remotes=()):
     else:
         return False
     prefixes = ("refs/remotes/", "origin/", *(f"{remote}/" for remote in remotes))
+    operand_index = None
     for index, arg in ordered:
-        if arg == "--":
-            break
         value = arg
-        if arg.startswith("--"):
+        if index == operand_index:
+            pass
+        elif arg == "--":
+            break
+        elif arg.startswith("--"):
             option, equals, value = arg.partition("=")
-            if option in ("--all", "--remotes"):
+            if option == "--remotes" or arg == "--all":
                 return True
+            if not equals and option in _GIT_HISTORY_VALUE_OPTIONS:
+                operand_index = index + 1
             if option == "--glob" and git_glob_targets_remotes(
                 value if equals else args.get(index + 1, "")
             ):
                 return True
         elif arg.startswith("-"):
-            value = git_history_short_value(arg)
+            short_value = git_history_short_value(arg)
+            if short_value == "":
+                operand_index = index + 1
+            value = short_value or ""
         if any(
             revision.lstrip("^").startswith(prefixes)
             for revision in re.split(r"\.{2,3}", value)
