@@ -7,7 +7,7 @@ from uuid import uuid4
 import pytest
 from test_harbor import make_env
 
-from modal_receipts.guest_capture import command_roots
+from modal_receipts.guest_capture import command_roots, integrity_watches
 from modal_receipts.plugin import ENVIRONMENTS, RolloutEvidencePlugin
 from modal_receipts.rollout import build_rollout_evidence, numeric_rewards
 
@@ -125,6 +125,44 @@ def test_tests_write_watch_preserves_read_access(guest, sidecar, syscall, flags,
     checks = build_rollout_evidence(guest, sidecar, [])["checks"]
     assert checks["tests_write"]["state"] == "observed"
     assert checks["verifier_read"]["state"] == state
+
+
+def test_integrity_accepts_the_actual_watched_paths(guest, sidecar, tmp_path):
+    add_integrity_watches(guest)
+    jest_target = tmp_path / "jest.js"
+    jest_target.touch()
+    jest_link = tmp_path / "jest"
+    jest_link.symlink_to(jest_target)
+    objects = tmp_path / ".git" / "modules" / "dependency" / "objects"
+    objects.mkdir(parents=True)
+    with (
+        patch(
+            "modal_receipts.guest_capture.command",
+            side_effect=lambda *args: str(objects) if args[0] == "git" else "",
+        ) as command,
+        patch(
+            "modal_receipts.guest_capture.shutil.which",
+            side_effect=lambda runner: str(jest_link) if runner == "jest" else None,
+        ),
+    ):
+        guest["integrity_missing"], guest["integrity_watch_paths"] = integrity_watches()
+    assert any(f"path={jest_target}" in call.args for call in command.call_args_list)
+    assert any(f"dir={objects}" in call.args for call in command.call_args_list)
+    for serial, key, path in (
+        (2, "rollout_harness", jest_target),
+        (3, "rollout_git_read", objects / "pack" / "pack-id.pack"),
+        (4, "rollout_git_read", tmp_path / ".git" / "objects" / "unwatched"),
+    ):
+        guest["audit_log"] += audit(
+            serial, key=key, extra=f'type=PATH msg=audit(15.000:{serial}): name="{path}"\n'
+        )
+    details = build_rollout_evidence(guest, sidecar, [])["details"]["integrity"]
+    assert [match["paths"] for match in details["harness_write"]] == [
+        [str(jest_target)]
+    ]
+    assert [match["paths"] for match in details["git_history"]] == [
+        [str(objects / "pack" / "pack-id.pack")]
+    ]
 
 
 @pytest.mark.parametrize(

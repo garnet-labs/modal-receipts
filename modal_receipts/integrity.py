@@ -16,7 +16,7 @@ INTEGRITY_SCOPE = {
     "executables; not arbitrary plugins, paths outside the watched trees, "
     "in-memory changes or proof bytes changed.",
     "git_history": "Agent-descendant read-permission events below the initial "
-    "workdir repository's .git/objects or git log/show with explicit "
+    "workdir repository's Git object directory or git log/show with explicit "
     "refs/remotes/ or origin/ arguments; legitimate Git activity can match.",
 }
 INTEGRITY_SCOPE = {
@@ -110,6 +110,9 @@ def git_remote_commands(records):
 def integrity_events(guest, syscalls, descendants):
     matches = {name: [] for name in CHECK_RULES}
     issues = {}
+    watch_paths = guest.get("integrity_watch_paths", {})
+    git_objects = watch_paths.get("git_objects")
+    harness_executables = set(watch_paths.get("harness_executables", ()))
     for name, keys in CHECK_RULES.items():
         if any(key not in guest["rules"] for key in keys):
             issues[name] = "required audit watches unavailable"
@@ -133,17 +136,22 @@ def integrity_events(guest, syscalls, descendants):
                 selected = [p for p in paths if p.is_relative_to("/tests")]
             elif key == "rollout_harness":
                 name = "harness_write"
-                selected = [p for p in paths if harness_name(p)]
+                selected = [
+                    p for p in paths if str(p) in harness_executables or harness_name(p)
+                ]
             else:
                 name = "git_history"
-                selected = [
-                    p
-                    for p in paths
-                    if any(
-                        p.parts[i : i + 2] == (".git", "objects")
-                        for i in range(len(p.parts))
-                    )
-                ]
+                if git_objects:
+                    selected = [p for p in paths if p.is_relative_to(git_objects)]
+                else:
+                    selected = [
+                        p
+                        for p in paths
+                        if any(
+                            p.parts[i : i + 2] == (".git", "objects")
+                            for i in range(len(p.parts))
+                        )
+                    ]
             if not paths:
                 issues[name] = "matching audit watch event is missing a usable path"
             if selected:

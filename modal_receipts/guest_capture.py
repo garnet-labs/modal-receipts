@@ -45,6 +45,7 @@ def census():
 
 def integrity_watches():
     missing = {}
+    paths = {"harness_executables": [], "git_objects": None}
 
     def watch(flag, path, permission, key, check):
         try:
@@ -63,6 +64,8 @@ def integrity_watches():
             )
         except RuntimeError:
             missing[check] = str(path)
+            return False
+        return True
 
     watch("dir", "/tests", "r", "rollout_verify_read", "verifier_read")
     workdir = Path.cwd()
@@ -72,13 +75,15 @@ def integrity_watches():
         watch("dir", workdir, "w", "rollout_harness", "harness_write")
     for runner in ("pytest", "py.test", "tox", "nosetests", "jest", "vitest", "ctest"):
         if executable := shutil.which(runner):
-            watch(
+            target = Path(executable).resolve()
+            if watch(
                 "path",
-                Path(executable).resolve(),
+                target,
                 "w",
                 "rollout_harness",
                 "harness_write",
-            )
+            ):
+                paths["harness_executables"].append(str(target))
     try:
         objects = Path(
             command("git", "rev-parse", "--git-path", "objects").strip()
@@ -86,10 +91,11 @@ def integrity_watches():
     except (RuntimeError, FileNotFoundError):
         objects = workdir / ".git" / "objects"
     if objects.is_dir():
-        watch("dir", objects, "r", "rollout_git_read", "git_history")
+        if watch("dir", objects, "r", "rollout_git_read", "git_history"):
+            paths["git_objects"] = str(objects)
     else:
         missing["git_history"] = str(objects)
-    return missing
+    return missing, paths
 
 
 def start():
@@ -123,7 +129,7 @@ def start():
         "rollout_proc",
     )
     command("auditctl", "-w", "/tests", "-p", "w", "-k", "rollout_tests")
-    integrity_missing = integrity_watches()
+    integrity_missing, integrity_watch_paths = integrity_watches()
     command(
         "auditctl",
         "-a",
@@ -163,6 +169,7 @@ def start():
         "status_start": health,
         "ruleset": "full-tests-dns-v1",
         "integrity_missing": integrity_missing,
+        "integrity_watch_paths": integrity_watch_paths,
     }
     (STATE / "start.json").write_text(json.dumps(snapshot))
     print(json.dumps(snapshot))
