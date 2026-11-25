@@ -15,8 +15,10 @@ STATE = Path("/garnet/rollout")
 AUDIT = Path("/var/log/audit/audit.log")
 
 
-def command(*args):
-    result = subprocess.run(args, capture_output=True, text=True, check=False)
+def command(*args, errors=None):
+    result = subprocess.run(
+        args, capture_output=True, text=True, errors=errors, check=False
+    )
     if result.returncode:
         raise RuntimeError(f"{args[0]} failed: {result.stderr.strip()}")
     return result.stdout
@@ -96,7 +98,11 @@ def integrity_watches():
     else:
         missing["git_history"] = str(objects)
     try:
-        paths["git_remotes"] = command("git", "remote").splitlines()
+        for remote in command("git", "remote", errors="surrogateescape").split("\n"):
+            if re.search(r"[\udc80-\udcff]", remote):
+                missing.setdefault("git_history", "non-UTF-8 Git remote name")
+            elif remote:
+                paths["git_remotes"].append(remote)
     except (RuntimeError, FileNotFoundError):
         pass
     return missing, paths

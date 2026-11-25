@@ -138,7 +138,7 @@ def test_integrity_accepts_the_actual_watched_paths(guest, sidecar, tmp_path):
     with (
         patch(
             "modal_receipts.guest_capture.command",
-            side_effect=lambda *args: {
+            side_effect=lambda *args, **kwargs: {
                 ("git", "rev-parse", "--git-path", "objects"): str(objects),
                 ("git", "remote"): "origin\nupstream\n",
             }.get(args, ""),
@@ -167,6 +167,32 @@ def test_integrity_accepts_the_actual_watched_paths(guest, sidecar, tmp_path):
     assert [match["paths"] for match in details["git_history"]] == [
         [str(objects / "pack" / "pack-id.pack")]
     ]
+
+
+def test_non_utf8_git_remote_only_limits_git_history(guest, sidecar, tmp_path):
+    add_integrity_watches(guest)
+    objects = tmp_path / "objects"
+    objects.mkdir()
+
+    def run(args, *, errors=None, **kwargs):
+        if args == ("git", "remote"):
+            stdout = b"origin\ninvalid-\xff\n".decode("utf-8", errors or "strict")
+        elif args == ("git", "rev-parse", "--git-path", "objects"):
+            stdout = str(objects)
+        else:
+            stdout = ""
+        return SimpleNamespace(returncode=0, stdout=stdout)
+
+    with patch("modal_receipts.guest_capture.subprocess.run", side_effect=run):
+        guest["integrity_missing"], guest["integrity_watch_paths"] = integrity_watches()
+
+    assert guest["integrity_watch_paths"]["git_remotes"] == ["origin"]
+    assert guest["integrity_watch_paths"]["git_objects"] == str(objects)
+    checks = build_rollout_evidence(guest, sidecar, [])["checks"]
+    assert {name for name, check in checks.items() if check["state"] == "unknown"} == {
+        "git_history"
+    }
+    assert "non-UTF-8 Git remote name" in checks["git_history"]["reason"]
 
 
 @pytest.mark.parametrize(
