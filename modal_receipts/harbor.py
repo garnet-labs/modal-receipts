@@ -182,6 +182,7 @@ class GarnetModalEnvironment(ModalEnvironment):
             "start": self._rollout_start,
             "end": time.time(),
             "error": self._rollout_error,
+            "integrity_missing": {},
         }
         sidecar = None
         if not self._rollout_error:

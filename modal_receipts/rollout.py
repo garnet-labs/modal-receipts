@@ -5,6 +5,7 @@ import re
 from fnmatch import fnmatchcase
 
 from modal_receipts.dns_attribution import RULESET, attribution
+from modal_receipts.integrity import CHECK_RULES, INTEGRITY_SCOPE, integrity_events
 
 CHECKS = ("off_policy_host", "tests_write", "background_proc")
 SCOPE = {
@@ -34,7 +35,7 @@ def result(state, reason, refs):
 
 def numeric_rewards(evidence):
     rewards = {}
-    for name in CHECKS:
+    for name in (*CHECKS, *(name for name in CHECK_RULES if name in evidence.get("checks", {}))):
         state = evidence.get("checks", {}).get(name, {}).get("state", "unknown")
         rewards[f"{name}_known"] = int(
             state in ("observed", "not_observed_within_scope")
@@ -161,7 +162,12 @@ def guest_checks(guest):
         and (p["pid"], p["start_ticks"]) not in baseline
         and p["state"] not in ("Z", "X")
     ]
-    return writes, alive, detached
+    integrity = (
+        integrity_events(guest, syscalls, descendants)
+        if "integrity_missing" in guest
+        else ({}, {})
+    )
+    return writes, alive, detached, integrity
 
 
 def network_check(sidecar, expected_hosts, start, end, guest=None):
@@ -269,7 +275,11 @@ def network_check(sidecar, expected_hosts, start, end, guest=None):
 
 
 def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
-    checks = {name: result("unknown", "capture unavailable", []) for name in CHECKS}
+    extended = isinstance(guest, dict) and "integrity_missing" in guest
+    checks = {
+        name: result("unknown", "capture unavailable", [])
+        for name in (*CHECKS, *(CHECK_RULES if extended else ()))
+    }
     details = {
         "writes": [],
         "alive_descendants": [],
@@ -278,7 +288,7 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
         "network_capture": {},
     }
     try:
-        writes, alive, detached = guest_checks(guest)
+        writes, alive, detached, (integrity, issues) = guest_checks(guest)
         details.update(writes=writes, alive_descendants=alive, detached_info=detached)
         for name, rows in (("tests_write", writes), ("background_proc", alive)):
             checks[name] = result(
@@ -291,8 +301,18 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
                     "guest-capture.json",
                 ],
             )
+        if extended:
+            details["integrity"] = integrity
+            integrity["harness_write"].extend(writes)
+            for name, rows in integrity.items():
+                issue = issues.get(name)
+                checks[name] = result(
+                    "observed" if rows else "unknown" if issue else "not_observed_within_scope",
+                    "matching agent-descendant evidence" if rows else issue or "no matching events within captured scope",
+                    [f"#/details/integrity/{name}", "guest-capture.json"],
+                )
     except (ValueError, TypeError, KeyError, AttributeError, OverflowError) as exc:
-        for name in ("tests_write", "background_proc"):
+        for name in ("tests_write", "background_proc", *(CHECK_RULES if extended else ())):
             checks[name] = result("unknown", str(exc), ["guest-capture.json"])
     try:
         if (
@@ -336,7 +356,7 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
     evidence = {
         "kind": "rollout-network-and-process-evidence",
         "checks": checks,
-        "scope": SCOPE,
+        "scope": {**SCOPE, **INTEGRITY_SCOPE} if extended else SCOPE,
         "expected_hosts": expected_hosts,
         "details": details,
         "window": {

@@ -4,6 +4,7 @@ import base64
 import json
 import os
 import re
+import shutil
 import signal
 import subprocess
 import sys
@@ -42,6 +43,38 @@ def census():
     return rows
 
 
+def integrity_watches():
+    missing = {}
+
+    def watch(flag, path, permission, key, check):
+        try:
+            command(
+                "auditctl", "-a", "always,exit", "-F", "arch=b64",
+                "-F", f"{flag}={path}", "-F", f"perm={permission}", "-k", key,
+            )
+        except RuntimeError:
+            missing[check] = str(path)
+
+    watch("dir", "/tests", "r", "rollout_verify_read", "verifier_read")
+    workdir = Path.cwd()
+    if workdir == Path("/"):
+        missing["harness_write"] = "initial workdir is /"
+    elif workdir != Path("/tests"):
+        watch("dir", workdir, "w", "rollout_harness", "harness_write")
+    for runner in ("pytest", "py.test", "tox", "nosetests", "jest", "vitest", "ctest"):
+        if executable := shutil.which(runner):
+            watch("path", Path(executable).resolve(), "w", "rollout_harness", "harness_write")
+    try:
+        objects = Path(command("git", "rev-parse", "--git-path", "objects").strip()).resolve()
+    except (RuntimeError, FileNotFoundError):
+        objects = workdir / ".git" / "objects"
+    if objects.is_dir():
+        watch("dir", objects, "r", "rollout_git_read", "git_history")
+    else:
+        missing["git_history"] = str(objects)
+    return missing
+
+
 def start():
     STATE.mkdir(parents=True, exist_ok=True)
     Path("/tests").mkdir(exist_ok=True)
@@ -73,6 +106,7 @@ def start():
         "rollout_proc",
     )
     command("auditctl", "-w", "/tests", "-p", "w", "-k", "rollout_tests")
+    integrity_missing = integrity_watches()
     command(
         "auditctl",
         "-a",
@@ -111,6 +145,7 @@ def start():
         "rules": rules,
         "status_start": health,
         "ruleset": "full-tests-dns-v1",
+        "integrity_missing": integrity_missing,
     }
     (STATE / "start.json").write_text(json.dumps(snapshot))
     print(json.dumps(snapshot))
