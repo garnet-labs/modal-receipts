@@ -63,6 +63,30 @@ def harness_name(path):
     )
 
 
+def read_capable_open(call, records):
+    syscall = int(call["syscall"])
+    if syscall == 437:
+        raw_flags = next(
+            (
+                record.get("oflag")
+                for record in records
+                if record.get("type") == "OPENAT2"
+            ),
+            None,
+        )
+        base = 8
+    elif syscall in (2, 257):
+        raw_flags = call.get("a1" if syscall == 2 else "a2")
+        base = 16
+    else:
+        return False
+    try:
+        flags = int(raw_flags, base)
+    except (TypeError, ValueError):
+        return None
+    return not flags & 0o10000000 and flags & 3 in (0, 2)
+
+
 def git_remote_commands(records):
     args = {}
     for record in records:
@@ -96,6 +120,12 @@ def integrity_events(guest, syscalls, descendants):
         if int(call["pid"]) not in descendants or call.get("success") != "yes":
             continue
         key = call.get("key")
+        if key == "rollout_tests":
+            reads = read_capable_open(call, records)
+            if reads is None:
+                issues["verifier_read"] = "matching /tests open is missing usable flags"
+            if reads:
+                key = "rollout_verify_read"
         if key in ("rollout_verify_read", "rollout_harness", "rollout_git_read"):
             paths = event_paths(records)
             if key == "rollout_verify_read":

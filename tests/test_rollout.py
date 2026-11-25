@@ -106,6 +106,28 @@ def test_integrity_path_scope(guest, sidecar, check, rule, path, observed):
 
 
 @pytest.mark.parametrize(
+    ("syscall", "flags", "state"),
+    [
+        (2, ' a1=2', "observed"),
+        (257, ' a2=42', "observed"),
+        (257, ' a2=41', "not_observed_within_scope"),
+        (257, "", "unknown"),
+        (437, '\ntype=OPENAT2 msg=audit(15.000:2): oflag=0102', "observed"),
+    ],
+)
+def test_tests_write_watch_preserves_read_access(guest, sidecar, syscall, flags, state):
+    add_integrity_watches(guest)
+    guest["audit_log"] += (
+        audit(2, syscall=syscall, key="rollout_tests").rstrip("\n")
+        + flags
+        + '\ntype=PATH msg=audit(15.000:2): name="/tests/verifier.py"\n'
+    )
+    checks = build_rollout_evidence(guest, sidecar, [])["checks"]
+    assert checks["tests_write"]["state"] == "observed"
+    assert checks["verifier_read"]["state"] == state
+
+
+@pytest.mark.parametrize(
     ("ref", "state"),
     [
         ("refs/remotes/origin/main", "observed"),
