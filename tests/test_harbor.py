@@ -126,6 +126,7 @@ async def test_create_sandbox_kwargs(tmp_path):
     env = make_env(tmp_path)
     env._app = Mock()
     env._image = Mock()
+    base_image = env._image
     with patch("harbor.environments.modal.Sandbox.create") as create:
         create.aio = AsyncMock(return_value=Mock())
         await env._create_sandbox(
@@ -135,11 +136,35 @@ async def test_create_sandbox_kwargs(tmp_path):
     assert args == ("sleep", "infinity")
     assert kwargs["runtime"] == "vm"
     assert kwargs["memory"] == 3072
+    assert kwargs["image"] is base_image.run_commands.return_value
+    assert "auditd" in base_image.run_commands.call_args.args[0]
     assert kwargs["experimental_options"] == {
         "other": "kept",
         "proxy_traffic_via_sidecar": "garnet",
         "vm_sidecar_memory_reserve_mib": 1024,
     }
+
+
+@pytest.mark.parametrize("has_task_hosts", [False, True])
+async def test_begin_capture_selects_task_or_baseline_hosts(tmp_path, has_task_hosts):
+    baseline = tmp_path / "baseline.json"
+    baseline.write_text('["baseline.example"]')
+    env = make_env(tmp_path, baseline_hosts=str(baseline))
+    if has_task_hosts:
+        (tmp_path / "expected-hosts.json").write_text('["task.example"]')
+    captured = SimpleNamespace(return_code=0, stdout='{"start": 2}')
+    with (
+        patch(
+            "harbor.environments.modal.ModalEnvironment.exec",
+            new=AsyncMock(return_value=captured),
+        ),
+        patch.object(env, "upload_file", new=AsyncMock()),
+    ):
+        await env.begin_rollout_capture()
+    assert env._expected_hosts == (
+        ["task.example"] if has_task_hosts else ["baseline.example"]
+    )
+    assert env._rollout_active
 
 
 async def test_start_builds_sidecar_and_waits(tmp_path):

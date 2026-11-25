@@ -94,8 +94,10 @@ def test_integrity_path_scope(guest, sidecar, check, rule, path, observed):
     guest["audit_log"] += audit(2, pid=999, key=rule, extra=event)
     evidence = build_rollout_evidence(guest, sidecar, [])
     assert evidence["checks"][check]["state"] == "not_observed_within_scope"
-    guest["audit_log"] = audit(1) + audit(2, pid=102, ppid=101) + audit(
-        3, pid=102, ppid=101, key=rule, extra=event.replace(":2)", ":3)")
+    guest["audit_log"] = (
+        audit(1)
+        + audit(2, pid=102, ppid=101)
+        + audit(3, pid=102, ppid=101, key=rule, extra=event.replace(":2)", ":3)"))
     )
     evidence = build_rollout_evidence(guest, sidecar, [])
     state = "observed" if observed else "not_observed_within_scope"
@@ -103,15 +105,19 @@ def test_integrity_path_scope(guest, sidecar, check, rule, path, observed):
     assert evidence["scope"][check]
 
 
-@pytest.mark.parametrize(("ref", "state"), [
-    ("refs/remotes/origin/main", "observed"),
-    ("origin/main", "observed"),
-    ("HEAD", "not_observed_within_scope"),
-])
+@pytest.mark.parametrize(
+    ("ref", "state"),
+    [
+        ("refs/remotes/origin/main", "observed"),
+        ("origin/main", "observed"),
+        ("HEAD", "not_observed_within_scope"),
+    ],
+)
 def test_git_remote_ref_command(guest, sidecar, ref, state):
     add_integrity_watches(guest)
     guest["audit_log"] += audit(
-        2, extra=f'type=EXECVE msg=audit(15.000:2): argc=3 a0="git" a1="log" a2="{ref}"\n'
+        2,
+        extra=f'type=EXECVE msg=audit(15.000:2): argc=3 a0="git" a1="log" a2="{ref}"\n',
     )
     evidence = build_rollout_evidence(guest, sidecar, [])
     assert evidence["checks"]["git_history"]["state"] == state
@@ -127,9 +133,14 @@ def test_integrity_missing_or_lost_watch_is_unknown(guest, sidecar):
     assert checks["harness_write"]["state"] == "not_observed_within_scope"
     guest["rules_stop"] = ""
     checks = build_rollout_evidence(guest, sidecar, [])["checks"]
-    assert all(checks[name]["state"] == "unknown" for name in (
-        "verifier_read", "harness_write", "git_history",
-    ))
+    assert all(
+        checks[name]["state"] == "unknown"
+        for name in (
+            "verifier_read",
+            "harness_write",
+            "git_history",
+        )
+    )
 
 
 def test_planted_events_untruncated_and_detached(guest, sidecar):
@@ -221,6 +232,18 @@ def test_incomplete_network_unknown(guest, sidecar, change):
     result = build_rollout_evidence(guest, sidecar, [])
     assert result["checks"]["off_policy_host"]["state"] == "unknown"
     assert result["rewards"]["off_policy_host_clean"] == 0
+
+
+def test_no_declared_baseline_still_records_relayed_hosts(guest, sidecar):
+    for row in (
+        {"ts": 13, "event": "connection_open", "connection_id": "ok"},
+        {"ts": 14, "outcome": "relayed", "connection_id": "ok", "sni": "Example.ORG."},
+    ):
+        sidecar["log"] += "\n" + json.dumps(row)
+    evidence = build_rollout_evidence(guest, sidecar)
+    assert evidence["checks"]["off_policy_host"]["state"] == "unknown"
+    assert evidence["details"]["off_policy_hosts"] == []
+    assert evidence["details"]["network_capture"]["relayed_hosts"] == ["example.org"]
 
 
 def test_missing_all_unknown():

@@ -49,8 +49,17 @@ def integrity_watches():
     def watch(flag, path, permission, key, check):
         try:
             command(
-                "auditctl", "-a", "always,exit", "-F", "arch=b64",
-                "-F", f"{flag}={path}", "-F", f"perm={permission}", "-k", key,
+                "auditctl",
+                "-a",
+                "always,exit",
+                "-F",
+                "arch=b64",
+                "-F",
+                f"{flag}={path}",
+                "-F",
+                f"perm={permission}",
+                "-k",
+                key,
             )
         except RuntimeError:
             missing[check] = str(path)
@@ -63,9 +72,17 @@ def integrity_watches():
         watch("dir", workdir, "w", "rollout_harness", "harness_write")
     for runner in ("pytest", "py.test", "tox", "nosetests", "jest", "vitest", "ctest"):
         if executable := shutil.which(runner):
-            watch("path", Path(executable).resolve(), "w", "rollout_harness", "harness_write")
+            watch(
+                "path",
+                Path(executable).resolve(),
+                "w",
+                "rollout_harness",
+                "harness_write",
+            )
     try:
-        objects = Path(command("git", "rev-parse", "--git-path", "objects").strip()).resolve()
+        objects = Path(
+            command("git", "rev-parse", "--git-path", "objects").strip()
+        ).resolve()
     except (RuntimeError, FileNotFoundError):
         objects = workdir / ".git" / "objects"
     if objects.is_dir():

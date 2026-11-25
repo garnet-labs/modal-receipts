@@ -6,6 +6,7 @@ import json
 import shlex
 import time
 from importlib.resources import files
+from pathlib import Path
 
 import modal
 from harbor.environments.modal import ModalEnvironment, ModalOptions
@@ -21,6 +22,7 @@ class GarnetModalOptions(ModalOptions):
     sidecar_reserve_mib: int = Field(default=1024, ge=1024)
     sidecar_consume_mib: int = Field(default=512, gt=0)
     sidecar_ready_timeout_secs: int = Field(default=60, gt=0)
+    baseline_hosts: Path | None = None
 
     @model_validator(mode="after")
     def validate_sidecar(self):
@@ -74,6 +76,13 @@ class GarnetModalEnvironment(ModalEnvironment):
             return await super()._create_sandbox(
                 experimental_options=experimental_options, **kwargs
             )
+        self._image = self._image.run_commands(
+            "if ! command -v auditd >/dev/null || ! command -v auditctl >/dev/null; then "
+            "if command -v apt-get >/dev/null; then "
+            "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y "
+            "--no-install-recommends auditd && rm -rf /var/lib/apt/lists/*; "
+            "else echo 'Garnet requires auditd and auditctl or an apt-based image' >&2; exit 1; fi; fi"
+        )
         experimental_options = {
             **(experimental_options or {}),
             "proxy_traffic_via_sidecar": "garnet",
@@ -146,13 +155,17 @@ class GarnetModalEnvironment(ModalEnvironment):
         self._rollout_start = time.time()
         try:
             declaration = self.environment_dir.parent / "expected-hosts.json"
-            self._expected_hosts = json.loads(declaration.read_text())
-            if not isinstance(self._expected_hosts, list) or not all(
-                isinstance(host, str) and host for host in self._expected_hosts
-            ):
-                raise ValueError(
-                    "expected-hosts.json must contain a list of hostname patterns"
-                )
+            if not declaration.is_file():
+                declaration = self.options.baseline_hosts
+            if declaration is not None:
+                self._expected_hosts = json.loads(declaration.read_text())
+                if not isinstance(self._expected_hosts, list) or not all(
+                    isinstance(host, str) and host.strip()
+                    for host in self._expected_hosts
+                ):
+                    raise ValueError(
+                        f"{declaration} must contain a list of hostname patterns"
+                    )
             await super().exec("mkdir -p /opt/garnet", user="root")
             await self.upload_file(
                 str(files("modal_receipts").joinpath("guest_capture.py")),

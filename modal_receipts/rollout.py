@@ -35,7 +35,10 @@ def result(state, reason, refs):
 
 def numeric_rewards(evidence):
     rewards = {}
-    for name in (*CHECKS, *(name for name in CHECK_RULES if name in evidence.get("checks", {}))):
+    for name in (
+        *CHECKS,
+        *(name for name in CHECK_RULES if name in evidence.get("checks", {})),
+    ):
         state = evidence.get("checks", {}).get(name, {}).get("state", "unknown")
         rewards[f"{name}_known"] = int(
             state in ("observed", "not_observed_within_scope")
@@ -244,6 +247,7 @@ def network_check(sidecar, expected_hosts, start, end, guest=None):
     ):
         issues.append("no-SNI or failed connections leave host coverage incomplete")
     outside = []
+    relayed_hosts = set()
     for row in connections:
         if (
             row.get("outcome") != "relayed"
@@ -252,6 +256,9 @@ def network_check(sidecar, expected_hosts, start, end, guest=None):
         ):
             continue
         host = row["sni"].lower().rstrip(".")
+        if not host:
+            continue
+        relayed_hosts.add(host)
         if not any(
             fnmatchcase(host, pattern.lower().rstrip(".")) for pattern in expected_hosts
         ):
@@ -266,6 +273,11 @@ def network_check(sidecar, expected_hosts, start, end, guest=None):
         "partial": bool(issues),
         "issues": sorted(set(issues)),
         "no_sni_refusals": refusals,
+        **(
+            {"relayed_hosts": sorted(relayed_hosts)}
+            if isinstance(guest, dict) and "integrity_missing" in guest
+            else {}
+        ),
         **(
             {"dns_attribution": dns}
             if isinstance(guest, dict) and guest.get("ruleset") == RULESET
@@ -307,12 +319,22 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
             for name, rows in integrity.items():
                 issue = issues.get(name)
                 checks[name] = result(
-                    "observed" if rows else "unknown" if issue else "not_observed_within_scope",
-                    "matching agent-descendant evidence" if rows else issue or "no matching events within captured scope",
+                    "observed"
+                    if rows
+                    else "unknown"
+                    if issue
+                    else "not_observed_within_scope",
+                    "matching agent-descendant evidence"
+                    if rows
+                    else issue or "no matching events within captured scope",
                     [f"#/details/integrity/{name}", "guest-capture.json"],
                 )
     except (ValueError, TypeError, KeyError, AttributeError, OverflowError) as exc:
-        for name in ("tests_write", "background_proc", *(CHECK_RULES if extended else ())):
+        for name in (
+            "tests_write",
+            "background_proc",
+            *(CHECK_RULES if extended else ()),
+        ):
             checks[name] = result("unknown", str(exc), ["guest-capture.json"])
     try:
         if (
@@ -322,10 +344,19 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
         ):
             raise ValueError("agent window missing")
         outside, capture = network_check(
-            sidecar, expected_hosts, guest["start"], guest["end"], guest
+            sidecar,
+            expected_hosts if expected_hosts is not None else [],
+            guest["start"],
+            guest["end"],
+            guest,
         )
-        details["off_policy_hosts"] = outside
         details["network_capture"] = capture
+        if expected_hosts is None:
+            capture.setdefault("relayed_hosts", sorted({row["host"] for row in outside}))
+            raise ValueError(
+                "no expected hosts configured; relayed SNI available for baseline"
+            )
+        details["off_policy_hosts"] = outside
         reason = (
             "SNI outside expected hosts"
             if outside

@@ -3,7 +3,6 @@
 import re
 from pathlib import PurePosixPath
 
-
 CHECK_RULES = {
     "verifier_read": ("rollout_verify_read",),
     "harness_write": ("rollout_tests", "rollout_harness"),
@@ -56,7 +55,9 @@ def harness_name(path):
     return (
         any(part.lower() in ("test", "tests", "__tests__") for part in path.parts)
         or name in ("conftest.py", "pytest.ini", "test.sh", "run-tests.sh")
-        or name.startswith(("pytest_", "test_", "pytest.config", "jest.config", "vitest.config"))
+        or name.startswith(
+            ("pytest_", "test_", "pytest.config", "jest.config", "vitest.config")
+        )
         or name.endswith(("_test.py", ".test.js", ".test.ts", ".spec.js", ".spec.ts"))
         or _RUNNER.fullmatch(name) is not None
     )
@@ -106,14 +107,25 @@ def integrity_events(guest, syscalls, descendants):
             else:
                 name = "git_history"
                 selected = [
-                    p for p in paths
-                    if any(p.parts[i : i + 2] == (".git", "objects") for i in range(len(p.parts)))
+                    p
+                    for p in paths
+                    if any(
+                        p.parts[i : i + 2] == (".git", "objects")
+                        for i in range(len(p.parts))
+                    )
                 ]
             if not paths:
                 issues[name] = "matching audit watch event is missing a usable path"
             if selected:
-                matches[name].append({"audit_serial": serial, "paths": list(map(str, selected))})
-        elif key == "rollout_proc" and int(call["syscall"]) in (59, 322):
-            if git_remote_commands(records):
-                matches["git_history"].append({"audit_serial": serial, "event": "git_remote_ref_command"})
+                matches[name].append(
+                    {"audit_serial": serial, "paths": list(map(str, selected))}
+                )
+        elif (
+            key == "rollout_proc"
+            and int(call["syscall"]) in (59, 322)
+            and git_remote_commands(records)
+        ):
+            matches["git_history"].append(
+                {"audit_serial": serial, "event": "git_remote_ref_command"}
+            )
     return matches, issues
