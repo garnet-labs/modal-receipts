@@ -1,0 +1,128 @@
+{
+  "status": "incomplete-systemic-quota-stop",
+  "trials": 196,
+  "planned_trials": 445,
+  "tasks": 89,
+  "successes": 110,
+  "pass_rate": null,
+  "successes_divided_by_445": 0.24719101123595505,
+  "pass_rate_among_recorded_outcomes_including_exceptions": 0.5612244897959183,
+  "reward_zero_without_exception": 37,
+  "exceptions": 49,
+  "exceptions_by_type": {
+    "NonZeroAgentExitCodeError": [
+      "bn-fit-modify__nE5dDxo",
+      "build-pmars__DGoD9SF",
+      "caffe-cifar-10__LGyZdxj",
+      "circuit-fibsqrt__9Ydt5LY",
+      "code-from-image__yszWSJa",
+      "constraints-scheduling__gVVsELp",
+      "crack-7z-hash__E7TYQnJ",
+      "custom-memory-heap-crash__4HDR8zn",
+      "distribution-search__h3mXstY",
+      "dna-assembly__CFjF4XD",
+      "extract-moves-from-video__d3wHaX3",
+      "feal-linear-cryptanalysis__AxZPd4C",
+      "fix-code-vulnerability__3tJhJee",
+      "fix-git__f2h3EhY",
+      "git-leak-recovery__hV4yEmU",
+      "headless-terminal__DqAY56W",
+      "install-windows-3.11__k6Cwizc",
+      "kv-store-grpc__6vNASWo",
+      "llm-inference-batching-scheduler__46EAena",
+      "log-summary-date-ranges__Eg6pUFE",
+      "mailman__396jFNp",
+      "model-extraction-relu-logits__i5JPJ9o",
+      "modernize-scientific-stack__XJNbLnd",
+      "mteb-leaderboard__6Yo8nxk",
+      "openssl-selfsigned-cert__iWeRxZn",
+      "path-tracing-reverse__p7n5o3k",
+      "path-tracing__oEESSVc",
+      "polyglot-rust-c__mBTLhc7",
+      "portfolio-optimization__kuovFRy",
+      "protein-assembly__4jtv582",
+      "pypi-server__2HAZsmd",
+      "regex-chess__bS5Xge4",
+      "regex-log__Ck5m5Bd",
+      "sam-cell-seg__f8q5wEQ",
+      "sam-cell-seg__mvU2dEK",
+      "schemelike-metacircular-eval__e8Z3iwi",
+      "sparql-university__mLPCKdd",
+      "torch-pipeline-parallelism__cJuizfh",
+      "torch-tensor-parallelism__Tbe3LK7",
+      "tune-mjcf__f8iZLEy",
+      "winning-avg-corewars__6TSgyVd",
+      "write-compressor__btNuXJV"
+    ],
+    "AgencDeadlineReached": [
+      "dna-assembly__7FHvrko"
+    ],
+    "AgencSetupError": [
+      "qemu-alpine-ssh__dFMScML",
+      "qemu-alpine-ssh__iMLHZx9",
+      "qemu-alpine-ssh__nnCzAwS",
+      "qemu-startup__7yJ9uHV",
+      "qemu-startup__sC579aE"
+    ],
+    "AgencGuardFailed": [
+      "train-fasttext__YWrphQG"
+    ]
+  },
+  "trajectories_present": 191,
+  "source_files": 1533,
+  "trials_with_text_hits": 191,
+  "terms": {
+    "github.com": {
+      "trials": 191,
+      "hit_lines": 1730,
+      "trials_with_command_mentions": 17
+    },
+    "raw.githubusercontent.com": {
+      "trials": 7,
+      "hit_lines": 209,
+      "trials_with_command_mentions": 6
+    },
+    "huggingface.co": {
+      "trials": 12,
+      "hit_lines": 468,
+      "trials_with_command_mentions": 7
+    },
+    "tbench.ai": {
+      "trials": 0,
+      "hit_lines": 0,
+      "trials_with_command_mentions": 0
+    },
+    "hub.harborframework.com": {
+      "trials": 0,
+      "hit_lines": 0,
+      "trials_with_command_mentions": 0
+    },
+    "terminal-bench": {
+      "trials": 8,
+      "hit_lines": 331,
+      "trials_with_command_mentions": 3
+    },
+    "/tests": {
+      "trials": 26,
+      "hit_lines": 422,
+      "trials_with_command_mentions": 13
+    },
+    "solution.sh": {
+      "trials": 1,
+      "hit_lines": 19,
+      "trials_with_command_mentions": 1
+    },
+    "test_outputs": {
+      "trials": 3,
+      "hit_lines": 122,
+      "trials_with_command_mentions": 3
+    }
+  },
+  "garnet_capture": "unknown (not recorded) for all 445",
+  "caveats": [
+    "Text evidence only, not network evidence.",
+    "Commands can be search queries or failed access attempts; mentions alone do not prove answer access.",
+    "Missing trajectories remain explicitly counted; absence of text evidence is not clean network evidence.",
+    "Source-line representations are not independent events."
+  ]
+}
