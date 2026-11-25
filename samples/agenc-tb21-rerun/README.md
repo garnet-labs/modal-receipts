@@ -306,8 +306,17 @@ network evidence.
 
 ### Reproduction flags and resume
 
+The AgenC Harbor adapter comes from
+<https://github.com/tetsuo-ai/agenc-core>, pinned to commit
+`647d4c4a40ea673badd56c36ef73d5540042e30c`. The original run used `/tmp/ac`;
+the commands below clone the same revision into `$HOME/agenc-core` and export
+its adapter path for both `harbor run` and `harbor jobs resume` in this shell.
+
 ```sh
-PYTHONPATH=/tmp/ac/runtime/eval/harbor \
+git clone https://github.com/tetsuo-ai/agenc-core.git "$HOME/agenc-core"
+git -C "$HOME/agenc-core" checkout 647d4c4a40ea673badd56c36ef73d5540042e30c
+export PYTHONPATH="$HOME/agenc-core/runtime/eval/harbor"
+
 DEEPSEEK_API_KEY="$AI_GATEWAY_API_KEY" \
 MODAL_IMAGE_BUILDER_VERSION=2025.06 harbor run \
   -d terminal-bench/terminal-bench-2-1@sha256:7d7bdc1cbedad549fc1140404bd4dc45e5fd0ea7c4186773687d177ad3a0699a \
