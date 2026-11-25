@@ -33,6 +33,10 @@ zero, so this is not a claim that all 12 task solutions passed.
 The 12 original `rollout-evidence.json` files total 77,425 bytes and are under
 [`proof/`](proof/). Machine-readable table:
 [`proof/per-trial-verdicts.tsv`](proof/per-trial-verdicts.tsv).
+The underlying raw guest and sidecar capture logs are not published here:
+their 24 capture files total 45,474,391 bytes, above the 2 MB artifact limit.
+Readers can inspect the verdicts but cannot re-run the classifier on the raw
+captures from this evidence package.
 
 ### Commands and the Harbor 0.23 URL substitution
 
