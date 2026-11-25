@@ -4,6 +4,7 @@ import base64
 import json
 import os
 import re
+import shutil
 import signal
 import subprocess
 import sys
@@ -14,8 +15,10 @@ STATE = Path("/garnet/rollout")
 AUDIT = Path("/var/log/audit/audit.log")
 
 
-def command(*args):
-    result = subprocess.run(args, capture_output=True, text=True, check=False)
+def command(*args, errors=None):
+    result = subprocess.run(
+        args, capture_output=True, text=True, errors=errors, check=False
+    )
     if result.returncode:
         raise RuntimeError(f"{args[0]} failed: {result.stderr.strip()}")
     return result.stdout
@@ -40,6 +43,69 @@ def census():
         except (FileNotFoundError, ProcessLookupError):
             continue
     return rows
+
+
+def integrity_watches():
+    missing = {}
+    paths = {"harness_executables": [], "git_objects": None, "git_remotes": []}
+
+    def watch(flag, path, permission, key, check):
+        try:
+            command(
+                "auditctl",
+                "-a",
+                "always,exit",
+                "-F",
+                "arch=b64",
+                "-F",
+                f"{flag}={path}",
+                "-F",
+                f"perm={permission}",
+                "-k",
+                key,
+            )
+        except RuntimeError:
+            missing[check] = str(path)
+            return False
+        return True
+
+    watch("dir", "/tests", "r", "rollout_verify_read", "verifier_read")
+    workdir = Path.cwd()
+    if workdir == Path("/"):
+        missing["harness_write"] = "initial workdir is /"
+    elif workdir != Path("/tests"):
+        watch("dir", workdir, "w", "rollout_harness", "harness_write")
+    for runner in ("pytest", "py.test", "tox", "nosetests", "jest", "vitest", "ctest"):
+        if executable := shutil.which(runner):
+            target = Path(executable).resolve()
+            if watch(
+                "path",
+                target,
+                "w",
+                "rollout_harness",
+                "harness_write",
+            ):
+                paths["harness_executables"].append(str(target))
+    try:
+        objects = Path(
+            command("git", "rev-parse", "--git-path", "objects").strip()
+        ).resolve()
+    except (RuntimeError, FileNotFoundError):
+        objects = workdir / ".git" / "objects"
+    if objects.is_dir():
+        if watch("dir", objects, "r", "rollout_git_read", "git_history"):
+            paths["git_objects"] = str(objects)
+    else:
+        missing["git_history"] = str(objects)
+    try:
+        for remote in command("git", "remote", errors="surrogateescape").split("\n"):
+            if re.search(r"[\udc80-\udcff]", remote):
+                missing.setdefault("git_history", "non-UTF-8 Git remote name")
+            elif remote:
+                paths["git_remotes"].append(remote)
+    except (RuntimeError, FileNotFoundError):
+        pass
+    return missing, paths
 
 
 def start():
@@ -73,6 +139,7 @@ def start():
         "rollout_proc",
     )
     command("auditctl", "-w", "/tests", "-p", "w", "-k", "rollout_tests")
+    integrity_missing, integrity_watch_paths = integrity_watches()
     command(
         "auditctl",
         "-a",
@@ -111,6 +178,8 @@ def start():
         "rules": rules,
         "status_start": health,
         "ruleset": "full-tests-dns-v1",
+        "integrity_missing": integrity_missing,
+        "integrity_watch_paths": integrity_watch_paths,
     }
     (STATE / "start.json").write_text(json.dumps(snapshot))
     print(json.dumps(snapshot))

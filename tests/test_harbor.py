@@ -2,16 +2,22 @@ import json
 from importlib.resources import files
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, Mock, patch
+from uuid import uuid4
 
 import pytest
 from harbor.environments.factory import EnvironmentFactory
 from harbor.environments.modal import ModalEnvironment
+from harbor.job import Job
+from harbor.models.job.config import JobConfig
 from harbor.models.task.config import EnvironmentConfig, NetworkPolicy
+from harbor.models.trial.config import AgentConfig, TaskConfig
+from harbor.models.trial.config import EnvironmentConfig as TrialEnvironmentConfig
 from harbor.models.trial.paths import TrialPaths
 from pydantic import ValidationError
 
 from modal_receipts.evidence import build_receipt
 from modal_receipts.harbor import GarnetModalEnvironment, GarnetModalOptions
+from modal_receipts.plugin import ROLLOUT_TRIALS, RolloutEvidencePlugin
 
 IMPORT_PATH = "modal_receipts.harbor:GarnetModalEnvironment"
 
@@ -122,24 +128,122 @@ def test_compose_rejected(tmp_path):
         make_env(tmp_path)
 
 
-async def test_create_sandbox_kwargs(tmp_path):
+@pytest.mark.parametrize("rollout", [False, True])
+async def test_create_sandbox_kwargs(tmp_path, rollout):
     env = make_env(tmp_path)
+    env.context_id = uuid4()
     env._app = Mock()
     env._image = Mock()
-    with patch("harbor.environments.modal.Sandbox.create") as create:
-        create.aio = AsyncMock(return_value=Mock())
-        await env._create_sandbox(
-            entrypoint=["sleep", "infinity"], experimental_options={"other": "kept"}
-        )
+    base_image = env._image
+    plugin = RolloutEvidencePlugin()
+    job = Mock()
+    await plugin.on_job_start(job)
+    event = SimpleNamespace(trial_id=env.context_id)
+    if rollout:
+        await job.on_trial_started.call_args.args[0](event)
+    else:
+        base_image.run_commands.side_effect = RuntimeError("image has no apt-get")
+    try:
+        with patch("harbor.environments.modal.Sandbox.create") as create:
+            create.aio = AsyncMock(return_value=Mock())
+            await env._create_sandbox(
+                entrypoint=["sleep", "infinity"], experimental_options={"other": "kept"}
+            )
+    finally:
+        if rollout:
+            await job.on_trial_cancelled.call_args.args[0](event)
+    assert str(env.context_id) not in ROLLOUT_TRIALS
     args, kwargs = create.aio.call_args
     assert args == ("sleep", "infinity")
     assert kwargs["runtime"] == "vm"
     assert kwargs["memory"] == 3072
+    if rollout:
+        assert kwargs["image"] is base_image.run_commands.return_value
+        assert "auditd" in base_image.run_commands.call_args.args[0]
+        assert (
+            "--no-install-recommends auditd python3"
+            in base_image.run_commands.call_args.args[0]
+        )
+    else:
+        assert kwargs["image"] is base_image
+        base_image.run_commands.assert_not_called()
     assert kwargs["experimental_options"] == {
         "other": "kept",
         "proxy_traffic_via_sidecar": "garnet",
         "vm_sidecar_memory_reserve_mib": 1024,
     }
+
+
+@pytest.mark.parametrize("rollout", [False, True])
+async def test_audit_image_selection_during_harbor_job(tmp_path, rollout):
+    task = tmp_path / "task"
+    environment = task / "environment"
+    environment.mkdir(parents=True)
+    (environment / "Dockerfile").write_text("FROM ubuntu:24.04\n")
+    (task / "task.toml").write_text('version = "1.0"\n')
+    (task / "instruction.md").write_text("Test sandbox startup.\n")
+    (task / "tests").mkdir()
+    (task / "tests" / "test.sh").write_text("#!/bin/sh\nexit 0\n")
+    job = await Job.create(
+        JobConfig(
+            jobs_dir=tmp_path / "jobs",
+            tasks=[TaskConfig(path=task)],
+            agents=[AgentConfig(name="oracle")],
+            environment=TrialEnvironmentConfig(import_path=IMPORT_PATH),
+            install_only=True,
+            quiet=True,
+        )
+    )
+    if rollout:
+        await RolloutEvidencePlugin().on_job_start(job)
+
+    base_image = Mock()
+    if not rollout:
+        base_image.run_commands.side_effect = RuntimeError("image has no apt-get")
+    with (
+        patch("harbor.environments.modal.Image.from_dockerfile", return_value=base_image),
+        patch("harbor.environments.modal.App.lookup") as lookup,
+        patch("harbor.environments.modal.Sandbox.create") as create,
+    ):
+        lookup.aio = AsyncMock(return_value=Mock())
+        create.aio = AsyncMock(side_effect=RuntimeError("stop at Modal SDK boundary"))
+        result = await job.run()
+
+    create.aio.assert_awaited()
+    (trial,) = result.trial_results
+    assert str(trial.id) not in ROLLOUT_TRIALS
+    if rollout:
+        base_image.run_commands.assert_called_once()
+        assert "auditd" in base_image.run_commands.call_args.args[0]
+        expected_image = base_image.run_commands.return_value
+    else:
+        base_image.run_commands.assert_not_called()
+        expected_image = base_image
+    assert all(
+        call.kwargs["image"] is expected_image for call in create.aio.await_args_list
+    )
+
+
+@pytest.mark.parametrize("has_task_hosts", [False, True])
+async def test_begin_capture_selects_task_or_baseline_hosts(tmp_path, has_task_hosts):
+    baseline = tmp_path / "baseline.json"
+    baseline.write_text('["baseline.example"]')
+    env = make_env(tmp_path, baseline_hosts=str(baseline))
+    if has_task_hosts:
+        (tmp_path / "expected-hosts.json").write_text('["task.example"]')
+    captured = SimpleNamespace(return_code=0, stdout='{"start": 2}')
+    with (
+        patch(
+            "harbor.environments.modal.ModalEnvironment.exec",
+            new=AsyncMock(return_value=captured),
+        ),
+        patch.object(env, "upload_file", new=AsyncMock()),
+    ):
+        await env.begin_rollout_capture()
+    assert env._expected_hosts == (
+        ["task.example"] if has_task_hosts else ["baseline.example"]
+    )
+    assert env._rollout_active
 
 
 async def test_start_builds_sidecar_and_waits(tmp_path):
