@@ -7,6 +7,7 @@ import json
 import shlex
 import time
 from importlib.resources import files
+from pathlib import Path
 
 import modal
 from harbor.environments import modal as harbor_modal
@@ -14,7 +15,8 @@ from harbor.environments.modal import ModalEnvironment
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from modal_receipts.evidence import build_receipt
-from modal_receipts.plugin import ENVIRONMENTS
+from modal_receipts.manifest import recorder_identity
+from modal_receipts.plugin import ENVIRONMENTS, ROLLOUT_TRIALS
 from modal_receipts.rollout import build_rollout_evidence
 
 
@@ -27,6 +29,7 @@ class GarnetModalOptions(getattr(harbor_modal, "ModalOptions", _LegacyModalOptio
     sidecar_reserve_mib: int = Field(default=1024, ge=1024)
     sidecar_consume_mib: int = Field(default=512, gt=0)
     sidecar_ready_timeout_secs: int = Field(default=60, gt=0)
+    baseline_hosts: Path | None = None
 
     @model_validator(mode="after")
     def validate_sidecar(self):
@@ -100,6 +103,16 @@ class GarnetModalEnvironment(ModalEnvironment):
             return await super()._create_sandbox(
                 experimental_options=experimental_options, **kwargs
             )
+        if str(self.context_id) in ROLLOUT_TRIALS:
+            self._image = self._image.run_commands(
+                "if ! command -v auditd >/dev/null || ! command -v auditctl >/dev/null "
+                "|| ! command -v python3 >/dev/null; then "
+                "if command -v apt-get >/dev/null; then "
+                "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y "
+                "--no-install-recommends auditd python3 && rm -rf /var/lib/apt/lists/*; "
+                "else echo 'Garnet requires auditd, auditctl and python3 or an apt-based image' >&2; "
+                "exit 1; fi; fi"
+            )
         experimental_options = {
             **(experimental_options or {}),
             "proxy_traffic_via_sidecar": "garnet",
@@ -154,7 +167,7 @@ class GarnetModalEnvironment(ModalEnvironment):
                 ),
                 timeout=timeout,
             )
-            if self.context_id is not None:
+            if str(self.context_id) in ROLLOUT_TRIALS:
                 ENVIRONMENTS[str(self.context_id)] = self
         except Exception as exc:
             self._garnet_error = str(exc)
@@ -172,13 +185,17 @@ class GarnetModalEnvironment(ModalEnvironment):
         self._rollout_start = time.time()
         try:
             declaration = self.environment_dir.parent / "expected-hosts.json"
-            self._expected_hosts = json.loads(declaration.read_text())
-            if not isinstance(self._expected_hosts, list) or not all(
-                isinstance(host, str) and host for host in self._expected_hosts
-            ):
-                raise ValueError(
-                    "expected-hosts.json must contain a list of hostname patterns"
-                )
+            if not declaration.is_file():
+                declaration = self.options.baseline_hosts
+            if declaration is not None:
+                self._expected_hosts = json.loads(declaration.read_text())
+                if not isinstance(self._expected_hosts, list) or not all(
+                    isinstance(host, str) and host.strip()
+                    for host in self._expected_hosts
+                ):
+                    raise ValueError(
+                        f"{declaration} must contain a list of hostname patterns"
+                    )
             await super().exec("mkdir -p /opt/garnet", user="root")
             await self.upload_file(
                 str(files("modal_receipts").joinpath("guest_capture.py")),
@@ -208,6 +225,7 @@ class GarnetModalEnvironment(ModalEnvironment):
             "start": self._rollout_start,
             "end": time.time(),
             "error": self._rollout_error,
+            "integrity_missing": {},
         }
         sidecar = None
         if not self._rollout_error:
@@ -235,6 +253,7 @@ class GarnetModalEnvironment(ModalEnvironment):
             sidecar = {"error": str(exc)}
         evidence = build_rollout_evidence(guest, sidecar, self._expected_hosts)
         evidence["frozen_at"] = "AGENT_END"
+        evidence["recorder"] = recorder_identity()
         evidence["trial_id"] = str(self.context_id)
         directory = self.trial_paths.trial_dir
         directory.mkdir(parents=True, exist_ok=True)

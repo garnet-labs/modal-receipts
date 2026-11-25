@@ -1,0 +1,584 @@
+{
+  "kind": "network-evidence",
+  "coverage": "TCP/443 leaving the main container, relayed by Modal to the Sidecar; host name read from the TLS ClientHello SNI, nothing decrypted. Not covered: DNS, any other port, UDP, TLS without SNI (refused, recorded as refused_no_sni), traffic from the Sidecar itself.",
+  "records": [
+    {
+      "ts": 1795628042.144,
+      "event": "recorder_start",
+      "pid": 784
+    },
+    {
+      "ts": 1795628042.163,
+      "client": "127.0.0.1:48924",
+      "port": 443,
+      "connection_id": "256991554",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628042.163,
+      "client": "127.0.0.1:48924",
+      "port": 443,
+      "connection_id": "256991554",
+      "orig_dst": null,
+      "sni": null,
+      "outcome": "refused_no_sni"
+    },
+    {
+      "ts": 1795628097.824,
+      "client": "172.20.0.1:34178",
+      "port": 443,
+      "connection_id": "55917505029",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628097.824,
+      "client": "172.20.0.1:34178",
+      "port": 443,
+      "connection_id": "55917505029",
+      "orig_dst": null,
+      "sni": "downloads.claude.ai",
+      "upstream": "35.190.46.17",
+      "outcome": "relayed",
+      "bytes_up": 867,
+      "bytes_down": 15692,
+      "dur_s": 0.072
+    },
+    {
+      "ts": 1795628097.909,
+      "client": "172.20.0.1:34186",
+      "port": 443,
+      "connection_id": "56002664853",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628097.909,
+      "client": "172.20.0.1:34186",
+      "port": 443,
+      "connection_id": "56002664853",
+      "orig_dst": null,
+      "sni": "downloads.claude.ai",
+      "upstream": "35.190.46.17",
+      "outcome": "relayed",
+      "bytes_up": 862,
+      "bytes_down": 5738,
+      "dur_s": 0.068
+    },
+    {
+      "ts": 1795628097.982,
+      "client": "172.20.0.1:34188",
+      "port": 443,
+      "connection_id": "56075977573",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628097.982,
+      "client": "172.20.0.1:34188",
+      "port": 443,
+      "connection_id": "56075977573",
+      "orig_dst": null,
+      "sni": "downloads.claude.ai",
+      "upstream": "35.190.46.17",
+      "outcome": "relayed",
+      "bytes_up": 834,
+      "bytes_down": 7861,
+      "dur_s": 0.046
+    },
+    {
+      "ts": 1795628098.039,
+      "client": "172.20.0.1:34194",
+      "port": 443,
+      "connection_id": "56132815920",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628098.039,
+      "client": "172.20.0.1:34194",
+      "port": 443,
+      "connection_id": "56132815920",
+      "orig_dst": null,
+      "sni": "downloads.claude.ai",
+      "upstream": "35.190.46.17",
+      "outcome": "relayed",
+      "bytes_up": 3536,
+      "bytes_down": 403122599,
+      "dur_s": 6.263
+    },
+    {
+      "ts": 1795628104.854,
+      "client": "172.20.0.1:42918",
+      "port": 443,
+      "connection_id": "62947806561",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628104.903,
+      "client": "172.20.0.1:42920",
+      "port": 443,
+      "connection_id": "62996982859",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628105.016,
+      "client": "172.20.0.1:42930",
+      "port": 443,
+      "connection_id": "63110149863",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628105.083,
+      "client": "172.20.0.1:42942",
+      "port": 443,
+      "connection_id": "63177166590",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628107.34,
+      "client": "172.20.0.1:42948",
+      "port": 443,
+      "connection_id": "65433882304",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628107.34,
+      "client": "172.20.0.1:42948",
+      "port": 443,
+      "connection_id": "65433882304",
+      "orig_dst": null,
+      "sni": "api.anthropic.com",
+      "upstream": "160.79.104.10",
+      "outcome": "relayed",
+      "bytes_up": 7556,
+      "bytes_down": 2315,
+      "dur_s": 0.109
+    },
+    {
+      "ts": 1795628104.903,
+      "client": "172.20.0.1:42920",
+      "port": 443,
+      "connection_id": "62996982859",
+      "orig_dst": null,
+      "sni": "api.anthropic.com",
+      "upstream": "160.79.104.10",
+      "outcome": "relayed",
+      "bytes_up": 2271,
+      "bytes_down": 4917,
+      "dur_s": 2.546
+    },
+    {
+      "ts": 1795628105.016,
+      "client": "172.20.0.1:42930",
+      "port": 443,
+      "connection_id": "63110149863",
+      "orig_dst": null,
+      "sni": "downloads.claude.ai",
+      "upstream": "35.190.46.17",
+      "outcome": "relayed",
+      "bytes_up": 2290,
+      "bytes_down": 11316,
+      "dur_s": 2.432
+    },
+    {
+      "ts": 1795628105.083,
+      "client": "172.20.0.1:42942",
+      "port": 443,
+      "connection_id": "63177166590",
+      "orig_dst": null,
+      "sni": "downloads.claude.ai",
+      "upstream": "35.190.46.17",
+      "outcome": "relayed",
+      "bytes_up": 2087,
+      "bytes_down": 4998,
+      "dur_s": 2.365
+    },
+    {
+      "ts": 1795628104.854,
+      "client": "172.20.0.1:42918",
+      "port": 443,
+      "connection_id": "62947806561",
+      "orig_dst": null,
+      "sni": "api.anthropic.com",
+      "upstream": "160.79.104.10",
+      "outcome": "relayed",
+      "bytes_up": 1749,
+      "bytes_down": 4683,
+      "dur_s": 2.595
+    },
+    {
+      "ts": 1795628108.022,
+      "client": "172.20.0.1:42964",
+      "port": 443,
+      "connection_id": "66115462783",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628108.022,
+      "client": "172.20.0.1:42970",
+      "port": 443,
+      "connection_id": "66115594714",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628108.022,
+      "client": "172.20.0.1:42964",
+      "port": 443,
+      "connection_id": "66115462783",
+      "orig_dst": null,
+      "sni": null,
+      "outcome": "refused_no_sni"
+    },
+    {
+      "ts": 1795628108.022,
+      "client": "172.20.0.1:42970",
+      "port": 443,
+      "connection_id": "66115594714",
+      "orig_dst": null,
+      "sni": "ai-gateway.vercel.sh",
+      "upstream": "64.239.123.1",
+      "outcome": "relayed",
+      "bytes_up": 657289,
+      "bytes_down": 106572,
+      "dur_s": 79.431
+    },
+    {
+      "ts": 1795628190.337,
+      "client": "172.20.0.1:39686",
+      "port": 443,
+      "connection_id": "148431163612",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628190.39,
+      "client": "172.20.0.1:39700",
+      "port": 443,
+      "connection_id": "148484106304",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628190.39,
+      "client": "172.20.0.1:39700",
+      "port": 443,
+      "connection_id": "148484106304",
+      "orig_dst": null,
+      "sni": "releases.astral.sh",
+      "upstream": "172.67.68.3",
+      "outcome": "relayed",
+      "bytes_up": 839,
+      "bytes_down": 70869,
+      "dur_s": 0.037
+    },
+    {
+      "ts": 1795628190.337,
+      "client": "172.20.0.1:39686",
+      "port": 443,
+      "connection_id": "148431163612",
+      "orig_dst": null,
+      "sni": "astral.sh",
+      "upstream": "104.26.13.77",
+      "outcome": "relayed",
+      "bytes_up": 812,
+      "bytes_down": 4011,
+      "dur_s": 0.092
+    },
+    {
+      "ts": 1795628190.478,
+      "client": "172.20.0.1:39706",
+      "port": 443,
+      "connection_id": "148571543507",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628190.527,
+      "client": "172.20.0.1:39720",
+      "port": 443,
+      "connection_id": "148620911762",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628190.478,
+      "client": "172.20.0.1:39706",
+      "port": 443,
+      "connection_id": "148571543507",
+      "orig_dst": null,
+      "sni": "github.com",
+      "upstream": "20.64.190.225",
+      "outcome": "relayed",
+      "bytes_up": 834,
+      "bytes_down": 9002,
+      "dur_s": 7.043
+    },
+    {
+      "ts": 1795628190.527,
+      "client": "172.20.0.1:39720",
+      "port": 443,
+      "connection_id": "148620911762",
+      "orig_dst": null,
+      "sni": "release-assets.githubusercontent.com",
+      "upstream": "185.199.108.133",
+      "outcome": "relayed",
+      "bytes_up": 1616,
+      "bytes_down": 21423829,
+      "dur_s": 6.994
+    },
+    {
+      "ts": 1795628197.993,
+      "client": "172.20.0.1:44098",
+      "port": 443,
+      "connection_id": "156086983777",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628198.164,
+      "client": "172.20.0.1:44102",
+      "port": 443,
+      "connection_id": "156258174718",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628197.993,
+      "client": "172.20.0.1:44098",
+      "port": 443,
+      "connection_id": "156086983777",
+      "orig_dst": null,
+      "sni": "github.com",
+      "upstream": "20.64.190.225",
+      "outcome": "relayed",
+      "bytes_up": 702,
+      "bytes_down": 9093,
+      "dur_s": 0.979
+    },
+    {
+      "ts": 1795628198.164,
+      "client": "172.20.0.1:44102",
+      "port": 443,
+      "connection_id": "156258174718",
+      "orig_dst": null,
+      "sni": "release-assets.githubusercontent.com",
+      "upstream": "185.199.109.133",
+      "outcome": "relayed",
+      "bytes_up": 3803,
+      "bytes_down": 33598692,
+      "dur_s": 0.808
+    },
+    {
+      "ts": 1795628198.974,
+      "client": "172.20.0.1:44118",
+      "port": 443,
+      "connection_id": "157067546994",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628198.974,
+      "client": "172.20.0.1:44124",
+      "port": 443,
+      "connection_id": "157067880715",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628198.974,
+      "client": "172.20.0.1:44124",
+      "port": 443,
+      "connection_id": "157067880715",
+      "orig_dst": null,
+      "sni": "pypi.org",
+      "upstream": "151.101.128.223",
+      "outcome": "relayed",
+      "bytes_up": 494,
+      "bytes_down": 5081,
+      "dur_s": 0.018
+    },
+    {
+      "ts": 1795628199.019,
+      "client": "172.20.0.1:44126",
+      "port": 443,
+      "connection_id": "157113076645",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628199.019,
+      "client": "172.20.0.1:44140",
+      "port": 443,
+      "connection_id": "157113275935",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628199.019,
+      "client": "172.20.0.1:44126",
+      "port": 443,
+      "connection_id": "157113076645",
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.0.223",
+      "outcome": "relayed",
+      "bytes_up": 508,
+      "bytes_down": 5067,
+      "dur_s": 0.016
+    },
+    {
+      "ts": 1795628199.063,
+      "client": "172.20.0.1:44148",
+      "port": 443,
+      "connection_id": "157156691852",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628198.974,
+      "client": "172.20.0.1:44118",
+      "port": 443,
+      "connection_id": "157067546994",
+      "orig_dst": null,
+      "sni": "pypi.org",
+      "upstream": "151.101.0.223",
+      "outcome": "relayed",
+      "bytes_up": 1191,
+      "bytes_down": 111086,
+      "dur_s": 0.09
+    },
+    {
+      "ts": 1795628199.019,
+      "client": "172.20.0.1:44140",
+      "port": 443,
+      "connection_id": "157113275935",
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.64.223",
+      "outcome": "relayed",
+      "bytes_up": 1616,
+      "bytes_down": 18076,
+      "dur_s": 0.044
+    },
+    {
+      "ts": 1795628199.064,
+      "client": "172.20.0.1:44150",
+      "port": 443,
+      "connection_id": "157157769024",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628199.064,
+      "client": "172.20.0.1:44162",
+      "port": 443,
+      "connection_id": "157157826089",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628199.064,
+      "client": "172.20.0.1:44170",
+      "port": 443,
+      "connection_id": "157157863641",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628199.064,
+      "client": "172.20.0.1:44172",
+      "port": 443,
+      "connection_id": "157157896943",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628199.064,
+      "client": "172.20.0.1:44176",
+      "port": 443,
+      "connection_id": "157157930689",
+      "event": "connection_open"
+    },
+    {
+      "ts": 1795628199.064,
+      "client": "172.20.0.1:44172",
+      "port": 443,
+      "connection_id": "157157896943",
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.64.223",
+      "outcome": "relayed",
+      "bytes_up": 508,
+      "bytes_down": 5067,
+      "dur_s": 0.016
+    },
+    {
+      "ts": 1795628199.064,
+      "client": "172.20.0.1:44162",
+      "port": 443,
+      "connection_id": "157157826089",
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.128.223",
+      "outcome": "relayed",
+      "bytes_up": 508,
+      "bytes_down": 5067,
+      "dur_s": 0.016
+    },
+    {
+      "ts": 1795628199.064,
+      "client": "172.20.0.1:44176",
+      "port": 443,
+      "connection_id": "157157930689",
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.0.223",
+      "outcome": "relayed",
+      "bytes_up": 508,
+      "bytes_down": 5067,
+      "dur_s": 0.017
+    },
+    {
+      "ts": 1795628199.064,
+      "client": "172.20.0.1:44170",
+      "port": 443,
+      "connection_id": "157157863641",
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.192.223",
+      "outcome": "relayed",
+      "bytes_up": 508,
+      "bytes_down": 5067,
+      "dur_s": 0.017
+    },
+    {
+      "ts": 1795628199.063,
+      "client": "172.20.0.1:44148",
+      "port": 443,
+      "connection_id": "157156691852",
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.64.223",
+      "outcome": "relayed",
+      "bytes_up": 508,
+      "bytes_down": 5067,
+      "dur_s": 0.218
+    },
+    {
+      "ts": 1795628199.064,
+      "client": "172.20.0.1:44150",
+      "port": 443,
+      "connection_id": "157157769024",
+      "orig_dst": null,
+      "sni": "files.pythonhosted.org",
+      "upstream": "151.101.0.223",
+      "outcome": "relayed",
+      "bytes_up": 1537,
+      "bytes_down": 1809950,
+      "dur_s": 0.217
+    }
+  ],
+  "hosts": [
+    "ai-gateway.vercel.sh",
+    "api.anthropic.com",
+    "astral.sh",
+    "downloads.claude.ai",
+    "files.pythonhosted.org",
+    "github.com",
+    "pypi.org",
+    "release-assets.githubusercontent.com",
+    "releases.astral.sh"
+  ],
+  "connection_count": 28,
+  "bytes_up": 695833,
+  "bytes_down": 460376782,
+  "declared_network_policy": {
+    "mode": "public",
+    "allowed_hosts": []
+  },
+  "observed_outside_policy": [],
+  "policy_comparison": "SNI hostname comparison only; IP/CIDR rules cannot be evaluated from SNI",
+  "malformed_lines": []
+}

@@ -1,0 +1,126 @@
+{
+    "schema_version": 1,
+    "id": "dcfc8697-42d0-48dc-a736-2cd98b5850e4",
+    "task_name": "log-summary-date-ranges",
+    "trial_name": "log-summary-date-ranges__eX4og3Q",
+    "trial_uri": "file:///redacted/trials/planted/log-summary-date-ranges__eX4og3Q",
+    "task_id": {
+        "path": "samples/harbor-tb2-reachable/tasks/planted/log-summary-date-ranges"
+    },
+    "source": "planted",
+    "task_checksum": "03c8cc3fc7dc881b55defd4d4c6e1a047866aaac232afb973ae0f75b695cd6b0",
+    "config": {
+        "schema_version": 1,
+        "task": {
+            "path": "samples/harbor-tb2-reachable/tasks/planted/log-summary-date-ranges",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": "planted"
+        },
+        "trial_name": "log-summary-date-ranges__eX4og3Q",
+        "trials_dir": "runs/planted",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "oracle",
+            "import_path": null,
+            "model_name": null,
+            "base_url": null,
+            "model_api_key_name": null,
+            "model_api_format": null,
+            "skip_model_parsing": false,
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {},
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": null,
+            "import_path": "modal_receipts.harbor:GarnetModalEnvironment",
+            "force_build": false,
+            "delete": true,
+            "stream": false,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {
+                "baseline_hosts": "samples/harbor-tb2-reachable/expected-hosts.json"
+            },
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "override_error_policy": {},
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": "374f2825-65c1-4673-83ed-e66c82b7c02c",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "oracle",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "model_usage": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": null,
+    "started_at": "2026-11-25T20:13:56.920105Z",
+    "finished_at": "2026-11-25T20:14:53.686853Z",
+    "environment_setup": {
+        "started_at": "2026-11-25T20:13:56.924312Z",
+        "finished_at": "2026-11-25T20:13:58.944870Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-11-25T20:13:58.944887Z",
+        "finished_at": "2026-11-25T20:13:58.944921Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-11-25T20:13:59.532474Z",
+        "finished_at": "2026-11-25T20:14:13.376187Z"
+    },
+    "verifier": {
+        "started_at": "2026-11-25T20:14:19.224559Z",
+        "finished_at": "2026-11-25T20:14:23.206230Z"
+    },
+    "step_results": null,
+    "reward_valid": true
+}

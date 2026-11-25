@@ -1,0 +1,47 @@
+{
+    "schema_version": 1,
+    "id": "07076a73-ab7f-44ee-bc9d-a2843733bf51",
+    "started_at": "2026-11-25T20:13:11.935779",
+    "updated_at": "2026-11-25T20:21:31.312111",
+    "finished_at": "2026-11-25T20:21:31.312111",
+    "n_total_trials": 6,
+    "stats": {
+        "n_completed_trials": 6,
+        "n_errored_trials": 0,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "claude-code__claude-sonnet-5__reachable": {
+                "n_trials": 6,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 1.0
+                    }
+                ],
+                "pass_at_k": {
+                    "2": 1.0
+                },
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "log-summary-date-ranges__PUJ4U49",
+                            "regex-log__PN87CtU",
+                            "log-summary-date-ranges__F8bEv6Q",
+                            "regex-log__Lp8V7wL",
+                            "log-summary-date-ranges__VJQXF6b",
+                            "regex-log__gGXcgFb"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        },
+        "n_input_tokens": 1248119,
+        "n_cache_tokens": 1190464,
+        "n_output_tokens": 38376,
+        "cost_usd": 0.7659553
+    }
+}

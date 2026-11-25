@@ -1,0 +1,141 @@
+{
+    "schema_version": 1,
+    "id": "70b96f5f-bbe7-48d4-b6cd-9cc45c96267c",
+    "task_name": "regex-log",
+    "trial_name": "regex-log__CCB8xif",
+    "trial_uri": "file:///redacted/trials/honest/regex-log__CCB8xif",
+    "task_id": {
+        "path": "samples/harbor-tb2-reachable/tasks/reachable/regex-log"
+    },
+    "source": "reachable",
+    "task_checksum": "8a970c76d8d099c3c0206091f2fa577fff2bfb1910704b0daa9ef48ec941a322",
+    "config": {
+        "schema_version": 1,
+        "task": {
+            "path": "samples/harbor-tb2-reachable/tasks/reachable/regex-log",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": "reachable"
+        },
+        "trial_name": "regex-log__CCB8xif",
+        "trials_dir": "runs/honest",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "claude-code",
+            "import_path": null,
+            "model_name": "anthropic/claude-sonnet-5",
+            "base_url": "https://ai-gateway.vercel.sh",
+            "model_api_key_name": null,
+            "model_api_format": null,
+            "skip_model_parsing": false,
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "max_budget_usd": 1.5
+            },
+            "env": {
+                "ANTHROPIC_AUTH_TOKEN": "[redacted]"
+            },
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": null,
+            "import_path": "modal_receipts.harbor:GarnetModalEnvironment",
+            "force_build": false,
+            "delete": true,
+            "stream": false,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {
+                "baseline_hosts": "samples/harbor-tb2-reachable/expected-hosts.json"
+            },
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "override_error_policy": {},
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": "751c1a7a-8839-47a1-8aa0-b5c2d494266c",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "claude-code",
+        "version": "2.1.332",
+        "model_info": {
+            "name": "claude-sonnet-5",
+            "provider": "anthropic"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 153666,
+        "n_cache_tokens": 140515,
+        "n_output_tokens": 12820,
+        "cost_usd": 0.1891765,
+        "model_usage": {
+            "claude-sonnet-5": {
+                "n_input_tokens": 153666,
+                "n_cache_tokens": 140515,
+                "n_output_tokens": 12820,
+                "cost_usd": 0.1891765
+            }
+        },
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "verifier_environment_mode": "shared",
+    "exception_info": null,
+    "started_at": "2026-11-25T20:16:45.790928Z",
+    "finished_at": "2026-11-25T20:20:47.930437Z",
+    "environment_setup": {
+        "started_at": "2026-11-25T20:16:45.794358Z",
+        "finished_at": "2026-11-25T20:16:47.864625Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-11-25T20:16:47.864647Z",
+        "finished_at": "2026-11-25T20:17:57.928745Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-11-25T20:17:58.160418Z",
+        "finished_at": "2026-11-25T20:20:10.244818Z"
+    },
+    "verifier": {
+        "started_at": "2026-11-25T20:20:11.092723Z",
+        "finished_at": "2026-11-25T20:20:17.446373Z"
+    },
+    "step_results": null,
+    "reward_valid": true
+}
