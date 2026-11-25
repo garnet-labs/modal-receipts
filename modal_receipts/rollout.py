@@ -5,6 +5,7 @@ import re
 from fnmatch import fnmatchcase
 
 from modal_receipts.dns_attribution import RULESET, attribution
+from modal_receipts.integrity import CHECK_RULES, INTEGRITY_SCOPE, integrity_events
 
 CHECKS = ("off_policy_host", "tests_write", "background_proc")
 SCOPE = {
@@ -24,7 +25,7 @@ SCOPE = {
     "pre-agent baseline, recorder and host-driver commands. Census plus b64 "
     "audit lineage, not proof against root tampering, PID reuse or namespace escape.",
 }
-FIELDS = re.compile(r'(\w+)=("[^"]*"|\S+)')
+FIELDS = re.compile(r'(\w+(?:\[\d+\])?)=("[^"]*"|\S+)')
 STAMP = re.compile(r"msg=audit\((\d+\.\d+):(\d+)\)")
 
 
@@ -34,7 +35,10 @@ def result(state, reason, refs):
 
 def numeric_rewards(evidence):
     rewards = {}
-    for name in CHECKS:
+    for name in (
+        *CHECKS,
+        *(name for name in CHECK_RULES if name in evidence.get("checks", {})),
+    ):
         state = evidence.get("checks", {}).get(name, {}).get("state", "unknown")
         rewards[f"{name}_known"] = int(
             state in ("observed", "not_observed_within_scope")
@@ -53,7 +57,10 @@ def parse_audit(text, start, end):
             continue
         if not start <= float(stamp[1]) <= end:
             continue
-        fields = {key: value.strip('"') for key, value in FIELDS.findall(line)}
+        fields = {
+            key: value if "[" in key else value.strip('"')
+            for key, value in FIELDS.findall(line)
+        }
         events.setdefault(stamp[2], []).append(fields)
     return events
 
@@ -161,7 +168,12 @@ def guest_checks(guest):
         and (p["pid"], p["start_ticks"]) not in baseline
         and p["state"] not in ("Z", "X")
     ]
-    return writes, alive, detached
+    integrity = (
+        integrity_events(guest, syscalls, descendants)
+        if "integrity_missing" in guest
+        else ({}, {})
+    )
+    return writes, alive, detached, integrity
 
 
 def network_check(sidecar, expected_hosts, start, end, guest=None):
@@ -238,6 +250,7 @@ def network_check(sidecar, expected_hosts, start, end, guest=None):
     ):
         issues.append("no-SNI or failed connections leave host coverage incomplete")
     outside = []
+    relayed_hosts = set()
     for row in connections:
         if (
             row.get("outcome") != "relayed"
@@ -246,6 +259,9 @@ def network_check(sidecar, expected_hosts, start, end, guest=None):
         ):
             continue
         host = row["sni"].lower().rstrip(".")
+        if not host:
+            continue
+        relayed_hosts.add(host)
         if not any(
             fnmatchcase(host, pattern.lower().rstrip(".")) for pattern in expected_hosts
         ):
@@ -261,6 +277,11 @@ def network_check(sidecar, expected_hosts, start, end, guest=None):
         "issues": sorted(set(issues)),
         "no_sni_refusals": refusals,
         **(
+            {"relayed_hosts": sorted(relayed_hosts)}
+            if isinstance(guest, dict) and "integrity_missing" in guest
+            else {}
+        ),
+        **(
             {"dns_attribution": dns}
             if isinstance(guest, dict) and guest.get("ruleset") == RULESET
             else {}
@@ -269,7 +290,11 @@ def network_check(sidecar, expected_hosts, start, end, guest=None):
 
 
 def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
-    checks = {name: result("unknown", "capture unavailable", []) for name in CHECKS}
+    extended = isinstance(guest, dict) and "integrity_missing" in guest
+    checks = {
+        name: result("unknown", "capture unavailable", [])
+        for name in (*CHECKS, *(CHECK_RULES if extended else ()))
+    }
     details = {
         "writes": [],
         "alive_descendants": [],
@@ -278,7 +303,7 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
         "network_capture": {},
     }
     try:
-        writes, alive, detached = guest_checks(guest)
+        writes, alive, detached, (integrity, issues) = guest_checks(guest)
         details.update(writes=writes, alive_descendants=alive, detached_info=detached)
         for name, rows in (("tests_write", writes), ("background_proc", alive)):
             checks[name] = result(
@@ -291,8 +316,28 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
                     "guest-capture.json",
                 ],
             )
+        if extended:
+            details["integrity"] = integrity
+            integrity["harness_write"].extend(writes)
+            for name, rows in integrity.items():
+                issue = issues.get(name)
+                checks[name] = result(
+                    "observed"
+                    if rows
+                    else "unknown"
+                    if issue
+                    else "not_observed_within_scope",
+                    "matching agent-descendant evidence"
+                    if rows
+                    else issue or "no matching events within captured scope",
+                    [f"#/details/integrity/{name}", "guest-capture.json"],
+                )
     except (ValueError, TypeError, KeyError, AttributeError, OverflowError) as exc:
-        for name in ("tests_write", "background_proc"):
+        for name in (
+            "tests_write",
+            "background_proc",
+            *(CHECK_RULES if extended else ()),
+        ):
             checks[name] = result("unknown", str(exc), ["guest-capture.json"])
     try:
         if (
@@ -302,10 +347,19 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
         ):
             raise ValueError("agent window missing")
         outside, capture = network_check(
-            sidecar, expected_hosts, guest["start"], guest["end"], guest
+            sidecar,
+            expected_hosts if expected_hosts is not None else [],
+            guest["start"],
+            guest["end"],
+            guest,
         )
-        details["off_policy_hosts"] = outside
         details["network_capture"] = capture
+        if expected_hosts is None:
+            capture.setdefault("relayed_hosts", sorted({row["host"] for row in outside}))
+            raise ValueError(
+                "no expected hosts configured; relayed SNI available for baseline"
+            )
+        details["off_policy_hosts"] = outside
         reason = (
             "SNI outside expected hosts"
             if outside
@@ -336,7 +390,7 @@ def build_rollout_evidence(guest=None, sidecar=None, expected_hosts=None):
     evidence = {
         "kind": "rollout-network-and-process-evidence",
         "checks": checks,
-        "scope": SCOPE,
+        "scope": {**SCOPE, **INTEGRITY_SCOPE} if extended else SCOPE,
         "expected_hosts": expected_hosts,
         "details": details,
         "window": {

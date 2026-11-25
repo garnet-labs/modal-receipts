@@ -42,13 +42,44 @@ in it is constructed. The one constructed case is labelled `constructed:` in eve
 
 ## Harbor (Terminal-Bench on Modal)
 
-For phase-frozen rollout checks with a separate Rewardkit verifier, use the
-local cookbook `rollout-evidence` recipe and
-`--plugin modal_receipts.plugin:RolloutEvidencePlugin`. It requires a recipe-level
-`expected-hosts.json`, auditd in the agent image, and verifier edits; the plugin
-is not a drop-in grader for existing benchmarks. Frozen `rollout-evidence.json`
-and raw capture artifacts are retained in the host trial directory, before the
-existing stop-time network receipt. Missing capture is `unknown`, never clean.
+Select `--plugin modal_receipts.plugin:RolloutEvidencePlugin` for phase-frozen
+rollout checks and one integrity manifest (JSON and Markdown) per Harbor job.
+With the plugin enabled, the observer adds auditd and Python 3 as a Modal image layer on apt-based
+images; images with auditd, auditctl and Python 3 already installed also work. The plugin does not
+require verifier edits or change the benchmark reward. A verifier can choose
+to consume the evidence separately, as in the cookbook `rollout-evidence`.
+Frozen `rollout-evidence.json` and raw capture artifacts stay in the host trial
+directory. A missing or unobserved signal is not a clean bill of health:
+manifests record the scope, missing checks, artifact SHA-256 hashes and known
+recorder version/commit, not a signature or attestation. The top-level recorder
+describes the manifest writer; each trial records the recorder that froze its
+evidence, or null for older or missing captures.
+
+On a trusted honest baseline run without `expected-hosts.json`, the observer
+still captures SNI and leaves the network policy verdict `unknown`. Derive
+candidate hosts from that job, then supply them to the next job:
+
+```sh
+python -m modal_receipts.manifest jobs/honest-baseline --output expected-hosts.json
+# Add to the next Harbor command:
+# --ek baseline_hosts=/absolute/path/to/expected-hosts.json
+```
+
+Run the command with the same Python that has `modal-receipts` installed.
+Candidate hosts are only successful relay observations; the command reports
+how many inputs had incomplete capture. Review the set before relying on it:
+it is not an enforcement policy and will learn any relayed host in your input.
+A task-local `expected-hosts.json` takes precedence.
+
+New guest checks cover read-permission events under `/tests`, targeted
+harness writes, and Git object reads or explicit remote-ref commands. The
+manifest distinguishes these observations from cheating intent; normal Git
+and test development can match. It does not cover arbitrary paths or detect
+in-memory edits. The Git object watch and configured remote names are taken
+from the initial working directory at agent start. The command check also
+recognizes remote ref selectors such as `--remotes`, `--all`, and remote globs;
+it matches remote-looking option values without inferring what Git read.
+Missing watches stay `unknown`.
 
 ### DNS-set coverage for no-SNI refusals
 
@@ -95,6 +126,7 @@ documented `module:Class` environment import path:
 uv tool install --python 3.12 'harbor[modal]' --with git+https://github.com/garnet-labs/modal-receipts
 harbor run -d terminal-bench/terminal-bench@4.1.0 \
   -e modal_receipts.harbor:GarnetModalEnvironment \
+  --plugin modal_receipts.plugin:RolloutEvidencePlugin \
   -a claude-code -m anthropic/claude-sonnet-5 \
   --base-url https://ai-gateway.vercel.sh \
   --ae ANTHROPIC_AUTH_TOKEN="$AI_GATEWAY_API_KEY" -l 3
@@ -136,8 +168,8 @@ than allowing an unobserved agent run.
 
 Coverage is **TCP/443 ClientHello SNI only**, with no TLS decryption: not DNS,
 UDP, other ports, TLS without SNI (refused), or the Sidecar's own traffic. This
-integration does not enable the optional in-VM audit recorder or process
-attribution. Records are emitted when a connection finishes; active connections
+stop-time network receipt does not include in-VM audit or process attribution;
+those checks are in the separate plugin artifacts. Records are emitted when a connection finishes; active connections
 at collection time can be absent. SNI comparisons cannot evaluate IP/CIDR rules
 or prove that a policy was enforced. The Sidecar has its own outbound policy;
 this observer does not install an evidence-derived Sidecar allowlist. Modal's

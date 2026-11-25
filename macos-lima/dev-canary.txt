@@ -1,0 +1,75 @@
+=== Dev canary run (initial readiness check exited 1) ===
+$ JIBRIL_LIMA_INSTANCE=jibril-dev-recheck /bin/bash macos-lima/run-jibril.sh --dev-canary
+ProductName:		macOS
+ProductVersion:		26.6.2
+BuildVersion:		25G83
+arm64
+machdep.cpu.brand_string: Apple M4 Pro (Virtual)
+hw.model: VirtualMac2,1
+kern.hv_support: 0
+Homebrew 7.0.16
+limactl version 2.3.0
+QEMU emulator version 11.1.3
+Copyright (c) 2003-2026 Fabrice Bellard and the QEMU Project developers
+Starting fresh Lima instance jibril-dev-recheck (Ubuntu 24.04, x86_64, QEMU).
+time="2026-11-24T09:50:14-08:00" level=info msg="Terminal is not available, proceeding without opening an editor"
+time="2026-11-24T09:50:14-08:00" level=info msg="Starting the instance `jibril-dev-recheck` with internal VM driver `qemu`"
+time="2026-11-24T09:50:14-08:00" level=info msg="Attempting to download the image" arch=x86_64 digest="sha256:04e8f2461a16a44e78a370284471f29616cdd9baf1893df25807b71f985b6c94" location="https://cloud-images.ubuntu.com/releases/noble/release-20261017/ubuntu-24.04-server-cloudimg-amd64.img"
+time="2026-11-24T09:50:14-08:00" level=info msg="Using cache `/Users/devin/Library/Caches/lima/download/by-url-sha256/48a1761f187e3a1d70cb8f3683ebab05ec038c5c0d9b0f66f6eee8157ab667fa/data`"
+time="2026-11-24T09:50:14-08:00" level=info msg="Resize instance jibril-dev-recheck's disk from 3.5GiB to 20GiB"
+time="2026-11-24T09:50:14-08:00" level=info msg="[hostagent] hostagent socket created at /Users/devin/.lima/jibril-dev-recheck/ha.sock"
+time="2026-11-24T09:50:14-08:00" level=warning msg="[hostagent] Hypervisor API (kern.hv_support) is not available. Disabling HVF. Expect very poor performance." error="<nil>"
+time="2026-11-24T09:50:14-08:00" level=info msg="[hostagent] Using system firmware (`/opt/homebrew/share/qemu/edk2-x86_64-code.fd`)"
+time="2026-11-24T09:50:14-08:00" level=info msg="[hostagent] Starting QEMU (hint: to watch the boot progress, see `/Users/devin/.lima/jibril-dev-recheck/serial*.log`)"
+time="2026-11-24T09:50:14-08:00" level=info msg="SSH Local Port: 55655"
+time="2026-11-24T09:50:14-08:00" level=info msg="( 1/5) 🕐 SSH connection (essential)"
+time="2026-11-24T09:51:04-08:00" level=info msg="[hostagent] Pinning the SSH host key of the guest (SHA256:WxhLwERLctUBkeRv6vHKjN6Xtl1q3B6frxWe3IjkFLo) in `ssh.known_hosts`"
+time="2026-11-24T09:51:08-08:00" level=info msg="( 1/5) ✅ SSH connection"
+time="2026-11-24T09:51:08-08:00" level=info msg="( 2/5) 🕐 User session to be ready for SSH (essential)"
+time="2026-11-24T09:51:25-08:00" level=info msg="( 2/5) ✅ User session to be ready for SSH"
+time="2026-11-24T09:51:25-08:00" level=info msg="( 3/5) 🕐 Persistent SSH ControlMaster (essential)"
+time="2026-11-24T09:51:26-08:00" level=info msg="( 3/5) ✅ Persistent SSH ControlMaster"
+time="2026-11-24T09:51:26-08:00" level=info msg="( 4/5) 🕐 Guest agent to be running"
+time="2026-11-24T09:51:26-08:00" level=info msg="[hostagent] Stopping forwarding `/run/lima-guestagent.sock` (guest) to `/Users/devin/.lima/jibril-dev-recheck/ga.sock` (host)"
+time="2026-11-24T09:51:26-08:00" level=info msg="[hostagent] Forwarding `/run/lima-guestagent.sock` (guest) to `/Users/devin/.lima/jibril-dev-recheck/ga.sock` (host)"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Guest agent is running"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Time sync: guest agent is alive, starting time synchronization"
+time="2026-11-24T09:51:27-08:00" level=info msg="( 4/5) ✅ Guest agent to be running"
+time="2026-11-24T09:51:27-08:00" level=info msg="( 5/5) 🕐 Boot scripts to be finished"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Not forwarding TCP 127.0.0.54:53"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Not forwarding TCP 127.0.0.53:53"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Not forwarding TCP 0.0.0.0:22"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Not forwarding TCP [::]:22"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Forwarding UDP from 0.0.0.0:5353 to 127.0.0.1:5353"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Not forwarding UDP 127.0.0.54:53"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Not forwarding UDP 127.0.0.53:53"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Not forwarding UDP 192.168.5.15:68"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Forwarding UDP from [::]:5353 to 127.0.0.1:5353"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Not forwarding UDP 127.0.0.1:5353"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Not forwarding UDP 127.0.0.1:5353"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Not forwarding UDP 127.0.0.1:5353"
+time="2026-11-24T09:51:27-08:00" level=info msg="[hostagent] Not forwarding UDP 127.0.0.1:5353"
+time="2026-11-24T09:51:27-08:00" level=info msg="( 5/5) ✅ Boot scripts to be finished"
+time="2026-11-24T09:51:27-08:00" level=info msg="READY. Run `limactl shell jibril-dev-recheck` to open the shell."
+/var/folders/jj/fwmm45ns4dz80954vdr61l2w0000gn/T//jibril-lima.5UM3Vj/jibril: OK
+/var/folders/jj/fwmm45ns4dz80954vdr61l2w0000gn/T//jibril-lima.5UM3Vj/garnetctl_Linux_x86_64.tar.gz: OK
+Ubuntu 24.04.5 LTS
+6.8.0-147-generic x86_64
+CONFIG_FUNCTION_TRACER=y
+Nov 24 17:51:41 INF pkgs/settings/engine.go:24 > settings initialized
+v2.13.0
+Version: 1.19.0, Commit: a6417a22987d872ca22a1099b023a4be8146da4e, Built: 2026-05-15T03:58:03Z, Go: go1.26.3
+Fetching merged network policy from https://dev-api.garnet.ai.
+Registering one GitHub-kind agent on dev-api (run ID 1795542702).
+Running as unit: jibril-dev-canary.service; invocation ID: 13e6b35c06594be6be417c2c0f9471ad
+Jibril did not reach its exec phase; inspect journalctl -u jibril-dev-canary in the guest.
+
+=== Corrected readiness and link count checked on the same running service (exit 0) ===
+Nov 24 17:52:52 INF pkgs/hierarchy/hierarchy.go:233 > component ebpf, phase exec set to completed
+Nov 24 17:52:52 INF services/agent/engine.go:84 > agent heartbeat worker started
+active
+Jibril attach count: 40 live kernel links owned by Jibril (v2.13.0 does not log an attach count)
+
+=== Events lookup for the same agent after fetching the PR #14 headers in the guest (exit 0) ===
+Confirmed the running Jibril service targets https://dev-api.garnet.ai.
+Dev-api events returned for the registered canary (limited to 5): 5

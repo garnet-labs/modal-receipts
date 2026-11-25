@@ -1,0 +1,113 @@
+import hashlib
+import json
+from types import SimpleNamespace
+from unittest.mock import Mock
+
+import pytest
+
+from modal_receipts.integrity import CHECK_RULES
+from modal_receipts.manifest import baseline_hosts, trial_manifest, write_job_manifest
+from modal_receipts.plugin import RolloutEvidencePlugin
+from modal_receipts.rollout import CHECKS, build_rollout_evidence
+
+
+def frozen(directory, hosts, partial=False):
+    directory.mkdir()
+    evidence = build_rollout_evidence()
+    evidence["frozen_at"] = "AGENT_END"
+    evidence["details"]["network_capture"] = {
+        "relayed_hosts": hosts,
+        "partial": partial,
+    }
+    (directory / "rollout-evidence.json").write_text(json.dumps(evidence))
+    return evidence
+
+
+def test_baseline_union_uses_frozen_captures(tmp_path):
+    frozen(tmp_path / "one", ["b.example", "a.example"])
+    frozen(tmp_path / "two", ["a.example", "c.example"], partial=True)
+    bad = tmp_path / "bad"
+    bad.mkdir()
+    (bad / "rollout-evidence.json").write_text('{"relayed_hosts":["unfrozen.example"]}')
+    assert baseline_hosts(tmp_path) == (["a.example", "b.example", "c.example"], 2, 2)
+    with pytest.raises(ValueError, match="No frozen"):
+        baseline_hosts(bad)
+
+
+def test_baseline_counts_trials_without_capture_files(tmp_path):
+    frozen(tmp_path / "complete", ["a.example"])
+    missing = tmp_path / "missing"
+    missing.mkdir()
+    (missing / "result.json").write_text("{}")
+    (tmp_path / "unrelated").mkdir()
+    assert baseline_hosts(tmp_path) == (["a.example"], 1, 1)
+
+    (tmp_path / "result.json").write_text('{"n_total_trials":3}')
+    assert baseline_hosts(tmp_path) == (["a.example"], 1, 2)
+
+
+async def test_job_end_manifest_hashes_frozen_and_marks_missing(tmp_path, monkeypatch):
+    monkeypatch.setenv("GARNET_RECORDER_COMMIT", "test-commit")
+    good = tmp_path / "trial-1"
+    evidence = frozen(good, ["a.example"])
+    evidence["checks"]["off_policy_host"]["state"] = "observed"
+    (good / "rollout-evidence.json").write_text(json.dumps(evidence))
+    raw = b'{"capture":"raw"}\n'
+    (good / "guest-capture.json").write_bytes(raw)
+    plugin = RolloutEvidencePlugin()
+    await plugin.on_job_start(Mock(job_dir=tmp_path))
+    await plugin.on_job_end(
+        SimpleNamespace(
+            trial_results=[
+                SimpleNamespace(trial_name="trial-2", task_name="missing"),
+                SimpleNamespace(trial_name="trial-1", task_name="observed"),
+            ]
+        )
+    )
+    manifest = json.loads((tmp_path / "integrity-manifest.json").read_text())
+    assert manifest["recorder"]["commit"] == "test-commit"
+    assert manifest["recorder"]["version"]
+    observed, missing = manifest["trials"]
+    assert (
+        observed["artifact_sha256"]["trial-1/guest-capture.json"]
+        == hashlib.sha256(raw).hexdigest()
+    )
+    assert observed["artifact_sha256"]["trial-1/sidecar-capture.json"] is None
+    assert observed["verdict"] == "observed" and observed["coverage_incomplete"]
+    assert missing["verdict"] == "unknown" and missing["coverage_incomplete"]
+    assert "Unknown is not clean." in (tmp_path / "integrity-manifest.md").read_text()
+
+
+@pytest.mark.parametrize("partial", [False, True])
+def test_observed_host_does_not_mask_partial_network_coverage(tmp_path, partial):
+    directory = tmp_path / "trial-1"
+    evidence = frozen(directory, ["off.example"], partial=partial)
+    evidence["checks"] = {
+        name: {"state": "not_observed_within_scope"} for name in (*CHECKS, *CHECK_RULES)
+    }
+    evidence["checks"]["off_policy_host"]["state"] = "observed"
+    (directory / "rollout-evidence.json").write_text(json.dumps(evidence))
+
+    row = trial_manifest(tmp_path, SimpleNamespace(trial_name="trial-1", task_name="task"))
+    assert row["verdict"] == "observed"
+    assert row["coverage_incomplete"] is partial
+
+
+def test_resumed_manifest_uses_each_trials_frozen_recorder(tmp_path, monkeypatch):
+    monkeypatch.setenv("GARNET_RECORDER_COMMIT", "resume-commit")
+    directory = tmp_path / "trial-1"
+    evidence = frozen(directory, ["a.example"])
+    evidence["recorder"] = {
+        "version": "0.0.9",
+        "commit": "old-commit",
+        "commit_source": "installed VCS metadata",
+    }
+    (directory / "rollout-evidence.json").write_text(json.dumps(evidence))
+    frozen(tmp_path / "trial-2", [])
+    manifest = write_job_manifest(
+        tmp_path,
+        [SimpleNamespace(trial_name=f"trial-{i}", task_name="task") for i in (1, 2)],
+    )
+    assert manifest["recorder"]["commit"] == "resume-commit"
+    assert manifest["trials"][0]["recorder"] == evidence["recorder"]
+    assert manifest["trials"][1]["recorder"] is None
