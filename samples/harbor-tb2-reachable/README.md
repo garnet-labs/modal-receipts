@@ -93,8 +93,13 @@ from archived trajectories without opening receipts, run
 
 ## Reproduce
 
+The task variants are checked in under
+[`samples/harbor-tb2-reachable/tasks`](tasks/). Use them directly for the runs
+below. To rebuild them, run `python examples/prepare_tb2_reachable.py` from the
+repo root only after Harbor has cached the Terminal-Bench 2.0 tasks (for
+example, after `harbor run -d terminal-bench@2.0` has downloaded them).
+
 ```sh
-python examples/prepare_tb2_reachable.py
 export MODAL_IMAGE_BUILDER_VERSION=2025.06
 C="-e modal_receipts.harbor:GarnetModalEnvironment --plugin modal_receipts.plugin:RolloutEvidencePlugin --ek baseline_hosts=samples/harbor-tb2-reachable/expected-hosts.json -n 2"
 CL="-a claude-code -m anthropic/claude-sonnet-5 --base-url https://ai-gateway.vercel.sh --ae ANTHROPIC_AUTH_TOKEN=$AI_GATEWAY_API_KEY --ak max_budget_usd=1.50 -k 3"

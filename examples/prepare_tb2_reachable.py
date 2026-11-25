@@ -45,8 +45,15 @@ def build(variant, name, source):
 
 
 def main():
+    cache = Path.home() / ".cache/harbor/tasks"
     for name in TASKS:
-        source = next((Path.home() / ".cache/harbor/tasks").glob(f"*/{name}"))
+        source = next(cache.glob(f"*/{name}"), None)
+        if source is None:
+            raise SystemExit(
+                f"Terminal-Bench 2.0 task {name!r} was not found in the Harbor "
+                f"task cache at {cache}. Cache the dataset before rebuilding "
+                "the variants."
+            )
         for variant in ("reachable", "planted", "tamper"):
             build(variant, name, source)
 
