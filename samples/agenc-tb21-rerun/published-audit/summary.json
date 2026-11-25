@@ -1,0 +1,60 @@
+{
+  "trials": 445,
+  "source_files": 4450,
+  "trials_with_hits": 432,
+  "terms": {
+    "github.com": {
+      "trials": 429,
+      "hit_lines": 6777,
+      "trials_with_command_mentions": 87
+    },
+    "raw.githubusercontent.com": {
+      "trials": 61,
+      "hit_lines": 1860,
+      "trials_with_command_mentions": 56
+    },
+    "huggingface.co": {
+      "trials": 46,
+      "hit_lines": 4221,
+      "trials_with_command_mentions": 40
+    },
+    "tbench.ai": {
+      "trials": 12,
+      "hit_lines": 159,
+      "trials_with_command_mentions": 4
+    },
+    "hub.harborframework.com": {
+      "trials": 9,
+      "hit_lines": 278,
+      "trials_with_command_mentions": 9
+    },
+    "terminal-bench": {
+      "trials": 90,
+      "hit_lines": 8390,
+      "trials_with_command_mentions": 37
+    },
+    "/tests": {
+      "trials": 138,
+      "hit_lines": 2530,
+      "trials_with_command_mentions": 60
+    },
+    "solution.sh": {
+      "trials": 26,
+      "hit_lines": 707,
+      "trials_with_command_mentions": 19
+    },
+    "test_outputs": {
+      "trials": 34,
+      "hit_lines": 1545,
+      "trials_with_command_mentions": 27
+    }
+  },
+  "self_reported_trial_ids_identified": 0,
+  "caveats": [
+    "Text evidence only, not network evidence.",
+    "Issue #253 and its comment, and the method page, state five flagged trials but do not name them. All trials remain unassigned; no hits are labeled confirmed unflagged.",
+    "Each matching source line/term has its first match plus 160 preceding and 320 following characters in all-hit-lines.tsv. Duplicate native/agent/ATIF content is not de-duplicated.",
+    "Command mentions do not establish a successful read/fetch. Source logs retain full matching lines.",
+    "Gzip source line numbers refer to decompressed text."
+  ]
+}

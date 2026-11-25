@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-25T22:08:53.973829+00:00",
+  "reason": "Systemic provider credits or billing quota exhausted across many trials",
+  "signal": "SIGTERM",
+  "pid": 32770,
+  "last16_exception_types": {
+    "NonZeroAgentExitCodeError": 15,
+    "AgencSetupError": 1
+  },
+  "example_stderr": "deepseek error: provider credits or billing quota exhausted",
+  "recorded_outcomes": 196,
+  "recorded_exceptions": 49,
+  "harbor_saved_running_counter_stale_after_sigterm": 8,
+  "interrupted_without_result": [
+    "sam-cell-seg__hpjwB5Y",
+    "cobol-modernization__zMaGkoH",
+    "gpt2-codegolf__9gbqq2S",
+    "mcmc-sampling-stan__NgbTcdQ",
+    "build-pov-ray__p6LkPKi",
+    "merge-diff-arc-agi-task__659fkvD",
+    "filter-js-from-html__r7oJn9u",
+    "pytorch-model-recovery__QjeQpxJ"
+  ],
+  "terminated_sandboxes_verified": 8,
+  "unstarted": 241,
+  "supervisor_exit_code": -15,
+  "quota_stderr_recorded_trials": 41
+}
