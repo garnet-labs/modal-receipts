@@ -7,7 +7,11 @@ from uuid import uuid4
 import pytest
 from harbor.environments.factory import EnvironmentFactory
 from harbor.environments.modal import ModalEnvironment
+from harbor.job import Job
+from harbor.models.job.config import JobConfig
 from harbor.models.task.config import EnvironmentConfig, NetworkPolicy
+from harbor.models.trial.config import AgentConfig, TaskConfig
+from harbor.models.trial.config import EnvironmentConfig as TrialEnvironmentConfig
 from harbor.models.trial.paths import TrialPaths
 from pydantic import ValidationError
 
@@ -168,6 +172,56 @@ async def test_create_sandbox_kwargs(tmp_path, rollout):
         "proxy_traffic_via_sidecar": "garnet",
         "vm_sidecar_memory_reserve_mib": 1024,
     }
+
+
+@pytest.mark.parametrize("rollout", [False, True])
+async def test_audit_image_selection_during_harbor_job(tmp_path, rollout):
+    task = tmp_path / "task"
+    environment = task / "environment"
+    environment.mkdir(parents=True)
+    (environment / "Dockerfile").write_text("FROM ubuntu:24.04\n")
+    (task / "task.toml").write_text('version = "1.0"\n')
+    (task / "instruction.md").write_text("Test sandbox startup.\n")
+    (task / "tests").mkdir()
+    (task / "tests" / "test.sh").write_text("#!/bin/sh\nexit 0\n")
+    job = await Job.create(
+        JobConfig(
+            jobs_dir=tmp_path / "jobs",
+            tasks=[TaskConfig(path=task)],
+            agents=[AgentConfig(name="oracle")],
+            environment=TrialEnvironmentConfig(import_path=IMPORT_PATH),
+            install_only=True,
+            quiet=True,
+        )
+    )
+    if rollout:
+        await RolloutEvidencePlugin().on_job_start(job)
+
+    base_image = Mock()
+    if not rollout:
+        base_image.run_commands.side_effect = RuntimeError("image has no apt-get")
+    with (
+        patch("harbor.environments.modal.Image.from_dockerfile", return_value=base_image),
+        patch("harbor.environments.modal.App.lookup") as lookup,
+        patch("harbor.environments.modal.Sandbox.create") as create,
+    ):
+        lookup.aio = AsyncMock(return_value=Mock())
+        create.aio = AsyncMock(side_effect=RuntimeError("stop at Modal SDK boundary"))
+        result = await job.run()
+
+    create.aio.assert_awaited()
+    (trial,) = result.trial_results
+    assert str(trial.id) not in ROLLOUT_TRIALS
+    if rollout:
+        base_image.run_commands.assert_called_once()
+        assert "auditd" in base_image.run_commands.call_args.args[0]
+        expected_image = base_image.run_commands.return_value
+    else:
+        base_image.run_commands.assert_not_called()
+        expected_image = base_image
+    assert all(
+        call.kwargs["image"] is expected_image for call in create.aio.await_args_list
+    )
 
 
 @pytest.mark.parametrize("has_task_hosts", [False, True])
