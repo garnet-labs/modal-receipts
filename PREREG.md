@@ -32,3 +32,14 @@
 Freeze the recorder through this committed preregistration before any cloud
 launch. Report observed outcomes, upload only public-safe summaries, and
 record model cost separately from Modal compute. Do not scale the smoke.
+
+## Packaging follow-up
+
+The first frozen attempt selected `vllm-deepseek-streaming`; its minimal
+agent image had no `python3`, so the guest recorder could not arm. Repeat the
+same selected task once after adding Python 3 to the audit image layer and
+freezing at this revised preregistration. Report the first attempt as a
+failure, not a retry omitted from the results. If the recorder still cannot
+arm, stop. If it does, run only one honest Claude Code smoke, limited to five
+turns, a $3 agent budget, and a five-minute agent timeout. Also require an
+available, error-free guest capture and matching recorder hash inventory.

@@ -138,6 +138,10 @@ async def test_create_sandbox_kwargs(tmp_path):
     assert kwargs["memory"] == 3072
     assert kwargs["image"] is base_image.run_commands.return_value
     assert "auditd" in base_image.run_commands.call_args.args[0]
+    assert (
+        "--no-install-recommends auditd python3"
+        in base_image.run_commands.call_args.args[0]
+    )
     assert kwargs["experimental_options"] == {
         "other": "kept",
         "proxy_traffic_via_sidecar": "garnet",

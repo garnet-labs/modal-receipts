@@ -77,11 +77,13 @@ class GarnetModalEnvironment(ModalEnvironment):
                 experimental_options=experimental_options, **kwargs
             )
         self._image = self._image.run_commands(
-            "if ! command -v auditd >/dev/null || ! command -v auditctl >/dev/null; then "
+            "if ! command -v auditd >/dev/null || ! command -v auditctl >/dev/null "
+            "|| ! command -v python3 >/dev/null; then "
             "if command -v apt-get >/dev/null; then "
             "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y "
-            "--no-install-recommends auditd && rm -rf /var/lib/apt/lists/*; "
-            "else echo 'Garnet requires auditd and auditctl or an apt-based image' >&2; exit 1; fi; fi"
+            "--no-install-recommends auditd python3 && rm -rf /var/lib/apt/lists/*; "
+            "else echo 'Garnet requires auditd, auditctl and python3 or an apt-based image' >&2; "
+            "exit 1; fi; fi"
         )
         experimental_options = {
             **(experimental_options or {}),
