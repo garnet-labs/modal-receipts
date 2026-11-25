@@ -77,7 +77,8 @@ def trial_manifest(job_dir, trial):
         "trial": trial.trial_name,
         "task": trial.task_name,
         "verdict": verdict,
-        "coverage_incomplete": "unknown" in states,
+        "coverage_incomplete": "unknown" in states
+        or bool(evidence.get("details", {}).get("network_capture", {}).get("partial")),
         "coverage": evidence.get("scope", {}),
         "checks": checks,
         "artifact_sha256": {

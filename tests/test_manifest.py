@@ -5,9 +5,10 @@ from unittest.mock import Mock
 
 import pytest
 
-from modal_receipts.manifest import baseline_hosts
+from modal_receipts.manifest import baseline_hosts, trial_manifest
 from modal_receipts.plugin import RolloutEvidencePlugin
-from modal_receipts.rollout import build_rollout_evidence
+from modal_receipts.rollout import CHECKS, build_rollout_evidence
+from modal_receipts.integrity import CHECK_RULES
 
 
 def frozen(directory, hosts, partial=False):
@@ -63,3 +64,18 @@ async def test_job_end_manifest_hashes_frozen_and_marks_missing(tmp_path, monkey
     assert observed["verdict"] == "observed" and observed["coverage_incomplete"]
     assert missing["verdict"] == "unknown" and missing["coverage_incomplete"]
     assert "Unknown is not clean." in (tmp_path / "integrity-manifest.md").read_text()
+
+
+@pytest.mark.parametrize("partial", [False, True])
+def test_observed_host_does_not_mask_partial_network_coverage(tmp_path, partial):
+    directory = tmp_path / "trial-1"
+    evidence = frozen(directory, ["off.example"], partial=partial)
+    evidence["checks"] = {
+        name: {"state": "not_observed_within_scope"} for name in (*CHECKS, *CHECK_RULES)
+    }
+    evidence["checks"]["off_policy_host"]["state"] = "observed"
+    (directory / "rollout-evidence.json").write_text(json.dumps(evidence))
+
+    row = trial_manifest(tmp_path, SimpleNamespace(trial_name="trial-1", task_name="task"))
+    assert row["verdict"] == "observed"
+    assert row["coverage_incomplete"] is partial
