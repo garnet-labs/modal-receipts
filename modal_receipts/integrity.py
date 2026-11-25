@@ -96,9 +96,16 @@ def git_history_short_value(arg):
     return None
 
 
-def git_glob_targets_remotes(glob):
-    namespace = glob.removeprefix("refs/").split("/", 1)[0]
-    return fnmatchcase("remotes", namespace)
+def git_glob_targets_remotes(glob, remotes):
+    if not glob:
+        return False
+    if not glob.startswith("refs/"):
+        glob = "refs/" + glob
+    if not any(char in glob for char in "*?["):
+        glob += "/*"
+    return glob.startswith("refs/remotes/") or any(
+        fnmatchcase(f"refs/remotes/{remote}/x", glob) for remote in remotes
+    )
 
 
 def decoded(value):
@@ -210,7 +217,8 @@ def git_remote_commands(records, remotes=()):
             skip = index + 1
     else:
         return False
-    prefixes = ("refs/remotes/", "origin/", *(f"{remote}/" for remote in remotes))
+    remotes = ("origin", *remotes)
+    prefixes = ("refs/remotes/", *(f"{remote}/" for remote in remotes))
     operand_index = None
     for index, arg in ordered:
         value = arg
@@ -225,7 +233,7 @@ def git_remote_commands(records, remotes=()):
             if not equals and option in _GIT_HISTORY_VALUE_OPTIONS:
                 operand_index = index + 1
             if option == "--glob" and git_glob_targets_remotes(
-                value if equals else args.get(index + 1, "")
+                value if equals else args.get(index + 1, ""), remotes
             ):
                 return True
         elif arg.startswith("-"):
