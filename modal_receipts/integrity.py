@@ -35,6 +35,67 @@ _GIT_GLOBAL_VALUE_OPTIONS = {
     "--shallow-file",
     "--work-tree",
 }
+_GIT_HISTORY_VALUE_OPTIONS = {
+    "--after",
+    "--anchored",
+    "--author",
+    "--before",
+    "--color-moved-ws",
+    "--committer",
+    "--date",
+    "--decorate-refs",
+    "--decorate-refs-exclude",
+    "--default",
+    "--diff-algorithm",
+    "--diff-filter",
+    "--dst-prefix",
+    "--encoding",
+    "--exclude",
+    "--exclude-hidden",
+    "--find-object",
+    "--glob",
+    "--grep",
+    "--grep-reflog",
+    "--ignore-matching-lines",
+    "--inter-hunk-context",
+    "--line-prefix",
+    "--max-age",
+    "--max-count",
+    "--max-count-oldest",
+    "--max-depth",
+    "--min-age",
+    "--output",
+    "--output-indicator-context",
+    "--output-indicator-new",
+    "--output-indicator-old",
+    "--rotate-to",
+    "--since",
+    "--since-as-filter",
+    "--skip",
+    "--skip-to",
+    "--src-prefix",
+    "--stat-count",
+    "--stat-graph-width",
+    "--stat-name-width",
+    "--stat-width",
+    "--until",
+    "--word-diff-regex",
+    "--ws-error-highlight",
+}
+_GIT_HISTORY_SHORT_VALUE_OPTIONS = set("GILOSln")
+_GIT_HISTORY_SHORT_OPTIONAL_VALUES = set("BCMUX")
+
+
+def git_history_option_takes_next(arg):
+    if arg.startswith("--"):
+        return arg in _GIT_HISTORY_VALUE_OPTIONS
+    if arg.startswith("-"):
+        for i, flag in enumerate(arg[1:], 1):
+            if flag in _GIT_HISTORY_SHORT_OPTIONAL_VALUES:
+                break
+            if flag in _GIT_HISTORY_SHORT_VALUE_OPTIONS:
+                return i == len(arg) - 1
+    return False
 
 
 def decoded(value):
@@ -113,11 +174,17 @@ def git_remote_commands(records):
         if option == "--":
             return False
         command += 2 if option in _GIT_GLOBAL_VALUE_OPTIONS else 1
-    return args.get(command) in ("log", "show") and any(
-        value.startswith(("refs/remotes/", "origin/"))
-        for index, value in args.items()
-        if index > command
-    )
+    if args.get(command) not in ("log", "show"):
+        return False
+    index = command + 1
+    while (arg := args.get(index)) is not None and arg != "--":
+        if git_history_option_takes_next(arg):
+            index += 2
+            continue
+        if arg.startswith(("refs/remotes/", "origin/")):
+            return True
+        index += 1
+    return False
 
 
 def integrity_events(guest, syscalls, descendants):

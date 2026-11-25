@@ -201,9 +201,20 @@ def test_git_remote_ref_command(guest, sidecar, ref, state):
         ),
         (["git", "-C", "origin/main", "log", "HEAD"], "not_observed_within_scope"),
         (["git", "-C", "/app", "status", "origin/main"], "not_observed_within_scope"),
+        (
+            ["git", "-C", "/repo", "log", "--grep", "origin/main"],
+            "not_observed_within_scope",
+        ),
+        (["git", "show", "--author", "origin/main"], "not_observed_within_scope"),
+        (["git", "log", "-S", "origin/main"], "not_observed_within_scope"),
+        (["git", "log", "-pS", "origin/main"], "not_observed_within_scope"),
+        (["git", "log", "--", "origin/main"], "not_observed_within_scope"),
+        (["git", "log", "--author", "origin/main", "origin/dev"], "observed"),
+        (["git", "log", "--grep=origin/main", "origin/dev"], "observed"),
+        (["git", "show", "-Sneedle", "--no-patch", "origin/dev"], "observed"),
     ],
 )
-def test_git_remote_ref_command_skips_global_options(guest, sidecar, argv, state):
+def test_git_remote_ref_command_skips_option_values(guest, sidecar, argv, state):
     add_integrity_watches(guest)
     args = " ".join(f"a{i}={json.dumps(arg)}" for i, arg in enumerate(argv))
     guest["audit_log"] += audit(
