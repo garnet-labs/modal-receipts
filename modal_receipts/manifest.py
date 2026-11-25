@@ -76,6 +76,7 @@ def trial_manifest(job_dir, trial):
     return {
         "trial": trial.trial_name,
         "task": trial.task_name,
+        "recorder": evidence.get("recorder"),
         "verdict": verdict,
         "coverage_incomplete": "unknown" in states
         or bool(evidence.get("details", {}).get("network_capture", {}).get("partial")),

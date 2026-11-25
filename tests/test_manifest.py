@@ -5,10 +5,10 @@ from unittest.mock import Mock
 
 import pytest
 
-from modal_receipts.manifest import baseline_hosts, trial_manifest
+from modal_receipts.integrity import CHECK_RULES
+from modal_receipts.manifest import baseline_hosts, trial_manifest, write_job_manifest
 from modal_receipts.plugin import RolloutEvidencePlugin
 from modal_receipts.rollout import CHECKS, build_rollout_evidence
-from modal_receipts.integrity import CHECK_RULES
 
 
 def frozen(directory, hosts, partial=False):
@@ -79,3 +79,23 @@ def test_observed_host_does_not_mask_partial_network_coverage(tmp_path, partial)
     row = trial_manifest(tmp_path, SimpleNamespace(trial_name="trial-1", task_name="task"))
     assert row["verdict"] == "observed"
     assert row["coverage_incomplete"] is partial
+
+
+def test_resumed_manifest_uses_each_trials_frozen_recorder(tmp_path, monkeypatch):
+    monkeypatch.setenv("GARNET_RECORDER_COMMIT", "resume-commit")
+    directory = tmp_path / "trial-1"
+    evidence = frozen(directory, ["a.example"])
+    evidence["recorder"] = {
+        "version": "0.0.9",
+        "commit": "old-commit",
+        "commit_source": "installed VCS metadata",
+    }
+    (directory / "rollout-evidence.json").write_text(json.dumps(evidence))
+    frozen(tmp_path / "trial-2", [])
+    manifest = write_job_manifest(
+        tmp_path,
+        [SimpleNamespace(trial_name=f"trial-{i}", task_name="task") for i in (1, 2)],
+    )
+    assert manifest["recorder"]["commit"] == "resume-commit"
+    assert manifest["trials"][0]["recorder"] == evidence["recorder"]
+    assert manifest["trials"][1]["recorder"] is None

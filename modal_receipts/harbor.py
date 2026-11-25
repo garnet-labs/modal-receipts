@@ -13,6 +13,7 @@ from harbor.environments.modal import ModalEnvironment, ModalOptions
 from pydantic import Field, model_validator
 
 from modal_receipts.evidence import build_receipt
+from modal_receipts.manifest import recorder_identity
 from modal_receipts.plugin import ENVIRONMENTS, ROLLOUT_TRIALS
 from modal_receipts.rollout import build_rollout_evidence
 
@@ -226,6 +227,7 @@ class GarnetModalEnvironment(ModalEnvironment):
             sidecar = {"error": str(exc)}
         evidence = build_rollout_evidence(guest, sidecar, self._expected_hosts)
         evidence["frozen_at"] = "AGENT_END"
+        evidence["recorder"] = recorder_identity()
         evidence["trial_id"] = str(self.context_id)
         directory = self.trial_paths.trial_dir
         directory.mkdir(parents=True, exist_ok=True)

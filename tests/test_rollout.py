@@ -485,7 +485,8 @@ async def test_plugin_bridge_isolates_trials():
         ENVIRONMENTS.pop(str(first), None)
 
 
-async def test_freeze_is_idempotent_and_failed_capture_unknown(tmp_path):
+async def test_freeze_is_idempotent_and_failed_capture_unknown(tmp_path, monkeypatch):
+    monkeypatch.setenv("GARNET_RECORDER_COMMIT", "frozen-commit")
     env = make_env(tmp_path)
     env._rollout_error = "audit unavailable"
     env._rollout_start = 1
@@ -495,7 +496,9 @@ async def test_freeze_is_idempotent_and_failed_capture_unknown(tmp_path):
         await env.freeze_rollout_capture()
         path = env.trial_paths.trial_dir / "rollout-evidence.json"
         first = copy.deepcopy(json.loads(path.read_text()))
+        monkeypatch.setenv("GARNET_RECORDER_COMMIT", "after-freeze")
         await env.freeze_rollout_capture()
+    assert first["recorder"]["commit"] == "frozen-commit"
     execute.assert_awaited_once()
     assert json.loads(path.read_text()) == first
     assert all(c["state"] == "unknown" for c in first["checks"].values())

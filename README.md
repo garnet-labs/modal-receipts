@@ -51,7 +51,9 @@ to consume the evidence separately, as in the cookbook `rollout-evidence`.
 Frozen `rollout-evidence.json` and raw capture artifacts stay in the host trial
 directory. A missing or unobserved signal is not a clean bill of health:
 manifests record the scope, missing checks, artifact SHA-256 hashes and known
-recorder version/commit, not a signature or attestation.
+recorder version/commit, not a signature or attestation. The top-level recorder
+describes the manifest writer; each trial records the recorder that froze its
+evidence, or null for older or missing captures.
 
 On a trusted honest baseline run without `expected-hosts.json`, the observer
 still captures SNI and leaves the network policy verdict `unknown`. Derive
