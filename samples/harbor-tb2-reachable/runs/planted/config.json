@@ -1,7 +1,7 @@
 {
     "schema_version": 1,
     "job_name": "planted",
-    "jobs_dir": "/home/ubuntu/work/tb2r",
+    "jobs_dir": "runs",
     "n_attempts": 2,
     "install_only": false,
     "skip_credential_checks": false,
@@ -70,7 +70,7 @@
         "mounts": null,
         "extra_docker_compose": [],
         "kwargs": {
-            "baseline_hosts": "/home/ubuntu/files_eval/tb2-controls/expected-hosts.json"
+            "baseline_hosts": "samples/harbor-tb2-reachable/expected-hosts.json"
         },
         "extra_allowed_hosts": []
     },

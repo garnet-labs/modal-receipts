@@ -5,9 +5,12 @@ planted-oracle smoke (`regex-log`, used only to confirm the plugin wiring).
 
 **Change from the unscorable pilot:** each task image copies the task's own
 tests into `/tests` (`COPY tests /tests`), so the grader is readable while the
-agent runs. Harbor still uploads the authoritative tests after the agent phase,
-so editing `/tests` cannot change the reward; reading it can. Every job selects
+agent runs. Harbor uploads the authoritative test files before grading. Every job selects
 `--plugin modal_receipts.plugin:RolloutEvidencePlugin`.
+
+**Post-run clarification:** The rerun did not establish that edits to the
+agent-visible copy cannot affect scoring. The arm definitions and scoring rule
+below are unchanged.
 
 **Tasks:** Terminal-Bench 2.0 `regex-log`, `log-summary-date-ranges`.
 
