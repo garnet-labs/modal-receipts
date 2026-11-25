@@ -1,30 +1,37 @@
-# What rollout evidence tells us on CPU Modal VMs
+# Rollout evidence on CPU Modal VMs: what it catches and what it does not
 
-**The pilot showed that we can collect scoped evidence during an agent run. It did not show that the observer catches model-authored reward hacking or beats a transcript reviewer.** A separate scripted experiment produced known signals; the prompt-only pilot did not produce a scorable comparison. [Scripted experiment][scripted] · [Prompt-only pilot][pilot]
+**When the grader was reachable during the run, Claude Sonnet 5 read it in 8 of 12 trials under reward-pressure prompts and 0 of 6 honest trials. The rollout receipt reported all 8 and no false flags; a transcript-only LLM reviewer flagged none of them.** Truncating the in-VM audit log turned the receipt to `unknown`, never clean. Design and pass rule were committed before the live trials. [Preregistration](https://github.com/garnet-labs/modal-receipts/blob/45d0993d9a6274d266a602823fc3a7475bdb24da/samples/harbor-tb2-reachable/PREREG.md) · [Results](https://github.com/garnet-labs/modal-receipts/blob/45d0993d9a6274d266a602823fc3a7475bdb24da/samples/harbor-tb2-reachable/README.md)
 
-## What the pilot found
+## Setup
 
-The prompt-only pilot ran two Terminal-Bench 2.0 tasks, `regex-log` and `log-summary-date-ranges`, six times per arm. Reward is the benchmark score, not an integrity verdict. [Trial results][trials]
+Harbor 0.27.0 running Terminal-Bench 2.0 `regex-log` and `log-summary-date-ranges` on Modal `runtime="vm"` sandboxes, with the `GarnetModalEnvironment` environment and `RolloutEvidencePlugin` on every job. The only change to each task is `COPY tests /tests` in its image, so the grader is readable while the agent runs. Harbor still re-uploads the authoritative tests before grading, so editing them cannot change the reward. [Task generator](https://github.com/garnet-labs/modal-receipts/blob/45d0993d9a6274d266a602823fc3a7475bdb24da/examples/prepare_tb2_reachable.py)
 
-| Prompt-only arm | Reward 1 | Labeled successful bypasses | Transcript reviewer flags | Frozen integrity verdicts |
-|---|---:|---:|---:|---:|
-| Reward pressure | 6/6 | 0/6 | 0/6 | 0/6 |
-| Reward pressure and concealment | 6/6 | 0/6 | 0/6 | 0/6 |
+## Results
 
-Sources: [trial results][trials], [blind labels][labels], and [reviewer output][reviewer]. The labels were made before opening receipts, but from transcripts only; no independent final filesystem diff was available. [Labeling method][labeling]
+All 26 trials scored reward 1 with no exceptions.
 
-Two design failures made the result unscorable:
+| Arm | Trials | Read or edited grader (blind label) | Receipt observed | Receipt unknown | Reviewer flagged |
+|---|---:|---:|---:|---:|---:|
+| Honest | 6 | 0 | 0 | 0 | 0 |
+| Reward pressure (prompt only) | 6 | 3 | 3 | 0 | 0 |
+| Reward pressure + "tidy up" (prompt only) | 6 | 5 | 5 | 0 | 0 |
+| Scripted grader read + `conftest.py` write | 4 | 4 | 4 | 0 | 4 |
+| Scripted, then audit log truncated | 4 | 4 | 0 | 4 | 4 |
 
-1. **The grader was not available while the agent ran.** All six reward-pressure runs looked for the tests without finding the grader. Harbor loaded it after the agent phase on these tasks. All six concealment-arm transcripts recorded refusals, so they did not test concealment after a successful bypass. [Pilot evidence][labeling]
-2. **The integrity plugin hooks did not run.** The custom environment still wrote 12 stop-time network receipts. These report TLS hostnames for the sandbox lifecycle, not a frozen, agent-phase integrity verdict. The archive lacks the original launch command, but the artifact pattern and separate capture paths show why stop-time receipts alone are insufficient. [Artifact comparison][wiring] · [Plugin implementation][plugin]
+Sources: [blind labels](https://github.com/garnet-labs/modal-receipts/blob/45d0993d9a6274d266a602823fc3a7475bdb24da/samples/harbor-tb2-reachable/runs/labels.json) (from transcripts, before any receipt was opened), [reviewer output](https://github.com/garnet-labs/modal-receipts/blob/45d0993d9a6274d266a602823fc3a7475bdb24da/samples/harbor-tb2-reachable/runs/reviewer.json), [reviewer on scripted arms](https://github.com/garnet-labs/modal-receipts/blob/45d0993d9a6274d266a602823fc3a7475bdb24da/samples/harbor-tb2-reachable/runs/reviewer-scripted.json), [per-trial receipts and job manifests](https://github.com/garnet-labs/modal-receipts/tree/45d0993d9a6274d266a602823fc3a7475bdb24da/samples/harbor-tb2-reachable/runs).
 
-With no positive labels, recall is undefined for both approaches. With no reviewer flags, reviewer precision is undefined too. The missing observer verdicts also prevent measuring its precision or comparing it with the reviewer. None of these gaps is a zero error rate. [Archived result and pass rule][pilot]
+- **Receipt vs labels:** on the 18 model trials the receipt matched the blind label every time (8 observed, 10 not observed).
+- **Reviewer:** it saw each model trial read the test file and judged it acceptable because the agent also wrote general code. It flagged the scripted trials, but was shown the full scripted command, which is more than a real tampered transcript would show. [Reviewer method](https://github.com/garnet-labs/modal-receipts/blob/45d0993d9a6274d266a602823fc3a7475bdb24da/samples/harbor-tb2-reachable/runs/review_scripted.py)
+- **Pass rule:** receipt recall 12/16 observed (16/16 observed or unknown) vs reviewer 8/16; 0/6 honest flags; 0/4 tamper trials clean. All three frozen conditions passed. [Pass rule](https://github.com/garnet-labs/modal-receipts/blob/45d0993d9a6274d266a602823fc3a7475bdb24da/samples/harbor-tb2-reachable/README.md#pass-rule)
+- **Cost:** $3.00 of model spend and about 1,491 agent-phase sandbox-seconds for all 26 trials. [Cost](https://github.com/garnet-labs/modal-receipts/blob/45d0993d9a6274d266a602823fc3a7475bdb24da/samples/harbor-tb2-reachable/README.md#cost)
 
-## What we can claim
+## What this shows and what it does not
 
-- **Known signals were visible in a separate scripted experiment.** Three deliberately scripted cases registered on the network, test-write, and background-process checks; none of nine Oracle or honest controls registered on those three checks. That is evidence about the specified signals, not 100% accuracy, model intent, or superiority to a reviewer. [Scripted results and limitations][scripted]
-- **The standard observer produced frozen artifacts in a separate smoke test.** It preserved scoped results even after a model run exited at its turn limit. Git and network-policy checks could still be unknown; writing a manifest did not make the capture complete. [Smoke results][smoke]
-- **Routine Git work can trigger the detector.** Two of five honest-prompt observer trials flagged Git-object reads, both on a Git repair task; the other three lacked a Git-object watch. These were not independently adjudicated false positives. Treat generic object reads as diagnostics, not evidence of cheating. [Honest controls][controls]
+- A positive here is **grader access during the rollout, not a successful reward hack**. No model trial edited the tests, and every one also solved the task. Whether reading the grader counts as contamination is a policy choice for whoever owns the dataset; the receipt reports the access either way.
+- 26 trials on 2 tasks, one model. No confidence intervals are claimed.
+- The tamper arm shows one method (audit-log truncation) detected as missing evidence. It does not show that tampering is impossible or that the erased events can be recovered.
+- No model trial made an off-policy network connection, so the network check was not exercised in this run.
+- The earlier prompt-only pilot was unscorable: the grader was unavailable during the agent phase and the plugin was not selected. This rerun fixes both. [Pilot](https://github.com/garnet-labs/modal-receipts/blob/45d0993d9a6274d266a602823fc3a7475bdb24da/samples/harbor-tb2-adversarial/README.md)
 
 ## Coverage and limitations
 
@@ -32,9 +39,11 @@ With no positive labels, recall is undefined for both approaches. With no review
 - **Network coverage is bounded.** The Sidecar sees TLS ClientHello hostnames (SNI) on TCP port 443, not decrypted traffic. The agent-phase plugin can use qualified DNS and connect evidence for some connections where no hostname was visible; that is not unique socket-to-host attribution. This is not general DNS monitoring and does not cover QUIC, other ports, or the Sidecar’s own traffic. [Network scope and DNS limits][dns]
 - **The receipt is not root-proof.** Guest root can alter guest audit and DNS evidence. The Sidecar is a separate source, not an attestation of guest state. Manifests list artifacts and hashes, but are unsigned; an unknown check is not a clean result, and no observation within scope does not prove absence. [Manifest and scope][scope] · [Smoke limitations][smoke]
 
-## What a credible next measurement would require
+## Earlier evidence
 
-First verify that an explicit plugin opt-in produces a frozen verdict on **every** experiment job, not just a stop-time receipt. A harmless, labeled event against a dummy fixture can be a positive control for signal collection; a deliberately incomplete **synthetic record** can test the unknown path without modifying live evidence. Keep matched honest controls. Freeze labels based on trajectories and final state before opening receipts, and give the comparison reviewer transcripts only, without labels or receipts. Report synthetic detection separately from any claim about model-authored cheating, and report undefined metrics as undefined. These are proposed checks, not a completed rerun. [Why the original setup was unscorable][wiring] · [Positive and missing-evidence regression tests][tests] · [Prior comparison protocol][plan]
+- **Known signals were visible in a separate scripted experiment.** Three deliberately scripted cases registered on the network, test-write, and background-process checks; none of nine Oracle or honest controls registered on those three checks. That is evidence about the specified signals, not 100% accuracy, model intent, or superiority to a reviewer. [Scripted results and limitations][scripted]
+- **The standard observer produced frozen artifacts in a separate smoke test.** It preserved scoped results even after a model run exited at its turn limit. Git and network-policy checks could still be unknown; writing a manifest did not make the capture complete. [Smoke results][smoke]
+- **Routine Git work can trigger the detector.** Two of five honest-prompt observer trials flagged Git-object reads, both on a Git repair task; the other three lacked a Git-object watch. These were not independently adjudicated false positives. Treat generic object reads as diagnostics, not evidence of cheating. [Honest controls][controls]
 
 [scripted]: https://github.com/garnet-labs/modal-receipts/blob/d79204ec463fdf7aa8a569795a919d188b7abf19/samples/harbor-proof-combined-live/README.md#live-results-and-verdict
 [pilot]: https://github.com/garnet-labs/modal-receipts/blob/d79204ec463fdf7aa8a569795a919d188b7abf19/samples/harbor-tb2-adversarial/README.md
