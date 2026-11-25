@@ -114,27 +114,59 @@ def read_capable_open(call, records):
     return not flags & 0o10000000 and flags & 3 in (0, 2)
 
 
-def git_remote_commands(records, remotes=()):
+def execve_args(records):
     args = {}
+    lengths = {}
+    fragments = {}
     for record in records:
-        if record.get("type") == "EXECVE":
-            args.update(
-                (int(key[1:]), decoded(value))
-                for key, value in record.items()
-                if re.fullmatch(r"a\d+", key)
-            )
+        if record.get("type") != "EXECVE":
+            continue
+        for key, value in record.items():
+            if match := re.fullmatch(r"a(\d+)", key):
+                args[int(match[1])] = decoded(value)
+            elif match := re.fullmatch(r"a(\d+)_len", key):
+                lengths[int(match[1])] = value
+            elif match := re.fullmatch(r"a(\d+)\[(\d+)\]", key):
+                fragments.setdefault(int(match[1]), {})[int(match[2])] = value
+    for index, pieces in fragments.items():
+        if any(i not in pieces for i in range(len(pieces))):
+            continue
+        parts = [pieces[i] for i in range(len(pieces))]
+        if all(part.startswith('"') and part.endswith('"') for part in parts):
+            value = "".join(part[1:-1] for part in parts)
+            if str(len(value.encode())) == lengths.get(index):
+                args[index] = value
+        elif all(_PATH_HEX.fullmatch(part) for part in parts):
+            value = "".join(parts)
+            if str(len(value)) == lengths.get(index):
+                args[index] = decoded(value)
+    return args
+
+
+def git_remote_commands(records, remotes=()):
+    args = execve_args(records)
     if PurePosixPath(args.get(0, "")).name != "git":
         return False
-    command = 1
-    while (option := args.get(command, "")).startswith("-"):
+    ordered = iter(sorted(args.items()))
+    next(ordered)
+    skip = None
+    for index, option in ordered:
+        if index == skip:
+            continue
         if option == "--":
             return False
-        command += 2 if option in _GIT_GLOBAL_VALUE_OPTIONS else 1
-    if args.get(command) not in ("log", "show"):
+        if not option.startswith("-"):
+            if option not in ("log", "show"):
+                return False
+            break
+        if option in _GIT_GLOBAL_VALUE_OPTIONS:
+            skip = index + 1
+    else:
         return False
     prefixes = ("refs/remotes/", "origin/", *(f"{remote}/" for remote in remotes))
-    index = command + 1
-    while (arg := args.get(index)) is not None and arg != "--":
+    for index, arg in ordered:
+        if arg == "--":
+            break
         value = arg
         if arg.startswith("--"):
             option, equals, value = arg.partition("=")
@@ -151,7 +183,6 @@ def git_remote_commands(records, remotes=()):
             for revision in re.split(r"\.{2,3}", value)
         ):
             return True
-        index += 1
     return False
 
 

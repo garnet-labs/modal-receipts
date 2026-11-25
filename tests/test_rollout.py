@@ -241,6 +241,59 @@ def test_git_remote_ref_command_arguments(guest, sidecar, argv, state):
     assert evidence["checks"]["git_history"]["state"] == state
 
 
+@pytest.mark.parametrize(
+    ("records", "state"),
+    [
+        (
+            ['argc=5 a0="git" a1="log" a4="origin/main"'],
+            "observed",
+        ),
+        (
+            ['argc=4 a0="git" a1="log" a3_len=11 a3[0]="ori"', 'a3[1]="gin/main"'],
+            "observed",
+        ),
+        (
+            ['argc=4 a0="git" a1="log" a3_len=24 a3[0]=64C3', "a3[1]=A970C3B4742F6D61696E"],
+            "observed",
+        ),
+        (
+            [
+                'argc=5 a0="git" a1="-C" a2_len=5 a2[0]="/r"',
+                'a2[1]="epo" a3="show" a4="origin/main"',
+            ],
+            "observed",
+        ),
+        (
+            ['argc=5 a0="git" a1="-C" a3="show" a4="origin/main"'],
+            "observed",
+        ),
+        (
+            ['argc=4 a0="git" a1="log" a3_len=13 a3[0]="origin/main"'],
+            "not_observed_within_scope",
+        ),
+        (
+            ['argc=5 a0="git" a1="log" a2_len=13 a2[0]="origin/main" a4="origin/dev"'],
+            "observed",
+        ),
+        (
+            ['argc=4 a0="git" a1="log" a3_len=11 a3[0]="ori" a3[2]="gin/main"'],
+            "not_observed_within_scope",
+        ),
+    ],
+)
+def test_git_remote_ref_with_split_or_missing_audit_arguments(
+    guest, sidecar, records, state
+):
+    add_integrity_watches(guest)
+    guest["integrity_watch_paths"] = {"git_remotes": ["dépôt"]}
+    guest["audit_log"] += audit(
+        2,
+        extra="".join(f"type=EXECVE msg=audit(15.000:2): {line}\n" for line in records),
+    )
+    evidence = build_rollout_evidence(guest, sidecar, [])
+    assert evidence["checks"]["git_history"]["state"] == state
+
+
 def test_integrity_missing_or_lost_watch_is_unknown(guest, sidecar):
     add_integrity_watches(guest)
     guest["integrity_missing"]["git_history"] = "/app/.git/objects"

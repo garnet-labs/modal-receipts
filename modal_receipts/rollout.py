@@ -25,7 +25,7 @@ SCOPE = {
     "pre-agent baseline, recorder and host-driver commands. Census plus b64 "
     "audit lineage, not proof against root tampering, PID reuse or namespace escape.",
 }
-FIELDS = re.compile(r'(\w+)=("[^"]*"|\S+)')
+FIELDS = re.compile(r'(\w+(?:\[\d+\])?)=("[^"]*"|\S+)')
 STAMP = re.compile(r"msg=audit\((\d+\.\d+):(\d+)\)")
 
 
@@ -57,7 +57,10 @@ def parse_audit(text, start, end):
             continue
         if not start <= float(stamp[1]) <= end:
             continue
-        fields = {key: value.strip('"') for key, value in FIELDS.findall(line)}
+        fields = {
+            key: value if "[" in key else value.strip('"')
+            for key, value in FIELDS.findall(line)
+        }
         events.setdefault(stamp[2], []).append(fields)
     return events
 
