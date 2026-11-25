@@ -324,6 +324,7 @@ set -e
 git -C "$HOME/agenc-core" fetch origin 647d4c4a40ea673badd56c36ef73d5540042e30c
 git -C "$HOME/agenc-core" checkout 647d4c4a40ea673badd56c36ef73d5540042e30c
 test "$(git -C "$HOME/agenc-core" rev-parse HEAD)" = 647d4c4a40ea673badd56c36ef73d5540042e30c
+test -z "$(git -C "$HOME/agenc-core" status --porcelain)"
 export PYTHONPATH="$HOME/agenc-core/runtime/eval/harbor"
 
 DEEPSEEK_API_KEY="$AI_GATEWAY_API_KEY" \
