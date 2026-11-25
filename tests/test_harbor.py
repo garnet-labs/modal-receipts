@@ -5,6 +5,7 @@ from unittest.mock import AsyncMock, Mock, patch
 from uuid import uuid4
 
 import pytest
+from harbor.environments import modal as harbor_modal
 from harbor.environments.factory import EnvironmentFactory
 from harbor.environments.modal import ModalEnvironment
 from harbor.job import Job
@@ -118,6 +119,16 @@ def test_invalid_options(kwargs):
         GarnetModalOptions.model_validate(kwargs)
 
 
+def test_unknown_environment_option_rejected(tmp_path):
+    with pytest.raises(ValueError, match="sidecar_reserve_mb"):
+        make_env(tmp_path, sidecar_reserve_mb=2048)
+
+
+def test_parent_environment_options_preserved(tmp_path):
+    env = make_env(tmp_path, region="us-east", override_memory_mb=4096)
+    assert env._memory_config() == 5120
+
+
 def test_compose_rejected(tmp_path):
     env_dir = tmp_path / "environment"
     env_dir.mkdir()
@@ -155,7 +166,8 @@ async def test_create_sandbox_kwargs(tmp_path, rollout):
     assert str(env.context_id) not in ROLLOUT_TRIALS
     args, kwargs = create.aio.call_args
     assert args == ("sleep", "infinity")
-    assert kwargs["runtime"] == "vm"
+    if hasattr(harbor_modal, "ModalOptions"):
+        assert kwargs["runtime"] == "vm"
     assert kwargs["memory"] == 3072
     if rollout:
         assert kwargs["image"] is base_image.run_commands.return_value
@@ -169,6 +181,29 @@ async def test_create_sandbox_kwargs(tmp_path, rollout):
         base_image.run_commands.assert_not_called()
     assert kwargs["experimental_options"] == {
         "other": "kept",
+        "proxy_traffic_via_sidecar": "garnet",
+        "vm_sidecar_memory_reserve_mib": 1024,
+    }
+
+
+@pytest.mark.skipif(hasattr(harbor_modal, "ModalOptions"), reason="legacy startup")
+async def test_legacy_start_combines_vm_and_sidecar_options(tmp_path):
+    env = make_env(tmp_path)
+    image = Mock()
+    image.build.aio = AsyncMock(return_value=image)
+    sandbox = Mock()
+    env._sdk_exec = AsyncMock()
+    env._upload_environment_dir_after_start = AsyncMock()
+    with (
+        patch("harbor.environments.modal.Image.from_dockerfile", return_value=image),
+        patch("harbor.environments.modal.App.lookup") as lookup,
+        patch("harbor.environments.modal.Sandbox.create") as create,
+    ):
+        lookup.aio = AsyncMock(return_value=Mock())
+        create.aio = AsyncMock(return_value=sandbox)
+        await env._strategy.start(False)
+    assert create.aio.call_args.kwargs["experimental_options"] == {
+        "vm_runtime": True,
         "proxy_traffic_via_sidecar": "garnet",
         "vm_sidecar_memory_reserve_mib": 1024,
     }
