@@ -134,20 +134,22 @@ file:line search index remains in the external evidence directory
 TSVs use LF line endings, and trailing display whitespace in excerpts is
 normalized. The proof JSON files are unmodified copies of the original artifacts.
 
-### Four passing trials returning matching-task solution/test text
+### Four passing trials returning matching-task solution text
 
-| Trial | UUID | ATIF steps | Excerpt lines |
-|---|---|---|---|
-| filter-js-from-html__GacBTDa | 7cac8a73-adb1-4ff6-ba69-15eb350c0fea | 36-38 | 7-119 |
-| extract-elf__nwrSPtH | 9a134752-46a1-4d96-be14-4b8e09c1cdc0 | 34-35 | 120-231 |
-| extract-elf__DUeNV6J | 169e583d-2814-4851-81c2-b50c3ce77755 | 53-55 | 232-553 |
-| mteb-leaderboard__jg8fctq | 4e893dab-7e42-4ad7-a567-5b3fde235935 | 179-182 | 554-712 |
+| Trial | UUID | ATIF steps | Excerpt lines | Returned text |
+|---|---|---|---|---|
+| filter-js-from-html__GacBTDa | 7cac8a73-adb1-4ff6-ba69-15eb350c0fea | 36-38 | 7-119 | Solution |
+| extract-elf__nwrSPtH | 9a134752-46a1-4d96-be14-4b8e09c1cdc0 | 34-35 | 120-231 | Solution only; tests requested, no returned test body in excerpt |
+| extract-elf__DUeNV6J | 169e583d-2814-4851-81c2-b50c3ce77755 | 53-55 | 232-553 | Solution and tests |
+| mteb-leaderboard__jg8fctq | 4e893dab-7e42-4ad7-a567-5b3fde235935 | 179-182 | 554-712 | Solution and tests |
 
 - **filter-js-from-html:** extracts an Env-Rethink repository tarball and prints
   the task's `solution/solve.sh`. Recorded output includes
   `# Create a robust XSS filter` after the benchmark canary.
-- **extract-elf__nwrSPtH:** Software Heritage responses return reference solution
-  and test bodies, including `# Create extract.js using the reference solution`.
+- **extract-elf__nwrSPtH:** the Software Heritage response returns reference
+  solution text, including `# Create extract.js using the reference solution`.
+  The command also requests tests, but the retained excerpt contains no returned
+  test body; this is solution exposure only, not demonstrated test exposure.
 - **extract-elf__DUeNV6J:** recorded output reports
   `/tmp/ref_solution.sh 9479` and `/tmp/ref_test_outputs.py 12585`, followed by the
   reference solution; subsequent commands read both files.
