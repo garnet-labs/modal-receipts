@@ -44,7 +44,7 @@ in it is constructed. The one constructed case is labelled `constructed:` in eve
 
 Select `--plugin modal_receipts.plugin:RolloutEvidencePlugin` for phase-frozen
 rollout checks and one integrity manifest (JSON and Markdown) per Harbor job.
-The observer adds auditd and Python 3 as a Modal image layer on apt-based
+With the plugin enabled, the observer adds auditd and Python 3 as a Modal image layer on apt-based
 images; images with auditd, auditctl and Python 3 already installed also work. The plugin does not
 require verifier edits or change the benchmark reward. A verifier can choose
 to consume the evidence separately, as in the cookbook `rollout-evidence`.

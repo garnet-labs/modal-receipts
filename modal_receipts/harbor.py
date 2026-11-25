@@ -13,7 +13,7 @@ from harbor.environments.modal import ModalEnvironment, ModalOptions
 from pydantic import Field, model_validator
 
 from modal_receipts.evidence import build_receipt
-from modal_receipts.plugin import ENVIRONMENTS
+from modal_receipts.plugin import ENVIRONMENTS, ROLLOUT_TRIALS
 from modal_receipts.rollout import build_rollout_evidence
 
 
@@ -76,15 +76,16 @@ class GarnetModalEnvironment(ModalEnvironment):
             return await super()._create_sandbox(
                 experimental_options=experimental_options, **kwargs
             )
-        self._image = self._image.run_commands(
-            "if ! command -v auditd >/dev/null || ! command -v auditctl >/dev/null "
-            "|| ! command -v python3 >/dev/null; then "
-            "if command -v apt-get >/dev/null; then "
-            "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y "
-            "--no-install-recommends auditd python3 && rm -rf /var/lib/apt/lists/*; "
-            "else echo 'Garnet requires auditd, auditctl and python3 or an apt-based image' >&2; "
-            "exit 1; fi; fi"
-        )
+        if str(self.context_id) in ROLLOUT_TRIALS:
+            self._image = self._image.run_commands(
+                "if ! command -v auditd >/dev/null || ! command -v auditctl >/dev/null "
+                "|| ! command -v python3 >/dev/null; then "
+                "if command -v apt-get >/dev/null; then "
+                "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y "
+                "--no-install-recommends auditd python3 && rm -rf /var/lib/apt/lists/*; "
+                "else echo 'Garnet requires auditd, auditctl and python3 or an apt-based image' >&2; "
+                "exit 1; fi; fi"
+            )
         experimental_options = {
             **(experimental_options or {}),
             "proxy_traffic_via_sidecar": "garnet",
@@ -139,7 +140,7 @@ class GarnetModalEnvironment(ModalEnvironment):
                 ),
                 timeout=timeout,
             )
-            if self.context_id is not None:
+            if str(self.context_id) in ROLLOUT_TRIALS:
                 ENVIRONMENTS[str(self.context_id)] = self
         except Exception as exc:
             self._garnet_error = str(exc)

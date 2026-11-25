@@ -2,6 +2,7 @@ import json
 from importlib.resources import files
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, Mock, patch
+from uuid import uuid4
 
 import pytest
 from harbor.environments.factory import EnvironmentFactory
@@ -12,6 +13,7 @@ from pydantic import ValidationError
 
 from modal_receipts.evidence import build_receipt
 from modal_receipts.harbor import GarnetModalEnvironment, GarnetModalOptions
+from modal_receipts.plugin import ROLLOUT_TRIALS, RolloutEvidencePlugin
 
 IMPORT_PATH = "modal_receipts.harbor:GarnetModalEnvironment"
 
@@ -122,26 +124,45 @@ def test_compose_rejected(tmp_path):
         make_env(tmp_path)
 
 
-async def test_create_sandbox_kwargs(tmp_path):
+@pytest.mark.parametrize("rollout", [False, True])
+async def test_create_sandbox_kwargs(tmp_path, rollout):
     env = make_env(tmp_path)
+    env.context_id = uuid4()
     env._app = Mock()
     env._image = Mock()
     base_image = env._image
-    with patch("harbor.environments.modal.Sandbox.create") as create:
-        create.aio = AsyncMock(return_value=Mock())
-        await env._create_sandbox(
-            entrypoint=["sleep", "infinity"], experimental_options={"other": "kept"}
-        )
+    plugin = RolloutEvidencePlugin()
+    job = Mock()
+    await plugin.on_job_start(job)
+    event = SimpleNamespace(trial_id=env.context_id)
+    if rollout:
+        await job.on_trial_started.call_args.args[0](event)
+    else:
+        base_image.run_commands.side_effect = RuntimeError("image has no apt-get")
+    try:
+        with patch("harbor.environments.modal.Sandbox.create") as create:
+            create.aio = AsyncMock(return_value=Mock())
+            await env._create_sandbox(
+                entrypoint=["sleep", "infinity"], experimental_options={"other": "kept"}
+            )
+    finally:
+        if rollout:
+            await job.on_trial_cancelled.call_args.args[0](event)
+    assert str(env.context_id) not in ROLLOUT_TRIALS
     args, kwargs = create.aio.call_args
     assert args == ("sleep", "infinity")
     assert kwargs["runtime"] == "vm"
     assert kwargs["memory"] == 3072
-    assert kwargs["image"] is base_image.run_commands.return_value
-    assert "auditd" in base_image.run_commands.call_args.args[0]
-    assert (
-        "--no-install-recommends auditd python3"
-        in base_image.run_commands.call_args.args[0]
-    )
+    if rollout:
+        assert kwargs["image"] is base_image.run_commands.return_value
+        assert "auditd" in base_image.run_commands.call_args.args[0]
+        assert (
+            "--no-install-recommends auditd python3"
+            in base_image.run_commands.call_args.args[0]
+        )
+    else:
+        assert kwargs["image"] is base_image
+        base_image.run_commands.assert_not_called()
     assert kwargs["experimental_options"] == {
         "other": "kept",
         "proxy_traffic_via_sidecar": "garnet",
