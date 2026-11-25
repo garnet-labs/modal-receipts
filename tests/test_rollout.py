@@ -183,6 +183,36 @@ def test_git_remote_ref_command(guest, sidecar, ref, state):
     assert evidence["checks"]["git_history"]["state"] == state
 
 
+@pytest.mark.parametrize(
+    ("argv", "state"),
+    [
+        (["git", "-C", "/app", "log", "origin/main"], "observed"),
+        (
+            [
+                "/usr/bin/git",
+                "--no-pager",
+                "-c",
+                "color.ui=false",
+                "--git-dir=/app/.git",
+                "show",
+                "refs/remotes/upstream/main",
+            ],
+            "observed",
+        ),
+        (["git", "-C", "origin/main", "log", "HEAD"], "not_observed_within_scope"),
+        (["git", "-C", "/app", "status", "origin/main"], "not_observed_within_scope"),
+    ],
+)
+def test_git_remote_ref_command_skips_global_options(guest, sidecar, argv, state):
+    add_integrity_watches(guest)
+    args = " ".join(f"a{i}={json.dumps(arg)}" for i, arg in enumerate(argv))
+    guest["audit_log"] += audit(
+        2, extra=f"type=EXECVE msg=audit(15.000:2): argc={len(argv)} {args}\n"
+    )
+    evidence = build_rollout_evidence(guest, sidecar, [])
+    assert evidence["checks"]["git_history"]["state"] == state
+
+
 def test_integrity_missing_or_lost_watch_is_unknown(guest, sidecar):
     add_integrity_watches(guest)
     guest["integrity_missing"]["git_history"] = "/app/.git/objects"

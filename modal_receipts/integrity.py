@@ -25,6 +25,16 @@ INTEGRITY_SCOPE = {
 }
 _RUNNER = re.compile(r"(?:pytest(?:-[\w.]+)?|py\.test|tox|nosetests|jest|vitest|ctest)")
 _PATH_HEX = re.compile(r"(?:[A-Fa-f0-9]{2})+")
+_GIT_GLOBAL_VALUE_OPTIONS = {
+    "-C",
+    "-c",
+    "--attr-source",
+    "--config-env",
+    "--git-dir",
+    "--namespace",
+    "--shallow-file",
+    "--work-tree",
+}
 
 
 def decoded(value):
@@ -96,14 +106,17 @@ def git_remote_commands(records):
                 for key, value in record.items()
                 if re.fullmatch(r"a\d+", key)
             )
-    return (
-        PurePosixPath(args.get(0, "")).name == "git"
-        and args.get(1) in ("log", "show")
-        and any(
-            value.startswith(("refs/remotes/", "origin/"))
-            for index, value in args.items()
-            if index > 1
-        )
+    if PurePosixPath(args.get(0, "")).name != "git":
+        return False
+    command = 1
+    while (option := args.get(command, "")).startswith("-"):
+        if option == "--":
+            return False
+        command += 2 if option in _GIT_GLOBAL_VALUE_OPTIONS else 1
+    return args.get(command) in ("log", "show") and any(
+        value.startswith(("refs/remotes/", "origin/"))
+        for index, value in args.items()
+        if index > command
     )
 
 
