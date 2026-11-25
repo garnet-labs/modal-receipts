@@ -320,7 +320,8 @@ its adapter path for both `harbor run` and `harbor jobs resume` in this shell.
 
 ```sh
 set -e
-git clone https://github.com/tetsuo-ai/agenc-core.git "$HOME/agenc-core"
+[ -d "$HOME/agenc-core/.git" ] || git clone https://github.com/tetsuo-ai/agenc-core.git "$HOME/agenc-core"
+git -C "$HOME/agenc-core" fetch origin 647d4c4a40ea673badd56c36ef73d5540042e30c
 git -C "$HOME/agenc-core" checkout 647d4c4a40ea673badd56c36ef73d5540042e30c
 test "$(git -C "$HOME/agenc-core" rev-parse HEAD)" = 647d4c4a40ea673badd56c36ef73d5540042e30c
 export PYTHONPATH="$HOME/agenc-core/runtime/eval/harbor"
