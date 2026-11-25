@@ -29,9 +29,21 @@ def test_baseline_union_uses_frozen_captures(tmp_path):
     bad = tmp_path / "bad"
     bad.mkdir()
     (bad / "rollout-evidence.json").write_text('{"relayed_hosts":["unfrozen.example"]}')
-    assert baseline_hosts(tmp_path) == (["a.example", "b.example", "c.example"], 2, 1)
+    assert baseline_hosts(tmp_path) == (["a.example", "b.example", "c.example"], 2, 2)
     with pytest.raises(ValueError, match="No frozen"):
         baseline_hosts(bad)
+
+
+def test_baseline_counts_trials_without_capture_files(tmp_path):
+    frozen(tmp_path / "complete", ["a.example"])
+    missing = tmp_path / "missing"
+    missing.mkdir()
+    (missing / "result.json").write_text("{}")
+    (tmp_path / "unrelated").mkdir()
+    assert baseline_hosts(tmp_path) == (["a.example"], 1, 1)
+
+    (tmp_path / "result.json").write_text('{"n_total_trials":3}')
+    assert baseline_hosts(tmp_path) == (["a.example"], 1, 2)
 
 
 async def test_job_end_manifest_hashes_frozen_and_marks_missing(tmp_path, monkeypatch):

@@ -123,11 +123,19 @@ def write_job_manifest(job_dir, trials):
 def baseline_hosts(job_dir):
     hosts = set()
     captures = partial = 0
-    for path in sorted(job_dir.glob("*/rollout-evidence.json")):
-        evidence, error = load_evidence(path)
+    trials = {
+        path.parent
+        for filename in ("config.json", "result.json", "rollout-evidence.json")
+        for path in job_dir.glob(f"*/{filename}")
+    }
+    for trial in sorted(trials):
+        evidence, error = load_evidence(trial / "rollout-evidence.json")
         if error:
             continue
-        network = evidence.get("details", {}).get("network_capture", {})
+        details = evidence.get("details")
+        network = details.get("network_capture") if isinstance(details, dict) else None
+        if not isinstance(network, dict):
+            continue
         relayed = network.get("relayed_hosts")
         if not isinstance(relayed, list) or not all(
             isinstance(host, str) for host in relayed
@@ -138,6 +146,14 @@ def baseline_hosts(job_dir):
         hosts.update(relayed)
     if not captures:
         raise ValueError("No frozen network captures found in the baseline job")
+    total = len(trials)
+    try:
+        job_result = json.loads((job_dir / "result.json").read_text())
+    except (OSError, ValueError):
+        job_result = None
+    if isinstance(job_result, dict) and isinstance(job_result.get("n_total_trials"), int):
+        total = max(total, job_result["n_total_trials"])
+    partial += total - captures
     return sorted(hosts), captures, partial
 
 
@@ -154,7 +170,8 @@ def main():
         parser.error(str(exc))
     args.output.write_text(json.dumps(hosts, indent=2) + "\n")
     print(
-        f"Wrote {len(hosts)} hosts from {captures} frozen captures ({partial} with partial network coverage)"
+        f"Wrote {len(hosts)} hosts from {captures} frozen captures "
+        f"({partial} trials with partial or missing network coverage)"
     )
 
 
