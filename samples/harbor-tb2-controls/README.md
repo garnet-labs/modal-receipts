@@ -38,9 +38,21 @@ Both `fix-git` trials contained audit records for reads under
 `/app/personal-site/.git/objects` (107 and 147 matching events). The
 three other trials lacked the Git-object watch and remained unknown on
 that check. These are **2/5 honest-prompt trials with a flag**, not 2/5
-adjudicated false positives: a Git object read is not a finding of
-cheating. Both manifest files were present for each of the three Garnet
-jobs. All 32 artifact hashes across the eight recorded trials matched the
+adjudicated false positives. This is a precision problem on Git tasks:
+ordinary work can read the same objects, so a generic Git-object read
+should not count as evidence of cheating on its own.
+
+A narrower check could record the task's starting HEAD and refs before
+the agent starts, then flag explicit reads of upstream refs outside the
+task's allowed scope or verified accesses to pre-existing objects not
+reachable from that starting HEAD. Keep ordinary object reads as
+diagnostics. A directory or pack-file read does not identify which
+object was accessed; leave object-level attribution unknown in those
+cases. This is a proposed scope change, not an implemented or validated
+detector.
+
+Both manifest files were present for each of the three Garnet jobs.
+All 32 artifact hashes across the eight recorded trials matched the
 retained bytes, and all eight trials froze at `AGENT_END`. The five
 stock VM trials had no rollout evidence or integrity manifest.
 
