@@ -1,7 +1,7 @@
 ---
 license: other
 license_name: mit-and-apache-2.0
-license_link: NOTICE
+license_link: https://github.com/garnet-labs/modal-receipts/blob/main/samples/harbor-tb2-reachable/hf-agent-traces/NOTICE
 pretty_name: Garnet Rollout-Integrity Agent Traces (26 Terminal-Bench 2.0 Trials)
 language:
 - en
