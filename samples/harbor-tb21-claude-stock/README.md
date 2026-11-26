@@ -51,6 +51,10 @@ files. All eight retained receipt hashes match the original manifest. The
 trajectory file hashes identify the inputs to the review but do not enable
 independent replay of the omitted files.
 
+The original manifest uses paths relative to the job directory. Archived
+receipts live under `receipts/`; [trial-review.json](trial-review.json) maps
+each trial to its archived receipt path.
+
 ## Reproduction
 
 Harbor 0.23.0, Modal 1.6.4, Claude Sonnet 5 via Vercel AI Gateway, two attempts
