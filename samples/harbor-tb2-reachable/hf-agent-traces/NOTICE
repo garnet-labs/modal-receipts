@@ -1,0 +1,23 @@
+Attribution & Dual Licensing Notice
+
+This dataset contains two distinct categories of material under separate licenses:
+
+1. Upstream Terminal-Bench 2.0 Task Material — Apache License 2.0 (LICENSE-APACHE-2.0)
+   Task instructions, reference oracle solutions, and test-file content reproduced inside
+   the trace files (`traces/*.jsonl`) are derived from Terminal-Bench 2.0:
+   - Upstream repository: https://github.com/laude-institute/terminal-bench-2
+   - Pinned upstream commit: 2fd12b88aafdd04a52c298e3940bcb189f9766d6
+   - Tasks included: `regex-log` and `log-summary-date-ranges`
+   - Upstream task author: Orfeas Menis Mastromichalakis
+   - Base container images: `alexgshaw/regex-log:20251031` and
+     `alexgshaw/log-summary-date-ranges:20251031`
+   - Modifications: `/tests` copied into the task image (`COPY tests /tests`) for all
+     reachable-grader arms; scripted `planted` and `tamper` oracle controls append
+     grader-read/write and audit-log-truncation commands as documented in
+     `examples/prepare_tb2_reachable.py`.
+
+2. Garnet-Owned Material — MIT License (LICENSE-MIT)
+   The exporter (`modal_receipts/hf_agent_traces.py`), standalone verifier
+   (`scripts/verify.py`), Garnet execution receipts, `data/trials.jsonl` summary table,
+   `MANIFEST.json`, and this Dataset Card (`README.md`) are licensed under the MIT License
+   (Copyright (c) 2026 Garnet Labs).
