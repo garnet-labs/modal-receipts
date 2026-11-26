@@ -61,6 +61,7 @@ environment:
 
 ```sh
 uv tool install --python 3.12 'harbor[modal]==0.23.0' \
+  --with 'modal==1.6.4' \
   --with 'git+https://github.com/garnet-labs/modal-receipts.git@3d34b84aef7a1c52d48cea3151ef9bf1945513a0'
 export PYTHONPATH="$PWD" MODAL_IMAGE_BUILDER_VERSION=2025.06
 harbor run \
