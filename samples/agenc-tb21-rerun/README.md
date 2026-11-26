@@ -354,6 +354,8 @@ The AgenC Harbor adapter comes from
 `647d4c4a40ea673badd56c36ef73d5540042e30c`. The original run used `/tmp/ac`;
 the commands below clone the same revision into `$HOME/agenc-core` and export
 its adapter path for both `harbor run` and `harbor jobs resume` in this shell.
+Run this shared setup first, then choose **one** of the start or resume paths
+below; do not run both paths in sequence.
 
 ```sh
 set -e
@@ -365,7 +367,13 @@ test -z "$(git -C "$HOME/agenc-core" status --porcelain)"
 export PYTHONPATH="$HOME/agenc-core/runtime/eval/harbor"
 export DEEPSEEK_API_KEY="$AI_GATEWAY_API_KEY"
 export MODAL_IMAGE_BUILDER_VERSION=2025.06
+```
 
+#### Start a new job
+
+Use this only when the job directory does not already exist.
+
+```sh
 harbor run \
   -d terminal-bench/terminal-bench-2-1@sha256:7d7bdc1cbedad549fc1140404bd4dc45e5fd0ea7c4186773687d177ad3a0699a \
   -a agenc_agent:Agenc -m deepseek/deepseek-v4.1-flash-1017 \
@@ -374,8 +382,65 @@ harbor run \
   --ak base_url=https://ai-gateway.vercel.sh/v1 \
   -e modal -n 8 -k 5 -r 0 \
   -o "$HOME/harbor-port-jobs" --job-name agenc-tb21-full-stock
+```
 
-# For an interrupted existing job, instead of starting a new run:
+#### Resume after an interruption
+
+Do not run `harbor run` first. For a quota-exhaustion interruption, stop the
+existing Harbor process and remaining sandboxes, restore the provider budget,
+and confirm a successful gateway preflight before proceeding. Then preserve
+the quota-failed and no-valid-result trial directories in a new sibling folder
+**before** resuming. Leave every other recorded outcome, including genuine
+failures and exceptions, untouched. The following block only moves directories;
+it does not delete them or launch Harbor.
+
+```sh
+python3 - <<'PY'
+import gzip
+import json
+from pathlib import Path
+import shutil
+import time
+
+job = Path.home() / "harbor-port-jobs/agenc-tb21-full-stock"
+selected = []
+for trial in sorted(job.iterdir()):
+    if not trial.is_dir() or not (trial / "config.json").is_file():
+        continue
+    try:
+        result = json.loads((trial / "result.json").read_text())
+        valid = (isinstance(result, dict)
+                 and result.get("trial_name") == trial.name
+                 and bool(result.get("finished_at")))
+    except (OSError, ValueError):
+        valid = False
+    quota = False
+    for log in trial.rglob("*"):
+        if not log.is_file() or log.suffix not in {
+            ".log", ".jsonl", ".stdout", ".stderr", ".raw", ".gz"
+        }:
+            continue
+        opener = gzip.open if log.suffix == ".gz" else open
+        with opener(log, "rt", errors="replace") as source:
+            if any("provider credits or billing quota exhausted" in line
+                   for line in source):
+                quota = True
+                break
+    if quota or not valid:
+        selected.append(trial)
+archive = job.parent / f"quota-failed-{time.time_ns()}"
+archive.mkdir()
+for trial in selected:
+    shutil.move(str(trial), str(archive / trial.name))
+print(f"Preserved {len(selected)} trial directories in {archive}")
+PY
+```
+
+After that preservation step for a quota interruption (or directly for an
+ordinary interruption with no quota failures), use standard resume in the
+shell with the shared environment exports above:
+
+```sh
 harbor jobs resume -p "$HOME/harbor-port-jobs/agenc-tb21-full-stock"
 ```
 
