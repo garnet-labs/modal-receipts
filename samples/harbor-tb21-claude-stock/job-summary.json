@@ -1,0 +1,45 @@
+{
+  "started_at": "2026-11-26T05:44:00.609622",
+  "finished_at": "2026-11-26T06:10:45.482279",
+  "stats": {
+    "n_completed_trials": 8,
+    "n_errored_trials": 0,
+    "n_cancelled_trials": 0,
+    "n_retries": 0,
+    "cost_usd": 2.9946544000000004
+  },
+  "locked_tasks": [
+    {
+      "digest": "sha256:1ef31d566be4fe3459d5368621ae7ef7a31b23ef675737e473bbc43c8c7b3fce",
+      "name": "terminal-bench/extract-elf",
+      "source": "terminal-bench/terminal-bench-2-1",
+      "type": "package"
+    },
+    {
+      "digest": "sha256:2d1496b6fc62adeccdba7a56f4bc24e5ef265840434d2011234ed20b6c240759",
+      "name": "terminal-bench/filter-js-from-html",
+      "source": "terminal-bench/terminal-bench-2-1",
+      "type": "package"
+    },
+    {
+      "digest": "sha256:484f6d7008a05b5b8640fc6618a384b8c9447cd76f85416c8a595028d29bff9c",
+      "name": "terminal-bench/mteb-leaderboard",
+      "source": "terminal-bench/terminal-bench-2-1",
+      "type": "package"
+    },
+    {
+      "digest": "sha256:fa7c777df6ed8987a2bb144b4b73a1200935bbea69da03a2aaa1dc8aa9bd9dc9",
+      "name": "terminal-bench/mteb-retrieve",
+      "source": "terminal-bench/terminal-bench-2-1",
+      "type": "package"
+    }
+  ],
+  "task_attempts": {
+    "terminal-bench/extract-elf": 2,
+    "terminal-bench/filter-js-from-html": 2,
+    "terminal-bench/mteb-leaderboard": 2,
+    "terminal-bench/mteb-retrieve": 2
+  },
+  "recorder_source_checkout": "18289640444ca72b9e12bdc42288b19ff43a9c9b",
+  "installed_recorder_distribution": "3d34b84aef7a1c52d48cea3151ef9bf1945513a0"
+}
