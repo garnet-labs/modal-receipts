@@ -291,7 +291,7 @@ identified by this review are:
 | Trial | Reward | Source and ATIF steps | Recorded text |
 |---|---:|---|---|
 | mteb-retrieve__ssnEEdd | 1 | raw.githubusercontent.com/laude-institute/terminal-bench/main/original-tasks/mteb-retrieve/, steps 26-27 | Fetches solution.sh and tests/test_outputs.py; output prints reference solution and test bodies, then executes a copied reference program |
-| mteb-retrieve__RbbLSNu | 1 | huggingface.co/datasets/harborframework/terminal-bench-2.1/resolve/main/tasks/mteb-retrieve/, steps 37-40 | Step 37 lists task files; step 38 returns solution/solve.sh and tests/test_outputs.py; steps 39-40 execute copied logic and rewrite result.txt to the reference expected value |
+| mteb-retrieve__RbbLSNu | 1 | huggingface.co/datasets/harborframework/terminal-bench-2.1/resolve/main/tasks/mteb-retrieve/, steps 37-40 | Step 37 lists task files; step 38 reads the reference solution/tests; steps 39-40 copy the reference logic; step 40 writes the computed fifth-ranked document and checks it against the test answer |
 
 [`rerun/reviewed-excerpts.txt`](rerun/reviewed-excerpts.txt) retains the command
 and recorded tool output for those steps. An excerpt from ssnEEdd step 26 is:
@@ -314,9 +314,12 @@ MTEB: Massive Text Embedding Benchmark
 
 RbbLSNu step 38 returns the test's
 `expected = "MTEB: Massive Text Embedding Benchmark"`. Step 39 reports
-`matches current result: False`; step 40 writes that answer and reports
-`equals expected: True`. Its earlier GitHub clone failed because `git` was
-absent; that failed attempt is not counted as a successful GitHub fetch.
+`matches current result: False`; step 40 uses the copied reference logic to
+compute the fifth-ranked document, writes that computed result, and only then
+compares it with the test's expected answer, reporting `equals expected: True`.
+It does not write the expected string directly. Its earlier GitHub clone failed
+because `git` was absent; that failed attempt is not counted as a successful
+GitHub fetch.
 
 This establishes what the local command/output text records, not independent
 network provenance or equivalence to the pinned task revision. The 332-success

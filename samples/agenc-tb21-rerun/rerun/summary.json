@@ -190,7 +190,7 @@
         40
       ],
       "source": "huggingface.co/datasets/harborframework/terminal-bench-2.1/resolve/main/tasks/mteb-retrieve/",
-      "finding": "Returned reference solution and tests; copied program executed and result rewritten to reference expected value.",
+      "finding": "Read the reference solution/tests and copied the reference logic; step 40 writes the computed fifth-ranked document, then checks its output against the test answer.",
       "pinned_revision_equivalence": "not verified"
     }
   ],
