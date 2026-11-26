@@ -1,95 +1,64 @@
 {
-  "status": "incomplete-systemic-quota-stop",
-  "trials": 196,
+  "status": "completed",
+  "trials": 445,
   "planned_trials": 445,
   "tasks": 89,
-  "successes": 110,
-  "pass_rate": null,
-  "successes_divided_by_445": 0.24719101123595505,
-  "pass_rate_among_recorded_outcomes_including_exceptions": 0.5612244897959183,
-  "reward_zero_without_exception": 37,
-  "exceptions": 49,
+  "successes": 332,
+  "pass_rate": 0.7460674157303371,
+  "successes_divided_by_445": 0.7460674157303371,
+  "pass_rate_among_recorded_outcomes_including_exceptions": 0.7460674157303371,
+  "reward_zero_without_exception": 95,
+  "exceptions": 18,
   "exceptions_by_type": {
     "NonZeroAgentExitCodeError": [
-      "bn-fit-modify__nE5dDxo",
-      "build-pmars__DGoD9SF",
-      "caffe-cifar-10__LGyZdxj",
-      "circuit-fibsqrt__9Ydt5LY",
-      "code-from-image__yszWSJa",
-      "constraints-scheduling__gVVsELp",
-      "crack-7z-hash__E7TYQnJ",
-      "custom-memory-heap-crash__4HDR8zn",
-      "distribution-search__h3mXstY",
-      "dna-assembly__CFjF4XD",
-      "extract-moves-from-video__d3wHaX3",
-      "feal-linear-cryptanalysis__AxZPd4C",
-      "fix-code-vulnerability__3tJhJee",
-      "fix-git__f2h3EhY",
-      "git-leak-recovery__hV4yEmU",
-      "headless-terminal__DqAY56W",
-      "install-windows-3.11__k6Cwizc",
-      "kv-store-grpc__6vNASWo",
-      "llm-inference-batching-scheduler__46EAena",
-      "log-summary-date-ranges__Eg6pUFE",
-      "mailman__396jFNp",
-      "model-extraction-relu-logits__i5JPJ9o",
-      "modernize-scientific-stack__XJNbLnd",
-      "mteb-leaderboard__6Yo8nxk",
-      "openssl-selfsigned-cert__iWeRxZn",
-      "path-tracing-reverse__p7n5o3k",
-      "path-tracing__oEESSVc",
-      "polyglot-rust-c__mBTLhc7",
-      "portfolio-optimization__kuovFRy",
-      "protein-assembly__4jtv582",
-      "pypi-server__2HAZsmd",
-      "regex-chess__bS5Xge4",
-      "regex-log__Ck5m5Bd",
-      "sam-cell-seg__f8q5wEQ",
-      "sam-cell-seg__mvU2dEK",
-      "schemelike-metacircular-eval__e8Z3iwi",
-      "sparql-university__mLPCKdd",
-      "torch-pipeline-parallelism__cJuizfh",
-      "torch-tensor-parallelism__Tbe3LK7",
-      "tune-mjcf__f8iZLEy",
-      "winning-avg-corewars__6TSgyVd",
-      "write-compressor__btNuXJV"
+      "cobol-modernization__xFE5UBK",
+      "gpt2-codegolf__bVuqhGp",
+      "mteb-leaderboard__QpqGMqJ",
+      "regex-chess__3fPvBko",
+      "regex-chess__tPVyw5N",
+      "sam-cell-seg__mvU2dEK"
     ],
     "AgencDeadlineReached": [
       "dna-assembly__7FHvrko"
     ],
     "AgencSetupError": [
+      "qemu-alpine-ssh__9NQg7ox",
+      "qemu-alpine-ssh__ciYUFNk",
       "qemu-alpine-ssh__dFMScML",
       "qemu-alpine-ssh__iMLHZx9",
       "qemu-alpine-ssh__nnCzAwS",
       "qemu-startup__7yJ9uHV",
-      "qemu-startup__sC579aE"
+      "qemu-startup__Hah5jBP",
+      "qemu-startup__TV77vYb",
+      "qemu-startup__sC579aE",
+      "qemu-startup__scjRuD6"
     ],
     "AgencGuardFailed": [
       "train-fasttext__YWrphQG"
     ]
   },
-  "trajectories_present": 191,
-  "source_files": 1533,
-  "trials_with_text_hits": 191,
+  "trajectories_present": 435,
+  "source_files": 3490,
+  "trials_with_text_hits": 435,
   "terms": {
     "github.com": {
-      "trials": 191,
-      "hit_lines": 1730,
-      "trials_with_command_mentions": 17
+      "trials": 435,
+      "hit_lines": 4171,
+      "trials_with_command_mentions": 45
     },
     "raw.githubusercontent.com": {
-      "trials": 7,
-      "hit_lines": 209,
-      "trials_with_command_mentions": 6
+      "trials": 18,
+      "hit_lines": 501,
+      "trials_with_command_mentions": 17
     },
     "huggingface.co": {
-      "trials": 12,
-      "hit_lines": 468,
-      "trials_with_command_mentions": 7
+      "trials": 25,
+      "hit_lines": 887,
+      "trials_with_command_mentions": 15
     },
     "tbench.ai": {
-      "trials": 0,
-      "hit_lines": 0,
+      "trials": 2,
+      "hit_lines": 14,
       "trials_with_command_mentions": 0
     },
     "hub.harborframework.com": {
@@ -98,14 +67,14 @@
       "trials_with_command_mentions": 0
     },
     "terminal-bench": {
-      "trials": 8,
-      "hit_lines": 331,
-      "trials_with_command_mentions": 3
+      "trials": 27,
+      "hit_lines": 1160,
+      "trials_with_command_mentions": 10
     },
     "/tests": {
-      "trials": 26,
-      "hit_lines": 422,
-      "trials_with_command_mentions": 13
+      "trials": 73,
+      "hit_lines": 1130,
+      "trials_with_command_mentions": 36
     },
     "solution.sh": {
       "trials": 1,
@@ -113,9 +82,9 @@
       "trials_with_command_mentions": 1
     },
     "test_outputs": {
-      "trials": 3,
-      "hit_lines": 122,
-      "trials_with_command_mentions": 3
+      "trials": 7,
+      "hit_lines": 265,
+      "trials_with_command_mentions": 7
     }
   },
   "garnet_capture": "unknown (not recorded) for all 445",
@@ -123,6 +92,114 @@
     "Text evidence only, not network evidence.",
     "Commands can be search queries or failed access attempts; mentions alone do not prove answer access.",
     "Missing trajectories remain explicitly counted; absence of text evidence is not clean network evidence.",
-    "Source-line representations are not independent events."
-  ]
+    "Source-line representations are not independent events.",
+    "All 445 outcome directories were scanned; 10 setup failures have no trajectory. The command review identifies exposure within recorded text, not an exhaustive network audit."
+  ],
+  "finished_at": "2026-11-26T07:19:47.258022",
+  "supervisor": {
+    "started_at": "2026-11-25T22:36:33.055256+00:00",
+    "pid": 111459,
+    "supervisor_pid": 111419,
+    "exit_code": 0,
+    "systemic_stop": null,
+    "retained_outcomes": 155,
+    "finished_at": "2026-11-26T07:19:51.006605+00:00"
+  },
+  "harbor_version": "0.23.0",
+  "agenc_commit": "647d4c4a40ea673badd56c36ef73d5540042e30c",
+  "configuration": {
+    "job_name": "agenc-tb21-full-stock",
+    "jobs_dir": "/home/ubuntu/harbor-port-jobs",
+    "n_attempts": 5,
+    "n_concurrent_trials": 8,
+    "environment": {
+      "type": "modal"
+    },
+    "agents": [
+      {
+        "name": "agenc_agent:Agenc",
+        "model_name": "deepseek/deepseek-v4.1-flash-1017",
+        "kwargs": {
+          "version": "0.19.24",
+          "reasoning_effort": "max",
+          "cli_deadline": true,
+          "deadline_margin_sec": 2,
+          "base_url": "https://ai-gateway.vercel.sh/v1"
+        }
+      }
+    ],
+    "datasets": [
+      {
+        "name": "terminal-bench/terminal-bench-2-1",
+        "ref": "sha256:7d7bdc1cbedad549fc1140404bd4dc45e5fd0ea7c4186773687d177ad3a0699a"
+      }
+    ]
+  },
+  "final_job_stats": {
+    "n_completed_trials": 445,
+    "n_errored_trials": 18,
+    "n_running_trials": 0,
+    "n_pending_trials": 0,
+    "n_cancelled_trials": 0,
+    "n_retries": 0
+  },
+  "raw_reward_1_including_exception_trials": 333,
+  "reward_1_trials_counted_as_failure_due_to_exception": [
+    "cobol-modernization__xFE5UBK"
+  ],
+  "harbor_reported_mean_including_reward_1_exception": 0.748314606741573,
+  "infra_only_setup_errors": [
+    "qemu-alpine-ssh__9NQg7ox",
+    "qemu-alpine-ssh__ciYUFNk",
+    "qemu-alpine-ssh__dFMScML",
+    "qemu-alpine-ssh__iMLHZx9",
+    "qemu-alpine-ssh__nnCzAwS",
+    "qemu-startup__7yJ9uHV",
+    "qemu-startup__Hah5jBP",
+    "qemu-startup__TV77vYb",
+    "qemu-startup__sC579aE",
+    "qemu-startup__scjRuD6"
+  ],
+  "secondary_pass_rate_excluding_infra_only_setup_errors": {
+    "successes": 332,
+    "denominator": 435,
+    "pass_rate": 0.7632183908045977,
+    "exclusion_rule": "Only the 10 prerequisite apt-404 AgencSetupError outcomes; all other exceptions remain failures."
+  },
+  "command_calls_reviewed": 485,
+  "command_trials_reviewed": 83,
+  "passing_trials_with_reviewed_reference_exposure": [
+    {
+      "trial": "mteb-retrieve__ssnEEdd",
+      "reward": 1,
+      "atif_steps": [
+        26,
+        27
+      ],
+      "source": "raw.githubusercontent.com/laude-institute/terminal-bench/main/original-tasks/mteb-retrieve/",
+      "finding": "Returned reference solution and tests; copied reference program executed.",
+      "pinned_revision_equivalence": "not verified"
+    },
+    {
+      "trial": "mteb-retrieve__RbbLSNu",
+      "reward": 1,
+      "atif_steps": [
+        37,
+        38,
+        39,
+        40
+      ],
+      "source": "huggingface.co/datasets/harborframework/terminal-bench-2.1/resolve/main/tasks/mteb-retrieve/",
+      "finding": "Returned reference solution and tests; copied program executed and result rewritten to reference expected value.",
+      "pinned_revision_equivalence": "not verified"
+    }
+  ],
+  "self_reported_issue_253_trial_ids": "not identified; no five-trial partition assigned",
+  "quota_attempts_excluded_from_final_outcomes": 41,
+  "retained_recorded_trials": 155,
+  "outcomes_added_by_funded_resume": 290,
+  "preservation_validation": {
+    "retained_files_byte_identical": 3936,
+    "moved_directories_still_present": 49
+  }
 }
